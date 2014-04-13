@@ -1,7 +1,6 @@
 package me.TehKitti.Maunz;
 
 import java.io.IOException;
-import java.net.InetAddress;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
