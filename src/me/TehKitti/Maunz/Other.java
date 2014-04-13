@@ -4,7 +4,7 @@ import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
 @SuppressWarnings("rawtypes")
-public class bl4ckb0tListener extends ListenerAdapter {
+public class Other extends ListenerAdapter {
 
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
