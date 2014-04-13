@@ -59,6 +59,10 @@ public class Help extends ListenerAdapter {
 				event.getUser()
 						.send()
 						.notice(Colors.MAGENTA
+								+ "*source   Links you to the GitHub page of Maunz, you can submit issues/pull requests here.");
+				event.getUser()
+						.send()
+						.notice(Colors.MAGENTA
 								+ "*help   Opens what you're looking at right now!");
 				event.getUser()
 						.send()
@@ -127,6 +131,10 @@ public class Help extends ListenerAdapter {
 						.send()
 						.notice(Colors.MAGENTA
 								+ "*accinfo <account>   Tells you whether or not a Minecraft account is premium!");
+				event.getUser()
+						.send()
+						.notice(Colors.MAGENTA
+								+ "*source   Links you to the GitHub page of Maunz, you can submit issues/pull requests here.");
 				event.getUser()
 						.send()
 						.notice(Colors.MAGENTA
