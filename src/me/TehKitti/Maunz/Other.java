@@ -9,7 +9,7 @@ public class Other extends ListenerAdapter {
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().endsWith(
+			if (event.getMessage().toLowerCase().endsWith(
 					"We aren't spambots, are we, Maunz?")) {
 				if (event.getUser().getNick().equalsIgnoreCase("bl4ckb0t")) {
 					event.getChannel().send()

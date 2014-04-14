@@ -11,7 +11,7 @@ public class Help extends ListenerAdapter {
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().equals("*help")) {
+			if (event.getMessage().equalsIgnoreCase("*help")) {
 				event.getUser()
 						.send()
 						.notice(Colors.TEAL
@@ -86,7 +86,7 @@ public class Help extends ListenerAdapter {
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().equals("*help")) {
+			if (event.getMessage().equalsIgnoreCase("*help")) {
 				event.getUser()
 						.send()
 						.notice(Colors.TEAL

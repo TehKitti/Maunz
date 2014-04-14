@@ -9,7 +9,7 @@ public class Ping extends ListenerAdapter {
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().equals("*ping")) {
+			if (event.getMessage().equalsIgnoreCase("*ping")) {
 				event.respond("Pong!");
 
 			}
@@ -18,7 +18,7 @@ public class Ping extends ListenerAdapter {
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().equals("*ping")) {
+			if (event.getMessage().equalsIgnoreCase("*ping")) {
 				event.respond("Pong!");
 
 			}

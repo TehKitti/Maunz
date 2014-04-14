@@ -10,7 +10,7 @@ public class Say extends ListenerAdapter {
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().startsWith("*say")) {
+			if (event.getMessage().toLowerCase().startsWith("*say")) {
 				String seperate = event.getMessage().substring(4);
 				String msg = seperate.substring(1);
 
@@ -31,7 +31,7 @@ public class Say extends ListenerAdapter {
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().startsWith("*say")) {
+			if (event.getMessage().toLowerCase().startsWith("*say")) {
 				String seperate = event.getMessage().substring(4);
 				String msg = seperate.substring(1);
 

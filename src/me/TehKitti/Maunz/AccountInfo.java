@@ -13,7 +13,7 @@ public class AccountInfo extends ListenerAdapter {
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().startsWith("*accinfo")) {
+			if (event.getMessage().toLowerCase().startsWith("*accinfo")) {
 				try {
 					String[] seperate = event.getMessage().split(" ");
 					BufferedReader reader = new BufferedReader(
@@ -66,7 +66,7 @@ public class AccountInfo extends ListenerAdapter {
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().startsWith("*accinfo")) {
+			if (event.getMessage().toLowerCase().startsWith("*accinfo")) {
 				try {
 					String[] seperate = event.getMessage().split(" ");
 					BufferedReader reader = new BufferedReader(

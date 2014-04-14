@@ -15,7 +15,7 @@ public class UUID extends ListenerAdapter {
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().startsWith("*uuid")) {
+			if (event.getMessage().toLowerCase().startsWith("*uuid")) {
 				try {
 					String[] seperate = event.getMessage().split(" ");
 					BufferedReader reader = new BufferedReader(

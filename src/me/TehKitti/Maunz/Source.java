@@ -9,7 +9,7 @@ public class Source extends ListenerAdapter {
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().equals("*source")) {
+			if (event.getMessage().equalsIgnoreCase("*source")) {
 				event.respond("https://github.com/TehKitti/Maunz");
 
 			}
@@ -18,7 +18,7 @@ public class Source extends ListenerAdapter {
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().equals("*source")) {
+			if (event.getMessage().equalsIgnoreCase("*source")) {
 				event.respond("https://github.com/TehKitti/Maunz");
 
 			}

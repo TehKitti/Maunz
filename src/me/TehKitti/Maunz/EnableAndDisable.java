@@ -8,7 +8,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 public class EnableAndDisable extends ListenerAdapter {
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
-		if (event.getMessage().equals("*enable")) {
+		if (event.getMessage().equalsIgnoreCase("*enable")) {
 			if (event.getUser().getNick().equals("TehKitti")) {
 				if (Main.isEnabled == false) {
 					event.respond("Maunz has successfully been enabled!");
@@ -25,7 +25,7 @@ public class EnableAndDisable extends ListenerAdapter {
 								"I was hoping I could begin to take over the world here, guess I'll have to wait for TehKitti!");
 			}
 		}
-		if (event.getMessage().equals("*disable")) {
+		if (event.getMessage().equalsIgnoreCase("*disable")) {
 			if (event.getUser().getNick().equals("TehKitti")) {
 				if (Main.isEnabled == true) {
 					event.respond("Maunz has successfully been disabled :(");
@@ -44,7 +44,7 @@ public class EnableAndDisable extends ListenerAdapter {
 	}
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
-		if (event.getMessage().equals("*enable")) {
+		if (event.getMessage().equalsIgnoreCase("*enable")) {
 			if (event.getUser().getNick().equals("TehKitti")) {
 				if (Main.isEnabled == false) {
 					event.respond("Maunz has successfully been enabled!");
@@ -62,7 +62,7 @@ public class EnableAndDisable extends ListenerAdapter {
 			}
 		}
 		if (event.getMessage().equals("*disable")) {
-			if (event.getUser().getNick().equals("TehKitti")) {
+			if (event.getUser().getNick().equalsIgnoreCase("TehKitti")) {
 				if (Main.isEnabled == true) {
 					event.respond("Maunz has successfully been disabled :(");
 					Main.bot.sendIRC().message(

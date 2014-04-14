@@ -10,7 +10,7 @@ public class Restart extends ListenerAdapter {
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().equals("*restart")) {
+			if (event.getMessage().equalsIgnoreCase("*restart")) {
 				if (event.getUser().getNick().equals("TehKitti")) {
 					OutputIRC irc = new OutputIRC(Main.bot);
 					event.getChannel()
@@ -34,7 +34,7 @@ public class Restart extends ListenerAdapter {
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().equals("*restart")) {
+			if (event.getMessage().equalsIgnoreCase("*restart")) {
 				if (event.getUser().getNick().equals("TehKitti")) {
 					OutputIRC irc = new OutputIRC(Main.bot);
 					Main.bot.sendIRC().message(
