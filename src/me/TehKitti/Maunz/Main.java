@@ -31,7 +31,7 @@ public class Main {
 				.addListener(new AccountInfo())
 				.addListener(new Source())
 				//.addListener(new UUID())
-				.setMessageDelay(500)
+				.setMessageDelay(400)
 				.setRealName("Maunz, an IRC bot coded by TehKitti.")
 				.buildConfiguration();
 
@@ -62,7 +62,7 @@ public class Main {
 				.addListener(new AccountInfo())
 				.addListener(new Source())
 				//.addListener(new UUID())
-				.setMessageDelay(500)
+				.setMessageDelay(400)
 				.setRealName("Maunz, an IRC bot coded by TehKitti.")
 				.buildConfiguration();
 
