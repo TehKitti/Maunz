@@ -5,14 +5,23 @@ According to bl4ckscor3, Maunz is a word german people use to refer to cats some
 A list of Maunz's commands is here:
 
 *stop   Stops Maunz. Only useable by TehKitti!
+
 *restart   Restarts Maunz. Only useable by TehKitti!
+
 *enable   Enables Maunz if she has been disabled with *disable. Only useable by TehKitti!
+
 *disable   Disables Maunz. Only useable by TehKitti!
+
 *ping   Makes Maunz respond to you with Pong. Very useful for testing ping to the IRC server.
+
 *say <message>   Makes Maunz say whatever you want her to!
+
 *accinfo <account>   Tells you whether or not a Minecraft account is premium!
+
 *source   Links you to the GitHub page of Maunz, you can submit issues/pull requests here.
+
 *help   Opens a help menu listing commands and other information.
 
 Premium ammount status grabbed from http://axis.iaero.me
+
 PircBotX: https://code.google.com/p/pircbotx/
