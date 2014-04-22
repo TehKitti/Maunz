@@ -11,7 +11,7 @@ public class Main {
 	public static PircBotX bot;
 	static boolean isEnabled = true;
 
-	public static void main(String args[]) throws Exception {
+	public static void main(String args[]) {
 		Configuration config = new Configuration.Builder().setName("Maunz")
 				.setVersion("1.0")
 				.setServerHostname("chaos.esper.net")
@@ -36,12 +36,22 @@ public class Main {
 				.buildConfiguration();
 
 		bot = new PircBotX(config);
-		bot.startBot();
+		
+		if(!bot.isConnected()) {
+			while(true) {
+				try {
+					bot.startBot();
+				}
+				catch(Exception e) {
+				}
+			}
+		}
+		
 		isEnabled = true;
 
 	}
 
-	public static void main2() throws IOException, IrcException {
+	public static void main2() {
 		Configuration config = new Configuration.Builder()
 		        .setName("Maunz")
 				.setVersion("1.0")
@@ -67,7 +77,17 @@ public class Main {
 				.buildConfiguration();
 
 		bot = new PircBotX(config);
-		bot.startBot();
+				
+		if(!bot.isConnected()) {
+			while(true) {
+				try {
+					bot.startBot();
+				}
+				catch(Exception e) {
+				}
+			}
+		}
+		
 		isEnabled = true;
 
 	}
