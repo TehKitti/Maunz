@@ -1,4 +1,14 @@
-package me.TehKitti.Maunz;
+package me.TehKitti.Maunz.Core;
+
+import me.TehKitti.Maunz.Commands.AccountInfo;
+import me.TehKitti.Maunz.Commands.EnableAndDisable;
+import me.TehKitti.Maunz.Commands.Help;
+import me.TehKitti.Maunz.Commands.Ping;
+import me.TehKitti.Maunz.Commands.Restart;
+import me.TehKitti.Maunz.Commands.Say;
+import me.TehKitti.Maunz.Commands.Source;
+import me.TehKitti.Maunz.Commands.Stop;
+import me.TehKitti.Maunz.Commands.UUID;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
@@ -6,7 +16,7 @@ import org.pircbotx.PircBotX;
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class Main {
 	public static PircBotX bot;
-	static boolean isEnabled = true;
+	public static boolean isEnabled = true;
 
 		static Configuration config = new Configuration.Builder().setName("Maunz")
 				.setVersion("1.0")

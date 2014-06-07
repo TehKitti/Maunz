@@ -1,4 +1,4 @@
-package me.TehKitti.Maunz;
+package me.TehKitti.Maunz.Core;
 
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
