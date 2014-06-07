@@ -8,8 +8,6 @@ import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
-//temporarily disabled while i try to iron out issues
-
 @SuppressWarnings("rawtypes")
 public class UUID extends ListenerAdapter {
 	@Override
