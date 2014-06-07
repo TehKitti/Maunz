@@ -26,7 +26,7 @@ public class Main {
 				.addListener(new EnableAndDisable())
 				.addListener(new AccountInfo())
 				.addListener(new Source())
-				//.addListener(new UUID())
+				.addListener(new UUID())
 				.setMessageDelay(400)
 				.setRealName("Maunz, an IRC bot coded by TehKitti.")
 				.buildConfiguration();

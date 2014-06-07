@@ -19,14 +19,19 @@ public class UUID extends ListenerAdapter {
 				try {
 					String[] seperate = event.getMessage().split(" ");
 					BufferedReader reader = new BufferedReader(
-							new InputStreamReader(
-									new URL("http://connorlinfoot.com/uuid/api/?user="
-											+ seperate[1] + "&get=uuid").openStream()));
+							new InputStreamReader(new URL(
+									"http://api.fishbans.com/uuid/"
+											+ seperate[1]).openStream()));
 					String line = reader.readLine();
-					System.out.println(line);
-
-
-
+					String[] newline = line.split("\"");
+					if (newline[5].equals("User is not premium.")) {
+						event.getChannel()
+								.send()
+								.message(
+										"Username is either an unpaid legacy account or a free username.");
+					} else {
+						event.getChannel().send().message("" + newline[5]);
+					}
 				} catch (ArrayIndexOutOfBoundsException e) {
 					event.respond("Provide a username for me please!");
 				}
