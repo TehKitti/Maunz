@@ -68,6 +68,10 @@ public class Help extends ListenerAdapter {
 								+ "*help   Opens what you're looking at right now!");
 				event.getUser()
 						.send()
+						.notice(Colors.MAGENTA
+								+ "*uuid <username>   Will return the Minecraft UUID of the username you requested.");
+				event.getUser()
+						.send()
 						.notice(Colors.TEAL
 								+ "----------------- Maunz Credits ----------------");
 				event.getUser().send()
@@ -141,6 +145,10 @@ public class Help extends ListenerAdapter {
 						.send()
 						.notice(Colors.MAGENTA
 								+ "*help   Opens what you're looking at right now!");
+				event.getUser()
+						.send()
+						.notice(Colors.MAGENTA
+								+ "*uuid <username>   Will return the Minecraft UUID of the username you requested.");
 				event.getUser()
 						.send()
 						.notice(Colors.TEAL
