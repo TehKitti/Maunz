@@ -13,7 +13,6 @@ public class Source extends ListenerAdapter {
 		if (Main.isEnabled == true) {
 			if (event.getMessage().equalsIgnoreCase("*source")) {
 				event.respond("https://github.com/TehKitti/Maunz");
-
 			}
 		}
 	}
@@ -22,7 +21,6 @@ public class Source extends ListenerAdapter {
 		if (Main.isEnabled == true) {
 			if (event.getMessage().equalsIgnoreCase("*source")) {
 				event.respond("https://github.com/TehKitti/Maunz");
-
 			}
 		}
 	}

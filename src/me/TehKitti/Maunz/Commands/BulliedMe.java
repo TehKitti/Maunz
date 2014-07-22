@@ -7,22 +7,21 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 @SuppressWarnings("rawtypes")
-public class Say extends ListenerAdapter {
-
+public class BulliedMe extends ListenerAdapter {
 	@Override
 	public void onMessage(MessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().toLowerCase().startsWith("*say")) {
+			if (event.getMessage().toLowerCase().startsWith("*bulliedme")) {
 				String[] args = event.getMessage().split(" ");
-				if (event.getMessage().startsWith("*say -say")) {
+				if (args.length == 1) {
+					event.respond("Nobody bullied you? Okay then.");
+				}
+				if (args.length != 1) {
 					event.getChannel()
 							.send()
 							.message(
-									"Stop trying to abuse us, "
-											+ event.getUser().getNick()
-											+ "! We aren't spambots, are we, bl4ckb0t?");
-				} else {
-					event.getChannel().send().message(args[1]);
+									args[1]
+											+ ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
 				}
 			}
 		}
@@ -30,17 +29,17 @@ public class Say extends ListenerAdapter {
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
 		if (Main.isEnabled == true) {
-			if (event.getMessage().toLowerCase().startsWith("*say")) {
+			if (event.getMessage().toLowerCase().startsWith("*bulliedme")) {
 				String[] args = event.getMessage().split(" ");
-				if (event.getMessage().startsWith("*say -say")) {
+				if (args.length == 1) {
+				}
+				event.respond("Nobody bullied you? Okay then.");
+				if (args.length != 1) {
 					Main.bot.sendIRC()
 							.message(
 									"#bl4ckscor3",
-									"Stop trying to abuse us, "
-											+ event.getUser().getNick()
-											+ "! We aren't spambots, are we, bl4ckb0t?");
-				} else {
-					Main.bot.sendIRC().message("#bl4ckscor3", args[1]);
+									args[1]
+											+ ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
 				}
 			}
 		}

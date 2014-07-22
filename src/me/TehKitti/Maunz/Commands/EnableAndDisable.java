@@ -15,7 +15,6 @@ public class EnableAndDisable extends ListenerAdapter {
 				if (Main.isEnabled == false) {
 					event.respond("Maunz has successfully been enabled!");
 					Main.isEnabled = true;
-
 				} else {
 					event.respond("You silly, I was already enabled!");
 				}
@@ -50,11 +49,9 @@ public class EnableAndDisable extends ListenerAdapter {
 			if (event.getUser().getNick().equals("TehKitti")) {
 				if (Main.isEnabled == false) {
 					event.respond("Maunz has successfully been enabled!");
-					Main.bot.sendIRC().message(
-							"#bl4ckscor3",
+					Main.bot.sendIRC().message("#bl4ckscor3",
 							"Maunz has successfully been enabled!");
 					Main.isEnabled = true;
-
 				} else {
 					event.respond("You silly, I was already enabled!");
 				}
@@ -67,8 +64,7 @@ public class EnableAndDisable extends ListenerAdapter {
 			if (event.getUser().getNick().equalsIgnoreCase("TehKitti")) {
 				if (Main.isEnabled == true) {
 					event.respond("Maunz has successfully been disabled :(");
-					Main.bot.sendIRC().message(
-							"#bl4ckscor3",
+					Main.bot.sendIRC().message("#bl4ckscor3",
 							"Maunz has successfully been disabled. :(");
 					Main.isEnabled = false;
 				} else {

@@ -30,7 +30,6 @@ public class Restart extends ListenerAdapter {
 									"Now nobody can stop me from taking over the world! Mwahahahahaha!");
 				}
 			}
-
 		}
 	}
 
@@ -52,7 +51,6 @@ public class Restart extends ListenerAdapter {
 					event.respond("Now nobody can stop me from taking over the world! Mwahahahahaha!");
 				}
 			}
-
 		}
 	}
 }

@@ -17,20 +17,20 @@ public class UUID extends ListenerAdapter {
 		if (Main.isEnabled == true) {
 			if (event.getMessage().toLowerCase().startsWith("*uuid")) {
 				try {
-					String[] seperate = event.getMessage().split(" ");
+					String[] args = event.getMessage().split(" ");
 					BufferedReader reader = new BufferedReader(
-							new InputStreamReader(new URL(
-									"http://api.fishbans.com/uuid/"
-											+ seperate[1]).openStream()));
-					String line = reader.readLine();
-					String[] newline = line.split("\"");
-					if (newline[5].equals("User is not premium.")) {
+							new InputStreamReader(
+									new URL("http://api.fishbans.com/uuid/"
+											+ args[1]).openStream()));
+					String rawdata = reader.readLine();
+					String[] rawresponse = rawdata.split("\"");
+					if (rawresponse[5].equals("User is not premium.")) {
 						event.getChannel()
 								.send()
 								.message(
 										"Username is either an unpaid legacy account or a free username.");
 					} else {
-						event.getChannel().send().message("" + newline[5]);
+						event.getChannel().send().message("" + rawresponse[5]);
 					}
 				} catch (ArrayIndexOutOfBoundsException e) {
 					event.respond("Provide a username for me please!");
@@ -40,5 +40,25 @@ public class UUID extends ListenerAdapter {
 	}
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
+		if (Main.isEnabled == true) {
+			if (event.getMessage().toLowerCase().startsWith("*uuid")) {
+				try {
+					String[] args = event.getMessage().split(" ");
+					BufferedReader reader = new BufferedReader(
+							new InputStreamReader(
+									new URL("http://api.fishbans.com/uuid/"
+											+ args[1]).openStream()));
+					String rawdata = reader.readLine();
+					String[] rawresponse = rawdata.split("\"");
+					if (rawresponse[5].equals("User is not premium.")) {
+						event.respond("Username is either an unpaid legacy account or a free username.");
+					} else {
+						event.respond("" + rawresponse[5]);
+					}
+				} catch (ArrayIndexOutOfBoundsException e) {
+					event.respond("Provide a username for me please!");
+				}
+			}
+		}
 	}
 }

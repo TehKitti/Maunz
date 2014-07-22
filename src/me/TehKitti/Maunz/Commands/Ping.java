@@ -13,7 +13,6 @@ public class Ping extends ListenerAdapter {
 		if (Main.isEnabled == true) {
 			if (event.getMessage().equalsIgnoreCase("*ping")) {
 				event.respond("Pong!");
-
 			}
 		}
 	}
@@ -22,7 +21,6 @@ public class Ping extends ListenerAdapter {
 		if (Main.isEnabled == true) {
 			if (event.getMessage().equalsIgnoreCase("*ping")) {
 				event.respond("Pong!");
-
 			}
 		}
 	}

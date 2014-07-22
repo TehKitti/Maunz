@@ -1,6 +1,7 @@
 package me.TehKitti.Maunz.Core;
 
 import me.TehKitti.Maunz.Commands.AccountInfo;
+import me.TehKitti.Maunz.Commands.BulliedMe;
 import me.TehKitti.Maunz.Commands.EnableAndDisable;
 import me.TehKitti.Maunz.Commands.Help;
 import me.TehKitti.Maunz.Commands.Ping;
@@ -17,7 +18,6 @@ import org.pircbotx.PircBotX;
 public class Main {
 	public static PircBotX bot;
 	public static boolean isEnabled = true;
-
 		static Configuration config = new Configuration.Builder().setName("Maunz")
 				.setVersion("1.0")
 				.setServerHostname("irc.esper.net")
@@ -37,21 +37,20 @@ public class Main {
 				.addListener(new AccountInfo())
 				.addListener(new Source())
 				.addListener(new UUID())
+				.addListener(new BulliedMe())
 				.setMessageDelay(400)
 				.setRealName("Maunz, an IRC bot coded by TehKitti.")
 				.buildConfiguration();
-
+		
 	public static void main(String args[]) throws Exception {
 		bot = new PircBotX(config);
 		bot.startBot();
 		isEnabled = true;
-
 	}
-
+	
 	public static void main2() throws Exception {
 		bot = new PircBotX(config);
 		bot.startBot();
 		isEnabled = true;
-
 	}
 }
