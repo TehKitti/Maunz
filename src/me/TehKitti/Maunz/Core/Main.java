@@ -22,7 +22,7 @@ public class Main {
 				.setVersion("1.0")
 				.setServerHostname("irc.esper.net")
 				.setServerPort(6667)
-				.setLogin("Maunz")
+				.setLogin("SpookyMaunz")
 				.addAutoJoinChannel("#bl4ckscor3")
 				.setNickservPassword("HIDDEN")
 				.setAutoNickChange(true)
