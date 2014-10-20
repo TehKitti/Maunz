@@ -18,7 +18,7 @@ import org.pircbotx.PircBotX;
 public class Main {
 	public static PircBotX bot;
 	public static boolean isEnabled = true;
-		static Configuration config = new Configuration.Builder().setName("Maunz")
+		static Configuration config = new Configuration.Builder().setName("SpookyMaunz")
 				.setVersion("1.0")
 				.setServerHostname("irc.esper.net")
 				.setServerPort(6667)
