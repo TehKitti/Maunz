@@ -21,5 +21,7 @@ __*disable__ - Disables Maunz.
 *accinfo [username] - Tells you whether or not a Minecraft account is premium!
  
 *uuid [username] - Will return the Minecraft UUID of the username you requested.
+
+*bulliedme [username] - Did somebody bully you? This will send them a link to stop with their bullying ways.
  
 Premium account status grabbed from http://axis.iaero.me and UUID's grabbed from http://fishbans.com/docs.php
