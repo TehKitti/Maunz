@@ -10,18 +10,18 @@ __*enable__ - Enables Maunz.
  
 __*disable__ - Disables Maunz.
  
-*ping - Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server!
+__*ping__ - Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server!
  
-*source - Links you to the GitHub page of Maunz, you can submit issues/pull requests here.
+__*source__ - Links you to the GitHub page of Maunz, you can submit issues/pull requests here.
  
-*help - Links you to the page you're on right now!
+__*help__ - Links you to the page you're on right now!
  
-*say [message] - Makes Maunz say whatever you want her to!
+__*say [message]__ - Makes Maunz say whatever you want her to!
  
-*accinfo [username] - Tells you whether or not a Minecraft account is premium!
+__*accinfo [username]__ - Tells you whether or not a Minecraft account is premium!
  
-*uuid [username] - Will return the Minecraft UUID of the username you requested.
+__*uuid [username]__ - Will return the Minecraft UUID of the username you requested.
 
-*bulliedme [username] - Did somebody bully you? This will send them a link to stop with their bullying ways.
+__*bulliedme [username]__ - Did somebody bully you? This will send them a link to stop with their bullying ways.
  
 Premium account status grabbed from http://axis.iaero.me and UUID's grabbed from http://fishbans.com/docs.php
