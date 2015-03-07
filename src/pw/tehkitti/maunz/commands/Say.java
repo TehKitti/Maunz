@@ -13,7 +13,7 @@ public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 	{
 		String[] args = event.getMessage().split(" ");
 
-		event.getChannel().send().message(args[1]);
+		event.getChannel().send().message(addArgs(args));
 	}
 
 	@Override
@@ -21,7 +21,19 @@ public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 	{
 		String[] args = event.getMessage().split(" ");
 
-		Main.bot.sendIRC().message("#bl4ckscor3", args[1]);
+		Main.bot.sendIRC().message("#bl4ckscor3", addArgs(args));
+	}
+	
+	private String addArgs(String[] args)
+	{
+		String s = "";
+		
+		for(String str : args)
+		{
+			s += str + " ";
+		}
+		
+		return s.substring(5, s.length() - 1);
 	}
 	
 	@Override
