@@ -3,7 +3,9 @@ package pw.tehkitti.maunz.commands;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
+import pw.tehkitti.maunz.core.Listener;
 import pw.tehkitti.maunz.core.Main;
+import pw.tehkitti.maunz.core.Util;
 
 public class Enable implements ICommand<MessageEvent,PrivateMessageEvent>
 {
@@ -13,10 +15,13 @@ public class Enable implements ICommand<MessageEvent,PrivateMessageEvent>
 	{
 		if(event.getUser().getNick().equals("TehKitti"))
 		{
-			if(!Main.isEnabled)
+			if(!Util.isEnabled)
 			{
-				event.respond("Maunz has successfully been enabled!");
-				Main.isEnabled = true;
+				for (String p : Listener.channels) 
+				{
+				Main.bot.sendIRC().message(p, "I have been enabled by " + event.getUser().getNick());
+				}
+				Util.isEnabled = true;
 			}
 			else
 				event.respond("You silly, I was already enabled!");
@@ -33,10 +38,14 @@ public class Enable implements ICommand<MessageEvent,PrivateMessageEvent>
 	{
 		if(event.getUser().getNick().equals("TehKitti"))
 		{
-			if(!Main.isEnabled)
+			if(!Util.isEnabled)
 			{
-				event.respond("Maunz has successfully been enabled!");
-				Main.isEnabled = true;
+				for (String p : Listener.channels) 
+				{
+				Main.bot.sendIRC().message(p, "I have been enabled by " + event.getUser().getNick());
+				}
+				event.respond("I have been enabled by " + event.getUser().getNick());
+				Util.isEnabled = true;
 			}
 			else
 				event.respond("You silly, I was already enabled!");

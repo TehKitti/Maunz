@@ -6,7 +6,6 @@ import org.pircbotx.PircBotX;
 public class Main 
 {
 	public static PircBotX bot;
-	public static boolean isEnabled = true;
 
 	public static void main(String args[]) throws Exception
 	{
@@ -21,7 +20,6 @@ public class Main
 		.setServerHostname("irc.esper.net")
 		.setServerPort(6667)
 		.setLogin("Maunz")
-		.addAutoJoinChannel("#bl4ckscor3")
 		.setNickservPassword("HIDDEN")
 		.setAutoNickChange(true)
 		.setCapEnabled(true)
@@ -32,6 +30,6 @@ public class Main
 
 		bot = new PircBotX(config);
 		bot.startBot();
-		isEnabled = true;
+		Util.isEnabled = true;
 	}
 }
