@@ -8,13 +8,13 @@ public class Source implements ICommand<MessageEvent,PrivateMessageEvent>
 	@Override
 	public void exeChan	(MessageEvent event) throws Exception
 	{
-		event.respond("https://github.com/TehKitti/Maunz");
+		event.respond("My source is available at https://github.com/TehKitti/Maunz");
 	}
 
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		event.respond("https://github.com/TehKitti/Maunz");
+		event.respond("My source is available at https://github.com/TehKitti/Maunz");
 	}
 
 	@Override

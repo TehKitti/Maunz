@@ -3,6 +3,7 @@ package pw.tehkitti.maunz.commands;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
+import pw.tehkitti.maunz.core.Listener;
 import pw.tehkitti.maunz.core.Main;
 
 @SuppressWarnings("rawtypes")
@@ -12,8 +13,14 @@ public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 	public void exeChan(MessageEvent event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
-
-		event.getChannel().send().message(addArgs(args));
+		if (Listener.channels.contains(args[1])) 
+		{
+			Main.bot.sendIRC().message(args[1], addArgs(args, 2));
+		}
+		else 
+		{
+			event.getChannel().send().message("I am not in the channel " + args[1] + "!");
+		}
 	}
 
 	@Override
@@ -21,19 +28,26 @@ public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 	{
 		String[] args = event.getMessage().split(" ");
 
-		Main.bot.sendIRC().message("#bl4ckscor3", addArgs(args));
+		if (Listener.channels.contains(args[1])) 
+		{
+			Main.bot.sendIRC().message(args[1], addArgs(args, 2));
+		}
+		else 
+		{
+			event.respond("I am not in the channel " + args[1] + "!");
+		}
 	}
 	
-	private String addArgs(String[] args)
+	private String addArgs(String[] args, int startIndex)
 	{
 		String s = "";
 		
-		for(String str : args)
+		for(int i = startIndex; i < args.length; i++)
 		{
-			s += str + " ";
+                        s += args[i] + " ";
 		}
 		
-		return s.substring(5, s.length() - 1);
+		return s;
 	}
 	
 	@Override

@@ -4,7 +4,9 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 import org.pircbotx.output.OutputIRC;
 
+import pw.tehkitti.maunz.core.Listener;
 import pw.tehkitti.maunz.core.Main;
+import pw.tehkitti.maunz.core.Util;
 
 @SuppressWarnings("rawtypes")
 public class Restart implements ICommand<MessageEvent,PrivateMessageEvent>
@@ -16,7 +18,11 @@ public class Restart implements ICommand<MessageEvent,PrivateMessageEvent>
 		{
 			OutputIRC irc = new OutputIRC(Main.bot);
 
-			event.getChannel().send().message("I have been ordered to restart by " + event.getUser().getNick());
+			for (String p : Listener.channels) 
+			{
+			Main.bot.sendIRC().message(p, "I have been ordered to restart by " + event.getUser().getNick());
+			}
+			Listener.channels.clear();
 			irc.quitServer();
 			Main.createBot();
 		}
@@ -34,8 +40,12 @@ public class Restart implements ICommand<MessageEvent,PrivateMessageEvent>
 		{
 			OutputIRC irc = new OutputIRC(Main.bot);
 
-			Main.bot.sendIRC().message("#bl4ckscor3", "I have been ordered to restart by " + event.getUser().getNick());
+			for (String p : Listener.channels) 
+			{
+			Main.bot.sendIRC().message(p, "I have been ordered to restart by " + event.getUser().getNick());
+			}
 			event.respond("I have been ordered to restart by " + event.getUser().getNick());
+			Listener.channels.clear();
 			irc.quitServer();
 			Main.createBot();
 		}

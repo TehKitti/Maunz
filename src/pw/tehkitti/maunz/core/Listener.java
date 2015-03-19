@@ -1,8 +1,13 @@
 package pw.tehkitti.maunz.core;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+
+import javax.swing.JList;
 
 import org.pircbotx.hooks.ListenerAdapter;
+import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -12,6 +17,8 @@ import pw.tehkitti.maunz.commands.Disable;
 import pw.tehkitti.maunz.commands.Enable;
 import pw.tehkitti.maunz.commands.Help;
 import pw.tehkitti.maunz.commands.ICommand;
+import pw.tehkitti.maunz.commands.Join;
+import pw.tehkitti.maunz.commands.Leave;
 import pw.tehkitti.maunz.commands.Ping;
 import pw.tehkitti.maunz.commands.Restart;
 import pw.tehkitti.maunz.commands.Say;
@@ -22,6 +29,7 @@ import pw.tehkitti.maunz.commands.UUID;
 public class Listener extends ListenerAdapter
 {
 	private String p = "*";
+	public static List<String> channels = new ArrayList<String>();
 	private LinkedList<ICommand> commands = new LinkedList<ICommand>();
 
 	public Listener()
@@ -37,6 +45,8 @@ public class Listener extends ListenerAdapter
 		commands.add(new Source());
 		commands.add(new Stop());
 		commands.add(new UUID());
+		commands.add(new Join());
+		commands.add(new Leave());
 	}
 
 	@Override
@@ -47,7 +57,7 @@ public class Listener extends ListenerAdapter
 		if(!cmdName.startsWith(p))
 			return;
 
-		if(Main.isEnabled)
+		if(Util.isEnabled)
 		{
 			for(ICommand cmd : commands)
 			{
@@ -79,7 +89,7 @@ public class Listener extends ListenerAdapter
 		if(!cmdName.startsWith(p))
 			return;
 
-		if(Main.isEnabled)
+		if(Util.isEnabled)
 		{
 			for(ICommand cmd : commands)
 			{
@@ -101,5 +111,14 @@ public class Listener extends ListenerAdapter
 				}
 			}
 		}
+	}
+
+	public void onConnect(ConnectEvent event) throws Exception
+	{
+		for (String chan : Util.getFileContents())
+        {
+			Main.bot.sendIRC().joinChannel(chan);
+			channels.add(chan);
+        }
 	}
 }
