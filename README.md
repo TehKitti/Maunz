@@ -1,4 +1,4 @@
-Maunz is an IRC bot coded by me in Java 7 using PircBotX 2.0.1 with some help from bl4ckscor3. Currently it is only for the #bl4ckscor3 channel on the EsperNet IRC network but this may change in the future. Maunz can also take commands via PM and it works exactly like it would in the channel. If you want to help Maunz development feel free to suggest ideas on GitHub using the Issues system or if you find any, even bugs :(
+Maunz is an IRC bot coded by me in Java 7 using PircBotX 2.0.1 with some help from bl4ckscor3. It is on multiple channels on the EsperNet IRC network with its main channel being #bl4ckscor3. Maunz can also take commands via PM and it works exactly like it would in the channel. If you want to help Maunz development feel free to suggest ideas on GitHub using the Issues system or if you find any, even bugs :(
  
 Here is a list of Maunz's commands, bolded ones cannot be done by everyone and are restricted to just me.
  
@@ -9,6 +9,10 @@ __*restart__ - Restarts Maunz.
 __*enable__ - Enables Maunz.
  
 __*disable__ - Disables Maunz.
+
+__*join [channel]__ - Makes Maunz join a channel.
+
+__*leave [channel]__ - Makes Maunz leave a channel.
  
 *ping - Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server!
  
@@ -16,7 +20,7 @@ __*disable__ - Disables Maunz.
  
 *help - Links you to the page you're on right now!
  
-*say [message] - Makes Maunz say whatever you want her to!
+*say [channel] [message] - Makes Maunz say whatever you want her to!
  
 *accinfo [username] - Tells you whether or not a Minecraft account is premium!
  
