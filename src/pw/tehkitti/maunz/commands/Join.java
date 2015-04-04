@@ -61,8 +61,8 @@ public class Join implements ICommand<MessageEvent, PrivateMessageEvent>
 	}
 
 	@Override
-	public String getAlias() 
+	public String[] getAliases() 
 	{
-		return "join";
+		return new String[]{"*join"};
 	}
 }

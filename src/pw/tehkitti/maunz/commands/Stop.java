@@ -18,7 +18,7 @@ public class Stop implements ICommand<MessageEvent,PrivateMessageEvent>
 			OutputIRC irc = new OutputIRC(Main.bot);
 			for (String p : Listener.channels) 
 			{
-			Main.bot.sendIRC().message(p, "I have been ordered to stop by " + event.getUser().getNick());
+				Main.bot.sendIRC().message(p, "I have been ordered to stop by " + event.getUser().getNick());
 			}
 			irc.quitServer();
 		}
@@ -38,7 +38,7 @@ public class Stop implements ICommand<MessageEvent,PrivateMessageEvent>
 
 			for (String p : Listener.channels) 
 			{
-			Main.bot.sendIRC().message(p, "I have been ordered to stop by " + event.getUser().getNick());
+				Main.bot.sendIRC().message(p, "I have been ordered to stop by " + event.getUser().getNick());
 			}
 			event.respond("I have been ordered to stop by " + event.getUser().getNick());
 			irc.quitServer();
@@ -51,8 +51,8 @@ public class Stop implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "stop";
+		return new String[]{"*stop"};
 	}
 }

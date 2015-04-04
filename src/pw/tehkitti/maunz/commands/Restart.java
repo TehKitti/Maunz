@@ -57,8 +57,8 @@ public class Restart implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 	
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "restart";
+		return new String[]{"*restart"};
 	}
 }

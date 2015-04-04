@@ -30,8 +30,8 @@ public class BulliedMe implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 	
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "bulliedme";
+		return new String[]{"*bulliedme"};
 	}
 }

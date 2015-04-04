@@ -18,8 +18,8 @@ public class Source implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "source";
+		return new String[]{"*source"};
 	}
 }

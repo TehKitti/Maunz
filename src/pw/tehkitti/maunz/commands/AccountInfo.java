@@ -58,8 +58,8 @@ public class AccountInfo implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "accinfo";
+		return new String[]{"*accinfo"};
 	}
 }

@@ -58,8 +58,8 @@ public class Disable implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "disable";
+		return new String[]{"*disable"};
 	}
 }

@@ -18,8 +18,8 @@ public class Help implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 	
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "help";
+		return new String[]{"*help"};
 	}
 }

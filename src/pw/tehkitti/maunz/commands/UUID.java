@@ -52,8 +52,8 @@ public class UUID implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 	
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "uuid";
+		return new String[]{"*uuid"};
 	}
 }

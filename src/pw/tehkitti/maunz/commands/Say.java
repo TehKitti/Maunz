@@ -51,8 +51,8 @@ public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 	
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "say";
+		return new String[]{"*say"};
 	}
 }

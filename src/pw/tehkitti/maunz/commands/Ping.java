@@ -18,8 +18,8 @@ public class Ping implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 	
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "ping";
+		return new String[]{"*ping"};
 	}
 }

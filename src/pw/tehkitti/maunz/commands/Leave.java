@@ -63,8 +63,8 @@ public class Leave implements ICommand<MessageEvent, PrivateMessageEvent>
 	}
 
 	@Override
-	public String getAlias() 
+	public String[] getAliases() 
 	{
-		return "leave";
+		return new String[]{"*leave"};
 	}
 }

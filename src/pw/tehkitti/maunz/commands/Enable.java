@@ -58,8 +58,8 @@ public class Enable implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 
 	@Override
-	public String getAlias()
+	public String[] getAliases()
 	{
-		return "enable";
+		return new String[]{"*enable"};
 	}
 }

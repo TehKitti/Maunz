@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.swing.JList;
-
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
+
+import com.google.code.chatterbotapi.ChatterBot;
+import com.google.code.chatterbotapi.ChatterBotFactory;
+import com.google.code.chatterbotapi.ChatterBotSession;
+import com.google.code.chatterbotapi.ChatterBotType;
 
 import pw.tehkitti.maunz.commands.AccountInfo;
 import pw.tehkitti.maunz.commands.BulliedMe;
@@ -47,6 +50,7 @@ public class Listener extends ListenerAdapter
 		commands.add(new UUID());
 		commands.add(new Join());
 		commands.add(new Leave());
+		commands.add(new Intelligence());
 	}
 
 	@Override
@@ -54,17 +58,17 @@ public class Listener extends ListenerAdapter
 	{
 		String cmdName = event.getMessage().split(" ")[0];
 
-		if(!cmdName.startsWith(p))
-			return;
-
 		if(Util.isEnabled)
 		{
 			for(ICommand cmd : commands)
 			{
-				if(cmdName.equalsIgnoreCase(p + cmd.getAlias()))
-				{
-					cmd.exeChan(event);
-					return;
+				for(String s : cmd.getAliases()) //iterating through all the aliases and seeing if any fit
+				{	
+					if(cmdName.equalsIgnoreCase(s))
+					{
+						cmd.exeChan(event);
+						return;
+					}
 				}
 			}
 		}
@@ -72,10 +76,16 @@ public class Listener extends ListenerAdapter
 		{
 			for(ICommand cmd : commands)
 			{
-				if((cmd instanceof Enable || cmd instanceof Disable) && event.getMessage().equalsIgnoreCase(p + cmd.getAlias()))
+				if(cmd instanceof Enable || cmd instanceof Disable)
 				{
-					cmd.exeChan(event);
-					return;
+					for(String s : cmd.getAliases())
+					{
+						if(cmdName.equalsIgnoreCase(s))
+						{
+							cmd.exeChan(event);
+							return;
+						}
+					}
 				}
 			}
 		}
@@ -86,17 +96,17 @@ public class Listener extends ListenerAdapter
 	{
 		String cmdName = event.getMessage().split(" ")[0];
 
-		if(!cmdName.startsWith(p))
-			return;
-
 		if(Util.isEnabled)
 		{
 			for(ICommand cmd : commands)
 			{
-				if(cmdName.equalsIgnoreCase(p + cmd.getAlias()))
-				{
-					cmd.exePrivate(event);
-					return;
+				for(String s : cmd.getAliases()) //iterating through all the aliases and seeing if any fit
+				{	
+					if(cmdName.equalsIgnoreCase(s))
+					{
+						cmd.exePrivate(event);
+						return;
+					}
 				}
 			}
 		}
@@ -104,21 +114,28 @@ public class Listener extends ListenerAdapter
 		{
 			for(ICommand cmd : commands)
 			{
-				if((cmd instanceof Enable || cmd instanceof Disable) && event.getMessage().equalsIgnoreCase(p + cmd.getAlias()))
+				if(cmd instanceof Enable || cmd instanceof Disable)
 				{
-					cmd.exePrivate(event);
-					return;
+					for(String s : cmd.getAliases())
+					{
+						if(cmdName.equalsIgnoreCase(s))
+						{
+							cmd.exePrivate(event);
+							return;
+						}
+					}
 				}
 			}
 		}
 	}
 
+	@Override
 	public void onConnect(ConnectEvent event) throws Exception
 	{
 		for (String chan : Util.getFileContents())
-        {
+		{
 			Main.bot.sendIRC().joinChannel(chan);
 			channels.add(chan);
-        }
+		}
 	}
 }

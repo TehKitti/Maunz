@@ -15,10 +15,12 @@ public class Util
 	{
 		String path = Util.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 		File file = new File(path.substring(0, path.length() - "Maunz.jar".length()) + "chans.txt");
+		
 		if(!file.exists())
 		{
 			file.createNewFile();
 		}
+		
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String[] result = reader.readLine().split(",");
 		reader.close();
