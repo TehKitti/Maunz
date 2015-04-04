@@ -27,7 +27,6 @@ public class Intelligence implements ICommand<MessageEvent,PrivateMessageEvent>
 			session = CleverbotSession.getInstance();
 		
 		chatSession = session.getSession();
-		event.respond("I am sending \"" + addArgs(message, 1) + "\" to Cleverbot!");
 		event.respond(chatSession.think(addArgs(message, 1)));
 	}
 
@@ -47,7 +46,6 @@ public class Intelligence implements ICommand<MessageEvent,PrivateMessageEvent>
 			session = CleverbotSession.getInstance();
 		
 		chatSession = session.getSession();
-		event.respond("I am sending \"" + addArgs(message, 1) + "\" to Cleverbot!");
 		event.respond(chatSession.think(addArgs(message, 1)));
 	}
 
