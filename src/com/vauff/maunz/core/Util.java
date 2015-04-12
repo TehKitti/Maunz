@@ -1,4 +1,4 @@
-package pw.tehkitti.maunz.core;
+package com.vauff.maunz.core;
 
 import java.io.BufferedReader;
 import java.io.File;

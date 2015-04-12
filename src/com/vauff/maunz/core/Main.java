@@ -1,4 +1,4 @@
-package pw.tehkitti.maunz.core;
+package com.vauff.maunz.core;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
@@ -25,7 +25,7 @@ public class Main
 		.setCapEnabled(true)
 		.addListener(new Listener())
 		.setMessageDelay(400)
-		.setRealName("Maunz, an IRC bot coded by TehKitti.")
+		.setRealName("Maunz, an IRC bot coded by Vauff.")
 		.buildConfiguration();
 
 		bot = new PircBotX(config);

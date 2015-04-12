@@ -1,4 +1,4 @@
-package pw.tehkitti.maunz.core;
+package com.vauff.maunz.core;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -13,21 +13,20 @@ import com.google.code.chatterbotapi.ChatterBot;
 import com.google.code.chatterbotapi.ChatterBotFactory;
 import com.google.code.chatterbotapi.ChatterBotSession;
 import com.google.code.chatterbotapi.ChatterBotType;
-
-import pw.tehkitti.maunz.commands.AccountInfo;
-import pw.tehkitti.maunz.commands.BulliedMe;
-import pw.tehkitti.maunz.commands.Disable;
-import pw.tehkitti.maunz.commands.Enable;
-import pw.tehkitti.maunz.commands.Help;
-import pw.tehkitti.maunz.commands.ICommand;
-import pw.tehkitti.maunz.commands.Join;
-import pw.tehkitti.maunz.commands.Leave;
-import pw.tehkitti.maunz.commands.Ping;
-import pw.tehkitti.maunz.commands.Restart;
-import pw.tehkitti.maunz.commands.Say;
-import pw.tehkitti.maunz.commands.Source;
-import pw.tehkitti.maunz.commands.Stop;
-import pw.tehkitti.maunz.commands.UUID;
+import com.vauff.maunz.commands.AccountInfo;
+import com.vauff.maunz.commands.BulliedMe;
+import com.vauff.maunz.commands.Disable;
+import com.vauff.maunz.commands.Enable;
+import com.vauff.maunz.commands.Help;
+import com.vauff.maunz.commands.ICommand;
+import com.vauff.maunz.commands.Join;
+import com.vauff.maunz.commands.Leave;
+import com.vauff.maunz.commands.Ping;
+import com.vauff.maunz.commands.Restart;
+import com.vauff.maunz.commands.Say;
+import com.vauff.maunz.commands.Source;
+import com.vauff.maunz.commands.Stop;
+import com.vauff.maunz.commands.UUID;
 
 public class Listener extends ListenerAdapter
 {

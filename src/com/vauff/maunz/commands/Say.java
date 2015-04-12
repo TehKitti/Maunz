@@ -1,10 +1,10 @@
-package pw.tehkitti.maunz.commands;
+package com.vauff.maunz.commands;
 
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
-import pw.tehkitti.maunz.core.Listener;
-import pw.tehkitti.maunz.core.Main;
+import com.vauff.maunz.core.Listener;
+import com.vauff.maunz.core.Main;
 
 @SuppressWarnings("rawtypes")
 public class Say implements ICommand<MessageEvent,PrivateMessageEvent>

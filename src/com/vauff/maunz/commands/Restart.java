@@ -1,12 +1,12 @@
-package pw.tehkitti.maunz.commands;
+package com.vauff.maunz.commands;
 
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 import org.pircbotx.output.OutputIRC;
 
-import pw.tehkitti.maunz.core.Listener;
-import pw.tehkitti.maunz.core.Main;
-import pw.tehkitti.maunz.core.Util;
+import com.vauff.maunz.core.Listener;
+import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Util;
 
 @SuppressWarnings("rawtypes")
 public class Restart implements ICommand<MessageEvent,PrivateMessageEvent>
@@ -14,7 +14,7 @@ public class Restart implements ICommand<MessageEvent,PrivateMessageEvent>
 	@Override
 	public void exeChan(MessageEvent event) throws Exception 
 	{
-		if(event.getUser().getNick().equals("TehKitti"))
+		if(event.getUser().getNick().equals("Vauff"))
 		{
 			OutputIRC irc = new OutputIRC(Main.bot);
 
@@ -36,7 +36,7 @@ public class Restart implements ICommand<MessageEvent,PrivateMessageEvent>
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		if(event.getUser().getNick().equals("TehKitti"))
+		if(event.getUser().getNick().equals("Vauff"))
 		{
 			OutputIRC irc = new OutputIRC(Main.bot);
 

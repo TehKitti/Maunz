@@ -1,4 +1,4 @@
-package pw.tehkitti.maunz.core;
+package com.vauff.maunz.core;
 
 import com.google.code.chatterbotapi.ChatterBot;
 import com.google.code.chatterbotapi.ChatterBotFactory;

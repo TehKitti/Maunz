@@ -1,4 +1,4 @@
-package pw.tehkitti.maunz.commands;
+package com.vauff.maunz.commands;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
