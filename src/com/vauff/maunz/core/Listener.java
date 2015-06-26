@@ -26,6 +26,7 @@ import com.vauff.maunz.commands.Restart;
 import com.vauff.maunz.commands.Say;
 import com.vauff.maunz.commands.Source;
 import com.vauff.maunz.commands.Stop;
+import com.vauff.maunz.commands.Trello;
 import com.vauff.maunz.commands.UUID;
 
 public class Listener extends ListenerAdapter
@@ -50,6 +51,7 @@ public class Listener extends ListenerAdapter
 		commands.add(new Join());
 		commands.add(new Leave());
 		commands.add(new Intelligence());
+		commands.add(new Trello());
 	}
 
 	@Override
