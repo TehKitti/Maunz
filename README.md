@@ -28,5 +28,7 @@ __*leave [channel]__ - Makes Maunz leave a channel.
 *uuid [username] - Will return the Minecraft UUID of the username you requested.
 
 *bulliedme [username] - Did somebody bully you? This will send them a link to stop with their bullying ways.
+
+*trello - Links you to the Trello board of Maunz. Feature requests and bug reports can be made here.
  
 Premium account status grabbed from http://axis.iaero.me and UUID's grabbed from http://fishbans.com/docs.php
