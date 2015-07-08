@@ -8,6 +8,7 @@ import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
+import org.pircbotx.hooks.types.GenericMessageEvent;
 
 import com.google.code.chatterbotapi.ChatterBot;
 import com.google.code.chatterbotapi.ChatterBotFactory;
@@ -28,6 +29,7 @@ import com.vauff.maunz.commands.Source;
 import com.vauff.maunz.commands.Stop;
 import com.vauff.maunz.commands.Trello;
 import com.vauff.maunz.commands.UUID;
+import com.vauff.maunz.commands.WhoSay;
 
 public class Listener extends ListenerAdapter
 {
@@ -52,6 +54,7 @@ public class Listener extends ListenerAdapter
 		commands.add(new Leave());
 		commands.add(new Intelligence());
 		commands.add(new Trello());
+		commands.add(new WhoSay());
 	}
 
 	@Override

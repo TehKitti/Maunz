@@ -9,6 +9,8 @@ import com.vauff.maunz.core.Main;
 @SuppressWarnings("rawtypes")
 public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 {
+	public static String whosay = "";
+	
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
@@ -16,6 +18,7 @@ public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 		if (Listener.channels.contains(args[1])) 
 		{
 			Main.bot.sendIRC().message(args[1], addArgs(args, 2));
+			whosay = event.getUser().getNick();
 		}
 		else 
 		{
@@ -31,6 +34,7 @@ public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 		if (Listener.channels.contains(args[1])) 
 		{
 			Main.bot.sendIRC().message(args[1], addArgs(args, 2));
+			whosay = event.getUser().getNick();
 		}
 		else 
 		{
