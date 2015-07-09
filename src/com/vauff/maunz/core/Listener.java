@@ -134,12 +134,20 @@ public class Listener extends ListenerAdapter
 	}
 
 	@Override
-	public void onConnect(ConnectEvent event) throws Exception
+	public void onConnect(ConnectEvent event) throws Exception 
 	{
-		for (String chan : Util.getFileContents())
+		for (String chan : Util.getFileContents()) 
 		{
-			Main.bot.sendIRC().joinChannel(chan);
-			channels.add(chan);
+			if (chan.equals("#BreakInBadStaff")) 
+			{
+				Main.bot.sendIRC().joinChannel(chan, "HIDDEN");
+				channels.add(chan);
+			}
+			else 
+			{
+				Main.bot.sendIRC().joinChannel(chan);
+				channels.add(chan);
+			}
 		}
 	}
 }
