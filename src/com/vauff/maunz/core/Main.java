@@ -28,12 +28,12 @@ public class Main
 		Configuration esperConfig = defaultConfig
 				.setServerHostname("irc.esper.net")
 				.addListener(new Listener())
-				.buildConfiguration();
+				.buildForServer("irc.esper.net");
 		Configuration freenodeConfig = defaultConfig
 				.setServerHostname("irc.freenode.net")
 				.addAutoJoinChannel("#steamdb-announce")
 				.addListener(new FreenodeListener())
-				.buildConfiguration();
+				.buildForServer("irc.freenode.net");
 		MultiBotManager<PircBotX> manager = new MultiBotManager<PircBotX>();
 		
 		manager.addBot(esperConfig);
