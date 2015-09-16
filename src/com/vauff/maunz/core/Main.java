@@ -28,21 +28,19 @@ public class Main
 		Configuration esperConfig = defaultConfig
 				.setServerHostname("irc.esper.net")
 				.addListener(new Listener())
-				.buildForServer("irc.esper.net");
+				.buildConfiguration();
 		Configuration freenodeConfig = defaultConfig
 				.setServerHostname("irc.freenode.net")
-				.addAutoJoinChannel("#maunztesting")
+				.addAutoJoinChannel("#steamdb-announce")
 				.addListener(new FreenodeListener())
-				.buildForServer("irc.freenode.net");
+				.buildConfiguration();
 		MultiBotManager<PircBotX> manager = new MultiBotManager<PircBotX>();
 		
 		manager.addBot(esperConfig);
 		manager.addBot(freenodeConfig);
 		esperBot = new PircBotX(esperConfig);
 		freenodeBot = new PircBotX(freenodeConfig);
-		manager.start();
-		esperBot.startBot();
-		freenodeBot.startBot();
 		Util.isEnabled = true;
+		manager.start();
 	}
 }
