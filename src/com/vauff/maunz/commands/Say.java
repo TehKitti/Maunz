@@ -17,7 +17,7 @@ public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 		String[] args = event.getMessage().split(" ");
 		if (Listener.channels.contains(args[1])) 
 		{
-			Main.bot.sendIRC().message(args[1], addArgs(args, 2));
+			Main.esperBot.sendIRC().message(args[1], addArgs(args, 2));
 			whosay = event.getUser().getNick();
 		}
 		else 
@@ -33,7 +33,7 @@ public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 
 		if (Listener.channels.contains(args[1])) 
 		{
-			Main.bot.sendIRC().message(args[1], addArgs(args, 2));
+			Main.esperBot.sendIRC().message(args[1], addArgs(args, 2));
 			whosay = event.getUser().getNick();
 		}
 		else 

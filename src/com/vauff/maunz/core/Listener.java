@@ -33,7 +33,6 @@ import com.vauff.maunz.commands.WhoSay;
 
 public class Listener extends ListenerAdapter
 {
-	private String p = "*";
 	public static List<String> channels = new ArrayList<String>();
 	private LinkedList<ICommand> commands = new LinkedList<ICommand>();
 
@@ -140,12 +139,12 @@ public class Listener extends ListenerAdapter
 		{
 			if (chan.equals("#BreakInBadStaff")) 
 			{
-				Main.bot.sendIRC().joinChannel(chan, "HIDDEN");
+				Main.esperBot.sendIRC().joinChannel(chan, Passwords.BREAKIN_BAD_STAFF);
 				channels.add(chan);
 			}
 			else 
 			{
-				Main.bot.sendIRC().joinChannel(chan);
+				Main.esperBot.sendIRC().joinChannel(chan);
 				channels.add(chan);
 			}
 		}

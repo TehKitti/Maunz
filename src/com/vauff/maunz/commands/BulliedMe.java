@@ -26,7 +26,7 @@ public class BulliedMe implements ICommand<MessageEvent,PrivateMessageEvent>
 		if (args.length == 1)
 			event.respond("Nobody bullied you? Okay then.");
 		else
-			Main.bot.sendIRC().message(args[1], "Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
+			Main.esperBot.sendIRC().message(args[1], "Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
 	}
 	
 	@Override

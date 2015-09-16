@@ -15,10 +15,10 @@ public class Stop implements ICommand<MessageEvent,PrivateMessageEvent>
 	{
 		if(event.getUser().getNick().equals("Vauff"))
 		{
-			OutputIRC irc = new OutputIRC(Main.bot);
+			OutputIRC irc = new OutputIRC(Main.esperBot);
 			for (String p : Listener.channels) 
 			{
-				Main.bot.sendIRC().message(p, "I have been ordered to stop by " + event.getUser().getNick());
+				Main.esperBot.sendIRC().message(p, "I have been ordered to stop by " + event.getUser().getNick());
 			}
 			irc.quitServer();
 		}
@@ -34,11 +34,11 @@ public class Stop implements ICommand<MessageEvent,PrivateMessageEvent>
 	{
 		if(event.getUser().getNick().equals("Vauff"))
 		{
-			OutputIRC irc = new OutputIRC(Main.bot);
+			OutputIRC irc = new OutputIRC(Main.esperBot);
 
 			for (String p : Listener.channels) 
 			{
-				Main.bot.sendIRC().message(p, "I have been ordered to stop by " + event.getUser().getNick());
+				Main.esperBot.sendIRC().message(p, "I have been ordered to stop by " + event.getUser().getNick());
 			}
 			event.respond("I have been ordered to stop by " + event.getUser().getNick());
 			irc.quitServer();

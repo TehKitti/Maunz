@@ -1,5 +1,6 @@
 package com.vauff.maunz.commands;
 
+import org.pircbotx.hooks.Event;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -10,7 +11,7 @@ public class Ping implements ICommand<MessageEvent,PrivateMessageEvent>
 	{
 		event.respond("Pong!");
 	}
-
+	
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{

@@ -2,6 +2,7 @@ package com.vauff.maunz.commands;
 
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
+import org.pircbotx.hooks.types.GenericMessageEvent;
 
 import com.vauff.maunz.core.Listener;
 import com.vauff.maunz.core.Main;
@@ -22,7 +23,7 @@ public class Join implements ICommand<MessageEvent, PrivateMessageEvent>
 				}
 				if (!Listener.channels.contains(args[1]))
 				{
-					Main.bot.sendIRC().joinChannel(args[1]);
+					Main.esperBot.sendIRC().joinChannel(args[1]);
 					event.getChannel().send().message("I will join "+ args[1] + "!");
 					Listener.channels.add(args[1]);
 				}
@@ -48,7 +49,7 @@ public class Join implements ICommand<MessageEvent, PrivateMessageEvent>
 				}
 				if (!Listener.channels.contains(args[1]))
 				{
-					Main.bot.sendIRC().joinChannel(args[1]);
+					Main.esperBot.sendIRC().joinChannel(args[1]);
 					event.respond("I will join "+ args[1] + "!");
 					Listener.channels.add(args[1]);
 				}

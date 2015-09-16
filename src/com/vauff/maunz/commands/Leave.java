@@ -22,7 +22,7 @@ public class Leave implements ICommand<MessageEvent, PrivateMessageEvent>
 				}
 				if (Listener.channels.contains(args[1])) 
 				{
-					Main.bot.sendRaw().rawLine("PART " + args[1] + " :" + "Goodbye");
+					Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Goodbye");
 					event.getChannel().send().message("I will leave " + args[1] + "!");
 					Listener.channels.remove(args[1]);
 					
@@ -49,7 +49,7 @@ public class Leave implements ICommand<MessageEvent, PrivateMessageEvent>
 				}
 				if (Listener.channels.contains(args[1])) 
 				{
-					Main.bot.sendRaw().rawLine("PART " + args[1] + " :" + "Goodbye");
+					Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Goodbye");
 					event.respond("I will leave " + args[1] + "!");
 					Listener.channels.remove(args[1]);
 					

@@ -19,7 +19,7 @@ public class Enable implements ICommand<MessageEvent,PrivateMessageEvent>
 			{
 				for (String p : Listener.channels) 
 				{
-				Main.bot.sendIRC().message(p, "I have been enabled by " + event.getUser().getNick());
+				Main.esperBot.sendIRC().message(p, "I have been enabled by " + event.getUser().getNick());
 				}
 				Util.isEnabled = true;
 			}
@@ -42,7 +42,7 @@ public class Enable implements ICommand<MessageEvent,PrivateMessageEvent>
 			{
 				for (String p : Listener.channels) 
 				{
-				Main.bot.sendIRC().message(p, "I have been enabled by " + event.getUser().getNick());
+				Main.esperBot.sendIRC().message(p, "I have been enabled by " + event.getUser().getNick());
 				}
 				event.respond("I have been enabled by " + event.getUser().getNick());
 				Util.isEnabled = true;
