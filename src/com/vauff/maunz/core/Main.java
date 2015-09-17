@@ -1,8 +1,15 @@
 package com.vauff.maunz.core;
 
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.pircbotx.Configuration;
 import org.pircbotx.MultiBotManager;
 import org.pircbotx.PircBotX;
+import org.pircbotx.exception.IrcException;
+
+import com.sun.net.ssl.internal.www.protocol.https.Handler;
 
 public class Main 
 {
@@ -41,6 +48,23 @@ public class Main
 		esperBot = new PircBotX(esperConfig);
 		freenodeBot = new PircBotX(freenodeConfig);
 		Util.isEnabled = true;
-		manager.start();
-	}
+		new Timer().schedule(new TimerTask() {          
+		    @Override
+		    public void run() {
+		        try {
+					freenodeBot.startBot();
+				}
+		        catch (IOException e) 
+		        {
+					e.printStackTrace();
+				}
+		        catch (IrcException e) 
+		        {
+					e.printStackTrace();
+				}    
+		    }
+		}, 100);
+		esperBot.startBot();
+		
+    }
 }
