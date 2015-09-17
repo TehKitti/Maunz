@@ -28,8 +28,7 @@ public class Disable implements ICommand<MessageEvent,PrivateMessageEvent>
 		}
 		else
 		{
-			event.respond("I'm sorry but you do not have proper permissions to disable me!");
-			event.getChannel().send().message("Now nobody can stop me from taking over the world! Mwahahahahaha!");
+			event.respond("You do not have permission to use that command");
 		}
 	}
 
@@ -52,8 +51,7 @@ public class Disable implements ICommand<MessageEvent,PrivateMessageEvent>
 		}
 		else
 		{
-			event.respond("I'm sorry but you do not have proper permissions to disable me!");
-			event.getUser().send().message("Now nobody can stop me from taking over the world! Mwahahahahaha!");
+			event.respond("You do not have permission to use that command");
 		}
 	}
 

@@ -33,6 +33,9 @@ public class Leave implements ICommand<MessageEvent, PrivateMessageEvent>
 				event.getChannel().send().message("Channel name must start with a #");
 			}
 		}
+		else {
+			event.respond("You do not have permission to use that command");
+		}
 	}
 
 	@Override
@@ -59,6 +62,10 @@ public class Leave implements ICommand<MessageEvent, PrivateMessageEvent>
 			{
 				event.respond("Channel name must start with a #");
 			}
+		}
+		else 
+		{
+			event.respond("You do not have permission to use that command");
 		}
 	}
 
