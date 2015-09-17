@@ -10,7 +10,7 @@ public class FreenodeListener extends ListenerAdapter
 {
 	public void onMessage(MessageEvent event) throws Exception 
 	{
-		if (event.getUser().getNick().equals("Vauff")) 
+		if (event.getUser().getNick().equals("SteamDB")) 
 		{
 			if (event.getMessage().contains("App: ") && event.getMessage().contains("730") && event.getMessage().contains("Counter-Strike: Global Offensive")) 
 			{
