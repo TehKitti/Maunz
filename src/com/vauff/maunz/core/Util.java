@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,11 +12,30 @@ public class Util
 {
 	public static boolean isEnabled = true;
 	
+	public static String getJarLocation() 
+	{
+		try 
+		{
+			String path = Main.class.getProtectionDomain().getCodeSource()
+					.getLocation().toURI().getPath();
+
+			if (path.endsWith(".jar"))
+				path = path.substring(0, path.lastIndexOf("/"));
+			if(!path.endsWith("/"))
+                path += "/";
+			return path;
+		}
+			catch (URISyntaxException e) 
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public static List<String> getFileContents() throws IOException
 	{
-		String path = Util.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-		File file = new File(path.substring(0, path.length() - "Maunz.jar".length()) + "chans.txt");
-		
+		File file = new File(getJarLocation() + "chans.txt");
+
 		if(!file.exists())
 		{
 			file.createNewFile();
