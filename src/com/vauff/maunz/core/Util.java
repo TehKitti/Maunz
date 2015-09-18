@@ -36,13 +36,16 @@ public class Util
 	{
 		File file = new File(getJarLocation() + "chans.txt");
 
+		System.out.println(getJarLocation() + "chans.txt");
+		
 		if(!file.exists())
 		{
 			file.createNewFile();
 		}
-		
+
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String[] result = reader.readLine().split(",");
+
 		reader.close();
 		return Arrays.asList(result);
 	}

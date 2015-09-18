@@ -1,14 +1,12 @@
 package com.vauff.maunz.core;
 
-import org.pircbotx.Colors;
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
-import com.sun.prism.paint.Color;
-
-public class FreenodeListener extends ListenerAdapter 
+public class FreenodeListener extends ListenerAdapter<PircBotX>
 {
-	public void onMessage(MessageEvent event) throws Exception 
+	public void onMessage(MessageEvent<PircBotX> event) throws Exception 
 	{
 		if (event.getUser().getNick().equals("SteamDB")) 
 		{

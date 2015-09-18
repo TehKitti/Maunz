@@ -1,12 +1,13 @@
 package com.vauff.maunz.commands;
 
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
-public class WhoSay implements ICommand<MessageEvent,PrivateMessageEvent>
+public class WhoSay implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
 {
 	@Override
-	public void exeChan(MessageEvent event) throws Exception
+	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		if(!Say.whosay.equals(""))
 			event.getChannel().send().message("The last person who used my *say command was " + Say.whosay);
@@ -17,7 +18,7 @@ public class WhoSay implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent event) throws Exception
+	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
 		if(!Say.whosay.equals(""))
 			event.respond("The last person who used my *say command was " + Say.whosay);

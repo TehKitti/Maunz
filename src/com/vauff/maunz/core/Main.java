@@ -9,8 +9,6 @@ import org.pircbotx.MultiBotManager;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 
-import com.sun.net.ssl.internal.www.protocol.https.Handler;
-
 public class Main 
 {
 	public static PircBotX esperBot;
@@ -32,11 +30,11 @@ public class Main
 		.setCapEnabled(true)
 		.setMessageDelay(400)
 		.setRealName("Maunz, an IRC bot coded by Vauff.");
-		Configuration esperConfig = defaultConfig
+		Configuration<PircBotX> esperConfig = defaultConfig
 				.setServerHostname("irc.esper.net")
 				.addListener(new Listener())
 				.buildForServer("irc.esper.net");
-		Configuration freenodeConfig = defaultConfig
+		Configuration<PircBotX> freenodeConfig = defaultConfig
 				.setServerHostname("irc.freenode.net")
 				.addAutoJoinChannel("#steamdb-announce")
 				.addListener(new FreenodeListener())
@@ -63,8 +61,7 @@ public class Main
 					e.printStackTrace();
 				}    
 		    }
-		}, 100);
+		}, 10000);
 		esperBot.startBot();
-		
     }
 }

@@ -1,17 +1,18 @@
 package com.vauff.maunz.core;
 
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.google.code.chatterbotapi.ChatterBotSession;
 import com.vauff.maunz.commands.ICommand;
 
-public class Intelligence implements ICommand<MessageEvent,PrivateMessageEvent>
+public class Intelligence implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
 {
 	private static boolean alreadyStartedSession = false;
 	
 	@Override
-	public void exeChan(MessageEvent event) throws Exception
+	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		String[] message = event.getMessage().split(" ");
 		ChatterBotSession chatSession;
@@ -30,7 +31,7 @@ public class Intelligence implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent event) throws Exception
+	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
 		String[] message = event.getMessage().split(" ");
 		ChatterBotSession chatSession;

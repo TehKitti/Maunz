@@ -4,13 +4,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
-public class UUID implements ICommand<MessageEvent,PrivateMessageEvent>
+public class UUID implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
 {
 	@Override
-	public void exeChan(MessageEvent event) throws Exception
+	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		try
 		{
@@ -31,7 +32,7 @@ public class UUID implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent event) throws Exception
+	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
 		try
 		{

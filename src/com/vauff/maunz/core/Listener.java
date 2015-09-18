@@ -4,16 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
-import org.pircbotx.hooks.types.GenericMessageEvent;
 
-import com.google.code.chatterbotapi.ChatterBot;
-import com.google.code.chatterbotapi.ChatterBotFactory;
-import com.google.code.chatterbotapi.ChatterBotSession;
-import com.google.code.chatterbotapi.ChatterBotType;
 import com.vauff.maunz.commands.AccountInfo;
 import com.vauff.maunz.commands.BulliedMe;
 import com.vauff.maunz.commands.Disable;
@@ -31,10 +27,11 @@ import com.vauff.maunz.commands.Trello;
 import com.vauff.maunz.commands.UUID;
 import com.vauff.maunz.commands.WhoSay;
 
-public class Listener extends ListenerAdapter
+public class Listener extends ListenerAdapter<PircBotX>
 {
 	public static List<String> channels = new ArrayList<String>();
-	private LinkedList<ICommand> commands = new LinkedList<ICommand>();
+	private LinkedList<ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>> commands = new LinkedList<ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>>();
+	private static boolean onConnectSwitch = false;
 
 	public Listener()
 	{
@@ -57,32 +54,18 @@ public class Listener extends ListenerAdapter
 	}
 
 	@Override
-	public void onMessage(MessageEvent event) throws Exception
+	public void onMessage(MessageEvent<PircBotX> event) throws Exception
 	{
-		String cmdName = event.getMessage().split(" ")[0];
+		if(event.getBot().getServerInfo().getNetwork().equals("EsperNet"))
+		{
+			String cmdName = event.getMessage().split(" ")[0];
 
-		if(Util.isEnabled)
-		{
-			for(ICommand cmd : commands)
+			if(Util.isEnabled)
 			{
-				for(String s : cmd.getAliases()) //iterating through all the aliases and seeing if any fit
-				{	
-					if(cmdName.equalsIgnoreCase(s))
-					{
-						cmd.exeChan(event);
-						return;
-					}
-				}
-			}
-		}
-		else
-		{
-			for(ICommand cmd : commands)
-			{
-				if(cmd instanceof Enable || cmd instanceof Disable)
+				for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
 				{
-					for(String s : cmd.getAliases())
-					{
+					for(String s : cmd.getAliases()) //iterating through all the aliases and seeing if any fit
+					{	
 						if(cmdName.equalsIgnoreCase(s))
 						{
 							cmd.exeChan(event);
@@ -91,40 +74,19 @@ public class Listener extends ListenerAdapter
 					}
 				}
 			}
-		}
-	}
-
-	@Override
-	public void onPrivateMessage(PrivateMessageEvent event) throws Exception
-	{
-		String cmdName = event.getMessage().split(" ")[0];
-
-		if(Util.isEnabled)
-		{
-			for(ICommand cmd : commands)
+			else
 			{
-				for(String s : cmd.getAliases()) //iterating through all the aliases and seeing if any fit
-				{	
-					if(cmdName.equalsIgnoreCase(s))
-					{
-						cmd.exePrivate(event);
-						return;
-					}
-				}
-			}
-		}
-		else
-		{
-			for(ICommand cmd : commands)
-			{
-				if(cmd instanceof Enable || cmd instanceof Disable)
+				for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
 				{
-					for(String s : cmd.getAliases())
+					if(cmd instanceof Enable || cmd instanceof Disable)
 					{
-						if(cmdName.equalsIgnoreCase(s))
+						for(String s : cmd.getAliases())
 						{
-							cmd.exePrivate(event);
-							return;
+							if(cmdName.equalsIgnoreCase(s))
+							{
+								cmd.exeChan(event);
+								return;
+							}
 						}
 					}
 				}
@@ -133,20 +95,68 @@ public class Listener extends ListenerAdapter
 	}
 
 	@Override
-	public void onConnect(ConnectEvent event) throws Exception 
+	public void onPrivateMessage(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
-		for (String chan : Util.getFileContents()) 
+		if(event.getBot().getServerInfo().getNetwork().equals("EsperNet"))
 		{
-			if (chan.equals("#BreakInBadStaff")) 
+			String cmdName = event.getMessage().split(" ")[0];
+
+			if(Util.isEnabled)
 			{
-				Main.esperBot.sendIRC().joinChannel(chan, Passwords.BREAKIN_BAD_STAFF);
-				channels.add(chan);
+				for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
+				{
+					for(String s : cmd.getAliases()) //iterating through all the aliases and seeing if any fit
+					{	
+						if(cmdName.equalsIgnoreCase(s))
+						{
+							cmd.exePrivate(event);
+							return;
+						}
+					}
+				}
 			}
-			else 
+			else
 			{
-				Main.esperBot.sendIRC().joinChannel(chan);
-				channels.add(chan);
+				for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
+				{
+					if(cmd instanceof Enable || cmd instanceof Disable)
+					{
+						for(String s : cmd.getAliases())
+						{
+							if(cmdName.equalsIgnoreCase(s))
+							{
+								cmd.exePrivate(event);
+								return;
+							}
+						}
+					}
+				}
 			}
 		}
+	}
+
+	@Override
+	public void onConnect(ConnectEvent<PircBotX> event) throws Exception 
+	{
+		if (!onConnectSwitch)
+		{
+			for (String chan : Util.getFileContents()) 
+			{
+				if (chan.equals("#BreakInBadStaff")) 
+				{
+					Main.esperBot.sendIRC().joinChannel(chan, Passwords.BREAKIN_BAD_STAFF);
+					channels.add(chan);
+				}
+				else 
+				{
+					Main.esperBot.sendIRC().joinChannel(chan);
+					channels.add(chan);
+				}
+			}
+
+			onConnectSwitch = true;
+		}
+		else
+			onConnectSwitch = false;
 	}
 }

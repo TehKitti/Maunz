@@ -1,5 +1,6 @@
 package com.vauff.maunz.commands;
 
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -7,11 +8,11 @@ import com.vauff.maunz.core.Listener;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
-public class Disable implements ICommand<MessageEvent,PrivateMessageEvent>
+public class Disable implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
 {
 
 	@Override
-	public void exeChan(MessageEvent event) throws Exception
+	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		if(event.getUser().getNick().equals("Vauff"))
 		{
@@ -33,7 +34,7 @@ public class Disable implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent event) throws Exception
+	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
 		if(event.getUser().getNick().equals("Vauff"))
 		{

@@ -1,18 +1,18 @@
 package com.vauff.maunz.commands;
 
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.Listener;
 import com.vauff.maunz.core.Main;
 
-@SuppressWarnings("rawtypes")
-public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
+public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
 {
 	public static String whosay = "";
 	
 	@Override
-	public void exeChan(MessageEvent event) throws Exception
+	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
 		if (Listener.channels.contains(args[1])) 
@@ -27,7 +27,7 @@ public class Say implements ICommand<MessageEvent,PrivateMessageEvent>
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent event) throws Exception
+	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
 

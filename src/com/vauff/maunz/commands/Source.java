@@ -1,18 +1,19 @@
 package com.vauff.maunz.commands;
 
+import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
-public class Source implements ICommand<MessageEvent,PrivateMessageEvent>
+public class Source implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
 {
 	@Override
-	public void exeChan	(MessageEvent event) throws Exception
+	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		event.respond("My source is available at https://github.com/Vauff/Maunz");
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent event) throws Exception
+	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
 		event.respond("My source is available at https://github.com/Vauff/Maunz");
 	}
