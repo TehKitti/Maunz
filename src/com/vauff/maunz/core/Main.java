@@ -33,6 +33,7 @@ public class Main
 		Configuration<PircBotX> esperConfig = defaultConfig
 				.setServerHostname("irc.esper.net")
 				.addListener(new Listener())
+				.addListener( new BreakInBad())
 				.buildForServer("irc.esper.net");
 		Configuration<PircBotX> freenodeConfig = defaultConfig
 				.setServerHostname("irc.freenode.net")
