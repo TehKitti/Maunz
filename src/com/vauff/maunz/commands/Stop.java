@@ -15,14 +15,8 @@ public class Stop implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent
 	{
 		if(event.getUser().getNick().equals("Vauff"))
 		{
-			OutputIRC esperIrc = new OutputIRC(Main.esperBot);
-			OutputIRC freenodeIrc = new OutputIRC(Main.freenodeBot);
-			for (String p : Listener.channels) 
-			{
-				Main.esperBot.sendIRC().message(p, "I have been ordered to stop by " + event.getUser().getNick());
-			}
-			esperIrc.quitServer();
-			freenodeIrc.quitServer();
+			Main.esperBot.sendRaw().rawLine("QUIT: I was ordered to stop by Vauff");
+			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
 		}
 		else
 		{
@@ -35,16 +29,8 @@ public class Stop implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent
 	{
 		if(event.getUser().getNick().equals("Vauff"))
 		{
-			OutputIRC esperIrc = new OutputIRC(Main.esperBot);
-			OutputIRC freenodeIrc = new OutputIRC(Main.freenodeBot);
-
-			for (String p : Listener.channels) 
-			{
-				Main.esperBot.sendIRC().message(p, "I have been ordered to stop by " + event.getUser().getNick());
-			}
-			event.respond("I have been ordered to stop by " + event.getUser().getNick());
-			esperIrc.quitServer();
-			freenodeIrc.quitServer();
+			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
+			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
 		}
 		else
 		{
