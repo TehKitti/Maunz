@@ -15,7 +15,7 @@ public class Stop implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent
 	{
 		if(event.getUser().getNick().equals("Vauff"))
 		{
-			Main.esperBot.sendRaw().rawLine("QUIT: I was ordered to stop by Vauff");
+			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
 			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
 		}
 		else
