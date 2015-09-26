@@ -6,10 +6,12 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.Listener;
 import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Util;
 
 public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
 {
 	public static String whosay = "";
+	public static String whosaytime = "";
 	
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
@@ -19,6 +21,7 @@ public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<
 		{
 			Main.esperBot.sendIRC().message(args[1], addArgs(args, 2));
 			whosay = event.getUser().getNick();
+			whosaytime = Util.getTime();
 		}
 		else 
 		{
@@ -35,6 +38,7 @@ public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<
 		{
 			Main.esperBot.sendIRC().message(args[1], addArgs(args, 2));
 			whosay = event.getUser().getNick();
+			whosaytime = Util.getTime();
 		}
 		else 
 		{

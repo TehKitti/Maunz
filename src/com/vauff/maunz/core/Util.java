@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Util 
@@ -48,5 +49,11 @@ public class Util
 
 		reader.close();
 		return Arrays.asList(result);
+	}
+	public static String getTime() 
+	{
+		String time = new Date(System.currentTimeMillis()).toString();
+		return time;
+		
 	}
 }
