@@ -12,7 +12,7 @@ public class WhoSay implements ICommand<MessageEvent<PircBotX>,PrivateMessageEve
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		if(!Say.whosay.equals(""))
-			event.getChannel().send().message("The last person who used my *say command was " + Say.whosay + " on " + Util.getTime());
+			event.getChannel().send().message("The last person who used my *say command was " + Say.whosay + " on " + Say.whosaytime;
 		else
 		{
 			event.getChannel().send().message("Nobody has used my *say command since I last started");
