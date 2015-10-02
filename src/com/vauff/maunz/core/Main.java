@@ -9,6 +9,9 @@ import org.pircbotx.MultiBotManager;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 
+import com.vauff.maunz.features.BreakInBad;
+import com.vauff.maunz.features.CsgoUpdate;
+
 public class Main 
 {
 	public static PircBotX esperBot;
@@ -38,7 +41,7 @@ public class Main
 		Configuration<PircBotX> freenodeConfig = defaultConfig
 				.setServerHostname("irc.freenode.net")
 				.addAutoJoinChannel("#steamdb-announce")
-				.addListener(new FreenodeListener())
+				.addListener(new CsgoUpdate())
 				.buildForServer("irc.freenode.net");
 		MultiBotManager<PircBotX> manager = new MultiBotManager<PircBotX>();
 		

@@ -1,10 +1,12 @@
-package com.vauff.maunz.core;
+package com.vauff.maunz.features;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
-public class FreenodeListener extends ListenerAdapter<PircBotX>
+import com.vauff.maunz.core.Main;
+
+public class CsgoUpdate extends ListenerAdapter<PircBotX>
 {
 	public void onMessage(MessageEvent<PircBotX> event) throws Exception 
 	{

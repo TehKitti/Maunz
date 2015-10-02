@@ -10,12 +10,11 @@ import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
-import com.vauff.maunz.commands.AccountInfo;
+import com.vauff.maunz.commands.AccInfo;
 import com.vauff.maunz.commands.BulliedMe;
 import com.vauff.maunz.commands.Disable;
 import com.vauff.maunz.commands.Enable;
 import com.vauff.maunz.commands.Help;
-import com.vauff.maunz.commands.ICommand;
 import com.vauff.maunz.commands.Join;
 import com.vauff.maunz.commands.Leave;
 import com.vauff.maunz.commands.Ping;
@@ -26,6 +25,8 @@ import com.vauff.maunz.commands.Stop;
 import com.vauff.maunz.commands.Trello;
 import com.vauff.maunz.commands.UUID;
 import com.vauff.maunz.commands.WhoSay;
+import com.vauff.maunz.core.ICommand;
+import com.vauff.maunz.features.Intelligence;
 
 public class Listener extends ListenerAdapter<PircBotX>
 {
@@ -35,7 +36,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 
 	public Listener()
 	{
-		commands.add(new AccountInfo());
+		commands.add(new AccInfo());
 		commands.add(new BulliedMe());
 		commands.add(new Enable());
 		commands.add(new Disable());

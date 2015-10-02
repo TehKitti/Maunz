@@ -4,6 +4,7 @@ import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
+import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Listener;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;

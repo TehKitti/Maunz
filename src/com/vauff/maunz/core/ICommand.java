@@ -1,4 +1,4 @@
-package com.vauff.maunz.commands;
+package com.vauff.maunz.core;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.Event;

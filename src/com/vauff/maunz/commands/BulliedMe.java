@@ -4,6 +4,7 @@ import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
+import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Main;
 
 public class BulliedMe implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>

@@ -1,4 +1,4 @@
-package com.vauff.maunz.core;
+package com.vauff.maunz.features;
 
 import com.google.code.chatterbotapi.ChatterBot;
 import com.google.code.chatterbotapi.ChatterBotFactory;

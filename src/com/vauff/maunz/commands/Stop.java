@@ -3,9 +3,8 @@ package com.vauff.maunz.commands;
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
-import org.pircbotx.output.OutputIRC;
 
-import com.vauff.maunz.core.Listener;
+import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Main;
 
 public class Stop implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>

@@ -1,8 +1,10 @@
-package com.vauff.maunz.core;
+package com.vauff.maunz.features;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.QuitEvent;
+
+import com.vauff.maunz.core.Main;
 
 public class BreakInBad extends ListenerAdapter<PircBotX>
 {

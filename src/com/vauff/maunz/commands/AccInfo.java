@@ -8,7 +8,9 @@ import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
-public class AccountInfo implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
+import com.vauff.maunz.core.ICommand;
+
+public class AccInfo implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
 {
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
