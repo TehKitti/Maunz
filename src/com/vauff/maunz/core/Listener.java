@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.lang3.time.StopWatch;
+
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
+import com.vauff.maunz.commands.About;
 import com.vauff.maunz.commands.AccInfo;
 import com.vauff.maunz.commands.BulliedMe;
 import com.vauff.maunz.commands.Disable;
@@ -33,6 +36,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 	public static List<String> channels = new ArrayList<String>();
 	private LinkedList<ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>> commands = new LinkedList<ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>>();
 	private static boolean onConnectSwitch = false;
+	static StopWatch uptime = new StopWatch();
 
 	public Listener()
 	{
@@ -52,6 +56,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new Intelligence());
 		commands.add(new Trello());
 		commands.add(new WhoSay());
+		commands.add(new About());
 	}
 
 	@Override
@@ -141,6 +146,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 	{
 		if (!onConnectSwitch)
 		{
+			uptime.start();
 			for (String chan : Util.getFileContents()) 
 			{
 				if (chan.equals("#BreakInBadStaff")) 

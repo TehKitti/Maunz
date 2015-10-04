@@ -16,6 +16,7 @@ public class Main
 {
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
+	public static String version = "3.6";
 
 	public static void main(String args[]) throws Exception
 	{
@@ -26,17 +27,17 @@ public class Main
 	{
 		Configuration.Builder<PircBotX> defaultConfig = new Configuration.Builder<PircBotX>()
 		.setName("Maunz")
-		.setVersion("1.0")
+		.setVersion(version)
 		.setLogin("Maunz")
 		.setNickservPassword(Passwords.NICKSERV)
 		.setAutoNickChange(true)
 		.setCapEnabled(true)
 		.setMessageDelay(400)
-		.setRealName("Maunz, an IRC bot coded by Vauff.");
+		.setRealName("Maunz, an IRC bot created by Vauff.");
 		Configuration<PircBotX> esperConfig = defaultConfig
 				.setServerHostname("irc.esper.net")
 				.addListener(new Listener())
-				.addListener( new BreakInBad())
+				.addListener(new BreakInBad())
 				.buildForServer("irc.esper.net");
 		Configuration<PircBotX> freenodeConfig = defaultConfig
 				.setServerHostname("irc.freenode.net")

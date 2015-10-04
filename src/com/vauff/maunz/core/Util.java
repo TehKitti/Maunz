@@ -9,9 +9,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.pircbotx.PircBotX;
-import org.pircbotx.hooks.Event;
-
 public class Util 
 {
 	public static boolean isEnabled = true;
@@ -59,5 +56,11 @@ public class Util
 		String time = new Date(System.currentTimeMillis()).toString();
 		return time;
 		
+	}
+	public static String getUptime()
+	{
+		Listener.uptime.split();
+		String uptime = Listener.uptime.toSplitString();
+		return uptime.split("\\.")[0];
 	}
 }

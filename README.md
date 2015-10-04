@@ -1,6 +1,6 @@
 #Maunz
 
-Maunz is an IRC bot coded by me in Java 7 using PircBotX 2.0.1 with some help from bl4ckscor3. It is on multiple channels on the EsperNet IRC network with its main channel being #bl4ckscor3. Maunz can also take commands via PM and it works exactly like it would in the channel. If you want to help Maunz development feel free to suggest ideas on GitHub using the Issues system or if you find any, even bugs :(
+Maunz is an IRC bot created by me in Java 8 using PircBotX 2.0.1 with some help from bl4ckscor3. It is on multiple channels on the EsperNet IRC network with its main channel being #bl4ckscor3. Maunz can also take commands via PM and it works exactly like it would in the channel. If you want to help Maunz development feel free to suggest ideas on GitHub using the Issues system or if you find any, even bugs :(
  
 Here is a list of Maunz's commands, bolded ones cannot be done by everyone and are restricted to just me.
  
@@ -32,6 +32,8 @@ __*leave [channel]__ - Makes Maunz leave a channel.
 
 *trello - Links you to the Trello board of Maunz. Feature requests and bug reports can be made here.
 
-*whosay - Tells you the last person who used the *say command
+*whosay - Tells you the last person who used the *say command.
+
+*about - Gives information about Maunz such as version and uptime.
  
 Premium account status grabbed from http://axis.iaero.me and UUID's grabbed from http://fishbans.com/docs.php
