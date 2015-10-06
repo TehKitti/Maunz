@@ -17,7 +17,7 @@ public class About implements ICommand<MessageEvent<PircBotX>,PrivateMessageEven
 		event.getChannel().send().message(Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
 		event.getChannel().send().message(Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
 		event.getChannel().send().message(Colors.PURPLE + "Version: " + Colors.RED + Main.version);
-		event.getChannel().send().message(Colors.PURPLE + "Build Date: " + Colors.RED + "Sunday October 4th 2015, 2:32 PM GMT");
+		event.getChannel().send().message(Colors.PURPLE + "Build Date: " + Colors.RED + "Tuesday October 6th 2015, 7:04 PM GMT");
 		event.getChannel().send().message(Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
 		event.getChannel().send().message(Colors.BROWN + "******************************");
 		

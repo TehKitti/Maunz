@@ -36,8 +36,6 @@ public class Util
 	public static List<String> getFileContents() throws IOException
 	{
 		File file = new File(getJarLocation() + "chans.txt");
-
-		System.out.println(getJarLocation() + "chans.txt");
 		
 		if(!file.exists())
 		{
@@ -57,10 +55,15 @@ public class Util
 		return time;
 		
 	}
-	public static String getUptime()
+
+	public static String getUptime() 
 	{
 		Listener.uptime.split();
-		String uptime = Listener.uptime.toSplitString();
-		return uptime.split("\\.")[0];
+		String[] uptimeraw = Listener.uptime.toSplitString().split("\\.");
+		int hours = Integer.parseInt(uptimeraw[0].split(":")[0]);
+		int days = (hours / 24) >> 0;
+
+		hours = hours % 24;
+		return days + ":" + (hours < 10 ? "0" + hours : hours) + ":" + uptimeraw[0].split(":")[1] + ":" + uptimeraw[0].split(":")[2]; 
 	}
 }
