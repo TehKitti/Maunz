@@ -1,8 +1,10 @@
 #Maunz
 
-Maunz is an IRC bot created by me in Java 8 using PircBotX 2.0.1 with some help from bl4ckscor3. It is on multiple channels on the EsperNet IRC network with its main channel being #bl4ckscor3. Maunz can also take commands via PM and it works exactly like it would in the channel. If you want to help Maunz development feel free to suggest ideas on GitHub using the Issues system or if you find any, even bugs :(
- 
-Here is a list of Maunz's commands, bolded ones cannot be done by everyone and are restricted to just me.
+Maunz is an IRC bot created by me with some help from bl4ckscor3 in Java using PircBotX. She is currently on multiple channels on the EsperNet IRC network and one on Freenode. Maunz can also take commands via PM and through channels she is in. If you want to help Maunz development feel free to suggest ideas on GitHub using the Issues system or if you find any, even bugs :(
+
+#Commands
+
+Bolded ones cannot be done by everyone and are restricted to just me.
  
 __*stop__ - Stops Maunz.
  
@@ -35,5 +37,23 @@ __*leave [channel]__ - Makes Maunz leave a channel.
 *whosay - Tells you the last person who used the *say command.
 
 *about - Gives information about Maunz such as version and uptime.
- 
-Premium account status grabbed from http://axis.iaero.me and UUID's grabbed from http://fishbans.com/docs.php
+
+#Dependencies
+
+Maunz depends on a large number of java libraries to function, most of these are PircBotX dependencies but some are mine that I've added for some features too. They are with their versions listed below.
+
+Chatter Bot API - 1.3.3
+
+Apache Commons Codec - 1.10
+
+Apache Commons Lang - 3.4
+
+Guava - 18.0
+
+log4j - 1.2.17
+
+PircBotX - 2.0.1
+
+slf4j-api - 1.7.12
+
+slf4j-log4j - 1.7.12
