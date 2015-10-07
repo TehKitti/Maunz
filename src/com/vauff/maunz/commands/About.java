@@ -11,13 +11,14 @@ import com.vauff.maunz.core.Util;
 
 public class About implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
 {
+	String builddate = "Wednesday October 7th 2015, 9:01 PM GMT";
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		event.getChannel().send().message(Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
 		event.getChannel().send().message(Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
 		event.getChannel().send().message(Colors.PURPLE + "Version: " + Colors.RED + Main.version);
-		event.getChannel().send().message(Colors.PURPLE + "Build Date: " + Colors.RED + "Tuesday October 6th 2015, 7:04 PM GMT");
+		event.getChannel().send().message(Colors.PURPLE + "Build Date: " + Colors.RED + builddate);
 		event.getChannel().send().message(Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
 		event.getChannel().send().message(Colors.BROWN + "******************************");
 		
@@ -29,7 +30,7 @@ public class About implements ICommand<MessageEvent<PircBotX>,PrivateMessageEven
 		event.respond(Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
 		event.respond(Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
 		event.respond(Colors.PURPLE + "Version: " + Colors.RED + Main.version);
-		event.respond(Colors.PURPLE + "Build Date: " + Colors.RED + "Sunday October 4th 2015, 2:32 PM GMT");
+		event.respond(Colors.PURPLE + "Build Date: " + Colors.RED + builddate);
 		event.respond(Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
 		event.respond(Colors.BROWN + "******************************");
 	}

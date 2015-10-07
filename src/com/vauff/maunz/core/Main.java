@@ -16,7 +16,7 @@ public class Main
 {
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.6.1";
+	public static String version = "3.6.2";
 
 	public static void main(String args[]) throws Exception
 	{
@@ -51,7 +51,7 @@ public class Main
 		esperBot = new PircBotX(esperConfig);
 		freenodeBot = new PircBotX(freenodeConfig);
 		Util.isEnabled = true;
-		new Timer().schedule(new TimerTask() {          
+		new Timer().schedule(new TimerTask() {
 		    @Override
 		    public void run() {
 		        try {
