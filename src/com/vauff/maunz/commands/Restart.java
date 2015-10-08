@@ -16,14 +16,11 @@ public class Restart implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 	{
 		if(event.getUser().getNick().equals("Vauff"))
 		{
-			OutputIRC irc = new OutputIRC(Main.esperBot);
-
-			for (String p : Listener.channels) 
-			{
-			Main.esperBot.sendIRC().message(p, "I have been ordered to restart by " + event.getUser().getNick());
-			}
+			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
+			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
 			Listener.channels.clear();
-			irc.quitServer();
+			Listener.uptime.stop();
+			Listener.uptime.reset();
 			Main.createBot();
 		}
 		else
@@ -37,15 +34,11 @@ public class Restart implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 	{
 		if(event.getUser().getNick().equals("Vauff"))
 		{
-			OutputIRC irc = new OutputIRC(Main.esperBot);
-
-			for (String p : Listener.channels) 
-			{
-			Main.esperBot.sendIRC().message(p, "I have been ordered to restart by " + event.getUser().getNick());
-			}
-			event.respond("I have been ordered to restart by " + event.getUser().getNick());
+			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
+			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
 			Listener.channels.clear();
-			irc.quitServer();
+			Listener.uptime.stop();
+			Listener.uptime.reset();
 			Main.createBot();
 		}
 		else

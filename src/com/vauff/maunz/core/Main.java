@@ -16,7 +16,7 @@ public class Main
 {
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.6.2";
+	public static String version = "3.6.3";
 
 	public static void main(String args[]) throws Exception
 	{

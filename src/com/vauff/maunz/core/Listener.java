@@ -36,7 +36,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 	public static List<String> channels = new ArrayList<String>();
 	private LinkedList<ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>> commands = new LinkedList<ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>>();
 	private static boolean onConnectSwitch = false;
-	static StopWatch uptime = new StopWatch();
+	public static StopWatch uptime = new StopWatch();
 
 	public Listener()
 	{
