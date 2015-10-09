@@ -15,7 +15,7 @@ public class Main
 {
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.6.4";
+	public static String version = "3.6.5";
 
 	public static void main(String args[]) throws Exception
 	{
@@ -64,7 +64,7 @@ public class Main
 					e.printStackTrace();
 				}    
 		    }
-		}, 10000);
+		}, 60000);
 		esperBot.startBot();
     }
 }
