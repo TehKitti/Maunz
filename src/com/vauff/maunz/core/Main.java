@@ -9,14 +9,13 @@ import org.pircbotx.MultiBotManager;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 
-import com.vauff.maunz.features.BreakInBad;
 import com.vauff.maunz.features.CsgoUpdate;
 
 public class Main 
 {
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.6.3";
+	public static String version = "3.6.4";
 
 	public static void main(String args[]) throws Exception
 	{
@@ -37,7 +36,6 @@ public class Main
 		Configuration<PircBotX> esperConfig = defaultConfig
 				.setServerHostname("irc.esper.net")
 				.addListener(new Listener())
-				.addListener(new BreakInBad())
 				.buildForServer("irc.esper.net");
 		Configuration<PircBotX> freenodeConfig = defaultConfig
 				.setServerHostname("irc.freenode.net")

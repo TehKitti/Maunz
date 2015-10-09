@@ -147,21 +147,13 @@ public class Listener extends ListenerAdapter<PircBotX>
 		if (!onConnectSwitch)
 		{
 			uptime.start();
+			onConnectSwitch = true;
 			for (String chan : Util.getFileContents()) 
 			{
-				if (chan.equals("#BreakInBadStaff")) 
-				{
-					Main.esperBot.sendIRC().joinChannel(chan, Passwords.BREAKIN_BAD_STAFF);
-					channels.add(chan);
-				}
-				else 
-				{
 					Main.esperBot.sendIRC().joinChannel(chan);
 					channels.add(chan);
-				}
 			}
 
-			onConnectSwitch = true;
 		}
 		else
 			onConnectSwitch = false;
