@@ -18,15 +18,22 @@ public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
-		if (Listener.channels.contains(args[1])) 
+		if (args[1].startsWith("#")) 
 		{
-			Main.esperBot.sendIRC().message(args[1], addArgs(args, 2));
-			whoSay = event.getUser().getNick();
-			whoSayTime = Util.getTime();
+			if (Listener.channels.contains(args[1])) 
+			{
+				Main.esperBot.sendIRC().message(args[1], addArgs(args, 2));
+				whoSay = event.getUser().getNick();
+				whoSayTime = Util.getTime();
+			}
+			else 
+			{
+				event.getChannel().send().message("I am not in the channel " + args[1] + "!");
+			}
 		}
 		else 
 		{
-			event.getChannel().send().message("I am not in the channel " + args[1] + "!");
+			event.getChannel().send().message(addArgs(args, 1));
 		}
 	}
 
