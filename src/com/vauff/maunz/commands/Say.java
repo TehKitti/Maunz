@@ -34,6 +34,8 @@ public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<
 		else 
 		{
 			event.getChannel().send().message(addArgs(args, 1));
+			whoSay = event.getUser().getNick();
+			whoSayTime = Util.getTime();
 		}
 	}
 

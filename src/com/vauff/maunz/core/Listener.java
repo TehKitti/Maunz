@@ -35,7 +35,6 @@ public class Listener extends ListenerAdapter<PircBotX>
 {
 	public static List<String> channels = new ArrayList<String>();
 	private LinkedList<ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>> commands = new LinkedList<ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>>();
-	private static boolean onConnectSwitch = false;
 	public static StopWatch uptime = new StopWatch();
 
 	public Listener()
@@ -62,37 +61,34 @@ public class Listener extends ListenerAdapter<PircBotX>
 	@Override
 	public void onMessage(MessageEvent<PircBotX> event) throws Exception
 	{
-		if(event.getBot().getServerInfo().getNetwork().equals("EsperNet"))
-		{
-			String cmdName = event.getMessage().split(" ")[0];
+		String cmdName = event.getMessage().split(" ")[0];
 
-			if(Util.isEnabled)
+		if(Util.isEnabled)
+		{
+			for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
 			{
-				for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
+				for(String s : cmd.getAliases()) //iterating through all the aliases and seeing if any fit
+				{	
+					if(cmdName.equalsIgnoreCase(s))
+					{
+						cmd.exeChan(event);
+						return;
+					}
+				}
+			}
+		}
+		else
+		{
+			for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
+			{
+				if(cmd instanceof Enable || cmd instanceof Disable)
 				{
-					for(String s : cmd.getAliases()) //iterating through all the aliases and seeing if any fit
-					{	
+					for(String s : cmd.getAliases())
+					{
 						if(cmdName.equalsIgnoreCase(s))
 						{
 							cmd.exeChan(event);
 							return;
-						}
-					}
-				}
-			}
-			else
-			{
-				for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
-				{
-					if(cmd instanceof Enable || cmd instanceof Disable)
-					{
-						for(String s : cmd.getAliases())
-						{
-							if(cmdName.equalsIgnoreCase(s))
-							{
-								cmd.exeChan(event);
-								return;
-							}
 						}
 					}
 				}
@@ -144,18 +140,12 @@ public class Listener extends ListenerAdapter<PircBotX>
 	@Override
 	public void onConnect(ConnectEvent<PircBotX> event) throws Exception 
 	{
-		if (!onConnectSwitch)
-		{
-			uptime.start();
-			onConnectSwitch = true;
-			for (String chan : Util.getFileContents()) 
-			{
-					Main.esperBot.sendIRC().joinChannel(chan);
-					channels.add(chan);
-			}
+		uptime.start();
 
+		for (String chan : Util.getFileContents()) 
+		{
+			Main.esperBot.sendIRC().joinChannel(chan);
+			channels.add(chan);
 		}
-		else
-			onConnectSwitch = false;
 	}
 }

@@ -11,33 +11,41 @@ import org.pircbotx.exception.IrcException;
 
 import com.vauff.maunz.features.CsgoUpdate;
 
-public class Main 
+public class Main
 {
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.6.6";
-
+	public static String version = "3.6.7";
+	
 	public static void main(String args[]) throws Exception
 	{
 		createBot();
 	}
-
+	
 	public static void createBot() throws Exception
 	{
-		Configuration.Builder<PircBotX> defaultConfig = new Configuration.Builder<PircBotX>()
-		.setName("Maunz")
-		.setVersion(version)
-		.setLogin("Maunz")
-		.setNickservPassword(Passwords.NICKSERV)
-		.setAutoNickChange(true)
-		.setCapEnabled(true)
-		.setMessageDelay(400)
-		.setRealName("Maunz, an IRC bot created by Vauff.");
-		Configuration<PircBotX> esperConfig = defaultConfig
+		Configuration<PircBotX> esperConfig = new Configuration.Builder<PircBotX>()
+				.setName("Maunz")
+				.setVersion(version)
+				.setLogin("Maunz")
+				.setNickservPassword(Passwords.NICKSERV)
+				.setAutoNickChange(true)
+				.setCapEnabled(true)
+				.setMessageDelay(400)
+				.setRealName("Maunz, an IRC bot created by Vauff.")
 				.setServerHostname("irc.esper.net")
 				.addListener(new Listener())
 				.buildForServer("irc.esper.net");
-		Configuration<PircBotX> freenodeConfig = defaultConfig
+		
+		Configuration<PircBotX> freenodeConfig = new Configuration.Builder<PircBotX>()
+				.setName("Maunz")
+				.setVersion(version)
+				.setLogin("Maunz")
+				.setNickservPassword(Passwords.NICKSERV)
+				.setAutoNickChange(true)
+				.setCapEnabled(true)
+				.setMessageDelay(400)
+				.setRealName("Maunz, an IRC bot created by Vauff.")
 				.setServerHostname("irc.freenode.net")
 				.addAutoJoinChannel("#steamdb-announce")
 				.addListener(new CsgoUpdate())
