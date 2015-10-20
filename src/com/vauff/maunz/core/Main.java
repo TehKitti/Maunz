@@ -15,7 +15,7 @@ public class Main
 {
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.6.7";
+	public static String version = "3.6.8";
 	
 	public static void main(String args[]) throws Exception
 	{
@@ -28,6 +28,7 @@ public class Main
 				.setName("Maunz")
 				.setVersion(version)
 				.setLogin("Maunz")
+				.setAutoReconnect(true)
 				.setNickservPassword(Passwords.NICKSERV)
 				.setAutoNickChange(true)
 				.setCapEnabled(true)
@@ -41,6 +42,7 @@ public class Main
 				.setName("Maunz")
 				.setVersion(version)
 				.setLogin("Maunz")
+				.setAutoReconnect(true)
 				.setNickservPassword(Passwords.NICKSERV)
 				.setAutoNickChange(true)
 				.setCapEnabled(true)

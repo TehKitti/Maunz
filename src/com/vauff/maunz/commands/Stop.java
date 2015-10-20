@@ -16,6 +16,8 @@ public class Stop implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent
 		{
 			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
 			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
+			Main.esperBot.stopBotReconnect();
+			Main.freenodeBot.stopBotReconnect();
 		}
 		else
 		{
@@ -30,6 +32,8 @@ public class Stop implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent
 		{
 			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
 			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
+			Main.esperBot.stopBotReconnect();
+			Main.freenodeBot.stopBotReconnect();
 		}
 		else
 		{

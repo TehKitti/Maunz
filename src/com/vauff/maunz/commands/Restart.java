@@ -18,6 +18,8 @@ public class Restart implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 		{
 			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
 			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
+			Main.esperBot.stopBotReconnect();
+			Main.freenodeBot.stopBotReconnect();
 			Listener.channels.clear();
 			Listener.uptime.stop();
 			Listener.uptime.reset();
@@ -36,6 +38,8 @@ public class Restart implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 		{
 			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
 			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
+			Main.esperBot.stopBotReconnect();
+			Main.freenodeBot.stopBotReconnect();
 			Listener.channels.clear();
 			Listener.uptime.stop();
 			Listener.uptime.reset();

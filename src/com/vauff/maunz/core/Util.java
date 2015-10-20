@@ -66,4 +66,10 @@ public class Util
 		hours = hours % 24;
 		return days + ":" + (hours < 10 ? "0" + hours : hours) + ":" + uptimeraw[0].split(":")[1] + ":" + uptimeraw[0].split(":")[2]; 
 	}
+	public static Thread getThreadByName(String threadname) {
+	    for (Thread t : Thread.getAllStackTraces().keySet()) {
+	        if (t.getName().equals(threadname)) return t;
+	    }
+	    return null;
+	}
 }
