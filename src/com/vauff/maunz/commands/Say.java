@@ -22,7 +22,7 @@ public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<
 		{
 			if (Listener.channels.contains(args[1])) 
 			{
-				Main.esperBot.sendIRC().message(args[1], addArgs(args, 2));
+				Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
 				whoSay = event.getUser().getNick();
 				whoSayTime = Util.getTime();
 			}
@@ -33,7 +33,7 @@ public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<
 		}
 		else 
 		{
-			event.getChannel().send().message(addArgs(args, 1));
+			event.getChannel().send().message(Util.addArgs(args, 1));
 			whoSay = event.getUser().getNick();
 			whoSayTime = Util.getTime();
 		}
@@ -46,7 +46,7 @@ public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<
 
 		if (Listener.channels.contains(args[1])) 
 		{
-			Main.esperBot.sendIRC().message(args[1], addArgs(args, 2));
+			Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
 			whoSay = event.getUser().getNick();
 			whoSayTime = Util.getTime();
 		}
@@ -54,18 +54,6 @@ public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<
 		{
 			event.respond("I am not in the channel " + args[1] + "!");
 		}
-	}
-	
-	private String addArgs(String[] args, int startIndex)
-	{
-		String s = "";
-		
-		for(int i = startIndex; i < args.length; i++)
-		{
-                        s += args[i] + " ";
-		}
-		
-		return s;
 	}
 	
 	@Override

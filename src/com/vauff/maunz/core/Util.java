@@ -72,4 +72,15 @@ public class Util
 	    }
 	    return null;
 	}
+	public static String addArgs(String[] args, int startIndex)
+	{
+		String s = "";
+		
+		for(int i = startIndex; i < args.length; i++)
+		{
+                        s += args[i] + " ";
+		}
+		
+		return s;
+	}
 }

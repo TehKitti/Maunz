@@ -26,7 +26,6 @@ import com.vauff.maunz.commands.Say;
 import com.vauff.maunz.commands.Source;
 import com.vauff.maunz.commands.Stop;
 import com.vauff.maunz.commands.Trello;
-import com.vauff.maunz.commands.UUID;
 import com.vauff.maunz.commands.WhoSay;
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.features.Intelligence;
@@ -49,7 +48,6 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new Say());
 		commands.add(new Source());
 		commands.add(new Stop());
-		commands.add(new UUID());
 		commands.add(new Join());
 		commands.add(new Leave());
 		commands.add(new Intelligence());
