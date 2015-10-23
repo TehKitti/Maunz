@@ -26,7 +26,7 @@ __*leave [channel]__ - Makes Maunz leave a channel.
  
 *say [channel] [message] - Makes Maunz say whatever you want her to!
  
-*accinfo [username] - Tells you whether or not a Minecraft account is premium!
+*accinfo [username] - Gives you full information about any Minecraft account.
 
 *bulliedme [username] - Did somebody bully you? This will send them a link to stop with their bullying ways.
 
