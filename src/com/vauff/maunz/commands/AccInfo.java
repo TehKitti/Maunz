@@ -39,8 +39,18 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 			else if(statusraw.contains(","))
 			{
 				BufferedReader uuidreader = new BufferedReader(new InputStreamReader(new URL("http://mcuuid.com/api/" + status[1]).openStream()));
-				String[] uuidstatusraw = uuidreader.readLine().split(":");
-				String uuidstatus = uuidstatusraw[3].replace("\"", "").replace("}", "");
+				String uuidstatusraw = uuidreader.readLine();
+				String[] uuidstatusrawsplit = uuidstatusraw.split(":");
+				String uuidstatus;
+				if (uuidstatusraw.contains("legacy")) 
+				{
+					uuidstatus = uuidstatusrawsplit[4].replace("\"", "").replace("}", "");
+				}
+				else 
+				{
+					uuidstatus = uuidstatusrawsplit[3].replace("\"", "").replace("}", "");
+				}
+				
 				event.getChannel().send().message(Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");
 				event.getChannel().send().message(Colors.PURPLE + "Account Status: " + Colors.RED + "Premium");
 				event.getChannel().send().message(Colors.PURPLE + "Migrated: " + Colors.RED + StringUtils.capitalize(status[2]));
@@ -82,8 +92,18 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 			else if(statusraw.contains(","))
 			{
 				BufferedReader uuidreader = new BufferedReader(new InputStreamReader(new URL("http://mcuuid.com/api/" + status[1]).openStream()));
-				String[] uuidstatusraw = uuidreader.readLine().split(":");
-				String uuidstatus = uuidstatusraw[3].replace("\"", "").replace("}", "");
+				String uuidstatusraw = uuidreader.readLine();
+				String[] uuidstatusrawsplit = uuidstatusraw.split(":");
+				String uuidstatus;
+				if (uuidstatusraw.contains("legacy")) 
+				{
+					uuidstatus = uuidstatusrawsplit[4].replace("\"", "").replace("}", "");
+				}
+				else 
+				{
+					uuidstatus = uuidstatusrawsplit[3].replace("\"", "").replace("}", "");
+				}
+				
 				event.getUser().send().message(Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");
 				event.getUser().send().message(Colors.PURPLE + "Account Status: " + Colors.RED + "Premium");
 				event.getUser().send().message(Colors.PURPLE + "Migrated: " + Colors.RED + StringUtils.capitalize(status[2]));
