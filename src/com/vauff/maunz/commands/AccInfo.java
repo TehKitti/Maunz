@@ -26,7 +26,7 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 			
 			if (args[1].contains("#") || args[1].contains("&")) 
 			{
-				event.getChannel().send().message("The Minecraft account name " + args[1] + " must be alphanumeric.");
+				event.getChannel().send().message("The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 			}
 			else
 			{
@@ -35,13 +35,14 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 			else if(statusraw.equalsIgnoreCase("Username must be 16 characters or less."))
 				event.getChannel().send().message("The Minecraft account name " + args[1] + " must be 16 characters or less.");
 			else if(statusraw.equalsIgnoreCase("Username must be alphanumerical (or contain '_')."))
-				event.getChannel().send().message("The Minecraft account name " + args[1] + " must be alphanumeric.");
+				event.getChannel().send().message("The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 			else if(statusraw.contains(","))
 			{
 				BufferedReader uuidreader = new BufferedReader(new InputStreamReader(new URL("http://mcuuid.com/api/" + status[1]).openStream()));
 				String uuidstatusraw = uuidreader.readLine();
 				String[] uuidstatusrawsplit = uuidstatusraw.split(":");
 				String uuidstatus;
+				
 				if (uuidstatusraw.contains("legacy")) 
 				{
 					uuidstatus = uuidstatusrawsplit[4].replace("\"", "").replace("}", "");
@@ -56,7 +57,7 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 				event.getChannel().send().message(Colors.PURPLE + "Migrated: " + Colors.RED + StringUtils.capitalize(status[2]));
 				event.getChannel().send().message(Colors.PURPLE + "UUID: " + Colors.RED + uuidstatus);
 				event.getChannel().send().message(Colors.PURPLE + "Skin: " + "https://minotar.net/body/" + status[1] + "/500.png");
-				event.getChannel().send().message(Colors.PURPLE + "Raw Skin: " + "http://skins.minecraft.net/MinecraftSkins/" + status[1] + ".png");
+				event.getChannel().send().message(Colors.PURPLE + "Raw Skin: " + "https://minotar.net/skin/" + status[1]);
 				event.getChannel().send().message(Colors.BROWN + "****************************************");
 				}
 			}
@@ -79,7 +80,7 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 			
 			if (args[1].contains("#") || args[1].contains("&")) 
 			{
-				event.getUser().send().message("The Minecraft account name " + args[1] + " must be alphanumeric.");
+				event.getUser().send().message("The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 			}
 			else
 			{
@@ -88,13 +89,14 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 			else if(statusraw.equalsIgnoreCase("Username must be 16 characters or less."))
 				event.getUser().send().message("The Minecraft account name " + args[1] + " must be 16 characters or less.");
 			else if(statusraw.equalsIgnoreCase("Username must be alphanumerical (or contain '_')."))
-				event.getUser().send().message("The Minecraft account name " + args[1] + " must be alphanumeric.");
+				event.getUser().send().message("The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 			else if(statusraw.contains(","))
 			{
 				BufferedReader uuidreader = new BufferedReader(new InputStreamReader(new URL("http://mcuuid.com/api/" + status[1]).openStream()));
 				String uuidstatusraw = uuidreader.readLine();
 				String[] uuidstatusrawsplit = uuidstatusraw.split(":");
 				String uuidstatus;
+				
 				if (uuidstatusraw.contains("legacy")) 
 				{
 					uuidstatus = uuidstatusrawsplit[4].replace("\"", "").replace("}", "");
@@ -109,7 +111,7 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>,PrivateMessageEv
 				event.getUser().send().message(Colors.PURPLE + "Migrated: " + Colors.RED + StringUtils.capitalize(status[2]));
 				event.getUser().send().message(Colors.PURPLE + "UUID: " + Colors.RED + uuidstatus);
 				event.getUser().send().message(Colors.PURPLE + "Skin: " + "https://minotar.net/body/" + status[1] + "/500.png");
-				event.getUser().send().message(Colors.PURPLE + "Raw Skin: " + "http://skins.minecraft.net/MinecraftSkins/" + status[1] + ".png");
+				event.getUser().send().message(Colors.PURPLE + "Raw Skin: " + "https://minotar.net/skin/" + status[1]);
 				event.getUser().send().message(Colors.BROWN + "****************************************");
 				}
 			}
