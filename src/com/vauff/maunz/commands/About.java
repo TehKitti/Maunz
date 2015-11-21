@@ -9,9 +9,10 @@ import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
-public class About implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
+public class About implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
-	String builddate = "Wednesday October 28th 2015, 6:33 PM GMT";
+	String builddate = "Saturday November 21st 2015, 5:14 PM GMT";
+
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
@@ -21,9 +22,8 @@ public class About implements ICommand<MessageEvent<PircBotX>,PrivateMessageEven
 		event.getChannel().send().message(Colors.PURPLE + "Build Date: " + Colors.RED + builddate);
 		event.getChannel().send().message(Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
 		event.getChannel().send().message(Colors.BROWN + "******************************");
-		
 	}
-	
+
 	@Override
 	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
@@ -34,10 +34,10 @@ public class About implements ICommand<MessageEvent<PircBotX>,PrivateMessageEven
 		event.respond(Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
 		event.respond(Colors.BROWN + "******************************");
 	}
-	
+
 	@Override
 	public String[] getAliases()
 	{
-		return new String[]{"*about"};
+		return new String[] { "*about" };
 	}
 }

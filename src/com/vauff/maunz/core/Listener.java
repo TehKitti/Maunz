@@ -12,28 +12,14 @@ import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
-import com.vauff.maunz.commands.About;
-import com.vauff.maunz.commands.AccInfo;
-import com.vauff.maunz.commands.BulliedMe;
-import com.vauff.maunz.commands.Disable;
-import com.vauff.maunz.commands.Enable;
-import com.vauff.maunz.commands.Help;
-import com.vauff.maunz.commands.Join;
-import com.vauff.maunz.commands.Leave;
-import com.vauff.maunz.commands.Ping;
-import com.vauff.maunz.commands.Restart;
-import com.vauff.maunz.commands.Say;
-import com.vauff.maunz.commands.Source;
-import com.vauff.maunz.commands.Stop;
-import com.vauff.maunz.commands.Trello;
-import com.vauff.maunz.commands.WhoSay;
+import com.vauff.maunz.commands.*;
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.features.Intelligence;
 
 public class Listener extends ListenerAdapter<PircBotX>
 {
 	public static List<String> channels = new ArrayList<String>();
-	private LinkedList<ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>> commands = new LinkedList<ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>>();
+	private LinkedList<ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>> commands = new LinkedList<ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>>();
 	public static StopWatch uptime = new StopWatch();
 
 	public Listener()
@@ -56,37 +42,34 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new About());
 	}
 
-	@Override
 	public void onMessage(MessageEvent<PircBotX> event) throws Exception
 	{
 		String cmdName = event.getMessage().split(" ")[0];
 
-		if(Util.isEnabled)
+		if (Util.isEnabled)
 		{
-			for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
+			for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
 			{
-				for(String s : cmd.getAliases()) //iterating through all the aliases and seeing if any fit
-				{	
-					if(cmdName.equalsIgnoreCase(s))
+				for (String s : cmd.getAliases())
+				{
+					if (cmdName.equalsIgnoreCase(s))
 					{
 						cmd.exeChan(event);
-						return;
 					}
 				}
 			}
 		}
 		else
 		{
-			for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
+			for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
 			{
-				if(cmd instanceof Enable || cmd instanceof Disable)
+				if (cmd instanceof Enable || cmd instanceof Disable)
 				{
-					for(String s : cmd.getAliases())
+					for (String s : cmd.getAliases())
 					{
-						if(cmdName.equalsIgnoreCase(s))
+						if (cmdName.equalsIgnoreCase(s))
 						{
 							cmd.exeChan(event);
-							return;
 						}
 					}
 				}
@@ -94,39 +77,36 @@ public class Listener extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	@Override
 	public void onPrivateMessage(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
-		if(event.getBot().getServerInfo().getNetwork().equals("EsperNet"))
+		if (event.getBot().getServerInfo().getNetwork().equals("EsperNet"))
 		{
 			String cmdName = event.getMessage().split(" ")[0];
 
-			if(Util.isEnabled)
+			if (Util.isEnabled)
 			{
-				for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
+				for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
 				{
-					for(String s : cmd.getAliases()) //iterating through all the aliases and seeing if any fit
-					{	
-						if(cmdName.equalsIgnoreCase(s))
+					for (String s : cmd.getAliases())
+					{
+						if (cmdName.equalsIgnoreCase(s))
 						{
 							cmd.exePrivate(event);
-							return;
 						}
 					}
 				}
 			}
 			else
 			{
-				for(ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>> cmd : commands)
+				for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
 				{
-					if(cmd instanceof Enable || cmd instanceof Disable)
+					if (cmd instanceof Enable || cmd instanceof Disable)
 					{
-						for(String s : cmd.getAliases())
+						for (String s : cmd.getAliases())
 						{
-							if(cmdName.equalsIgnoreCase(s))
+							if (cmdName.equalsIgnoreCase(s))
 							{
 								cmd.exePrivate(event);
-								return;
 							}
 						}
 					}
@@ -135,12 +115,11 @@ public class Listener extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	@Override
-	public void onConnect(ConnectEvent<PircBotX> event) throws Exception 
+	public void onConnect(ConnectEvent<PircBotX> event) throws Exception
 	{
 		uptime.start();
 
-		for (String chan : Util.getFileContents()) 
+		for (String chan : Util.getFileContents())
 		{
 			Main.esperBot.sendIRC().joinChannel(chan);
 			channels.add(chan);

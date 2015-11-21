@@ -9,7 +9,7 @@ public class CleverbotSession
 {
 	private static ChatterBotSession session;
 	private static CleverbotSession instance;
-	
+
 	public CleverbotSession() throws Exception
 	{
 		ChatterBotFactory factory = new ChatterBotFactory();
@@ -18,12 +18,12 @@ public class CleverbotSession
 		session = bot.createSession();
 		instance = this;
 	}
-	
+
 	public static ChatterBotSession getSession()
 	{
 		return session;
 	}
-	
+
 	public static CleverbotSession getInstance()
 	{
 		return instance;

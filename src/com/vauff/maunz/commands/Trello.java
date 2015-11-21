@@ -6,7 +6,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
 
-public class Trello implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
+public class Trello implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
@@ -19,10 +19,10 @@ public class Trello implements ICommand<MessageEvent<PircBotX>,PrivateMessageEve
 	{
 		event.respond("My Trello board is located at https://trello.com/b/9W7PmTvX/maunz");
 	}
-	
+
 	@Override
 	public String[] getAliases()
 	{
-		return new String[]{"*trello"};
+		return new String[] { "*trello" };
 	}
 }

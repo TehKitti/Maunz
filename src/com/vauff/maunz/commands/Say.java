@@ -9,29 +9,30 @@ import com.vauff.maunz.core.Listener;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
-public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
+public class Say implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
 	public static String whoSay = "";
 	public static String whoSayTime = "";
-	
+
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
-		if (args[1].startsWith("#")) 
+		
+		if (args[1].startsWith("#"))
 		{
-			if (Listener.channels.contains(args[1])) 
+			if (Listener.channels.contains(args[1]))
 			{
 				Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
 				whoSay = event.getUser().getNick();
 				whoSayTime = Util.getTime();
 			}
-			else 
+			else
 			{
 				event.getChannel().send().message("I am not in the channel " + args[1] + "!");
 			}
 		}
-		else 
+		else
 		{
 			event.getChannel().send().message(Util.addArgs(args, 1));
 			whoSay = event.getUser().getNick();
@@ -44,21 +45,21 @@ public class Say implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<
 	{
 		String[] args = event.getMessage().split(" ");
 
-		if (Listener.channels.contains(args[1])) 
+		if (Listener.channels.contains(args[1]))
 		{
 			Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
 			whoSay = event.getUser().getNick();
 			whoSayTime = Util.getTime();
 		}
-		else 
+		else
 		{
 			event.respond("I am not in the channel " + args[1] + "!");
 		}
 	}
-	
+
 	@Override
 	public String[] getAliases()
 	{
-		return new String[]{"*say"};
+		return new String[] { "*say" };
 	}
 }

@@ -13,16 +13,16 @@ public class Help implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 	{
 		event.respond("Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
 	}
-	
+
 	@Override
 	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
 		event.respond("Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
 	}
-	
+
 	@Override
 	public String[] getAliases()
 	{
-		return new String[]{"*help"};
+		return new String[] { "*help" };
 	}
 }

@@ -5,9 +5,8 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
-import com.vauff.maunz.core.Main;
 
-public class BulliedMe implements ICommand<MessageEvent<PircBotX>,PrivateMessageEvent<PircBotX>>
+public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
@@ -15,9 +14,13 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>,PrivateMessage
 		String[] args = event.getMessage().split(" ");
 
 		if (args.length == 1)
+		{
 			event.respond("Nobody bullied you? Okay then.");
+		}
 		else
+		{
 			event.getChannel().send().message(args[1] + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
+		}
 	}
 
 	@Override
@@ -26,14 +29,18 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>,PrivateMessage
 		String[] args = event.getMessage().split(" ");
 
 		if (args.length == 1)
+		{
 			event.respond("Nobody bullied you? Okay then.");
+		}
 		else
-			Main.esperBot.sendIRC().message(args[1], "Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
+		{
+			event.getUser().send().message(args[1] + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
+		}
 	}
-	
+
 	@Override
 	public String[] getAliases()
 	{
-		return new String[]{"*bulliedme"};
+		return new String[] { "*bulliedme" };
 	}
 }
