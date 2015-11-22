@@ -11,7 +11,7 @@ public class Trello implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
-		event.respond("My Trello board is located at https://trello.com/b/9W7PmTvX/maunz");
+		event.getChannel().send().message("My Trello board is located at https://trello.com/b/9W7PmTvX/maunz");
 	}
 
 	@Override

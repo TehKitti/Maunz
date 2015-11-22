@@ -21,7 +21,7 @@ public class Stop implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 		}
 		else
 		{
-			event.respond("You do not have permission to use that command");
+			event.getChannel().send().message("You do not have permission to use that command");
 		}
 	}
 

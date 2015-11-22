@@ -11,7 +11,7 @@ public class Ping implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
-		event.respond("Pong!");
+		event.getChannel().send().message("Pong!");
 	}
 
 	@Override

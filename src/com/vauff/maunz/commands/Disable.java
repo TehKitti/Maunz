@@ -22,12 +22,12 @@ public class Disable implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 			}
 			else
 			{
-				event.respond("You silly, I was already disabled!");
+				event.getChannel().send().message("You silly, I was already disabled!");
 			}
 		}
 		else
 		{
-			event.respond("You do not have permission to use that command");
+			event.getChannel().send().message("You do not have permission to use that command");
 		}
 	}
 

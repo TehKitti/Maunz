@@ -11,7 +11,7 @@ public class Source implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
-		event.respond("My source is available at https://github.com/Vauff/Maunz");
+		event.getChannel().send().message("My source is available at https://github.com/Vauff/Maunz");
 	}
 
 	@Override

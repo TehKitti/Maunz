@@ -34,17 +34,17 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 				{
 					event.getChannel().send().message("The Minecraft account name " + args[1] + " is free and does not belong to any account!");
 				}
-				
+
 				else if (statusraw.equalsIgnoreCase("Username must be 16 characters or less."))
 				{
 					event.getChannel().send().message("The Minecraft account name " + args[1] + " must be 16 characters or less.");
 				}
-				
+
 				else if (statusraw.equalsIgnoreCase("Username must be alphanumerical (or contain '_')."))
 				{
 					event.getChannel().send().message("The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 				}
-				
+
 				else if (statusraw.contains(","))
 				{
 					BufferedReader uuidreader = new BufferedReader(new InputStreamReader(new URL("http://mcuuid.com/api/" + status[1]).openStream()));
@@ -73,7 +73,7 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 		}
 		catch (ArrayIndexOutOfBoundsException e)
 		{
-			event.respond("Provide a username for me please!");
+			event.getChannel().send().message("Provide a username for me please!");
 		}
 	}
 
@@ -97,17 +97,17 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 				{
 					event.respond("The Minecraft account name " + args[1] + " is free and does not belong to any account!");
 				}
-				
+
 				else if (statusraw.equalsIgnoreCase("Username must be 16 characters or less."))
 				{
 					event.respond("The Minecraft account name " + args[1] + " must be 16 characters or less.");
 				}
-				
+
 				else if (statusraw.equalsIgnoreCase("Username must be alphanumerical (or contain '_')."))
 				{
 					event.respond("The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 				}
-				
+
 				else if (statusraw.contains(","))
 				{
 					BufferedReader uuidreader = new BufferedReader(new InputStreamReader(new URL("http://mcuuid.com/api/" + status[1]).openStream()));

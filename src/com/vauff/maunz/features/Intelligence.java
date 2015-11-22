@@ -27,7 +27,7 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 		{
 			session = CleverbotSession.getInstance();
 		}
-		
+
 		chatSession = session.getSession();
 		event.respond(chatSession.think(addArgs(message, 1)));
 	}

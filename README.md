@@ -36,6 +36,8 @@ __*leave [channel]__ - Makes Maunz leave a channel.
 
 *about - Gives information about Maunz such as version and uptime.
 
+*steam [steamid] - Links you to the Steam profile based on a Steam ID
+
 #Dependencies
 
 Maunz depends on a large number of java libraries to function, most of these are PircBotX dependencies but some are mine that I've added for some features too. They are with their versions listed below.

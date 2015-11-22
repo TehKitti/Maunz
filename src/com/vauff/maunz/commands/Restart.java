@@ -19,14 +19,13 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
 			Main.esperBot.stopBotReconnect();
 			Main.freenodeBot.stopBotReconnect();
-			Listener.channels.clear();
 			Listener.uptime.stop();
 			Listener.uptime.reset();
 			Main.createBot();
 		}
 		else
 		{
-			event.respond("You do not have permission to use that command");
+			event.getChannel().send().message("You do not have permission to use that command");
 		}
 	}
 
@@ -39,7 +38,6 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
 			Main.esperBot.stopBotReconnect();
 			Main.freenodeBot.stopBotReconnect();
-			Listener.channels.clear();
 			Listener.uptime.stop();
 			Listener.uptime.reset();
 			Main.createBot();

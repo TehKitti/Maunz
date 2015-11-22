@@ -5,7 +5,6 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
-import com.vauff.maunz.core.Listener;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
@@ -18,10 +17,10 @@ public class Say implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
-		
+
 		if (args[1].startsWith("#"))
 		{
-			if (Listener.channels.contains(args[1]))
+			if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
 			{
 				Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
 				whoSay = event.getUser().getNick();
@@ -45,7 +44,7 @@ public class Say implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent
 	{
 		String[] args = event.getMessage().split(" ");
 
-		if (Listener.channels.contains(args[1]))
+		if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
 		{
 			Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
 			whoSay = event.getUser().getNick();

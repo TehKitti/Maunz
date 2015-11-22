@@ -5,6 +5,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
+import com.vauff.maunz.core.Main;
 
 public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
@@ -15,7 +16,7 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 
 		if (args.length == 1)
 		{
-			event.respond("Nobody bullied you? Okay then.");
+			event.getChannel().send().message("Nobody bullied you? Okay then.");
 		}
 		else
 		{
@@ -28,13 +29,13 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 	{
 		String[] args = event.getMessage().split(" ");
 
-		if (args.length == 1)
+		if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
 		{
-			event.respond("Nobody bullied you? Okay then.");
+			Main.esperBot.sendIRC().message(args[1], args[2] + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
 		}
 		else
 		{
-			event.getUser().send().message(args[1] + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
+			event.respond("I am not in the channel " + args[1] + "!");
 		}
 	}
 

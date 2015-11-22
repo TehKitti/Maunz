@@ -1,8 +1,6 @@
 package com.vauff.maunz.core;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 import org.apache.commons.lang3.time.StopWatch;
 
@@ -18,7 +16,6 @@ import com.vauff.maunz.features.Intelligence;
 
 public class Listener extends ListenerAdapter<PircBotX>
 {
-	public static List<String> channels = new ArrayList<String>();
 	private LinkedList<ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>> commands = new LinkedList<ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>>();
 	public static StopWatch uptime = new StopWatch();
 
@@ -40,6 +37,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new Trello());
 		commands.add(new WhoSay());
 		commands.add(new About());
+		commands.add(new Steam());
 	}
 
 	public void onMessage(MessageEvent<PircBotX> event) throws Exception
@@ -118,11 +116,10 @@ public class Listener extends ListenerAdapter<PircBotX>
 	public void onConnect(ConnectEvent<PircBotX> event) throws Exception
 	{
 		uptime.start();
-
+		
 		for (String chan : Util.getFileContents())
 		{
 			Main.esperBot.sendIRC().joinChannel(chan);
-			channels.add(chan);
 		}
 	}
 }
