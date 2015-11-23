@@ -54,6 +54,6 @@ log4j - 1.2.17
 
 PircBotX - 2.0.1
 
-slf4j-api - 1.7.12
+slf4j-api - 1.7.13
 
-slf4j-log4j - 1.7.12
+slf4j-log4j - 1.7.13
