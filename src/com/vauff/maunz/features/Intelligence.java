@@ -7,6 +7,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 import com.google.code.chatterbotapi.ChatterBotSession;
 
 import com.vauff.maunz.core.ICommand;
+import com.vauff.maunz.core.Util;
 
 public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
@@ -16,7 +17,7 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 	{
 		String[] message = event.getMessage().split(" ");
 		ChatterBotSession chatSession;
-		CleverbotSession session = null;
+		CleverbotSession session;
 
 		if (!alreadyStartedSession)
 		{
@@ -29,14 +30,14 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 		}
 
 		chatSession = session.getSession();
-		event.respond(chatSession.think(addArgs(message, 1)));
+		event.respond(chatSession.think(Util.addArgs(message, 1)));
 	}
 
 	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
 		String[] message = event.getMessage().split(" ");
 		ChatterBotSession chatSession;
-		CleverbotSession session = null;
+		CleverbotSession session;
 
 		if (!alreadyStartedSession)
 		{
@@ -49,19 +50,7 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 		}
 
 		chatSession = session.getSession();
-		event.respond(chatSession.think(addArgs(message, 1)));
-	}
-
-	private String addArgs(String[] args, int startIndex)
-	{
-		String s = "";
-
-		for (int i = startIndex; i < args.length; i++)
-		{
-			s += args[i] + " ";
-		}
-
-		return s.substring(0, s.lastIndexOf(" "));
+		event.respond(chatSession.think(Util.addArgs(message, 1)));
 	}
 
 	@Override

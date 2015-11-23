@@ -97,6 +97,6 @@ public class Util
 			s += args[i] + " ";
 		}
 
-		return s;
+		return s.substring(0, s.lastIndexOf(" "));
 	}
 }
