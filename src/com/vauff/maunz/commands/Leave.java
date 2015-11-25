@@ -12,27 +12,35 @@ public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff"))
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			String[] args = event.getMessage().split(" ");
 
-			if (args[1].startsWith("#"))
+			if (args.length != 1)
 			{
-				if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+				if (args[1].startsWith("#"))
 				{
-					event.getChannel().send().message("I am not in " + args[1] + "!");
+					if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					{
+						event.getChannel().send().message("I am not in " + args[1] + "!");
+					}
+
+					if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					{
+						event.getChannel().send().message("I will leave " + args[1] + "!");
+						Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Goodbye");
+					}
 				}
 
-				if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+				if (!args[1].startsWith("#"))
 				{
-					event.getChannel().send().message("I will leave " + args[1] + "!");
-					Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Goodbye");
+					event.getChannel().send().message("Channel name must start with a #");
 				}
 			}
-
-			if (!args[1].startsWith("#"))
+			else
 			{
-				event.getChannel().send().message("Channel name must start with a #");
+				event.getChannel().send().message("I will leave " + event.getChannel().getName() + "!");
+				Main.esperBot.sendRaw().rawLine("PART " + event.getChannel().getName() + " :" + "Goodbye");
 			}
 		}
 		else
@@ -44,27 +52,34 @@ public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 	@Override
 	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff"))
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			String[] args = event.getMessage().split(" ");
 
-			if (args[1].startsWith("#"))
+			if (args.length != 1)
 			{
-				if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+				if (args[1].startsWith("#"))
 				{
-					event.respond("I am not in " + args[1] + "!");
+					if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					{
+						event.respond("I am not in " + args[1] + "!");
+					}
+
+					if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					{
+						Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Goodbye");
+						event.respond("I will leave " + args[1] + "!");
+					}
 				}
 
-				if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+				if (!args[1].startsWith("#"))
 				{
-					Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Goodbye");
-					event.respond("I will leave " + args[1] + "!");
+					event.respond("Channel name must start with a #");
 				}
 			}
-
-			if (!args[1].startsWith("#"))
+			else
 			{
-				event.respond("Channel name must start with a #");
+				event.respond("Please give me a channel to leave!");
 			}
 		}
 		else

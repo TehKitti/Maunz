@@ -1,22 +1,18 @@
 package com.vauff.maunz.core;
 
-import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.pircbotx.Configuration;
-import org.pircbotx.MultiBotManager;
 import org.pircbotx.PircBotX;
-import org.pircbotx.exception.IrcException;
-
 import com.vauff.maunz.features.CsgoUpdate;
 
 public class Main
 {
+	public static CustomMultiBotManager<PircBotX> manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.8.2";
-
+	public static int esperID = -2;
+	public static int freenodeID = -1;
+	public static String version = "3.9";
+	
 	public static void main(String args[]) throws Exception
 	{
 		createBot();
@@ -52,33 +48,11 @@ public class Main
 				.addAutoJoinChannel("#steamdb-announce")
 				.addListener(new CsgoUpdate())
 				.buildForServer("irc.freenode.net");
-		
-		MultiBotManager<PircBotX> manager = new MultiBotManager<PircBotX>();
 
+		manager = new CustomMultiBotManager<PircBotX>();
 		manager.addBot(esperConfig);
 		manager.addBot(freenodeConfig);
-		esperBot = new PircBotX(esperConfig);
-		freenodeBot = new PircBotX(freenodeConfig);
+		manager.start();
 		Util.isEnabled = true;
-		
-		new Timer().schedule(new TimerTask()
-		{
-			public void run()
-			{
-				try
-				{
-					freenodeBot.startBot();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}
-				catch (IrcException e)
-				{
-					e.printStackTrace();
-				}
-			}
-		}, 60000);
-		esperBot.startBot();
 	}
 }

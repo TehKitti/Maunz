@@ -13,7 +13,7 @@ public class Enable implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff"))
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			if (!Util.isEnabled)
 			{
@@ -34,7 +34,7 @@ public class Enable implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 	@Override
 	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff"))
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			if (!Util.isEnabled)
 			{

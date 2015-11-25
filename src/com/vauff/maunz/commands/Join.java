@@ -12,64 +12,81 @@ public class Join implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff"))
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			String[] args = event.getMessage().split(" ");
 
-			if (args[1].startsWith("#"))
+			if (args.length != 1)
 			{
-				if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+				if (args[1].startsWith("#"))
 				{
-					event.getChannel().send().message("I am already in " + args[1] + "!");
+					if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					{
+						event.getChannel().send().message("I am already in " + args[1] + "!");
+						System.out.println(Main.esperBot.getUserBot().getChannels().toString());
+					}
+
+					if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					{
+						Main.esperBot.sendIRC().joinChannel(args[1]);
+						event.getChannel().send().message("I will join " + args[1] + "!");
+					}
 				}
 
-				if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+				if (!args[1].startsWith("#"))
 				{
-					Main.esperBot.sendIRC().joinChannel(args[1]);
-					event.getChannel().send().message("I will join " + args[1] + "!");
+					event.getChannel().send().message("Channel name must start with a #");
 				}
 			}
-
-			if (!args[1].startsWith("#"))
+			else
 			{
-				event.getChannel().send().message("Channel name must start with a #");
+				event.getChannel().send().message("Please give me a channel to join!");
 			}
 		}
 		else
 		{
 			event.getChannel().send().message("You do not have permission to use that command");
+
 		}
 	}
 
 	@Override
 	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff"))
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			String[] args = event.getMessage().split(" ");
 
-			if (args[1].startsWith("#"))
+			if (args.length != 1)
 			{
-				if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+				if (args[1].startsWith("#"))
 				{
-					event.respond("I am already in " + args[1] + "!");
+					if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					{
+						event.respond("I am already in " + args[1] + "!");
+					}
+
+					if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					{
+						Main.esperBot.sendIRC().joinChannel(args[1]);
+						event.respond("I will join " + args[1] + "!");
+					}
 				}
 
-				if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+				if (!args[1].startsWith("#"))
 				{
-					event.respond("I will join " + args[1] + "!");
-					Main.esperBot.sendIRC().joinChannel(args[1]);
+					event.respond("Channel name must start with a #");
 				}
 			}
-
-			if (!args[1].startsWith("#"))
+			else
 			{
-				event.respond("Channel name must start with a #");
+				event.respond("Please give me a channel to join!");
 			}
 		}
 		else
 		{
 			event.respond("You do not have permission to use that command");
+
 		}
 	}
 

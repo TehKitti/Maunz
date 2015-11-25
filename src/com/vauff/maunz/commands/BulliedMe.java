@@ -30,20 +30,28 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 	{
 		String[] args = event.getMessage().split(" ");
 
-		if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+		if (args.length == 1)
 		{
-			if (args.length == 2)
-			{
-				event.respond("Nobody bullied you? Okay then.");
-			}
-			else
-			{
-				Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
-			}
+			event.respond("Nobody bullied you? Okay then.");
 		}
 		else
 		{
-			event.respond("I am not in the channel " + args[1] + "!");
+			if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+			{
+				if (args.length == 2)
+				{
+					event.respond("Nobody bullied you? Okay then.");
+				}
+				else
+				{
+					Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
+				}
+			}
+			else
+			{
+				event.respond("I am not in the channel " + args[1] + "!");
+			}
+
 		}
 	}
 

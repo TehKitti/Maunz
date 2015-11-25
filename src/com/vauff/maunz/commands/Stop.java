@@ -12,10 +12,9 @@ public class Stop implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff"))
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
-			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
-			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
+			Main.manager.stop("I was ordered to stop by Vauff");
 			Main.esperBot.stopBotReconnect();
 			Main.freenodeBot.stopBotReconnect();
 		}
@@ -28,10 +27,9 @@ public class Stop implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 	@Override
 	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff"))
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
-			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
-			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to stop by Vauff");
+			Main.manager.stop("I was ordered to stop by Vauff");
 			Main.esperBot.stopBotReconnect();
 			Main.freenodeBot.stopBotReconnect();
 		}

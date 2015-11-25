@@ -30,6 +30,8 @@ __*leave [channel]__ - Makes Maunz leave a channel.
 
 *bulliedme [username] - Did somebody bully you? This will send them a link to stop with their bullying ways.
 
+*bullyme [username] Do you want somebody to bully you? This will send them a link to start with their bullying ways.
+
 *trello - Links you to the Trello board of Maunz. Feature requests and bug reports can be made here.
 
 *whosay - Tells you the last person who used the *say command.

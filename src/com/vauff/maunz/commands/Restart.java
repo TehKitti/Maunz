@@ -13,10 +13,9 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff"))
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
-			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
-			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
+			Main.manager.stop("I was ordered to restart by Vauff");
 			Main.esperBot.stopBotReconnect();
 			Main.freenodeBot.stopBotReconnect();
 			Listener.uptime.stop();
@@ -32,10 +31,9 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 	@Override
 	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff"))
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
-			Main.esperBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
-			Main.freenodeBot.sendRaw().rawLine("QUIT :I was ordered to restart by Vauff");
+			Main.manager.stop("I was ordered to restart by Vauff");
 			Main.esperBot.stopBotReconnect();
 			Main.freenodeBot.stopBotReconnect();
 			Listener.uptime.stop();

@@ -1,5 +1,6 @@
 package com.vauff.maunz.core;
 
+import java.io.IOException;
 import java.util.LinkedList;
 
 import org.apache.commons.lang3.time.StopWatch;
@@ -38,6 +39,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new WhoSay());
 		commands.add(new About());
 		commands.add(new Steam());
+		commands.add(new BullyMe());
 	}
 
 	public void onMessage(MessageEvent<PircBotX> event) throws Exception
@@ -113,10 +115,14 @@ public class Listener extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onConnect(ConnectEvent<PircBotX> event) throws Exception
+	public void onConnect(ConnectEvent<PircBotX> event) throws IOException
 	{
+		Main.esperID += 2;
+		Main.freenodeID += 2;
+		Main.esperBot = Main.manager.getBotById(Main.esperID);
+		Main.freenodeBot = Main.manager.getBotById(Main.freenodeID);
 		uptime.start();
-		
+
 		for (String chan : Util.getFileContents())
 		{
 			Main.esperBot.sendIRC().joinChannel(chan);

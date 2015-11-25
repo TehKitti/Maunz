@@ -18,24 +18,38 @@ public class Say implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent
 	{
 		String[] args = event.getMessage().split(" ");
 
-		if (args[1].startsWith("#"))
+		if (args.length != 1)
 		{
-			if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+			if (args[1].startsWith("#"))
 			{
-				Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
-				whoSay = event.getUser().getNick();
-				whoSayTime = Util.getTime();
+				if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+				{
+					if (args.length != 2)
+					{
+						Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
+						whoSay = event.getUser().getNick();
+						whoSayTime = Util.getTime();
+					}
+					else
+					{
+						event.getChannel().send().message("I need a message to send!");
+					}
+				}
+				else
+				{
+					event.getChannel().send().message("I am not in the channel " + args[1] + "!");
+				}
 			}
 			else
 			{
-				event.getChannel().send().message("I am not in the channel " + args[1] + "!");
+				event.getChannel().send().message(Util.addArgs(args, 1));
+				whoSay = event.getUser().getNick();
+				whoSayTime = Util.getTime();
 			}
 		}
 		else
 		{
-			event.getChannel().send().message(Util.addArgs(args, 1));
-			whoSay = event.getUser().getNick();
-			whoSayTime = Util.getTime();
+			event.getChannel().send().message("I need a message to send!");
 		}
 	}
 
@@ -44,15 +58,29 @@ public class Say implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent
 	{
 		String[] args = event.getMessage().split(" ");
 
-		if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1]))
+		if (args.length != 1)
 		{
-			Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
-			whoSay = event.getUser().getNick();
-			whoSayTime = Util.getTime();
+			if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+			{
+				if (args.length == 2)
+				{
+					event.respond("I need a message to send!");
+				}
+				else
+				{
+					Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
+					whoSay = event.getUser().getNick();
+					whoSayTime = Util.getTime();
+				}
+			}
+			else
+			{
+				event.respond("I am not in the channel " + args[1] + "!");
+			}
 		}
 		else
 		{
-			event.respond("I am not in the channel " + args[1] + "!");
+			event.respond("I need a channel and a message to send!");
 		}
 	}
 
