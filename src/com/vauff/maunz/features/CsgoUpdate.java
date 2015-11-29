@@ -14,7 +14,7 @@ public class CsgoUpdate extends ListenerAdapter<PircBotX>
 		{
 			if (event.getMessage().contains("App: ") && event.getMessage().contains("730") && event.getMessage().contains("Counter-Strike: Global Offensive"))
 			{
-				Main.esperBot.sendIRC().message("#bl4ckscor3", "bl4ckscor3, Vauff, SteamDB has spotted an update for CS:GO! https://steamdb.info/app/730/history/");
+				Main.esperBot.sendIRC().message("#vevjagb", "bl4ckscor3, Vauff, SteamDB has spotted an update for CS:GO! https://steamdb.info/app/730/history/");
 			}
 		}
 	}

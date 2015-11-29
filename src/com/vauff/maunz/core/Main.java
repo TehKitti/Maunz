@@ -11,7 +11,7 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.9";
+	public static String version = "3.9.1";
 	
 	public static void main(String args[]) throws Exception
 	{
