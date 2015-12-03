@@ -2,6 +2,7 @@ package com.vauff.maunz.core;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
+
 import com.vauff.maunz.features.CsgoUpdate;
 
 public class Main
@@ -11,7 +12,7 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.9.3";
+	public static String version = "3.9.4";
 	
 	public static void main(String args[]) throws Exception
 	{
@@ -25,7 +26,7 @@ public class Main
 				.setVersion(version)
 				.setLogin("Maunz")
 				.setAutoReconnect(true)
-				.setNickservPassword(Passwords.NICKSERV)
+				.setNickservPassword(System.getenv().get("NickServ"))
 				.setAutoNickChange(true)
 				.setCapEnabled(true)
 				.setMessageDelay(400)
@@ -39,7 +40,7 @@ public class Main
 				.setVersion(version)
 				.setLogin("Maunz")
 				.setAutoReconnect(true)
-				.setNickservPassword(Passwords.NICKSERV)
+				.setNickservPassword(System.getenv().get("NickServ"))
 				.setAutoNickChange(true)
 				.setCapEnabled(true)
 				.setMessageDelay(400)
