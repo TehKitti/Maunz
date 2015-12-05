@@ -6,3 +6,10 @@ notifications:
     irc:
         channels:
         - "irc.esper.net#bl4ckscor3"
+deploy:
+  provider: releases
+  api_key: "8662cda50987737976be912850a194da214d13ac"
+  file: "Maunz.jar"
+  skip_cleanup: true
+  on:
+    tags: true
