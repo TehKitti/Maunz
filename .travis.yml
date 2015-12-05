@@ -6,3 +6,11 @@ notifications:
     irc:
         channels:
         - "irc.esper.net#bl4ckscor3"
+deploy:
+  provider: releases
+  api_key:
+    secure: KKy4VLzMvv3wboHrV4eVe5JysPVecdMJdtKhbZHcAqzUgsjvyjPw9xpiFEeBrOfF8oR$
+  file: Maunz.jar
+  skip_cleanup: true
+  on:
+    repo: Vauff/Maunz
