@@ -6,6 +6,7 @@
   <name>Maunz</name>
   <description>Maunz is an IRC bot created by Vauff with help from bl4ckscor3</description>
   <build>
+    <finalName>Maunz</finalName>
     <sourceDirectory>src</sourceDirectory>
     <resources>
       <resource>
