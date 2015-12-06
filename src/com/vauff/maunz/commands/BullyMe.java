@@ -21,7 +21,28 @@ public class BullyMe implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 		}
 		else
 		{
-			event.getChannel().send().message(Util.addArgs(args, 1) + ": Start being a bully! Read http://start-irc-bullying.eu/start/");
+			if (args[1].startsWith("#"))
+			{
+				if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+				{
+					if (args.length == 2)
+					{
+						event.getChannel().send().message("Nobody isn't bullying you? Okay then.");
+					}
+					else
+					{
+						Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2) + ": Start being a bully! Read http://start-irc-bullying.eu/start/");
+					}
+				}
+				else
+				{
+					event.getChannel().send().message("I am not in the channel " + args[1] + "!");
+				}
+			}
+			else
+			{
+				event.getChannel().send().message(Util.addArgs(args, 1) + ": Start being a bully! Read http://start-irc-bullying.eu/start/");
+			}
 		}
 	}
 

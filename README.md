@@ -1,48 +1,62 @@
 #Maunz
 
-Maunz is an IRC bot created by me with some help from bl4ckscor3 in Java using PircBotX. She is currently on multiple channels on the EsperNet IRC network and one on Freenode. Maunz can also take commands via PM and through channels she is in. If you want to help Maunz development feel free to suggest ideas on GitHub using the Issues system or if you find any, even bugs :(
+Maunz is an IRC bot created by me with some help from bl4ckscor3 in Java using PircBotX. She is currently on multiple channels on the EsperNet IRC network and one on Freenode. Maunz can take commands through both PM and channels she is in. If you want to help Maunz development feel free to suggest ideas on Trello in the features or if you find any, even bugs in the bugs list :(
 
 #Commands
 
-Bolded ones cannot be done by everyone and are restricted to just me.
- 
-__*stop__ - Stops Maunz.
- 
-__*restart__ - Restarts Maunz.
- 
-__*enable__ - Enables Maunz.
- 
-__*disable__ - Disables Maunz.
+Italic ones cannot be done by everyone and are restricted to just me. [] indicates that the argument is optional, {} indicates the argument is required.
 
-__*join [channel]__ - Makes Maunz join a channel.
-
-__*leave [channel]__ - Makes Maunz leave a channel.
+__Channel and PM Syntax__
  
+*about - Gives information about Maunz such as version and uptime.
+ 
+*accinfo {username} - Gives you full information about any Minecraft account.
+ 
+_*disable_ - Disables Maunz.
+ 
+_*enable_ - Enables Maunz.
+
+*help [command] - Links you to the README or gives command help if a command is given. Please note that command specific help defaults to channel syntax by default.
+
+_*join {channel}_ - Makes Maunz join a channel.
+
 *ping - Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server!
+
+_*restart_ - Restarts Maunz.
  
 *source - Links you to the GitHub page of Maunz, you can submit issues/pull requests here.
- 
-*help - Links you to the page you're on right now!
- 
-*say [channel] [message] - Makes Maunz say whatever you want her to!
- 
-*accinfo [username] - Gives you full information about any Minecraft account.
 
-*bulliedme [username] - Did somebody bully you? This will send them a link to stop with their bullying ways.
+*steam {steamid} - Links you to a Steam profile based on a Steam ID.
 
-*bullyme [username] Do you want somebody to bully you? This will send them a link to start with their bullying ways.
+_*stop_ - Stops Maunz.
 
 *trello - Links you to the Trello board of Maunz. Feature requests and bug reports can be made here.
 
 *whosay - Tells you the last person who used the *say command.
 
-*about - Gives information about Maunz such as version and uptime.
+__Channel Only Syntax__
 
-*steam [steamid] - Links you to the Steam profile based on a Steam ID
+*bulliedme [channel] {username} - Did somebody bully you? This will send them a link to stop with their bullying ways.
+
+*bullyme [channel] {username} Do you want somebody to bully you? This will send them a link to start with their bullying ways.
+
+_*leave [channel]_ - Makes Maunz leave a channel.
+
+*say [channel] {message} - Makes Maunz say whatever you want her to!
+
+__PM Only Syntax__
+
+*bulliedme {channel} {username} - Did somebody bully you? This will send them a link to stop with their bullying ways.
+
+*bullyme {channel} {username} Do you want somebody to bully you? This will send them a link to start with their bullying ways.
+
+_*leave {channel}_ - Makes Maunz leave a channel.
+
+*say {channel} {message} - Makes Maunz say whatever you want her to!
 
 #Dependencies
 
-Maunz depends on a large number of java libraries to function, most of these are PircBotX dependencies but some are mine that I've added for some features too. They are with their versions listed below.
+Maunz depends on some java libraries to function, most of these are PircBotX dependencies but some are mine that I've added for some features too. These can be downloaded manually or automatically with Maven using Maunz's pom.xml. They are with their versions listed below.
 
 Chatter Bot API - 1.3.3
 

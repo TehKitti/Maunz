@@ -22,24 +22,25 @@ public class Listener extends ListenerAdapter<PircBotX>
 
 	public Listener()
 	{
+		commands.add(new About());
 		commands.add(new AccInfo());
 		commands.add(new BulliedMe());
+		commands.add(new BullyMe());
 		commands.add(new Enable());
 		commands.add(new Disable());
 		commands.add(new Help());
+		commands.add(new Intelligence());
+		commands.add(new Join());
+		commands.add(new Leave());
 		commands.add(new Ping());
 		commands.add(new Restart());
 		commands.add(new Say());
 		commands.add(new Source());
+		commands.add(new Steam());
 		commands.add(new Stop());
-		commands.add(new Join());
-		commands.add(new Leave());
-		commands.add(new Intelligence());
 		commands.add(new Trello());
 		commands.add(new WhoSay());
-		commands.add(new About());
-		commands.add(new Steam());
-		commands.add(new BullyMe());
+
 	}
 
 	public void onMessage(MessageEvent<PircBotX> event) throws Exception
