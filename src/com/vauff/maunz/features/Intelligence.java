@@ -56,6 +56,6 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 	@Override
 	public String[] getAliases()
 	{
-		return new String[] { "Maunz:", "Maunz," };
+		return new String[] { Main.esperBot.getNick() + ",", Main.esperBot.getNick() + ":" };
 	}
 }
