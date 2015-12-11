@@ -4,6 +4,7 @@ import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 
 import com.vauff.maunz.features.CsgoUpdate;
+import com.vauff.maunz.features.Grammar;
 
 public class Main
 {
@@ -12,7 +13,7 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.9.5";
+	public static String version = "3.9.6";
 	
 	public static void main(String args[]) throws Exception
 	{
@@ -33,6 +34,7 @@ public class Main
 				.setRealName("Maunz, an IRC bot created by Vauff.")
 				.setServerHostname("irc.esper.net")
 				.addListener(new Listener())
+				.addListener(new Grammar())
 				.buildForServer("irc.esper.net");
 
 		Configuration<PircBotX> freenodeConfig = new Configuration.Builder<PircBotX>()
