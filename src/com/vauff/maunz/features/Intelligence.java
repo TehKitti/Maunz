@@ -7,6 +7,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 import com.google.code.chatterbotapi.ChatterBotSession;
 
 import com.vauff.maunz.core.ICommand;
+import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
 public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
