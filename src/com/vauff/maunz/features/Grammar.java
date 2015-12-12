@@ -12,7 +12,7 @@ public class Grammar extends ListenerAdapter<PircBotX>
 {
 	public void onMessage(MessageEvent<PircBotX> event) throws Exception
 	{
-		if (Util.isEnabled == true)
+		if (Util.isEnabled == true && !event.getUser().getNick().startsWith("SCUser_"))
 		{
 			if (event.getMessage().toLowerCase().contains("should of"))
 			{
