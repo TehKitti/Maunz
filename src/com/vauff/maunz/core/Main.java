@@ -17,7 +17,7 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.10.2";
+	public static String version = "3.10.3";
 
 	public static void main(String args[]) throws Exception
 	{
@@ -62,7 +62,7 @@ public class Main
 				.setMessageDelay(400)
 				.setRealName("Maunz, an IRC bot created by Vauff.")
 				.setServerHostname("irc.freenode.net")
-				.addAutoJoinChannel("#maunztesting")
+				.addAutoJoinChannel("#steamdb-announce")
 				.addListener(new CsgoUpdate())
 				.buildForServer("irc.freenode.net");
 
