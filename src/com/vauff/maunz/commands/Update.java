@@ -1,0 +1,82 @@
+package com.vauff.maunz.commands;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.util.ArrayList;
+
+import org.pircbotx.PircBotX;
+import org.pircbotx.hooks.events.MessageEvent;
+import org.pircbotx.hooks.events.PrivateMessageEvent;
+
+import com.vauff.maunz.core.ICommand;
+import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Util;
+
+public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+{
+	@Override
+	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	{
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		{
+			event.getChannel().send().message("I will run the auto update sequence!");
+
+			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
+			FileOutputStream file = new FileOutputStream("Maunz" + Util.getJarInt() + ".jar");
+			final ArrayList<String> command = new ArrayList<String>();
+
+			command.add("java");
+			command.add("-Xmx12M");
+			command.add("-jar");
+			command.add("Maunz" + Util.getJarInt() + ".jar");
+			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
+			file.close();
+			new ProcessBuilder(command).start();
+			Main.manager.stop("I was ordered to update by Vauff");
+			Main.esperBot.stopBotReconnect();
+			Main.freenodeBot.stopBotReconnect();
+		}
+		else
+		{
+			event.getChannel().send().message("You do not have permission to use that command");
+		}
+	}
+
+	@Override
+	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	{
+		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		{
+			event.respond("I will run the auto update sequence!");
+
+			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
+			FileOutputStream file = new FileOutputStream("Maunz.jar");
+			final ArrayList<String> command = new ArrayList<String>();
+
+			command.add("java");
+			command.add("-Xmx12M");
+			command.add("-jar");
+			command.add("Maunz.jar");
+			new File("Maunz.jar").delete();
+			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
+			file.close();
+			new ProcessBuilder(command).start();
+			Main.manager.stop("I was ordered to update by Vauff");
+			Main.esperBot.stopBotReconnect();
+			Main.freenodeBot.stopBotReconnect();
+		}
+		else
+		{
+			event.respond("You do not have permission to use that command");
+		}
+	}
+
+	@Override
+	public String[] getAliases()
+	{
+		return new String[] { "*update" };
+	}
+}

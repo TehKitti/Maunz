@@ -41,7 +41,7 @@ public class Help implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 
 	public String cmdHelp(String[] args)
 	{
-		switch (args[1])
+		switch (args[1].toLowerCase())
 		{
 		case "*about":
 		case "about":
@@ -91,6 +91,9 @@ public class Help implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 		case "*trello":
 		case "trello":
 			return "Links you to the Trello board of Maunz. Feature requests and bug reports can be made here. Usage: *trello";
+		case "*update":
+		case "update":
+			return "This command automatically updates and restarts Maunz, only useable by Vauff. Usage: *update";
 		case "*whosay":
 		case "whosay":
 			return "Tells you the last person who used the *say command. Usage: *whosay";

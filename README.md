@@ -32,6 +32,8 @@ _*stop_ - Stops Maunz.
 
 *trello - Links you to the Trello board of Maunz. Feature requests and bug reports can be made here.
 
+_*update_ - This command automatically updates and restarts Maunz.
+
 *whosay - Tells you the last person who used the *say command.
 
 __Channel Only Syntax__
@@ -73,3 +75,5 @@ PircBotX - 2.0.1
 slf4j-api - 1.7.13
 
 slf4j-log4j - 1.7.13
+
+jsoup - 1.8.3

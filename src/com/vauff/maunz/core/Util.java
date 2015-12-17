@@ -86,4 +86,21 @@ public class Util
 
 		return s.substring(0, s.lastIndexOf(" "));
 	}
+
+	public static int getJarInt() throws URISyntaxException
+	{
+		int number = 0;
+
+		if (new File(Util.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().contains("1"))
+		{
+			number = 2;
+		}
+		
+		if (new File(Util.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().contains("2"))
+		{
+			number = 1;
+		}
+		
+		return number;
+	}
 }

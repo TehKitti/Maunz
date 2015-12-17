@@ -59,12 +59,12 @@ public class Grammar extends ListenerAdapter<PircBotX>
 				event.respond("It isn't \"wouldn't of\", it's \"wouldn't have\"!");
 			}
 
-			else if (Arrays.asList(event.getMessage().split(" ")).contains("y"))
+			else if (Arrays.asList(event.getMessage().split(" ")).contains("y") && event.getUser().getNick().equalsIgnoreCase("GlitchMaster_YT"))
 			{
 				event.respond("It isn't \"y\", it's \"why\"!");
 			}
 
-			else if (Arrays.asList(event.getMessage().split(" ")).contains("u"))
+			else if (Arrays.asList(event.getMessage().split(" ")).contains("u") && event.getUser().getNick().equalsIgnoreCase("GlitchMaster_YT"))
 			{
 				event.respond("It isn't \"u\", it's \"you\"!");
 			}

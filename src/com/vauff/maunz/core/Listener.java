@@ -40,6 +40,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new Stop());
 		commands.add(new Trello());
 		commands.add(new WhoSay());
+		commands.add(new Update());
 
 	}
 
