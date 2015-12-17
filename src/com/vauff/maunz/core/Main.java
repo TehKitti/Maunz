@@ -17,7 +17,7 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.10";
+	public static String version = "3.10.1";
 	final static Logger logger = LogManager.getLogger(Main.class);
 
 	public static void main(String args[]) throws Exception
@@ -26,11 +26,11 @@ public class Main
 		File oldLog = new File("maunz-old.log");
 		File oldJar = new File("Maunz" + Util.getJarInt() + ".jar");
 
-		logger.info("Starting Maunz v" + version + "!");
 		Thread.sleep(3000);
 		oldJar.delete();
 		oldLog.delete();
 		log.renameTo(oldLog);
+		logger.info("Starting Maunz v" + version + "!");
 		createBot();
 	}
 
@@ -51,7 +51,8 @@ public class Main
 				.addListener(new Grammar())
 				.buildForServer("irc.esper.net");
 
-		Configuration<PircBotX> freenodeConfig = new Configuration.Builder<PircBotX>().setName("Maunz")
+		Configuration<PircBotX> freenodeConfig = new Configuration.Builder<PircBotX>()
+				.setName("Maunz")
 				.setVersion(version)
 				.setLogin("Maunz")
 				.setAutoReconnect(true)
