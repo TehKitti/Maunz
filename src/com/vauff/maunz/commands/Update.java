@@ -1,6 +1,5 @@
 package com.vauff.maunz.commands;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
 import java.nio.channels.Channels;
@@ -25,19 +24,17 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 			event.getChannel().send().message("I will run the auto update sequence!");
 
 			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
-			FileOutputStream file = new FileOutputStream("Maunz" + Util.getJarInt() + ".jar");
+			FileOutputStream file = new FileOutputStream("Maunz" + Util.getJarInt(true) + ".jar");
 			final ArrayList<String> command = new ArrayList<String>();
 
 			command.add("java");
 			command.add("-Xmx12M");
 			command.add("-jar");
-			command.add("Maunz" + Util.getJarInt() + ".jar");
+			command.add("Maunz" + Util.getJarInt(true) + ".jar");
 			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
 			file.close();
 			new ProcessBuilder(command).start();
 			Main.manager.stop("I was ordered to update by Vauff");
-			Main.esperBot.stopBotReconnect();
-			Main.freenodeBot.stopBotReconnect();
 		}
 		else
 		{
@@ -53,20 +50,17 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 			event.respond("I will run the auto update sequence!");
 
 			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
-			FileOutputStream file = new FileOutputStream("Maunz.jar");
+			FileOutputStream file = new FileOutputStream("Maunz" + Util.getJarInt(true) + ".jar");
 			final ArrayList<String> command = new ArrayList<String>();
 
 			command.add("java");
 			command.add("-Xmx12M");
 			command.add("-jar");
-			command.add("Maunz.jar");
-			new File("Maunz.jar").delete();
+			command.add("Maunz" + Util.getJarInt(true) + ".jar");
 			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
 			file.close();
 			new ProcessBuilder(command).start();
 			Main.manager.stop("I was ordered to update by Vauff");
-			Main.esperBot.stopBotReconnect();
-			Main.freenodeBot.stopBotReconnect();
 		}
 		else
 		{

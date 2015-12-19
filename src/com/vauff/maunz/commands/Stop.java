@@ -15,8 +15,6 @@ public class Stop implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			Main.manager.stop("I was ordered to stop by Vauff");
-			Main.esperBot.stopBotReconnect();
-			Main.freenodeBot.stopBotReconnect();
 		}
 		else
 		{
@@ -30,8 +28,6 @@ public class Stop implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			Main.manager.stop("I was ordered to stop by Vauff");
-			Main.esperBot.stopBotReconnect();
-			Main.freenodeBot.stopBotReconnect();
 		}
 		else
 		{

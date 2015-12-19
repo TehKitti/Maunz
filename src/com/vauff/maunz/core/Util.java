@@ -87,20 +87,36 @@ public class Util
 		return s.substring(0, s.lastIndexOf(" "));
 	}
 
-	public static int getJarInt() throws URISyntaxException
+	public static int getJarInt(Boolean opposite) throws URISyntaxException
 	{
 		int number = 0;
 
-		if (new File(Util.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().contains("1"))
+		if (opposite == true)
 		{
-			number = 2;
+			if (new File(Util.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().contains("1"))
+			{
+				number = 2;
+			}
+
+			if (new File(Util.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().contains("2"))
+			{
+				number = 1;
+			}
 		}
 		
-		if (new File(Util.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().contains("2"))
+		if (opposite == false)
 		{
-			number = 1;
+			if (new File(Util.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().contains("1"))
+			{
+				number = 1;
+			}
+
+			if (new File(Util.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().contains("2"))
+			{
+				number = 2;
+			}
 		}
-		
+
 		return number;
 	}
 }

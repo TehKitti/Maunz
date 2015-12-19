@@ -66,7 +66,7 @@ Apache Commons Codec - 1.10
 
 Apache Commons Lang - 3.4
 
-Guava - 18.0
+Guava - 19.0
 
 log4j - 1.2.17
 

@@ -1,12 +1,14 @@
 package com.vauff.maunz.commands;
 
+import java.util.ArrayList;
+
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
-import com.vauff.maunz.core.Listener;
 import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Util;
 
 public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
@@ -15,12 +17,14 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 	{
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
+			final ArrayList<String> command = new ArrayList<String>();
+
+			command.add("java");
+			command.add("-Xmx12M");
+			command.add("-jar");
+			command.add("Maunz" + Util.getJarInt(false) + ".jar");
+			new ProcessBuilder(command).start();
 			Main.manager.stop("I was ordered to restart by Vauff");
-			Main.esperBot.stopBotReconnect();
-			Main.freenodeBot.stopBotReconnect();
-			Listener.uptime.stop();
-			Listener.uptime.reset();
-			Main.createBot();
 		}
 		else
 		{
@@ -33,12 +37,14 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 	{
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
+			final ArrayList<String> command = new ArrayList<String>();
+
+			command.add("java");
+			command.add("-Xmx12M");
+			command.add("-jar");
+			command.add("Maunz" + Util.getJarInt(false) + ".jar");
+			new ProcessBuilder(command).start();
 			Main.manager.stop("I was ordered to restart by Vauff");
-			Main.esperBot.stopBotReconnect();
-			Main.freenodeBot.stopBotReconnect();
-			Listener.uptime.stop();
-			Listener.uptime.reset();
-			Main.createBot();
 		}
 		else
 		{
