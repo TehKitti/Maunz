@@ -20,7 +20,6 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 			final ArrayList<String> command = new ArrayList<String>();
 
 			command.add("java");
-			command.add("-Xmx12M");
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(false) + ".jar");
 			new ProcessBuilder(command).start();
@@ -40,7 +39,6 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 			final ArrayList<String> command = new ArrayList<String>();
 
 			command.add("java");
-			command.add("-Xmx12M");
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(false) + ".jar");
 			new ProcessBuilder(command).start();

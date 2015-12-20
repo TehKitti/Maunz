@@ -103,7 +103,7 @@ public class Util
 				number = 1;
 			}
 		}
-		
+
 		if (opposite == false)
 		{
 			if (new File(Util.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getName().contains("1"))

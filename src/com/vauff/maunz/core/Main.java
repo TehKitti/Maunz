@@ -1,6 +1,8 @@
 package com.vauff.maunz.core;
 
 import java.io.File;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -18,7 +20,7 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.10.4";
+	public static String version = "3.10.5";
 
 	public static void main(String args[]) throws Exception
 	{
@@ -69,5 +71,7 @@ public class Main
 		manager.addBot(esperConfig);
 		manager.addBot(freenodeConfig);
 		manager.start();
+		Thread.sleep(30000);
+		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(PTOTimer.timer, 0, 60, TimeUnit.SECONDS);
 	}
 }

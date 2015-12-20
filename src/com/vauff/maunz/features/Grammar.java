@@ -18,12 +18,12 @@ public class Grammar extends ListenerAdapter<PircBotX>
 			{
 				event.respond("It isn't \"should of\", it's \"should have\"!");
 			}
-			
+
 			else if (event.getMessage().toLowerCase().contains("shouldnt of"))
 			{
 				event.respond("It isn't \"shouldnt of\", it's \"shouldn't have\"!");
 			}
-			
+
 			else if (event.getMessage().toLowerCase().contains("shouldn't of"))
 			{
 				event.respond("It isn't \"shouldn't of\", it's \"shouldn't have\"!");
@@ -33,12 +33,12 @@ public class Grammar extends ListenerAdapter<PircBotX>
 			{
 				event.respond("It isn't \"could of\", it's \"could have\"!");
 			}
-			
+
 			else if (event.getMessage().toLowerCase().contains("couldnt of"))
 			{
 				event.respond("It isn't \"couldnt of\", it's \"couldn't have\"!");
 			}
-			
+
 			else if (event.getMessage().toLowerCase().contains("couldn't of"))
 			{
 				event.respond("It isn't \"couldn't of\", it's \"couldn't have\"!");
@@ -48,12 +48,12 @@ public class Grammar extends ListenerAdapter<PircBotX>
 			{
 				event.respond("It isn't \"would of\", it's \"would have\"!");
 			}
-			
+
 			else if (event.getMessage().toLowerCase().contains("wouldnt of"))
 			{
 				event.respond("It isn't \"wouldnt of\", it's \"wouldn't have\"!");
 			}
-			
+
 			else if (event.getMessage().toLowerCase().contains("wouldn't of"))
 			{
 				event.respond("It isn't \"wouldn't of\", it's \"wouldn't have\"!");

@@ -28,7 +28,6 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 			final ArrayList<String> command = new ArrayList<String>();
 
 			command.add("java");
-			command.add("-Xmx12M");
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(true) + ".jar");
 			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
@@ -54,7 +53,6 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 			final ArrayList<String> command = new ArrayList<String>();
 
 			command.add("java");
-			command.add("-Xmx12M");
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(true) + ".jar");
 			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);

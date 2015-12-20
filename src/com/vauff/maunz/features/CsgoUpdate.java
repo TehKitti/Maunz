@@ -29,7 +29,7 @@ public class CsgoUpdate extends ListenerAdapter<PircBotX>
 			{
 				Document doc = null;
 				boolean trystatus = true;
-						
+
 				while (trystatus)
 				{
 					try
