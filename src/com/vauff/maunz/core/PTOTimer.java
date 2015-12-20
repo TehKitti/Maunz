@@ -18,7 +18,7 @@ public class PTOTimer
 					command.add("-jar");
 					command.add("Maunz" + Util.getJarInt(false) + ".jar");
 					new ProcessBuilder(command).start();
-					Main.manager.stop("Restarting due to a detected network disconnection");
+					Main.manager.stop("Restarting due to an automatically detected network disconnection");
 					System.exit(0);
 
 				}

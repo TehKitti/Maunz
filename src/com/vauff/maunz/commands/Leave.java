@@ -28,7 +28,7 @@ public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 					if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
 					{
 						event.getChannel().send().message("I will leave " + args[1] + "!");
-						Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Goodbye");
+						Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Parting");
 					}
 				}
 
@@ -40,7 +40,7 @@ public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 			else
 			{
 				event.getChannel().send().message("I will leave " + event.getChannel().getName() + "!");
-				Main.esperBot.sendRaw().rawLine("PART " + event.getChannel().getName() + " :" + "Goodbye");
+				Main.esperBot.sendRaw().rawLine("PART " + event.getChannel().getName() + " :" + "Parting");
 			}
 		}
 		else
@@ -67,7 +67,7 @@ public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 
 					if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
 					{
-						Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Goodbye");
+						Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Parting");
 						event.respond("I will leave " + args[1] + "!");
 					}
 				}

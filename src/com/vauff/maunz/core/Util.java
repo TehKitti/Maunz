@@ -87,7 +87,7 @@ public class Util
 		return s.substring(0, s.lastIndexOf(" "));
 	}
 
-	public static int getJarInt(Boolean opposite) throws URISyntaxException
+	public static int getJarInt(boolean opposite) throws URISyntaxException
 	{
 		int number = 0;
 

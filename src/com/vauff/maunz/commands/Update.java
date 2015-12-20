@@ -33,7 +33,7 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
 			file.close();
 			new ProcessBuilder(command).start();
-			Main.manager.stop("I was ordered to update by Vauff");
+			Main.manager.stop("Updating and restarting");
 		}
 		else
 		{
@@ -58,7 +58,7 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
 			file.close();
 			new ProcessBuilder(command).start();
-			Main.manager.stop("I was ordered to update by Vauff");
+			Main.manager.stop("Updating and restarting");
 		}
 		else
 		{

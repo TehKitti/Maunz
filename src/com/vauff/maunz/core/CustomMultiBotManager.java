@@ -2,6 +2,7 @@ package com.vauff.maunz.core;
 
 import org.pircbotx.MultiBotManager;
 import org.pircbotx.PircBotX;
+
 import static com.google.common.util.concurrent.Service.State;
 
 /**

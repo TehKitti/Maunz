@@ -23,7 +23,7 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(false) + ".jar");
 			new ProcessBuilder(command).start();
-			Main.manager.stop("I was ordered to restart by Vauff");
+			Main.manager.stop("Restarting");
 		}
 		else
 		{
@@ -42,7 +42,7 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(false) + ".jar");
 			new ProcessBuilder(command).start();
-			Main.manager.stop("I was ordered to restart by Vauff");
+			Main.manager.stop("Restarting");
 		}
 		else
 		{
