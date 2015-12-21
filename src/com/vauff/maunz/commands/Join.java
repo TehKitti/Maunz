@@ -6,6 +6,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Util;
 
 public class Join implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
@@ -20,13 +21,12 @@ public class Join implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 			{
 				if (args[1].startsWith("#"))
 				{
-					if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					if (Util.hasJoinedChannel(args[1]))
 					{
 						event.getChannel().send().message("I am already in " + args[1] + "!");
-						System.out.println(Main.esperBot.getUserBot().getChannels().toString());
 					}
 
-					if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					if (!Util.hasJoinedChannel(args[1]))
 					{
 						Main.esperBot.sendIRC().joinChannel(args[1]);
 						event.getChannel().send().message("I will join " + args[1] + "!");
@@ -61,12 +61,12 @@ public class Join implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 			{
 				if (args[1].startsWith("#"))
 				{
-					if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					if (Util.hasJoinedChannel(args[1]))
 					{
 						event.respond("I am already in " + args[1] + "!");
 					}
 
-					if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					if (!Util.hasJoinedChannel(args[1]))
 					{
 						Main.esperBot.sendIRC().joinChannel(args[1]);
 						event.respond("I will join " + args[1] + "!");

@@ -26,8 +26,9 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new AccInfo());
 		commands.add(new BulliedMe());
 		commands.add(new BullyMe());
-		commands.add(new Enable());
+		commands.add(new Chans());
 		commands.add(new Disable());
+		commands.add(new Enable());
 		commands.add(new Help());
 		commands.add(new Intelligence());
 		commands.add(new Join());
@@ -39,8 +40,8 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new Steam());
 		commands.add(new Stop());
 		commands.add(new Trello());
-		commands.add(new WhoSay());
 		commands.add(new Update());
+		commands.add(new WhoSay());
 
 	}
 

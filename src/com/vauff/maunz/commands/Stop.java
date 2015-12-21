@@ -15,6 +15,7 @@ public class Stop implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			Main.manager.stop("Stopping");
+			System.exit(0);
 		}
 		else
 		{
@@ -28,6 +29,7 @@ public class Stop implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			Main.manager.stop("Stopping");
+			System.exit(0);
 		}
 		else
 		{

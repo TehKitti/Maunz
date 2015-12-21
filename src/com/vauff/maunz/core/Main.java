@@ -12,6 +12,7 @@ import org.pircbotx.PircBotX;
 
 import com.vauff.maunz.features.CsgoUpdate;
 import com.vauff.maunz.features.Grammar;
+import com.vauff.maunz.features.RSSTimer;
 
 public class Main
 {
@@ -20,7 +21,8 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.10.6";
+	public static Logger logger;
+	public static String version = "3.11";
 
 	public static void main(String args[]) throws Exception
 	{
@@ -32,7 +34,7 @@ public class Main
 		oldJar.delete();
 		oldLog.delete();
 		log.renameTo(oldLog);
-		final Logger logger = LogManager.getLogger(Main.class);
+		logger = LogManager.getLogger(Main.class);
 		logger.info("Starting Maunz v" + version + "!");
 		createBot();
 	}
@@ -71,7 +73,7 @@ public class Main
 		manager.addBot(esperConfig);
 		manager.addBot(freenodeConfig);
 		manager.start();
-		Thread.sleep(30000);
-		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(PTOTimer.timer, 0, 60, TimeUnit.SECONDS);
+		Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(RSSTimer.timer, 60, 60, TimeUnit.SECONDS);
+		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(PTOTimer.timer, 60, 60, TimeUnit.SECONDS);
 	}
 }

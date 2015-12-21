@@ -6,6 +6,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Util;
 
 public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
@@ -20,12 +21,12 @@ public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 			{
 				if (args[1].startsWith("#"))
 				{
-					if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					if (!Util.hasJoinedChannel(args[1]))
 					{
 						event.getChannel().send().message("I am not in " + args[1] + "!");
 					}
 
-					if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					if (Util.hasJoinedChannel(args[1]))
 					{
 						event.getChannel().send().message("I will leave " + args[1] + "!");
 						Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Parting");
@@ -60,12 +61,12 @@ public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 			{
 				if (args[1].startsWith("#"))
 				{
-					if (!Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					if (!Util.hasJoinedChannel(args[1]))
 					{
 						event.respond("I am not in " + args[1] + "!");
 					}
 
-					if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+					if (Util.hasJoinedChannel(args[1]))
 					{
 						Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Parting");
 						event.respond("I will leave " + args[1] + "!");

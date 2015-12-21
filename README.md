@@ -11,6 +11,8 @@ __Channel and PM Syntax__
 *about - Gives information about Maunz such as version and uptime.
  
 *accinfo {username} - Gives you full information about any Minecraft account.
+
+*chans - Lists the channels that Maunz is currently in.
  
 _*disable_ - Disables Maunz.
  

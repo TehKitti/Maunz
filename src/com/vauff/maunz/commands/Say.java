@@ -22,7 +22,7 @@ public class Say implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent
 		{
 			if (args[1].startsWith("#"))
 			{
-				if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+				if (Util.hasJoinedChannel(args[1]))
 				{
 					if (args.length != 2)
 					{
@@ -60,7 +60,7 @@ public class Say implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent
 
 		if (args.length != 1)
 		{
-			if (Main.esperBot.getUserBot().getChannels().toString().contains("name=" + args[1] + ","))
+			if (Util.hasJoinedChannel(args[1]))
 			{
 				if (args.length == 2)
 				{

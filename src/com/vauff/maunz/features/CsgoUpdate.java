@@ -53,13 +53,13 @@ public class CsgoUpdate extends ListenerAdapter<PircBotX>
 
 				if (html.contains("branches/dpr/buildid"))
 				{
-					Main.esperBot.sendIRC().message("#bl4ckscor3", "bl4ckscor3, Vauff, SteamDB has spotted an update for CS:GO on the 730 branch, this means an update might be coming. https://steamdb.info/app/730/history/");
+					Main.esperBot.sendIRC().message("#bl4ckscor3", "SteamDB has spotted an update for CS:GO on the 730 branch, this means an update might be coming. https://steamdb.info/app/730/history/");
 				}
 			}
 
 			if (Colors.removeColors(event.getMessage()).contains("App: 741 - SteamDB Unknown App 741 (Counter-Strike Global Offensive - Valve Dedicated Server) (needs token)"))
 			{
-				Main.esperBot.sendIRC().message("#bl4ckscor3", "bl4ckscor3, Vauff, SteamDB has spotted an update for CS:GO on the 741 branch, this means that an update is definitely coming! https://steamdb.info/app/741/history/");
+				Main.esperBot.sendIRC().message("#bl4ckscor3", "SteamDB has spotted an update for CS:GO on the 741 branch, this means that an update is definitely coming! https://steamdb.info/app/741/history/");
 			}
 		}
 	}

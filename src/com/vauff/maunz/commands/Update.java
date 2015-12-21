@@ -34,6 +34,7 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 			file.close();
 			new ProcessBuilder(command).start();
 			Main.manager.stop("Updating and restarting");
+			System.exit(0);
 		}
 		else
 		{
@@ -59,6 +60,7 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 			file.close();
 			new ProcessBuilder(command).start();
 			Main.manager.stop("Updating and restarting");
+			System.exit(0);
 		}
 		else
 		{

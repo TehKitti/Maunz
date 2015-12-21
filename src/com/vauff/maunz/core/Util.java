@@ -9,6 +9,10 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.pircbotx.Channel;
+
+import com.google.common.collect.ImmutableSortedSet;
+
 public class Util
 {
 	public static boolean isEnabled = true;
@@ -118,5 +122,38 @@ public class Util
 		}
 
 		return number;
+	}
+
+	public static boolean hasJoinedChannel(String channel)
+	{
+		String[] chans = getJoinedChannels();
+
+		for (String s : chans)
+		{
+			if (s != null)
+			{
+				if (s.equalsIgnoreCase(channel))
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public static String[] getJoinedChannels()
+	{
+		ImmutableSortedSet<Channel> list = Main.esperBot.getUserBot().getChannels();
+		Object[] x = list.toArray();
+		String[] chans = new String[x.length];
+		int i = 0;
+
+		for (Object o : x)
+		{
+			chans[i] = o.toString().split(",")[0].split("=")[1];
+			i++;
+		}
+
+		return chans;
 	}
 }
