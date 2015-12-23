@@ -22,7 +22,7 @@ public class Main
 	public static int esperID = -2;
 	public static int freenodeID = -1;
 	public static Logger logger;
-	public static String version = "3.11";
+	public static String version = "3.11.1";
 
 	public static void main(String args[]) throws Exception
 	{
