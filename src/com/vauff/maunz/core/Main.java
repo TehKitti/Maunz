@@ -5,13 +5,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 
 import com.vauff.maunz.features.CsgoUpdate;
 import com.vauff.maunz.features.Grammar;
+import com.vauff.maunz.features.PTOTimer;
 import com.vauff.maunz.features.RSSTimer;
 
 public class Main
@@ -21,8 +21,7 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static Logger logger;
-	public static String version = "3.11.1";
+	public static String version = "3.12";
 
 	public static void main(String args[]) throws Exception
 	{
@@ -34,8 +33,8 @@ public class Main
 		oldJar.delete();
 		oldLog.delete();
 		log.renameTo(oldLog);
-		logger = LogManager.getLogger(Main.class);
-		logger.info("Starting Maunz v" + version + "!");
+		Logger.log = LogManager.getLogger(Main.class);
+		Logger.log.info("Starting Maunz v" + version);
 		createBot();
 	}
 
@@ -53,6 +52,7 @@ public class Main
 				.setServerHostname("irc.esper.net")
 				.addListener(new Listener())
 				.addListener(new Grammar())
+				.addListener(new Logger())
 				.buildForServer("irc.esper.net");
 
 		Configuration<PircBotX> freenodeConfig = new Configuration.Builder<PircBotX>()
@@ -67,6 +67,7 @@ public class Main
 				.setServerHostname("irc.freenode.net")
 				.addAutoJoinChannel("#steamdb-announce")
 				.addListener(new CsgoUpdate())
+				.addListener(new Logger())
 				.buildForServer("irc.freenode.net");
 
 		manager = new CustomMultiBotManager<PircBotX>();

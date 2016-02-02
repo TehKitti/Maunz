@@ -11,6 +11,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
+import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
@@ -22,6 +23,7 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			event.getChannel().send().message("I will run the auto update sequence!");
+			Logger.botMsg(event.getChannel().getName(), "I will run the auto update sequence!");
 
 			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
 			FileOutputStream file = new FileOutputStream("Maunz" + Util.getJarInt(true) + ".jar");
@@ -33,12 +35,14 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
 			file.close();
 			new ProcessBuilder(command).start();
+			Logger.log.info("Maunz is updating...");
 			Main.manager.stop("Updating and restarting");
 			System.exit(0);
 		}
 		else
 		{
 			event.getChannel().send().message("You do not have permission to use that command");
+			Logger.botMsg(event.getChannel().getName(), "You do not have permission to use that command");
 		}
 	}
 
@@ -48,6 +52,7 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
 			event.respond("I will run the auto update sequence!");
+			Logger.botMsg(event.getUser().getNick(), "I will run the auto update sequence!");
 
 			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
 			FileOutputStream file = new FileOutputStream("Maunz" + Util.getJarInt(true) + ".jar");
@@ -59,12 +64,14 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
 			file.close();
 			new ProcessBuilder(command).start();
+			Logger.log.info("Maunz is updating...");
 			Main.manager.stop("Updating and restarting");
 			System.exit(0);
 		}
 		else
 		{
 			event.respond("You do not have permission to use that command");
+			Logger.botMsg(event.getUser().getNick(), "You do not have permission to use that command");
 		}
 	}
 

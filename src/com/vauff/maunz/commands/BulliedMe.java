@@ -5,6 +5,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
+import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
@@ -18,6 +19,7 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 		if (args.length == 1)
 		{
 			event.getChannel().send().message("Nobody bullied you? Okay then.");
+			Logger.botMsg(event.getChannel().getName(), "Nobody bullied you? Okay then.");
 		}
 		else
 		{
@@ -28,20 +30,24 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 					if (args.length == 2)
 					{
 						event.getChannel().send().message("Nobody bullied you? Okay then.");
+						Logger.botMsg(event.getChannel().getName(), "Nobody bullied you? Okay then.");
 					}
 					else
 					{
 						Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
+						Logger.botMsg(event.getChannel().getName(), Util.addArgs(args, 2) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
 					}
 				}
 				else
 				{
 					event.getChannel().send().message("I am not in the channel " + args[1] + "!");
+					Logger.botMsg(event.getChannel().getName(), "I am not in the channel " + args[1] + "!");
 				}
 			}
 			else
 			{
 				event.getChannel().send().message(Util.addArgs(args, 1) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
+				Logger.botMsg(event.getChannel().getName(), Util.addArgs(args, 1) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
 			}
 		}
 	}
@@ -54,6 +60,7 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 		if (args.length == 1)
 		{
 			event.respond("Nobody bullied you? Okay then.");
+			Logger.botMsg(event.getUser().getNick(), "Nobody bullied you? Okay then.");
 		}
 		else
 		{
@@ -62,15 +69,18 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 				if (args.length == 2)
 				{
 					event.respond("Nobody bullied you? Okay then.");
+					Logger.botMsg(event.getUser().getNick(), "Nobody bullied you? Okay then.");
 				}
 				else
 				{
 					Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
+					Logger.botMsg(event.getUser().getNick(), Util.addArgs(args, 2) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
 				}
 			}
 			else
 			{
 				event.respond("I am not in the channel " + args[1] + "!");
+				Logger.botMsg(event.getUser().getNick(), "I am not in the channel " + args[1] + "!");
 			}
 
 		}

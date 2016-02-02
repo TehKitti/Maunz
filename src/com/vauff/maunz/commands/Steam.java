@@ -5,6 +5,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
+import com.vauff.maunz.core.Logger;
 
 public class Steam implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
@@ -16,16 +17,21 @@ public class Steam implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 		if (args.length == 1)
 		{
 			event.getChannel().send().message("Please give me a Steam ID!");
+			Logger.botMsg(event.getChannel().getName(), "Please give me a Steam ID.");
 		}
 		else
 		{
 			if (args[1].matches("[0-9]+"))
 			{
+				Logger.log.info("Detected a numeric input, using the profiles link...");
 				event.getChannel().send().message("Here you go! http://steamcommunity.com/profiles/" + args[1]);
+				Logger.botMsg(event.getChannel().getName(), "Here you go! http://steamcommunity.com/profiles/" + args[1]);
 			}
 			else
 			{
+				Logger.log.info("Detected a alphanumeric input, using the id link...");
 				event.getChannel().send().message("Here you go! http://steamcommunity.com/id/" + args[1]);
+				Logger.botMsg(event.getChannel().getName(), "Here you go! http://steamcommunity.com/id/" + args[1]);
 			}
 		}
 	}
@@ -38,16 +44,21 @@ public class Steam implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 		if (args.length == 1)
 		{
 			event.respond("Please give me a Steam ID.");
+			Logger.botMsg(event.getUser().getNick(), "Please give me a Steam ID.");
 		}
 		else
 		{
 			if (args[1].matches("[0-9]+"))
 			{
+				Logger.log.info("Detected a numeric input, using the profiles link...");
 				event.respond("Here you go! http://steamcommunity.com/profiles/" + args[1]);
+				Logger.botMsg(event.getUser().getNick(), "Here you go! http://steamcommunity.com/profiles/" + args[1]);
 			}
 			else
 			{
+				Logger.log.info("Detected a alphanumeric input, using the id link...");
 				event.respond("Here you go! http://steamcommunity.com/id/" + args[1]);
+				Logger.botMsg(event.getUser().getNick(), "Here you go! http://steamcommunity.com/id/" + args[1]);
 			}
 		}
 	}

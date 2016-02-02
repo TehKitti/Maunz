@@ -7,6 +7,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
+import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
@@ -22,6 +23,7 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 			command.add("java");
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(false) + ".jar");
+			Logger.log.info("Maunz is restarting...");
 			new ProcessBuilder(command).start();
 			Main.manager.stop("Restarting");
 			System.exit(0);
@@ -29,6 +31,7 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 		else
 		{
 			event.getChannel().send().message("You do not have permission to use that command");
+			Logger.botMsg(event.getChannel().getName(), "You do not have permission to use that command");
 		}
 	}
 
@@ -42,6 +45,7 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 			command.add("java");
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(false) + ".jar");
+			Logger.log.info("Maunz is restarting...");
 			new ProcessBuilder(command).start();
 			Main.manager.stop("Restarting");
 			System.exit(0);
@@ -49,6 +53,7 @@ public class Restart implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 		else
 		{
 			event.respond("You do not have permission to use that command");
+			Logger.botMsg(event.getUser().getNick(), "You do not have permission to use that command");
 		}
 	}
 

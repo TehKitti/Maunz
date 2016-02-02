@@ -1,6 +1,10 @@
-package com.vauff.maunz.core;
+package com.vauff.maunz.features;
 
 import java.util.ArrayList;
+
+import com.vauff.maunz.core.Logger;
+import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Util;
 
 public class PTOTimer
 {
@@ -18,12 +22,13 @@ public class PTOTimer
 					command.add("-jar");
 					command.add("Maunz" + Util.getJarInt(false) + ".jar");
 					new ProcessBuilder(command).start();
+					Logger.log.info("Restarting due to an automatically detected network disconnection");
 					Main.manager.stop("Restarting due to an automatically detected network disconnection");
 					System.exit(0);
 				}
 				catch (Exception e)
 				{
-					e.printStackTrace();
+					Logger.log.error(e);
 				}
 			}
 		}

@@ -34,6 +34,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new Join());
 		commands.add(new Leave());
 		commands.add(new Ping());
+		commands.add(new Reddit());
 		commands.add(new Restart());
 		commands.add(new Say());
 		commands.add(new Source());
@@ -82,35 +83,32 @@ public class Listener extends ListenerAdapter<PircBotX>
 
 	public void onPrivateMessage(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
-		if (event.getBot().getServerInfo().getNetwork().equals("EsperNet"))
-		{
-			String cmdName = event.getMessage().split(" ")[0];
+		String cmdName = event.getMessage().split(" ")[0];
 
-			if (Util.isEnabled)
+		if (Util.isEnabled)
+		{
+			for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
 			{
-				for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
+				for (String s : cmd.getAliases())
+				{
+					if (cmdName.equalsIgnoreCase(s))
+					{
+						cmd.exePrivate(event);
+					}
+				}
+			}
+		}
+		else
+		{
+			for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
+			{
+				if (cmd instanceof Enable || cmd instanceof Disable)
 				{
 					for (String s : cmd.getAliases())
 					{
 						if (cmdName.equalsIgnoreCase(s))
 						{
 							cmd.exePrivate(event);
-						}
-					}
-				}
-			}
-			else
-			{
-				for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
-				{
-					if (cmd instanceof Enable || cmd instanceof Disable)
-					{
-						for (String s : cmd.getAliases())
-						{
-							if (cmdName.equalsIgnoreCase(s))
-							{
-								cmd.exePrivate(event);
-							}
 						}
 					}
 				}
