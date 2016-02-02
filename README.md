@@ -10,7 +10,7 @@ __Channel and PM Syntax__
  
 *about - Gives information about Maunz such as version and uptime.
  
-*accinfo {username} - Gives you full information about any Minecraft account.
+*accinfo \<username> - Gives you full information about any Minecraft account.
 
 *chans - Lists the channels that Maunz is currently in.
  
@@ -18,17 +18,19 @@ _*disable_ - Disables Maunz.
  
 _*enable_ - Enables Maunz.
 
-*help [command] - Links you to the README or gives command help if a command is given. Please note that command specific help defaults to channel syntax by default.
+*help \[command] - Links you to the README or gives command help if a command is given. Please note that command specific help defaults to channel syntax by default.
 
-_*join {channel}_ - Makes Maunz join a channel.
+_*join \<channel>_ - Makes Maunz join a channel.
 
 *ping - Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server!
+
+*reddit \<subreddit> - Links you to a subreddit that you provide.
 
 _*restart_ - Restarts Maunz.
  
 *source - Links you to the GitHub page of Maunz, you can submit issues/pull requests here.
 
-*steam {steamid} - Links you to a Steam profile based on a Steam ID.
+*steam \<steamid> - Links you to a Steam profile based on a Steam ID.
 
 _*stop_ - Stops Maunz.
 
@@ -40,23 +42,23 @@ _*update_ - This command automatically updates and restarts Maunz.
 
 __Channel Only Syntax__
 
-*bulliedme [channel] {username} - Did somebody bully you? This will send them a link to stop with their bullying ways.
+*bulliedme [channel] \<username> - Did somebody bully you? This will send them a link to stop with their bullying ways.
 
-*bullyme [channel] {username} Do you want somebody to bully you? This will send them a link to start with their bullying ways.
+*bullyme [channel] \<username> Do you want somebody to bully you? This will send them a link to start with their bullying ways.
 
 _*leave [channel]_ - Makes Maunz leave a channel.
 
-*say [channel] {message} - Makes Maunz say whatever you want her to!
+*say [channel] \<message> - Makes Maunz say whatever you want her to!
 
 __PM Only Syntax__
 
-*bulliedme {channel} {username} - Did somebody bully you? This will send them a link to stop with their bullying ways.
+*bulliedme \<channel> \<username> - Did somebody bully you? This will send them a link to stop with their bullying ways.
 
-*bullyme {channel} {username} Do you want somebody to bully you? This will send them a link to start with their bullying ways.
+*bullyme \<channel> \<username> Do you want somebody to bully you? This will send them a link to start with their bullying ways.
 
-_*leave {channel}_ - Makes Maunz leave a channel.
+_*leave \<channel>_ - Makes Maunz leave a channel.
 
-*say {channel} {message} - Makes Maunz say whatever you want her to!
+*say \<channel> \<message> - Makes Maunz say whatever you want her to!
 
 #Dependencies
 
@@ -75,7 +77,5 @@ log4j - 1.2.17
 PircBotX - 2.0.1
 
 slf4j-api - 1.7.13
-
-slf4j-log4j - 1.7.13
 
 jsoup - 1.8.3
