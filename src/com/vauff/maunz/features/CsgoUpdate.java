@@ -16,10 +16,11 @@ import com.vauff.maunz.core.Util;
 public class CsgoUpdate extends ListenerAdapter<PircBotX>
 {
 	private String lastChangelistNumber = "";
+	public static String listeningNick;
 
 	public void onMessage(MessageEvent<PircBotX> event) throws Exception
 	{
-		if ((event.getUser().getNick().equals("SteamDB")) && Util.isEnabled == true)
+		if ((event.getUser().getNick().equals(listeningNick)) && Util.isEnabled == true)
 		{
 			if (event.getMessage().contains("https://steamdb.info/changelist/"))
 			{
@@ -49,34 +50,43 @@ public class CsgoUpdate extends ListenerAdapter<PircBotX>
 
 				if (html.contains("branches/public/buildid"))
 				{
-					String msg = "bl4ckscor3, Vauff, SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
+					String msg = "";
+
+					if (Main.devMode)
+					{
+						msg = "blackscore, V4uff, SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
+					}
+					else
+					{
+						msg = "bl4ckscor3, Vauff, SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
+					}
 					
-					Logger.log.info("Found a CS:GO 730 update that got pushed, sending info to #bl4ckscor3...");
-					Logger.botMsg("#bl4ckscor3", msg);
-					Main.esperBot.sendIRC().message("#bl4ckscor3", msg);
+					Logger.log.info("Found a CS:GO 730 update that got pushed, sending info to " + Util.mainChannel + "...");
+					Logger.botMsg(Util.mainChannel, msg);
+					Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 				}
 
 				else if (html.contains("branches/dpr/buildid"))
 				{
 					String msg = "SteamDB has spotted an update for CS:GO on the 730 branch, this means an update might be coming. https://steamdb.info/app/730/history/";
-					
-					Logger.log.info("Found a CS:GO 730 update, sending info to #bl4ckscor3...");
-					Logger.botMsg("#bl4ckscor3", msg);
-					Main.esperBot.sendIRC().message("#bl4ckscor3", msg);
+
+					Logger.log.info("Found a CS:GO 730 update, sending info to " + Util.mainChannel + "...");
+					Logger.botMsg(Util.mainChannel, msg);
+					Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 				}
 				else
 				{
-					Logger.log.info("Found a non-important CS:GO 730 update, so info will not be sent to #bl4ckscor3");
+					Logger.log.info("Found a non-important CS:GO 730 update, so info will not be sent to " + Util.mainChannel);
 				}
 			}
 
 			if (Colors.removeColors(event.getMessage()).contains("App: 741 - SteamDB Unknown App 741 (Counter-Strike Global Offensive - Valve Dedicated Server) (needs token)"))
 			{
 				String msg = "SteamDB has spotted an update for CS:GO on the 741 branch, this means that an update is definitely coming! https://steamdb.info/app/741/history/";
-				
-				Logger.log.info("Found a CS:GO 741 update, sending info to #bl4ckscor3...");
-				Logger.botMsg("#bl4ckscor3", msg);
-				Main.esperBot.sendIRC().message("#bl4ckscor3", msg);
+
+				Logger.log.info("Found a CS:GO 741 update, sending info to " + Util.mainChannel + "...");
+				Logger.botMsg(Util.mainChannel, msg);
+				Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 			}
 		}
 	}

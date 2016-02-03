@@ -4,7 +4,7 @@ Maunz is an IRC bot created by me with some help from bl4ckscor3 in Java using P
 
 #Commands
 
-Italic ones cannot be done by everyone and are restricted to just me. [] indicates that the argument is optional, {} indicates the argument is required.
+Italic ones cannot be done by everyone and are restricted to just me. [] indicates that the argument is optional, \<> indicates the argument is required.
 
 __Channel and PM Syntax__
  

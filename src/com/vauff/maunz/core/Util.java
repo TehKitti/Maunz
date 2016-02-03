@@ -16,6 +16,8 @@ import com.google.common.collect.ImmutableSortedSet;
 public class Util
 {
 	public static boolean isEnabled = true;
+	public static String mainChannel;
+	public static String freenodeChannel;
 
 	public static String getJarLocation()
 	{

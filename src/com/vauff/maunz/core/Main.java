@@ -21,7 +21,8 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.12";
+	public static String version = "3.12.1";
+	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
 	{
@@ -34,7 +35,24 @@ public class Main
 		oldLog.delete();
 		log.renameTo(oldLog);
 		Logger.log = LogManager.getLogger(Main.class);
-		Logger.log.info("Starting Maunz v" + version);
+
+		if (args.length >= 1 && args[0].equals("-dev"))
+		{
+			Logger.log.info("Starting Maunz v" + version + " in dev mode");
+			Util.freenodeChannel = "#maunztesting";
+			Util.mainChannel = "#bl4ckb0tTest";
+			CsgoUpdate.listeningNick = "Vauff";
+			devMode = true;
+		}
+		else
+		{
+			Logger.log.info("Starting Maunz v" + version);
+			Util.freenodeChannel = "#steamdb-announce";
+			Util.mainChannel = "#bl4ckscor3";
+			CsgoUpdate.listeningNick = "SteamDB";
+			devMode = false;
+		}
+
 		createBot();
 	}
 
@@ -65,7 +83,7 @@ public class Main
 				.setMessageDelay(400)
 				.setRealName("Maunz, an IRC bot created by Vauff.")
 				.setServerHostname("irc.freenode.net")
-				.addAutoJoinChannel("#steamdb-announce")
+				.addAutoJoinChannel(Util.freenodeChannel)
 				.addListener(new CsgoUpdate())
 				.addListener(new Logger())
 				.buildForServer("irc.freenode.net");
