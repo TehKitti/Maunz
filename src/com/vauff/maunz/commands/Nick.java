@@ -56,8 +56,8 @@ public class Nick implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 							}
 							else
 							{
-								event.getChannel().send().message("Changing nickname on Freenode from " + Main.esperBot.getNick() + " to " + args[2] + "!");
-								Logger.botMsg(event.getChannel().getName(), "Changing nickname on Freenode from " + Main.esperBot.getNick() + " to " + args[2] + "!");
+								event.getChannel().send().message("Changing nickname on Freenode from " + Main.freenodeBot.getNick() + " to " + args[2] + "!");
+								Logger.botMsg(event.getChannel().getName(), "Changing nickname on Freenode from " + Main.freenodeBot.getNick() + " to " + args[2] + "!");
 								Main.freenodeBot.sendIRC().changeNick(args[2]);
 							}
 						}
