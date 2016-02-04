@@ -37,12 +37,12 @@ public class RSSTimer
 				{
 					feedUrl = new URL("http://blog.counter-strike.net/index.php/feed/");
 				}
-				
+
 				feed = new SyndFeedInput().build(new XmlReader(feedUrl));
 				SyndEntry latestPost = feed.getEntries().get(0);
 				SyndEntry secondLatestPost = feed.getEntries().get(1);
 
-				if (!latestPost.getTitle().equals(lastTitle) && !lastTitle.equals("") && !latestPost.getTitle().equals(""))
+				if (!latestPost.getTitle().equals(lastTitle) && !lastTitle.equals("") && !latestPost.getTitle().equals("") && Util.isEnabled)
 				{
 					if (lastTitle.equals(secondLatestPost.getTitle()))
 					{

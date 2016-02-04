@@ -18,7 +18,6 @@ public class Changelog implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
-
 		Document doc = null;
 
 		try
@@ -75,7 +74,6 @@ public class Changelog implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
-
 		Document doc = null;
 
 		try
