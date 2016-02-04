@@ -81,3 +81,5 @@ PircBotX - 2.0.1
 slf4j-api - 1.7.13
 
 jsoup - 1.8.3
+
+Rome - 1.5.1
