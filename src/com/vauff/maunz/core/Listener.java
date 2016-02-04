@@ -33,6 +33,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new Intelligence());
 		commands.add(new Join());
 		commands.add(new Leave());
+		commands.add(new Nick());
 		commands.add(new Ping());
 		commands.add(new Reddit());
 		commands.add(new Restart());

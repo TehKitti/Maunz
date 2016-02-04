@@ -78,6 +78,9 @@ public class Help implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 		case "*leave":
 		case "leave":
 			return "Makes Maunz leave a channel, only useable by Vauff. Usage: *leave [channel]";
+		case "*nick":
+		case "nick":
+			return "Changes Maunz's nickname on a specific network, only useable by Vauff. Usage: *nick <network> <nickname>";
 		case "*ping":
 		case "ping":
 			return "Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server! Usage: *ping";

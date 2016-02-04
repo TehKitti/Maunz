@@ -22,6 +22,8 @@ _*enable_ - Enables Maunz.
 
 _*join \<channel>_ - Makes Maunz join a channel.
 
+_*nick \<network> \<nickname>_ - Changes Maunz's nickname on a specific network.
+
 *ping - Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server!
 
 *reddit \<subreddit> - Links you to a subreddit that you provide.
