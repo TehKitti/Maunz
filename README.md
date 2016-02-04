@@ -12,6 +12,8 @@ __Channel and PM Syntax__
  
 *accinfo \<username> - Gives you full information about any Minecraft account.
 
+*changelog [version] - Tells you the changelog of the Maunz version you specify.
+
 *chans - Lists the channels that Maunz is currently in.
  
 _*disable_ - Disables Maunz.

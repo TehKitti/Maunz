@@ -26,6 +26,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 		commands.add(new AccInfo());
 		commands.add(new BulliedMe());
 		commands.add(new BullyMe());
+		commands.add(new Changelog());
 		commands.add(new Chans());
 		commands.add(new Disable());
 		commands.add(new Enable());

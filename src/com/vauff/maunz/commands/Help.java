@@ -60,6 +60,9 @@ public class Help implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 		case "*bullyme":
 		case "bullyme":
 			return "Do you want somebody to bully you? This will send them a link to start with their bullying ways. Usage: *bullyme [channel] <username>";
+		case "*changelog":
+		case "changelog":
+			return "Tells you the changelog of the Maunz version you specify. Usage: *changelog [version]";
 		case "*chans":
 		case "chans":
 			return "Lists the channels that Maunz is currently in. Usage: *chans";
