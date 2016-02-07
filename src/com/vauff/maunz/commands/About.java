@@ -3,8 +3,9 @@ package com.vauff.maunz.commands;
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
-import org.apache.commons.lang3.StringUtils;
 import org.pircbotx.Colors;
+
+import org.apache.commons.lang3.StringUtils;
 
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Logger;

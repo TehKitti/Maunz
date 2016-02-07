@@ -90,6 +90,9 @@ public class Help implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 		case "*reddit":
 		case "reddit":
 			return "Links you to a subreddit that you provide. Usage: *reddit <subreddit>";
+		case "*reset":
+		case "reset":
+			return "Resets the Cleverbot session in the channel sent in. Usage: *reset";
 		case "*restart":
 		case "restart":
 			return "Restarts Maunz, only useable by Vauff. Usage: *restart";

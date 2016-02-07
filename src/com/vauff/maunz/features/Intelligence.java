@@ -1,5 +1,9 @@
 package com.vauff.maunz.features;
 
+import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
@@ -13,7 +17,8 @@ import com.vauff.maunz.core.Util;
 
 public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
-	private static boolean alreadyStartedSession = false;
+	public static HashMap<String, CleverbotSession> sessions = new HashMap<String, CleverbotSession>();
+	public static HashMap<String, Timer> sessionTimers = new HashMap<String, Timer>();
 
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
@@ -21,22 +26,59 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 		ChatterBotSession chatSession;
 		CleverbotSession session;
 
-		if (!alreadyStartedSession)
+		if (!sessions.containsKey(event.getChannel().getName()))
 		{
 			session = new CleverbotSession();
-			alreadyStartedSession = true;
-			Logger.log.info("Started a new Cleverbot session");
+			sessions.put(event.getChannel().getName(), session);
+			event.getChannel().send().message("New Cleverbot session started for " + event.getChannel().getName() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command. If this conversation gets long, please use #CleverMaunz if not already.");
+			Logger.botMsg(event.getChannel().getName(), "New Cleverbot session started for " + event.getChannel().getName() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command. If this conversation gets long, please use #CleverMaunz if not already.");
+
+			TimerTask timerTask = new TimerTask()
+			{
+
+				@Override
+				public void run()
+				{
+					sessions.remove(event.getChannel().getName());
+					Intelligence.sessionTimers.get(event.getChannel().getName()).cancel();
+					Intelligence.sessionTimers.remove(event.getChannel().getName());
+					event.getChannel().send().message("Session has been automatically ended after 15 minutes of inactivity!");
+					Logger.botMsg(event.getChannel().getName(), "Session has been automatically ended after 15 minutes of inactivity! A new one can be started by talking to me again.");
+				}
+			};
+
+			sessionTimers.put(event.getChannel().getName(), new Timer());
+			sessionTimers.get(event.getChannel().getName()).schedule(timerTask, 900000);
 		}
 		else
 		{
-			session = CleverbotSession.getInstance();
+			session = sessions.get(event.getChannel().getName());
+
+			TimerTask timerTask = new TimerTask()
+			{
+
+				@Override
+				public void run()
+				{
+					sessions.remove(event.getChannel().getName());
+					Intelligence.sessionTimers.get(event.getChannel().getName()).cancel();
+					Intelligence.sessionTimers.remove(event.getChannel().getName());
+					event.getChannel().send().message("Session has been automatically ended after 15 minutes of inactivity!");
+					Logger.botMsg(event.getChannel().getName(), "Session has been automatically ended after 15 minutes of inactivity! A new one can be started by talking to me again.");
+
+				}
+			};
+
+			sessionTimers.get(event.getChannel().getName()).cancel();
+			sessionTimers.put(event.getChannel().getName(), new Timer());
+			sessionTimers.get(event.getChannel().getName()).schedule(timerTask, 900000);
 		}
 
 		chatSession = session.getSession();
 		String response = chatSession.think(Util.addArgs(message, 1));
 
-		Logger.log.info("Sending \"" + response + "\" in response to " + event.getUser().getNick() + "'s message \"" + Util.addArgs(message, 1) + "\"!");
-		Logger.botMsg(event.getChannel().getName(), event.getUser().getNick() + ": " + response);
+		Logger.log.info("Sending \"" + response + "\" in response to " + event.getChannel().getName() + "'s message \"" + Util.addArgs(message, 1) + "\"!");
+		Logger.botMsg(event.getChannel().getName(), event.getChannel().getName() + ": " + response);
 		event.respond(response);
 	}
 
@@ -46,15 +88,52 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 		ChatterBotSession chatSession;
 		CleverbotSession session;
 
-		if (!alreadyStartedSession)
+		if (!sessions.containsKey(event.getUser().getNick()))
 		{
 			session = new CleverbotSession();
-			alreadyStartedSession = true;
-			Logger.log.info("Started a new Cleverbot session");
+			sessions.put(event.getUser().getNick(), session);
+			event.respond("New Cleverbot session started for " + event.getUser().getNick() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command.");
+			Logger.botMsg(event.getUser().getNick(), "New Cleverbot session started for " + event.getUser().getNick() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command.");
+
+			TimerTask timerTask = new TimerTask()
+			{
+
+				@Override
+				public void run()
+				{
+					sessions.remove(event.getUser().getNick());
+					Intelligence.sessionTimers.get(event.getUser().getNick()).cancel();
+					Intelligence.sessionTimers.remove(event.getUser().getNick());
+					event.respond("Session has been automatically ended after 15 minutes of inactivity!");
+					Logger.botMsg(event.getUser().getNick(), "Session has been automatically ended after 15 minutes of inactivity! A new one can be started by talking to me again.");
+				}
+			};
+
+			sessionTimers.put(event.getUser().getNick(), new Timer());
+			sessionTimers.get(event.getUser().getNick()).schedule(timerTask, 900000);
 		}
 		else
 		{
-			session = CleverbotSession.getInstance();
+			session = sessions.get(event.getUser().getNick());
+
+			TimerTask timerTask = new TimerTask()
+			{
+
+				@Override
+				public void run()
+				{
+					sessions.remove(event.getUser().getNick());
+					Intelligence.sessionTimers.get(event.getUser().getNick()).cancel();
+					Intelligence.sessionTimers.remove(event.getUser().getNick());
+					event.respond("Session has been automatically ended after 15 minutes of inactivity!");
+					Logger.botMsg(event.getUser().getNick(), "Session has been automatically ended after 15 minutes of inactivity! A new one can be started by talking to me again.");
+
+				}
+			};
+
+			sessionTimers.get(event.getUser().getNick()).cancel();
+			sessionTimers.put(event.getUser().getNick(), new Timer());
+			sessionTimers.get(event.getUser().getNick()).schedule(timerTask, 900000);
 		}
 
 		chatSession = session.getSession();

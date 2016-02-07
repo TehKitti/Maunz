@@ -7,8 +7,7 @@ import com.google.code.chatterbotapi.ChatterBotType;
 
 public class CleverbotSession
 {
-	private static ChatterBotSession session;
-	private static CleverbotSession instance;
+	private ChatterBotSession session;
 
 	public CleverbotSession() throws Exception
 	{
@@ -16,16 +15,10 @@ public class CleverbotSession
 		ChatterBot bot = factory.create(ChatterBotType.CLEVERBOT);
 
 		session = bot.createSession();
-		instance = this;
 	}
 
-	public static ChatterBotSession getSession()
+	public ChatterBotSession getSession()
 	{
 		return session;
-	}
-
-	public static CleverbotSession getInstance()
-	{
-		return instance;
 	}
 }

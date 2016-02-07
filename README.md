@@ -30,6 +30,8 @@ _*nick \<network> \<nickname>_ - Changes Maunz's nickname on a specific network.
 
 *reddit \<subreddit> - Links you to a subreddit that you provide.
 
+*reset - Resets the Cleverbot session in the channel sent in.
+
 _*restart_ - Restarts Maunz.
  
 *source - Links you to the GitHub page of Maunz, you can submit issues/pull requests here.
