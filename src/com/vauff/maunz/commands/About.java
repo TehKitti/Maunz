@@ -14,13 +14,14 @@ import com.vauff.maunz.core.Util;
 
 public class About implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
-	String builddate = "Wednesday February 3rd 2015, 8:00 PM GMT";
+	String builddate = "Sunday February 7th 2015, 10:36 PM GMT";
 
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
 	{
 		event.getChannel().send().message(Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
 		Logger.botMsg(event.getChannel().getName(), Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
+		
 		if (Main.devMode)
 		{
 			event.getChannel().send().message(Colors.DARK_GREEN + "Maunz is an IRC bot created by V4uff with help from blackscore");
