@@ -1,12 +1,12 @@
 package com.vauff.maunz.features;
 
 import java.io.File;
-import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
 import org.pircbotx.Colors;
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
