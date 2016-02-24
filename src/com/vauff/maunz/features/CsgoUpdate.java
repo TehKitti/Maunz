@@ -1,9 +1,12 @@
 package com.vauff.maunz.features;
 
+import java.io.File;
+import java.util.ArrayList;
+
+import org.apache.commons.io.FileUtils;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
 import org.pircbotx.Colors;
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
@@ -36,7 +39,10 @@ public class CsgoUpdate extends ListenerAdapter<PircBotX>
 				{
 					try
 					{
+						File htmlFile = new File("steamdb" + Math.random() + ".html");
+						
 						doc = Jsoup.connect("https://steamdb.info/app/730/history").userAgent(" ").get();
+						FileUtils.write(htmlFile, doc.html());
 						trystatus = false;
 					}
 					catch (HttpStatusException e)
@@ -61,7 +67,7 @@ public class CsgoUpdate extends ListenerAdapter<PircBotX>
 						msg = "bl4ckscor3, Vauff, SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
 					}
 					
-					Logger.log.info("Found a CS:GO 730 update that got pushed, sending info to " + Util.mainChannel + "...");
+					Logger.log.info("Found a CS:GO 730 update that got pushed with changelog number " + lastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
 					Logger.botMsg(Util.mainChannel, msg);
 					Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 				}
@@ -70,13 +76,17 @@ public class CsgoUpdate extends ListenerAdapter<PircBotX>
 				{
 					String msg = "SteamDB has spotted an update for CS:GO on the 730 branch, this means an update might be coming. https://steamdb.info/app/730/history/";
 
-					Logger.log.info("Found a CS:GO 730 update, sending info to " + Util.mainChannel + "...");
+					Logger.log.info("Found a CS:GO 730 update with changelog number " + lastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
 					Logger.botMsg(Util.mainChannel, msg);
 					Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 				}
 				else
 				{
-					Logger.log.info("Found a non-important CS:GO 730 update, so info will not be sent to " + Util.mainChannel);
+					String msg = "SteamDB has spotted a non-important update for CS:GO on the 730 branch, this most likely doesn't mean anything. https://steamdb.info/app/730/history/";
+					
+					Logger.log.info("Found a non-important CS:GO 730 update that got pushed with changelog number" + lastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
+					Logger.botMsg(Util.mainChannel, msg);
+					Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 				}
 			}
 
@@ -84,7 +94,7 @@ public class CsgoUpdate extends ListenerAdapter<PircBotX>
 			{
 				String msg = "SteamDB has spotted an update for CS:GO on the 741 branch, this means that an update is definitely coming! https://steamdb.info/app/741/history/";
 
-				Logger.log.info("Found a CS:GO 741 update, sending info to " + Util.mainChannel + "...");
+				Logger.log.info("Found a CS:GO 741 update with changelog number " + lastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
 				Logger.botMsg(Util.mainChannel, msg);
 				Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 			}

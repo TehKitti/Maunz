@@ -14,7 +14,7 @@ import com.vauff.maunz.core.Util;
 
 public class About implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
 {
-	String builddate = "Monday February 8th 2015, 10:03 PM GMT";
+	String builddate = "Wednesday February 24th 2016, 2:12 AM GMT";
 
 	@Override
 	public void exeChan(MessageEvent<PircBotX> event) throws Exception
