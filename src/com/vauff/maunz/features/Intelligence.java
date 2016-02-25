@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -15,12 +14,12 @@ import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
-public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 	public static HashMap<String, CleverbotSession> sessions = new HashMap<String, CleverbotSession>();
 	public static HashMap<String, Timer> sessionTimers = new HashMap<String, Timer>();
 
-	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	public void exeChan(MessageEvent event) throws Exception
 	{
 		String[] message = event.getMessage().split(" ");
 		ChatterBotSession chatSession;
@@ -30,7 +29,7 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 		{
 			session = new CleverbotSession();
 			sessions.put(event.getChannel().getName(), session);
-			event.getChannel().send().message("New Cleverbot session started for " + event.getChannel().getName() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command. If this conversation gets long, please use #CleverMaunz if not already.");
+			event.respondChannel("New Cleverbot session started for " + event.getChannel().getName() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command. If this conversation gets long, please use #CleverMaunz if not already.");
 			Logger.botMsg(event.getChannel().getName(), "New Cleverbot session started for " + event.getChannel().getName() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command. If this conversation gets long, please use #CleverMaunz if not already.");
 
 			TimerTask timerTask = new TimerTask()
@@ -42,7 +41,7 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 					sessions.remove(event.getChannel().getName());
 					Intelligence.sessionTimers.get(event.getChannel().getName()).cancel();
 					Intelligence.sessionTimers.remove(event.getChannel().getName());
-					event.getChannel().send().message("Session has been automatically ended after 15 minutes of inactivity!");
+					event.respondChannel("Session has been automatically ended after 15 minutes of inactivity!");
 					Logger.botMsg(event.getChannel().getName(), "Session has been automatically ended after 15 minutes of inactivity! A new one can be started by talking to me again.");
 				}
 			};
@@ -63,7 +62,7 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 					sessions.remove(event.getChannel().getName());
 					Intelligence.sessionTimers.get(event.getChannel().getName()).cancel();
 					Intelligence.sessionTimers.remove(event.getChannel().getName());
-					event.getChannel().send().message("Session has been automatically ended after 15 minutes of inactivity!");
+					event.respondChannel("Session has been automatically ended after 15 minutes of inactivity!");
 					Logger.botMsg(event.getChannel().getName(), "Session has been automatically ended after 15 minutes of inactivity! A new one can be started by talking to me again.");
 
 				}
@@ -82,7 +81,7 @@ public class Intelligence implements ICommand<MessageEvent<PircBotX>, PrivateMes
 		event.respond(response);
 	}
 
-	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
 		String[] message = event.getMessage().split(" ");
 		ChatterBotSession chatSession;

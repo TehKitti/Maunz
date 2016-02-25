@@ -1,6 +1,5 @@
 package com.vauff.maunz.commands;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -9,16 +8,16 @@ import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
-public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+public class BulliedMe implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 	@Override
-	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	public void exeChan(MessageEvent event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
 
 		if (args.length == 1)
 		{
-			event.getChannel().send().message("Nobody bullied you? Okay then.");
+			event.respondChannel("Nobody bullied you? Okay then.");
 			Logger.botMsg(event.getChannel().getName(), "Nobody bullied you? Okay then.");
 		}
 		else
@@ -29,7 +28,7 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 				{
 					if (args.length == 2)
 					{
-						event.getChannel().send().message("Nobody bullied you? Okay then.");
+						event.respondChannel("Nobody bullied you? Okay then.");
 						Logger.botMsg(event.getChannel().getName(), "Nobody bullied you? Okay then.");
 					}
 					else
@@ -40,20 +39,20 @@ public class BulliedMe implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 				}
 				else
 				{
-					event.getChannel().send().message("I am not in the channel " + args[1] + "!");
+					event.respondChannel("I am not in the channel " + args[1] + "!");
 					Logger.botMsg(event.getChannel().getName(), "I am not in the channel " + args[1] + "!");
 				}
 			}
 			else
 			{
-				event.getChannel().send().message(Util.addArgs(args, 1) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
+				event.respondChannel(Util.addArgs(args, 1) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
 				Logger.botMsg(event.getChannel().getName(), Util.addArgs(args, 1) + ": Stop being a bully! Read http://stop-irc-bullying.eu/stop/");
 			}
 		}
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
 

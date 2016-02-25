@@ -1,34 +1,33 @@
 package com.vauff.maunz.commands;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Logger;
 
-public class Help implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 
 	@Override
-	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	public void exeChan(MessageEvent event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
 
 		if (args.length == 1)
 		{
-			event.getChannel().send().message("Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
+			event.respondChannel("Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
 			Logger.botMsg(event.getChannel().getName(), "Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
 		}
 		else
 		{
-			event.getChannel().send().message(cmdHelp(args));
+			event.respondChannel(cmdHelp(args));
 			Logger.botMsg(event.getChannel().getName(), cmdHelp(args));
 		}
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
 

@@ -1,6 +1,5 @@
 package com.vauff.maunz.commands;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -8,10 +7,10 @@ import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 
-public class Nick implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 	@Override
-	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	public void exeChan(MessageEvent event) throws Exception
 	{
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
@@ -19,7 +18,7 @@ public class Nick implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 
 			if (args.length == 1)
 			{
-				event.getChannel().send().message("I need a network name and a nickname specified!");
+				event.respondChannel("I need a network name and a nickname specified!");
 				Logger.botMsg(event.getChannel().getName(), "I need a network name and a nickname specified!");
 			}
 			else
@@ -28,7 +27,7 @@ public class Nick implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 				{
 					if (args.length == 2)
 					{
-						event.getChannel().send().message("You need to give me a nickname!");
+						event.respondChannel("You need to give me a nickname!");
 						Logger.botMsg(event.getChannel().getName(), "You need to give me a nickname!");
 					}
 					else
@@ -37,12 +36,12 @@ public class Nick implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 						{
 							if (args[2].equals(Main.esperBot.getNick()))
 							{
-								event.getChannel().send().message("That is the nick that I am already using!");
+								event.respondChannel("That is the nick that I am already using!");
 								Logger.botMsg(event.getChannel().getName(), "That is the nick that I am already using!");
 							}
 							else
 							{
-								event.getChannel().send().message("Changing nickname on Esper from " + Main.esperBot.getNick() + " to " + args[2] + "!");
+								event.respondChannel("Changing nickname on Esper from " + Main.esperBot.getNick() + " to " + args[2] + "!");
 								Logger.botMsg(event.getChannel().getName(), "Changing nickname on Esper from " + Main.esperBot.getNick() + " to " + args[2] + "!");
 								Main.esperBot.sendIRC().changeNick(args[2]);
 							}
@@ -51,12 +50,12 @@ public class Nick implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 						{
 							if (args[2].equals(Main.freenodeBot.getNick()))
 							{
-								event.getChannel().send().message("That is the nick that I am already using!");
+								event.respondChannel("That is the nick that I am already using!");
 								Logger.botMsg(event.getChannel().getName(), "That is the nick that I am already using!");
 							}
 							else
 							{
-								event.getChannel().send().message("Changing nickname on Freenode from " + Main.freenodeBot.getNick() + " to " + args[2] + "!");
+								event.respondChannel("Changing nickname on Freenode from " + Main.freenodeBot.getNick() + " to " + args[2] + "!");
 								Logger.botMsg(event.getChannel().getName(), "Changing nickname on Freenode from " + Main.freenodeBot.getNick() + " to " + args[2] + "!");
 								Main.freenodeBot.sendIRC().changeNick(args[2]);
 							}
@@ -65,20 +64,20 @@ public class Nick implements ICommand<MessageEvent<PircBotX>, PrivateMessageEven
 				}
 				else
 				{
-					event.getChannel().send().message("I'm not on the network " + args[1] + "!");
+					event.respondChannel("I'm not on the network " + args[1] + "!");
 					Logger.botMsg(event.getChannel().getName(), "I'm not on the network " + args[1] + "!");
 				}
 			}
 		}
 		else
 		{
-			event.getChannel().send().message("You do not have permission to use that command");
+			event.respondChannel("You do not have permission to use that command");
 			Logger.botMsg(event.getChannel().getName(), "You do not have permission to use that command");
 		}
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{

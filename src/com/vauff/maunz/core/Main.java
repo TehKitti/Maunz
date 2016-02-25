@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.LogManager;
 
 import org.pircbotx.Configuration;
+import org.pircbotx.MultiBotManager;
 import org.pircbotx.PircBotX;
 
 import com.vauff.maunz.features.CsgoUpdate;
@@ -16,12 +17,12 @@ import com.vauff.maunz.features.RSSTimer;
 
 public class Main
 {
-	public static CustomMultiBotManager<PircBotX> manager;
+	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.13.2";
+	public static String version = "3.13.3";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
@@ -58,37 +59,37 @@ public class Main
 
 	public static void createBot() throws Exception
 	{
-		Configuration<PircBotX> esperConfig = new Configuration.Builder<PircBotX>()
+		Configuration esperConfig = new Configuration.Builder()
 				.setName("Maunz")
 				.setVersion(version)
 				.setLogin("Maunz")
-				.setNickservPassword(Passwords.NICKSERV)
+				.setNickservPassword(Passwords.esperNickServ)
 				.setAutoNickChange(true)
 				.setCapEnabled(true)
 				.setMessageDelay(400)
 				.setRealName("Maunz, an IRC bot created by Vauff.")
-				.setServerHostname("irc.esper.net")
+				.addServer("irc.esper.net")
 				.addListener(new Listener())
 				.addListener(new Grammar())
 				.addListener(new Logger())
 				.buildForServer("irc.esper.net");
 
-		Configuration<PircBotX> freenodeConfig = new Configuration.Builder<PircBotX>()
+		Configuration freenodeConfig = new Configuration.Builder()
 				.setName("Maunz")
 				.setVersion(version)
 				.setLogin("Maunz")
-				.setNickservPassword(Passwords.NICKSERV)
+				.setNickservPassword(Passwords.freenodeNickServ)
 				.setAutoNickChange(true)
 				.setCapEnabled(true)
 				.setMessageDelay(400)
 				.setRealName("Maunz, an IRC bot created by Vauff.")
-				.setServerHostname("irc.freenode.net")
+				.addServer("irc.freenode.net")
 				.addAutoJoinChannel(Util.freenodeChannel)
 				.addListener(new CsgoUpdate())
 				.addListener(new Logger())
 				.buildForServer("irc.freenode.net");
 
-		manager = new CustomMultiBotManager<PircBotX>();
+		manager = new MultiBotManager();
 		manager.addBot(esperConfig);
 		manager.addBot(freenodeConfig);
 		manager.start();

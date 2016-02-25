@@ -4,7 +4,6 @@ import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -12,10 +11,10 @@ import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 
-public class Changelog implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+public class Changelog implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 	@Override
-	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	public void exeChan(MessageEvent event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
 		Document doc = null;
@@ -55,23 +54,23 @@ public class Changelog implements ICommand<MessageEvent<PircBotX>, PrivateMessag
 					continue;
 				}
 
-				event.getChannel().send().message("- " + split[i].substring(0, split[i].length() - 2));
+				event.respondChannel("- " + split[i].substring(0, split[i].length() - 2));
 				Logger.botMsg(event.getChannel().getName(), "- " + split[i].substring(0, split[i].length() - 2));
 			}
 
-			event.getChannel().send().message("GitHub link: " + link);
+			event.respondChannel("GitHub link: " + link);
 			Logger.botMsg(event.getChannel().getName(), "GitHub link: " + link);
 		}
 		catch (HttpStatusException e)
 		{
 			Logger.log.error(e);
-			event.getChannel().send().message("That version of Maunz doesn't exist!");
+			event.respondChannel("That version of Maunz doesn't exist!");
 			Logger.botMsg(event.getChannel().getName(), "That version of Maunz doesn't exist!");
 		}
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
 		Document doc = null;

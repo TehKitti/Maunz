@@ -6,7 +6,6 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -15,14 +14,14 @@ import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
-public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 	@Override
-	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	public void exeChan(MessageEvent event) throws Exception
 	{
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
-			event.getChannel().send().message("I will run the auto update sequence!");
+			event.respondChannel("I will run the auto update sequence!");
 			Logger.botMsg(event.getChannel().getName(), "I will run the auto update sequence!");
 
 			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
@@ -41,13 +40,13 @@ public class Update implements ICommand<MessageEvent<PircBotX>, PrivateMessageEv
 		}
 		else
 		{
-			event.getChannel().send().message("You do not have permission to use that command");
+			event.respondChannel("You do not have permission to use that command");
 			Logger.botMsg(event.getChannel().getName(), "You do not have permission to use that command");
 		}
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{

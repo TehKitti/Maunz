@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.vauff.maunz</groupId>
 	<artifactId>maunz</artifactId>
-	<version>3.13.2</version>
+	<version>3.13.3</version>
 	<name>Maunz</name>
 	<description>Maunz is an IRC bot created by Vauff with help from bl4ckscor3</description>
 	<build>
@@ -33,7 +33,7 @@
 		<dependency>
 			<groupId>org.pircbotx</groupId>
 			<artifactId>pircbotx</artifactId>
-			<version>2.0.1</version>
+			<version>2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -58,7 +58,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.13</version>
+			<version>1.7.16</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>

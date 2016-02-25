@@ -6,17 +6,16 @@ import java.net.URL;
 
 import org.apache.commons.lang3.StringUtils;
 import org.pircbotx.Colors;
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Logger;
 
-public class AccInfo implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+public class AccInfo implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 	@Override
-	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	public void exeChan(MessageEvent event) throws Exception
 	{
 		try
 		{
@@ -27,26 +26,26 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 
 			if (args[1].contains("#") || args[1].contains("&"))
 			{
-				event.getChannel().send().message("The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
+				event.respondChannel("The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 				Logger.botMsg(event.getChannel().getName(), "The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 			}
 			else
 			{
 				if (statusraw.equalsIgnoreCase("unknown username"))
 				{
-					event.getChannel().send().message("The Minecraft account name " + args[1] + " is free and does not belong to any account!");
+					event.respondChannel("The Minecraft account name " + args[1] + " is free and does not belong to any account!");
 					Logger.botMsg(event.getChannel().getName(), "The Minecraft account name " + args[1] + " is free and does not belong to any account!");
 				}
 
 				else if (statusraw.equalsIgnoreCase("Username must be 16 characters or less."))
 				{
-					event.getChannel().send().message("The Minecraft account name " + args[1] + " must be 16 characters or less.");
+					event.respondChannel("The Minecraft account name " + args[1] + " must be 16 characters or less.");
 					Logger.botMsg(event.getChannel().getName(), "The Minecraft account name " + args[1] + " must be 16 characters or less.");
 				}
 
 				else if (statusraw.equalsIgnoreCase("Username must be alphanumerical (or contain '_')."))
 				{
-					event.getChannel().send().message("The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
+					event.respondChannel("The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 					Logger.botMsg(event.getChannel().getName(), "The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 				}
 
@@ -66,32 +65,32 @@ public class AccInfo implements ICommand<MessageEvent<PircBotX>, PrivateMessageE
 						uuidstatus = uuidstatusrawsplit[3].replace("\"", "").replace("}", "");
 					}
 
-					event.getChannel().send().message(Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");
+					event.respondChannel(Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");
 					Logger.botMsg(event.getChannel().getName(), Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");
-					event.getChannel().send().message(Colors.PURPLE + "Account Status: " + Colors.RED + "Premium");
+					event.respondChannel(Colors.PURPLE + "Account Status: " + Colors.RED + "Premium");
 					Logger.botMsg(event.getChannel().getName(), Colors.PURPLE + "Account Status: " + Colors.RED + "Premium");
-					event.getChannel().send().message(Colors.PURPLE + "Migrated: " + Colors.RED + StringUtils.capitalize(status[2]));
+					event.respondChannel(Colors.PURPLE + "Migrated: " + Colors.RED + StringUtils.capitalize(status[2]));
 					Logger.botMsg(event.getChannel().getName(), Colors.PURPLE + "Migrated: " + Colors.RED + StringUtils.capitalize(status[2]));
-					event.getChannel().send().message(Colors.PURPLE + "UUID: " + Colors.RED + uuidstatus);
+					event.respondChannel(Colors.PURPLE + "UUID: " + Colors.RED + uuidstatus);
 					Logger.botMsg(event.getChannel().getName(), Colors.PURPLE + "UUID: " + Colors.RED + uuidstatus);
-					event.getChannel().send().message(Colors.PURPLE + "Skin: " + "https://minotar.net/body/" + status[1] + "/500.png");
+					event.respondChannel(Colors.PURPLE + "Skin: " + "https://minotar.net/body/" + status[1] + "/500.png");
 					Logger.botMsg(event.getChannel().getName(), Colors.PURPLE + "Skin: " + "https://minotar.net/body/" + status[1] + "/500.png");
-					event.getChannel().send().message(Colors.PURPLE + "Raw Skin: " + "https://minotar.net/skin/" + status[1]);
+					event.respondChannel(Colors.PURPLE + "Raw Skin: " + "https://minotar.net/skin/" + status[1]);
 					Logger.botMsg(event.getChannel().getName(), Colors.PURPLE + "Raw Skin: " + "https://minotar.net/skin/" + status[1]);
-					event.getChannel().send().message(Colors.BROWN + "****************************************");
+					event.respondChannel(Colors.BROWN + "****************************************");
 					Logger.botMsg(event.getChannel().getName(), Colors.BROWN + "****************************************");
 				}
 			}
 		}
 		catch (ArrayIndexOutOfBoundsException e)
 		{
-			event.getChannel().send().message("Provide a username for me please!");
+			event.respondChannel("Provide a username for me please!");
 			Logger.botMsg(event.getChannel().getName(), "Provide a username for me please!");
 		}
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
 		try
 		{

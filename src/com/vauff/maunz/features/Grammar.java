@@ -2,16 +2,15 @@ package com.vauff.maunz.features;
 
 import java.util.Arrays;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
 import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Util;
 
-public class Grammar extends ListenerAdapter<PircBotX>
+public class Grammar extends ListenerAdapter
 {
-	public void onMessage(MessageEvent<PircBotX> event) throws Exception
+	public void onMessage(MessageEvent event) throws Exception
 	{
 		if (Util.isEnabled == true && !event.getUser().getNick().startsWith("SCUser_"))
 		{

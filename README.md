@@ -76,13 +76,15 @@ Apache Commons Codec - 1.10
 
 Apache Commons Lang - 3.4
 
+Apache Commons IO - 2.4
+
 Guava - 19.0
 
 log4j - 1.2.17
 
-PircBotX - 2.0.1
+PircBotX - 2.1
 
-slf4j-api - 1.7.13
+slf4j-api - 1.7.16
 
 jsoup - 1.8.3
 

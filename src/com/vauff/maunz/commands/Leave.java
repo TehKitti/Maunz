@@ -1,6 +1,5 @@
 package com.vauff.maunz.commands;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -9,10 +8,10 @@ import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
-public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+public class Leave implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 	@Override
-	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	public void exeChan(MessageEvent event) throws Exception
 	{
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{
@@ -24,13 +23,13 @@ public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 				{
 					if (!Util.hasJoinedChannel(args[1]))
 					{
-						event.getChannel().send().message("I am not in " + args[1] + "!");
+						event.respondChannel("I am not in " + args[1] + "!");
 						Logger.botMsg(event.getChannel().getName(), "I am not in " + args[1] + "!");
 					}
 
 					if (Util.hasJoinedChannel(args[1]))
 					{
-						event.getChannel().send().message("I will leave " + args[1] + "!");
+						event.respondChannel("I will leave " + args[1] + "!");
 						Logger.botMsg(event.getChannel().getName(), "I will leave " + args[1] + "!");
 						Main.esperBot.sendRaw().rawLine("PART " + args[1] + " :" + "Parting");
 					}
@@ -38,26 +37,26 @@ public class Leave implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 
 				if (!args[1].startsWith("#"))
 				{
-					event.getChannel().send().message("Channel name must start with a #");
+					event.respondChannel("Channel name must start with a #");
 					Logger.botMsg(event.getChannel().getName(), "Channel name must start with a #");
 				}
 			}
 			else
 			{
-				event.getChannel().send().message("I will leave " + event.getChannel().getName() + "!");
+				event.respondChannel("I will leave " + event.getChannel().getName() + "!");
 				Logger.botMsg(event.getChannel().getName(), "I will leave " + event.getChannel().getName() + "!");
 				Main.esperBot.sendRaw().rawLine("PART " + event.getChannel().getName() + " :" + "Parting");
 			}
 		}
 		else
 		{
-			event.getChannel().send().message("You do not have permission to use that command");
+			event.respondChannel("You do not have permission to use that command");
 			Logger.botMsg(event.getChannel().getName(), "You do not have permission to use that command");
 		}
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
 		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
 		{

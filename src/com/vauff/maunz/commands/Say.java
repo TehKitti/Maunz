@@ -1,6 +1,5 @@
 package com.vauff.maunz.commands;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -9,13 +8,13 @@ import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
-public class Say implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+public class Say implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 	public static String whoSay = "";
 	public static String whoSayTime = "";
 
 	@Override
-	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	public void exeChan(MessageEvent event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
 
@@ -35,20 +34,20 @@ public class Say implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent
 					}
 					else
 					{
-						event.getChannel().send().message("I need a message to send!");
+						event.respondChannel("I need a message to send!");
 						Logger.botMsg(event.getChannel().getName(), "I need a message to send!");
 					}
 				}
 				else
 				{
-					event.getChannel().send().message("I am not in the channel " + args[1] + "!");
+					event.respondChannel("I am not in the channel " + args[1] + "!");
 					Logger.botMsg(event.getChannel().getName(), "I am not in the channel " + args[1] + "!");
 				}
 			}
 			else
 			{
 				Logger.log.info(event.getUser().getNick() + " is sending " + Util.addArgs(args, 1) + " to " + event.getChannel().getName());
-				event.getChannel().send().message(Util.addArgs(args, 1));
+				event.respondChannel(Util.addArgs(args, 1));
 				Logger.botMsg(event.getChannel().getName(), Util.addArgs(args, 1));
 				whoSay = event.getUser().getNick();
 				whoSayTime = Util.getTime();
@@ -56,13 +55,13 @@ public class Say implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent
 		}
 		else
 		{
-			event.getChannel().send().message("I need a message to send!");
+			event.respondChannel("I need a message to send!");
 			Logger.botMsg(event.getChannel().getName(), "I need a message to send!");
 		}
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
 		String[] args = event.getMessage().split(" ");
 

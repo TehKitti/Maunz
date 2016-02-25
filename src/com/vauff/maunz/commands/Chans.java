@@ -1,6 +1,5 @@
 package com.vauff.maunz.commands;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -8,10 +7,10 @@ import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Util;
 
-public class Chans implements ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>
+public class Chans implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 	@Override
-	public void exeChan(MessageEvent<PircBotX> event) throws Exception
+	public void exeChan(MessageEvent event) throws Exception
 	{
 		String chans = "";
 
@@ -21,12 +20,12 @@ public class Chans implements ICommand<MessageEvent<PircBotX>, PrivateMessageEve
 		}
 		
 		chans = chans.substring(0, chans.lastIndexOf(" | "));
-		event.getChannel().send().message("I am currently in the following channels: " + chans);
+		event.respondChannel("I am currently in the following channels: " + chans);
 		Logger.botMsg(event.getChannel().getName(), "I am currently in the following channels: " + chans);
 	}
 
 	@Override
-	public void exePrivate(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
 		String chans = "";
 

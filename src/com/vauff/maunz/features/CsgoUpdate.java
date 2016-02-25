@@ -8,7 +8,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import org.pircbotx.Colors;
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -16,12 +15,12 @@ import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
-public class CsgoUpdate extends ListenerAdapter<PircBotX>
+public class CsgoUpdate extends ListenerAdapter
 {
 	private String lastChangelistNumber = "";
 	public static String listeningNick;
 
-	public void onMessage(MessageEvent<PircBotX> event) throws Exception
+	public void onMessage(MessageEvent event) throws Exception
 	{
 		if ((event.getUser().getNick().equals(listeningNick)) && Util.isEnabled == true)
 		{

@@ -3,7 +3,6 @@ package com.vauff.maunz.core;
 import org.apache.commons.lang3.StringUtils;
 
 import org.pircbotx.Colors;
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ActionEvent;
 import org.pircbotx.hooks.events.JoinEvent;
@@ -17,7 +16,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 import org.pircbotx.hooks.events.QuitEvent;
 import org.pircbotx.hooks.events.ServerPingEvent;
 
-public class Logger extends ListenerAdapter<PircBotX>
+public class Logger extends ListenerAdapter
 {
 	public static org.apache.log4j.Logger log;
 
@@ -42,7 +41,7 @@ public class Logger extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onMessage(MessageEvent<PircBotX> event)
+	public void onMessage(MessageEvent event)
 	{
 		if (!event.getUser().getNick().equals("SteamDB"))
 		{
@@ -57,7 +56,7 @@ public class Logger extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onPrivateMessage(PrivateMessageEvent<PircBotX> event)
+	public void onPrivateMessage(PrivateMessageEvent event)
 	{
 		if (Util.isEnabled)
 		{
@@ -69,7 +68,7 @@ public class Logger extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onServerPing(ServerPingEvent<PircBotX> event)
+	public void onServerPing(ServerPingEvent event)
 	{
 		try
 		{
@@ -84,7 +83,7 @@ public class Logger extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onQuit(QuitEvent<PircBotX> event)
+	public void onQuit(QuitEvent event)
 	{
 		if (!event.getUser().getNick().equals(Main.esperBot.getNick()) && !event.getUser().getNick().equals(Main.freenodeBot.getNick()))
 		{
@@ -110,7 +109,7 @@ public class Logger extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onPart(PartEvent<PircBotX> event)
+	public void onPart(PartEvent event)
 	{
 		if (!event.getUser().getNick().equals(Main.esperBot.getNick()) && !event.getUser().getNick().equals(Main.freenodeBot.getNick()))
 		{
@@ -137,7 +136,7 @@ public class Logger extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onJoin(JoinEvent<PircBotX> event) throws InterruptedException
+	public void onJoin(JoinEvent event) throws InterruptedException
 	{
 		if (!event.getUser().getNick().equals(Main.esperBot.getNick()) && !event.getUser().getNick().equals(Main.freenodeBot.getNick()))
 		{
@@ -150,17 +149,17 @@ public class Logger extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onNickChange(NickChangeEvent<PircBotX> event)
+	public void onNickChange(NickChangeEvent event)
 	{
 		log.info(event.getOldNick() + " just changed their nick to " + event.getNewNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
 	}
 
-	public void onAction(ActionEvent<PircBotX> event)
+	public void onAction(ActionEvent event)
 	{
 		log.info(event.getChannel().getName() + " | -*- " + event.getUser().getNick() + " " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
 	}
 
-	public void onNotice(NoticeEvent<PircBotX> event)
+	public void onNotice(NoticeEvent event)
 	{
 		if (!event.getUser().getNick().contains(".esper.net") && !event.getUser().getNick().contains(".freenode.net"))
 		{
@@ -168,7 +167,7 @@ public class Logger extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onMode(ModeEvent<PircBotX> event)
+	public void onMode(ModeEvent event)
 	{
 		try
 		{
@@ -181,7 +180,7 @@ public class Logger extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onKick(KickEvent<PircBotX> event)
+	public void onKick(KickEvent event)
 	{
 		if (!event.getRecipient().getNick().equals(Main.esperBot.getNick()) && !event.getRecipient().getNick().equals(Main.freenodeBot.getNick()))
 		{

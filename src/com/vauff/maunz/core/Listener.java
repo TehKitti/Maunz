@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 import org.apache.commons.lang3.time.StopWatch;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -15,9 +14,9 @@ import com.vauff.maunz.commands.*;
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.features.Intelligence;
 
-public class Listener extends ListenerAdapter<PircBotX>
+public class Listener extends ListenerAdapter
 {
-	private LinkedList<ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>> commands = new LinkedList<ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>>>();
+	private LinkedList<ICommand<MessageEvent, PrivateMessageEvent>> commands = new LinkedList<ICommand<MessageEvent, PrivateMessageEvent>>();
 	public static StopWatch uptime = new StopWatch();
 
 	public Listener()
@@ -49,13 +48,13 @@ public class Listener extends ListenerAdapter<PircBotX>
 
 	}
 
-	public void onMessage(MessageEvent<PircBotX> event) throws Exception
+	public void onMessage(MessageEvent event) throws Exception
 	{
 		String cmdName = event.getMessage().split(" ")[0];
 
 		if (Util.isEnabled)
 		{
-			for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
+			for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
 			{
 				for (String s : cmd.getAliases())
 				{
@@ -68,7 +67,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 		}
 		else
 		{
-			for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
+			for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
 			{
 				if (cmd instanceof Enable || cmd instanceof Disable)
 				{
@@ -84,13 +83,13 @@ public class Listener extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onPrivateMessage(PrivateMessageEvent<PircBotX> event) throws Exception
+	public void onPrivateMessage(PrivateMessageEvent event) throws Exception
 	{
 		String cmdName = event.getMessage().split(" ")[0];
 
 		if (Util.isEnabled)
 		{
-			for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
+			for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
 			{
 				for (String s : cmd.getAliases())
 				{
@@ -103,7 +102,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 		}
 		else
 		{
-			for (ICommand<MessageEvent<PircBotX>, PrivateMessageEvent<PircBotX>> cmd : commands)
+			for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
 			{
 				if (cmd instanceof Enable || cmd instanceof Disable)
 				{
@@ -119,7 +118,7 @@ public class Listener extends ListenerAdapter<PircBotX>
 		}
 	}
 
-	public void onConnect(ConnectEvent<PircBotX> event) throws IOException
+	public void onConnect(ConnectEvent event) throws IOException
 	{
 		Main.esperID += 2;
 		Main.freenodeID += 2;
