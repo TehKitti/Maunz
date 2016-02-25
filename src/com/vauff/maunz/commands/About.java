@@ -13,7 +13,7 @@ import com.vauff.maunz.core.Util;
 
 public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 {
-	String builddate = "Thursday February 25th 2016, 2:06 AM GMT";
+	String builddate = "Thursday February 25th 2016, 2:43 AM GMT";
 
 	@Override
 	public void exeChan(MessageEvent event) throws Exception

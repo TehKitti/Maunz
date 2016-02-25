@@ -22,7 +22,7 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.13.4";
+	public static String version = "3.13.5";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
