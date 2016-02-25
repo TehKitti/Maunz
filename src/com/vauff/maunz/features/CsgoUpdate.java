@@ -17,13 +17,14 @@ import com.vauff.maunz.core.Util;
 
 public class CsgoUpdate extends ListenerAdapter
 {
-	private String lastChangelistNumber = "";
 	public static String listeningNick;
 
 	public void onMessage(MessageEvent event) throws Exception
 	{
 		if ((event.getUser().getNick().equals(listeningNick)) && Util.isEnabled == true)
 		{
+			String lastChangelistNumber = "";
+			
 			if (event.getMessage().contains("https://steamdb.info/changelist/"))
 			{
 				lastChangelistNumber = Colors.removeColors(event.getMessage().split(" ")[2]);
@@ -83,7 +84,7 @@ public class CsgoUpdate extends ListenerAdapter
 				{
 					String msg = "SteamDB has spotted a non-important update for CS:GO on the 730 branch, this most likely doesn't mean anything. https://steamdb.info/app/730/history/";
 					
-					Logger.log.info("Found a non-important CS:GO 730 update that got pushed with changelog number" + lastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
+					Logger.log.info("Found a non-important CS:GO 730 update that got pushed with changelog number " + lastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
 					Logger.botMsg(Util.mainChannel, msg);
 					Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 				}
