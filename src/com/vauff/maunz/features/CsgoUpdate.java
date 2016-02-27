@@ -34,6 +34,8 @@ public class CsgoUpdate extends ListenerAdapter
 				String consistentLastChangelistNumber = lastChangelistNumber;
 				Document doc = null;
 				boolean trystatus = true;
+				
+				Thread.sleep(10000);
 
 				while (trystatus)
 				{
@@ -47,7 +49,7 @@ public class CsgoUpdate extends ListenerAdapter
 					}
 					catch (HttpStatusException e)
 					{
-						Logger.log.error(e);
+						Logger.log.error("Failed to connect to the CS:GO SteamDB history page, automatically retrying in 5 seconds");
 						Thread.sleep(5000);
 					}
 				}
@@ -84,7 +86,7 @@ public class CsgoUpdate extends ListenerAdapter
 				{
 					String msg = "SteamDB has spotted a non-important update for CS:GO on the 730 branch, this most likely doesn't mean anything. https://steamdb.info/app/730/history/";
 					
-					Logger.log.info("Found a non-important CS:GO 730 update that got pushed with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
+					Logger.log.info("Found a non-important CS:GO 730 update with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
 					Logger.botMsg(Util.mainChannel, msg);
 					Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 				}

@@ -76,7 +76,7 @@ public class CSGORSSTimer
 			}
 			catch (Exception e)
 			{
-				Logger.log.error(e);
+				Logger.log.error("", e);
 			}
 		}
 	};

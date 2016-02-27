@@ -89,7 +89,7 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 		}
 		catch (Exception e)
 		{
-			Logger.log.error(e);
+			Logger.log.error("", e);
 			return "Error";
 		}
 	}

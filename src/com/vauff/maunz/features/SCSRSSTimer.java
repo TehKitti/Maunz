@@ -59,7 +59,7 @@ public class SCSRSSTimer
 			}
 			catch (Exception e)
 			{
-				Logger.log.error(e);
+				Logger.log.error("", e);
 			}
 		}
 	};

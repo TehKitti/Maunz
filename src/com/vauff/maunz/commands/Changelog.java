@@ -63,7 +63,6 @@ public class Changelog implements ICommand<MessageEvent, PrivateMessageEvent>
 		}
 		catch (HttpStatusException e)
 		{
-			Logger.log.error(e);
 			event.respondChannel("That version of Maunz doesn't exist!");
 			Logger.botMsg(event.getChannel().getName(), "That version of Maunz doesn't exist!");
 		}
@@ -119,7 +118,6 @@ public class Changelog implements ICommand<MessageEvent, PrivateMessageEvent>
 		}
 		catch (HttpStatusException e)
 		{
-			Logger.log.error(e);
 			event.respond("That version of Maunz doesn't exist!");
 			Logger.botMsg(event.getUser().getNick(), "That version of Maunz doesn't exist!");
 		}
