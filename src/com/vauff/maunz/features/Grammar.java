@@ -1,7 +1,5 @@
 package com.vauff.maunz.features;
 
-import java.util.Arrays;
-
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -76,7 +74,7 @@ public class Grammar extends ListenerAdapter
 				event.respond("It isn't \"wouldn't of\", it's \"wouldn't have\"!");
 				Logger.botMsg(event.getChannel().getName(), "It isn't \"wouldn't of\", it's \"wouldn't have\"!");
 			}
-			
+
 			else if (event.getMessage().toLowerCase().contains("must of"))
 			{
 				Logger.log.info("Corrected " + event.getUser().getNick() + "'s spelling of \"must of\" to \"must have\" from the message \"" + event.getMessage() + "\"");
@@ -90,28 +88,13 @@ public class Grammar extends ListenerAdapter
 				event.respond("It isn't \"mustnt of \" it's \"mustn't have\"!");
 				Logger.botMsg(event.getChannel().getName(), "It isn't \"mustnt of \" it's \"mustn't have\"!");
 			}
-			
+
 			else if (event.getMessage().toLowerCase().contains("mustn't of"))
 			{
 				Logger.log.info("Corrected " + event.getUser().getNick() + "'s spelling of \"mustn't of\" to \"mustn't have\" from the message \"" + event.getMessage() + "\"");
 				event.respond("It isn't \"mustn't of \" it's \"mustn't have\"!");
 				Logger.botMsg(event.getChannel().getName(), "It isn't \"mustn't of \" it's \"mustn't have\"!");
 			}
-
-			else if (Arrays.asList(event.getMessage().toLowerCase().split(" ")).contains("y") && event.getUser().getNick().equalsIgnoreCase("GlitchMaster_YT"))
-			{
-				Logger.log.info("Corrected " + event.getUser().getNick() + "'s spelling of \"y\" to \"why\" from the message \"" + event.getMessage() + "\"");
-				event.respond("It isn't \"y\", it's \"why\"!");
-				Logger.botMsg(event.getChannel().getName(), "It isn't \"y\", it's \"why\"!");
-			}
-
-			else if (Arrays.asList(event.getMessage().toLowerCase().split(" ")).contains("u") && event.getUser().getNick().equalsIgnoreCase("GlitchMaster_YT"))
-			{
-				Logger.log.info("Corrected " + event.getUser().getNick() + "'s spelling of \"u\" to \"you\" from the message \"" + event.getMessage() + "\"");
-				event.respond("It isn't \"u\", it's \"you\"!");
-				Logger.botMsg(event.getChannel().getName(), "It isn't \"u\", it's \"you\"!");
-			}
-
 		}
 	}
 }

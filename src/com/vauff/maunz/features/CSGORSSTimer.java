@@ -16,7 +16,7 @@ import com.rometools.rome.io.ParsingFeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
 
-public class RSSTimer
+public class CSGORSSTimer
 {
 	private static String lastTitle = "";
 

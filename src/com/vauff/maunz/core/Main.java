@@ -13,7 +13,8 @@ import org.pircbotx.PircBotX;
 import com.vauff.maunz.features.CsgoUpdate;
 import com.vauff.maunz.features.Grammar;
 import com.vauff.maunz.features.PTOTimer;
-import com.vauff.maunz.features.RSSTimer;
+import com.vauff.maunz.features.SCSRSSTimer;
+import com.vauff.maunz.features.CSGORSSTimer;
 
 public class Main
 {
@@ -22,7 +23,7 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.13.5";
+	public static String version = "3.14";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
@@ -93,7 +94,8 @@ public class Main
 		manager.addBot(esperConfig);
 		manager.addBot(freenodeConfig);
 		manager.start();
-		Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(RSSTimer.timer, 60, 60, TimeUnit.SECONDS);
+		Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(CSGORSSTimer.timer, 60, 60, TimeUnit.SECONDS);
+		Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(SCSRSSTimer.timer, 60, 60, TimeUnit.SECONDS);
 		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(PTOTimer.timer, 60, 60, TimeUnit.SECONDS);
 	}
 }
