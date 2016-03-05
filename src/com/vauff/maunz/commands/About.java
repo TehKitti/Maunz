@@ -79,7 +79,7 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 		{
 			long unparsedTime = ((JarURLConnection) ClassLoader.getSystemResource(Main.class.getName().replace('.', '/') + ".class").openConnection()).getJarFile().getEntry("META-INF/MANIFEST.MF").getTime();
 			Date date = new Date(unparsedTime);
-			SimpleDateFormat sdf = new SimpleDateFormat("EEEE MMMM dd'" + getOrdinal(date.getDay()) + "', yyyy, h:mm a z");
+			SimpleDateFormat sdf = new SimpleDateFormat("EEEE MMMM d'" + getOrdinal(date.getDay()) + "', yyyy, h:mm a z");
 			sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 			return sdf.format(date);
 		}
@@ -97,7 +97,9 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 	private String getOrdinal(int n)
 	{
 		if (n >= 11 && n <= 13)
+		{
 			return "th";
+		}
 		else
 		{
 			switch (n % 10)
