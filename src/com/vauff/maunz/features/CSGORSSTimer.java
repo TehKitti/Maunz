@@ -1,6 +1,7 @@
 package com.vauff.maunz.features;
 
 import java.io.FileNotFoundException;
+import java.net.ConnectException;
 import java.net.URL;
 import java.net.UnknownHostException;
 
@@ -48,7 +49,7 @@ public class CSGORSSTimer
 					{
 						String msg = (Colors.DARK_GREEN + "New CS:GO blog post: " + Colors.BLUE + latestPost.getTitle() + Colors.NORMAL + " " + latestPost.getLink()).replace("\n", "");
 
-						Logger.log.info("Detected a new CS:GO blog post called " + latestPost.getTitle() + ". Sending notification to " + Util.mainChannel);
+						Logger.log.info("Detected a new CS:GO blog post called \"" + latestPost.getTitle() + "\". Sending notification to " + Util.mainChannel);
 						Logger.botMsg(Util.mainChannel, msg);
 						Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 					}
@@ -56,13 +57,13 @@ public class CSGORSSTimer
 					{
 						String msg = (Colors.DARK_GREEN + "New CS:GO blog post: " + Colors.BLUE + latestPost.getTitle() + Colors.NORMAL + " " + latestPost.getLink()).replace("\n", "");
 
-						Logger.log.info("Detected a new CS:GO blog post called " + latestPost.getTitle() + ". Sending notification to " + Util.mainChannel);
+						Logger.log.info("Detected a new CS:GO blog post called \"" + latestPost.getTitle() + "\". Sending notification to " + Util.mainChannel);
 						Logger.botMsg(Util.mainChannel, msg);
 						Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 
 						String secondMsg = (Colors.DARK_GREEN + "New CS:GO blog post: " + Colors.BLUE + secondLatestPost.getTitle() + Colors.NORMAL + " " + secondLatestPost.getLink()).replace("\n", "");
 
-						Logger.log.info("Detected a new CS:GO blog post called " + secondLatestPost.getTitle() + ". Sending notification to " + Util.mainChannel);
+						Logger.log.info("Detected a new CS:GO blog post called \"" + secondLatestPost.getTitle() + "\". Sending notification to " + Util.mainChannel);
 						Logger.botMsg(Util.mainChannel, secondMsg);
 						Main.esperBot.sendIRC().message(Util.mainChannel, secondMsg);
 					}
@@ -70,7 +71,7 @@ public class CSGORSSTimer
 
 				lastTitle = latestPost.getTitle();
 			}
-			catch (UnknownHostException | FileNotFoundException | ParsingFeedException e)
+			catch (UnknownHostException | FileNotFoundException | ParsingFeedException | ConnectException e)
 			{
 				Logger.log.error("Failed to connect to the CS:GO blog RSS feed, automatically retrying in 1 minute");
 			}

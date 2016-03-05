@@ -1,8 +1,5 @@
 package com.vauff.maunz.features;
 
-import java.io.File;
-
-import org.apache.commons.io.FileUtils;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -41,10 +38,7 @@ public class CsgoUpdate extends ListenerAdapter
 				{
 					try
 					{
-						File htmlFile = new File("steamdb" + Math.random() + ".html");
-						
 						doc = Jsoup.connect("https://steamdb.info/app/730/history").userAgent(" ").get();
-						FileUtils.write(htmlFile, doc.html());
 						trystatus = false;
 					}
 					catch (HttpStatusException e)

@@ -1,6 +1,7 @@
 package com.vauff.maunz.features;
 
 import java.io.FileNotFoundException;
+import java.net.ConnectException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Calendar;
@@ -46,14 +47,14 @@ public class SCSRSSTimer
 				{
 					String msg = (Colors.DARK_GREEN + "New SCS blog post: " + Colors.BLUE + latestPost.getTitle() + Colors.NORMAL + " " + getLink(latestPost));
 
-					Logger.log.info("Detected a new SCS blog post called " + latestPost.getTitle() + ". Sending notification to " + Util.mainChannel);
+					Logger.log.info("Detected a new SCS blog post called \"" + latestPost.getTitle() + "\". Sending notification to " + Util.mainChannel);
 					Logger.botMsg(Util.mainChannel, msg);
 					Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 				}
 
 				lastTitle = latestPost.getTitle();
 			}
-			catch (UnknownHostException | FileNotFoundException | ParsingFeedException e)
+			catch (UnknownHostException | FileNotFoundException | ParsingFeedException | ConnectException e)
 			{
 				Logger.log.error("Failed to connect to the SCS blog RSS feed, automatically retrying in 1 minute");
 			}
