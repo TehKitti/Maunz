@@ -12,6 +12,7 @@ import org.pircbotx.PircBotX;
 
 import com.vauff.maunz.features.CsgoUpdate;
 import com.vauff.maunz.features.Grammar;
+import com.vauff.maunz.features.ImgurCorrector;
 import com.vauff.maunz.features.PTOTimer;
 import com.vauff.maunz.features.SCSRSSTimer;
 import com.vauff.maunz.features.CSGORSSTimer;
@@ -23,7 +24,7 @@ public class Main
 	public static PircBotX freenodeBot;
 	public static int esperID = -2;
 	public static int freenodeID = -1;
-	public static String version = "3.14.4";
+	public static String version = "3.15-dev";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
@@ -70,8 +71,9 @@ public class Main
 				.setMessageDelay(400)
 				.setRealName("Maunz, an IRC bot created by Vauff.")
 				.addServer("irc.esper.net")
-				.addListener(new Listener())
 				.addListener(new Grammar())
+				.addListener(new ImgurCorrector())
+				.addListener(new Listener())
 				.addListener(new Logger())
 				.buildForServer("irc.esper.net");
 
