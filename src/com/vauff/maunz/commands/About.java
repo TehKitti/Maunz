@@ -78,11 +78,8 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 		try
 		{
 			long unparsedTime = ((JarURLConnection) ClassLoader.getSystemResource(Main.class.getName().replace('.', '/') + ".class").openConnection()).getJarFile().getEntry("META-INF/MANIFEST.MF").getTime();
-			Date date = new Date(unparsedTime);
-			SimpleDateFormat sdf = new SimpleDateFormat("EEEE MMMM d'" + getOrdinal(date.getDate()) + "', yyyy, h:mm a z");
-			
-			sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-			return sdf.format(date);
+
+			return Util.getTime(true, unparsedTime);
 		}
 		catch (ClassCastException e)
 		{
@@ -92,28 +89,6 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 		{
 			Logger.log.error("", e);
 			return "Error";
-		}
-	}
-
-	private String getOrdinal(int n)
-	{
-		if (n >= 11 && n <= 13)
-		{
-			return "th";
-		}
-		else
-		{
-			switch (n % 10)
-			{
-			case 1:
-				return "st";
-			case 2:
-				return "nd";
-			case 3:
-				return "rd";
-			default:
-				return "th";
-			}
 		}
 	}
 

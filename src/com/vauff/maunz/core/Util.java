@@ -5,9 +5,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.pircbotx.Channel;
 
@@ -61,11 +63,24 @@ public class Util
 		return Arrays.asList(result);
 	}
 
-	public static String getTime()
+	public static String getTime(boolean suppliedTime, long time)
 	{
-		String time = new Date(System.currentTimeMillis()).toString();
+		if (suppliedTime)
+		{
+			Date date = new Date(time);
+			SimpleDateFormat sdf = new SimpleDateFormat("EEEE MMMM d'" + getOrdinal(date.getDate()) + "', yyyy, h:mm a z");
 
-		return time;
+			sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+			return sdf.format(date);
+		}
+		else
+		{
+			Date date = new Date(System.currentTimeMillis());
+			SimpleDateFormat sdf = new SimpleDateFormat("EEEE MMMM d'" + getOrdinal(date.getDate()) + "', yyyy, h:mm a z");
+
+			sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+			return sdf.format(date);
+		}
 	}
 
 	public static String getUptime()
@@ -157,5 +172,27 @@ public class Util
 		}
 
 		return chans;
+	}
+
+	public static String getOrdinal(int n)
+	{
+		if (n >= 11 && n <= 13)
+		{
+			return "th";
+		}
+		else
+		{
+			switch (n % 10)
+			{
+			case 1:
+				return "st";
+			case 2:
+				return "nd";
+			case 3:
+				return "rd";
+			default:
+				return "th";
+			}
+		}
 	}
 }

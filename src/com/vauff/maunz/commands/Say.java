@@ -30,7 +30,7 @@ public class Say implements ICommand<MessageEvent, PrivateMessageEvent>
 						Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
 						Logger.botMsg(args[1], Util.addArgs(args, 2));
 						whoSay = event.getUser().getNick();
-						whoSayTime = Util.getTime();
+						whoSayTime = Util.getTime(false, 0);
 					}
 					else
 					{
@@ -50,7 +50,7 @@ public class Say implements ICommand<MessageEvent, PrivateMessageEvent>
 				event.respondChannel(Util.addArgs(args, 1));
 				Logger.botMsg(event.getChannel().getName(), Util.addArgs(args, 1));
 				whoSay = event.getUser().getNick();
-				whoSayTime = Util.getTime();
+				whoSayTime = Util.getTime(false, 0);
 			}
 		}
 		else
@@ -80,7 +80,7 @@ public class Say implements ICommand<MessageEvent, PrivateMessageEvent>
 					Main.esperBot.sendIRC().message(args[1], Util.addArgs(args, 2));
 					Logger.botMsg(args[1], Util.addArgs(args, 2));
 					whoSay = event.getUser().getNick();
-					whoSayTime = Util.getTime();
+					whoSayTime = Util.getTime(false, 0);
 				}
 			}
 			else
