@@ -9,6 +9,8 @@ import com.vauff.maunz.core.Main;
 
 public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 {
+	public static boolean isNickUsed = false;
+
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
@@ -27,8 +29,8 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 				{
 					if (args.length == 2)
 					{
-						event.respondChannel("You need to give me a nickname!");
-						Logger.botMsg(event.getChannel().getName(), "You need to give me a nickname!");
+						event.respondChannel("I need a network name and a nickname specified!");
+						Logger.botMsg(event.getChannel().getName(), "I need a network name and a nickname specified!");
 					}
 					else
 					{
@@ -36,28 +38,55 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 						{
 							if (args[2].equals(Main.esperBot.getNick()))
 							{
-								event.respondChannel("That is the nick that I am already using!");
-								Logger.botMsg(event.getChannel().getName(), "That is the nick that I am already using!");
+								event.respondChannel("That is the nickname that I am already using!");
+								Logger.botMsg(event.getChannel().getName(), "That is the nickname that I am already using!");
 							}
 							else
 							{
-								event.respondChannel("Changing nickname on Esper from " + Main.esperBot.getNick() + " to " + args[2] + "!");
-								Logger.botMsg(event.getChannel().getName(), "Changing nickname on Esper from " + Main.esperBot.getNick() + " to " + args[2] + "!");
+								String oldNick = Main.esperBot.getNick();
+
+								isNickUsed = false;
 								Main.esperBot.sendIRC().changeNick(args[2]);
+								Thread.sleep(1000);
+
+								if (isNickUsed)
+								{
+									event.respondChannel("That nickname is already in use!");
+									Logger.botMsg(event.getChannel().getName(), "That nickname is already in use!");
+								}
+								else
+								{
+									event.respondChannel("Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
+									Logger.botMsg(event.getChannel().getName(), "Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
+								}
+
 							}
 						}
 						if (args[1].equalsIgnoreCase("Freenode"))
 						{
 							if (args[2].equals(Main.freenodeBot.getNick()))
 							{
-								event.respondChannel("That is the nick that I am already using!");
-								Logger.botMsg(event.getChannel().getName(), "That is the nick that I am already using!");
+								event.respondChannel("That is the nickname that I am already using!");
+								Logger.botMsg(event.getChannel().getName(), "That is the nickname that I am already using!");
 							}
 							else
 							{
-								event.respondChannel("Changing nickname on Freenode from " + Main.freenodeBot.getNick() + " to " + args[2] + "!");
-								Logger.botMsg(event.getChannel().getName(), "Changing nickname on Freenode from " + Main.freenodeBot.getNick() + " to " + args[2] + "!");
+								String oldNick = Main.freenodeBot.getNick();
+								
+								isNickUsed = false;
 								Main.freenodeBot.sendIRC().changeNick(args[2]);
+								Thread.sleep(1000);
+
+								if (isNickUsed)
+								{
+									event.respondChannel("That nickname is already in use!");
+									Logger.botMsg(event.getChannel().getName(), "That nickname is already in use!");
+								}
+								else
+								{
+									event.respondChannel("Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
+									Logger.botMsg(event.getChannel().getName(), "Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
+								}
 							}
 						}
 					}
@@ -94,8 +123,8 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 				{
 					if (args.length == 2)
 					{
-						event.respond("You need to give me a nickname!");
-						Logger.botMsg(event.getUser().getNick(), "You need to give me a nickname!");
+						event.respond("I need a network name and a nickname specified!");
+						Logger.botMsg(event.getUser().getNick(), "I need a network name and a nickname specified!");
 					}
 					else
 					{
@@ -103,28 +132,54 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 						{
 							if (args[2].equals(Main.esperBot.getNick()))
 							{
-								event.respond("That is the nick that I am already using!");
-								Logger.botMsg(event.getUser().getNick(), "That is the nick that I am already using!");
+								event.respond("That is the nickname that I am already using!");
+								Logger.botMsg(event.getUser().getNick(), "That is the nickname that I am already using!");
 							}
 							else
 							{
-								event.respond("Changing nickname on Esper to " + args[2] + "!");
-								Logger.botMsg(event.getUser().getNick(), "Changing nickname on Esper to " + args[2] + "!");
+								String oldNick = Main.esperBot.getNick();
+								
+								isNickUsed = false;
 								Main.esperBot.sendIRC().changeNick(args[2]);
+								Thread.sleep(1000);
+
+								if (isNickUsed)
+								{
+									event.respond("That nickname is already in use!");
+									Logger.botMsg(event.getUser().getNick(), "That nickname is already in use!");
+								}
+								else
+								{
+									event.respond("Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
+									Logger.botMsg(event.getUser().getNick(), "Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
+								}
 							}
 						}
 						if (args[1].equalsIgnoreCase("Freenode"))
 						{
 							if (args[2].equals(Main.freenodeBot.getNick()))
 							{
-								event.respond("That is the nick that I am already using!");
-								Logger.botMsg(event.getUser().getNick(), "That is the nick that I am already using!");
+								event.respond("That is the nickname that I am already using!");
+								Logger.botMsg(event.getUser().getNick(), "That is the nickname that I am already using!");
 							}
 							else
 							{
-								event.respond("Changing nickname on Freenode to " + args[2] + "!");
-								Logger.botMsg(event.getUser().getNick(), "Changing nickname on Freenode to " + args[2] + "!");
+								String oldNick = Main.freenodeBot.getNick();
+								
+								isNickUsed = false;
 								Main.freenodeBot.sendIRC().changeNick(args[2]);
+								Thread.sleep(1000);
+
+								if (isNickUsed)
+								{
+									event.respond("That nickname is already in use!");
+									Logger.botMsg(event.getUser().getNick(), "That nickname is already in use!");
+								}
+								else
+								{
+									event.respond("Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
+									Logger.botMsg(event.getUser().getNick(), "Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
+								}
 							}
 						}
 					}

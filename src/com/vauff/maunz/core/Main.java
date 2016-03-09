@@ -22,9 +22,7 @@ public class Main
 	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static int esperID = -2;
-	public static int freenodeID = -1;
-	public static String version = "3.15-dev";
+	public static String version = "3.15";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
@@ -73,7 +71,7 @@ public class Main
 				.addServer("irc.esper.net")
 				.addListener(new Grammar())
 				.addListener(new ImgurCorrector())
-				.addListener(new Listener())
+				.addListener(new EsperListener())
 				.addListener(new Logger())
 				.buildForServer("irc.esper.net");
 
@@ -89,6 +87,7 @@ public class Main
 				.addServer("irc.freenode.net")
 				.addAutoJoinChannel(Util.freenodeChannel)
 				.addListener(new CsgoUpdate())
+				.addListener(new FreenodeListener())
 				.addListener(new Logger())
 				.buildForServer("irc.freenode.net");
 

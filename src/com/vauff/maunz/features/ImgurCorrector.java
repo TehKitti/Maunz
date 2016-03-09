@@ -18,7 +18,7 @@ public class ImgurCorrector extends ListenerAdapter
 			{
 				if (arg.contains("www.") || arg.contains("http://") || arg.contains("https://"))
 				{
-					if (arg.contains("imgur") && !arg.contains("i.imgur"))
+					if (arg.contains("imgur") && !arg.contains("i.imgur") && !arg.contains("/gallery/") && !arg.contains("/a/"))
 					{
 						String constructedLink = "https://i.imgur.com/";
 

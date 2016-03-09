@@ -85,9 +85,9 @@ public class Util
 
 	public static String getUptime()
 	{
-		Listener.uptime.split();
+		EsperListener.uptime.split();
 
-		String[] uptimeraw = Listener.uptime.toSplitString().split("\\.");
+		String[] uptimeraw = EsperListener.uptime.toSplitString().split("\\.");
 		int hours = Integer.parseInt(uptimeraw[0].split(":")[0]);
 		int days = (hours / 24) >> 0;
 

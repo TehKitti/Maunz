@@ -8,18 +8,19 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.MessageEvent;
+import org.pircbotx.hooks.events.NickAlreadyInUseEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.commands.*;
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.features.Intelligence;
 
-public class Listener extends ListenerAdapter
+public class EsperListener extends ListenerAdapter
 {
 	private LinkedList<ICommand<MessageEvent, PrivateMessageEvent>> commands = new LinkedList<ICommand<MessageEvent, PrivateMessageEvent>>();
 	public static StopWatch uptime = new StopWatch();
 
-	public Listener()
+	public EsperListener()
 	{
 		commands.add(new About());
 		commands.add(new AccInfo());
@@ -52,9 +53,9 @@ public class Listener extends ListenerAdapter
 	{
 		String cmdName = event.getMessage().split(" ")[0];
 
-		if (Util.isEnabled)
+		for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
 		{
-			for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
+			if (Util.isEnabled || cmd instanceof Enable || cmd instanceof Disable)
 			{
 				for (String s : cmd.getAliases())
 				{
@@ -65,31 +66,15 @@ public class Listener extends ListenerAdapter
 				}
 			}
 		}
-		else
-		{
-			for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
-			{
-				if (cmd instanceof Enable || cmd instanceof Disable)
-				{
-					for (String s : cmd.getAliases())
-					{
-						if (cmdName.equalsIgnoreCase(s))
-						{
-							cmd.exeChan(event);
-						}
-					}
-				}
-			}
-		}
 	}
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception
 	{
 		String cmdName = event.getMessage().split(" ")[0];
 
-		if (Util.isEnabled)
+		for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
 		{
-			for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
+			if (Util.isEnabled || cmd instanceof Enable || cmd instanceof Disable)
 			{
 				for (String s : cmd.getAliases())
 				{
@@ -100,35 +85,22 @@ public class Listener extends ListenerAdapter
 				}
 			}
 		}
-		else
-		{
-			for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
-			{
-				if (cmd instanceof Enable || cmd instanceof Disable)
-				{
-					for (String s : cmd.getAliases())
-					{
-						if (cmdName.equalsIgnoreCase(s))
-						{
-							cmd.exePrivate(event);
-						}
-					}
-				}
-			}
-		}
 	}
 
 	public void onConnect(ConnectEvent event) throws IOException
 	{
-		Main.esperID += 2;
-		Main.freenodeID += 2;
-		Main.esperBot = Main.manager.getBotById(Main.esperID);
-		Main.freenodeBot = Main.manager.getBotById(Main.freenodeID);
+		Main.esperBot = Main.manager.getBotById(0);
+		Main.freenodeBot = Main.manager.getBotById(1);
 		uptime.start();
 
 		for (String chan : Util.getFileContents())
 		{
 			Main.esperBot.sendIRC().joinChannel(chan);
 		}
+	}
+
+	public void onNickAlreadyInUse(NickAlreadyInUseEvent event)
+	{
+		Nick.isNickUsed = true;
 	}
 }
