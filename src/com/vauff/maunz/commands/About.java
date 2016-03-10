@@ -5,9 +5,6 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 import org.pircbotx.Colors;
 
 import java.net.JarURLConnection;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
 
 import org.apache.commons.lang3.StringUtils;
 

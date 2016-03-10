@@ -1,15 +1,10 @@
 package com.vauff.maunz.commands;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
-
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Logger;
-import com.vauff.maunz.core.Util;
 
 public class WhoSay implements ICommand<MessageEvent, PrivateMessageEvent>
 {
