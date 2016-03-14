@@ -1,9 +1,7 @@
 package com.vauff.maunz.features;
 
-import java.io.FileNotFoundException;
-import java.net.SocketException;
+import java.io.IOException;
 import java.net.URL;
-import java.net.UnknownHostException;
 import java.util.Calendar;
 
 import org.pircbotx.Colors;
@@ -54,7 +52,7 @@ public class SCSRSSTimer
 
 				lastTitle = latestPost.getTitle();
 			}
-			catch (UnknownHostException | FileNotFoundException | ParsingFeedException | SocketException e)
+			catch (ParsingFeedException | IOException e)
 			{
 				Logger.log.error("Failed to connect to the SCS blog RSS feed, automatically retrying in 1 minute");
 			}

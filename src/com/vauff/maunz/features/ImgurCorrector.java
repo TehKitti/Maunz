@@ -24,7 +24,7 @@ public class ImgurCorrector extends ListenerAdapter
 
 						if (event.getChannel().getName().equals("#bl4ckscor3"))
 						{
-							Thread.sleep(2000);
+							Thread.sleep(4000);
 						}
 
 						if (arg.contains("www."))

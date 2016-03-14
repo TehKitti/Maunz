@@ -1,10 +1,7 @@
 package com.vauff.maunz.features;
 
-import java.io.FileNotFoundException;
-import java.net.SocketException;
+import java.io.IOException;
 import java.net.URL;
-import java.net.UnknownHostException;
-
 import org.pircbotx.Colors;
 
 import com.vauff.maunz.core.Logger;
@@ -71,7 +68,7 @@ public class CSGORSSTimer
 
 				lastTitle = latestPost.getTitle();
 			}
-			catch (UnknownHostException | FileNotFoundException | ParsingFeedException | SocketException e)
+			catch (ParsingFeedException | IOException e)
 			{
 				Logger.log.error("Failed to connect to the CS:GO blog RSS feed, automatically retrying in 1 minute");
 			}

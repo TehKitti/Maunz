@@ -22,7 +22,7 @@ public class Main
 	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.15.1";
+	public static String version = "3.15.2-dev";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
