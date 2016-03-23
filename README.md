@@ -84,7 +84,7 @@ log4j - 1.2.17
 
 PircBotX - 2.1
 
-slf4j-api - 1.7.18
+slf4j-api - 1.7.19
 
 jsoup - 1.8.3
 
