@@ -168,8 +168,142 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 		if (args.length == 1)
 		{
-			event.respond("Pong!");
-			Logger.botMsg(event.getUser().getNick(), "Pong!");
+			event.respond("You need to provide an argument to this command!");
+			Logger.botMsg(event.getUser().getNick(), "You need to provide an argument to this command!");
+		}
+		else
+		{
+			switch (args[1].toLowerCase())
+			{
+			case "list":
+				if (args.length == 2 || NumberUtils.isNumber(args[2]))
+				{
+					int page = 0;
+
+					if (args.length == 2)
+					{
+						page = 1;
+					}
+					else
+					{
+						page = Integer.parseInt(args[2]);
+					}
+
+					int secondQuoteID = 10 * page;
+					int firstQuoteID = secondQuoteID + 1 - 10;
+
+					Util.sqlConnect();
+
+					PreparedStatement pst = Util.sqlCon.prepareStatement("SELECT * FROM quotes WHERE id>=" + firstQuoteID + " AND id<=" + secondQuoteID + ";");
+					ResultSet rs = pst.executeQuery();
+					PreparedStatement secondPst = Util.sqlCon.prepareStatement("SELECT COUNT(id) AS id FROM quotes;");
+					ResultSet secondRs = secondPst.executeQuery();
+
+					secondRs.next();
+
+					if (page >= 1 && page <= (int) Math.ceil(secondRs.getDouble("id") / 10))
+					{
+						event.respond("--- " + Colors.BOLD + "Page " + page + "/" + (int) Math.ceil(secondRs.getDouble("id") / 10) + Colors.NORMAL + " ---");
+						Logger.botMsg(event.getUser().getNick(), "--- " + Colors.BOLD + "Page " + page + "/" + Math.ceil(secondRs.getDouble("id") / 10) + Colors.NORMAL + " ---");
+
+						while (rs.next())
+						{
+							if (rs.getInt("approved") == 1)
+							{
+								event.respond(rs.getInt("id") + " - " + rs.getString("title"));
+								Logger.botMsg(event.getUser().getNick(), rs.getInt("id") + " - " + rs.getString("title"));
+							}
+						}
+					}
+					else
+					{
+						event.respond("That page doesn't exist!");
+						Logger.botMsg(event.getUser().getNick(), "That page doesn't exist!");
+					}
+
+					Util.sqlCon.abort(null);
+				}
+				else
+				{
+					event.respond("Page numbers need to be numerical!");
+					Logger.botMsg(event.getUser().getNick(), "Page numbers need to be numerical!");
+				}
+
+				break;
+			case "view":
+				if (args.length == 2)
+				{
+					event.respond("You need to give me a quote ID!");
+					Logger.botMsg(event.getUser().getNick(), "You need to give me a quote ID!");
+				}
+				else
+				{
+					if (NumberUtils.isNumber(args[2]))
+					{
+						Util.sqlConnect();
+						PreparedStatement pst = Util.sqlCon.prepareStatement("SELECT * FROM quotes WHERE id='" + args[2] + "'");
+						ResultSet rs = pst.executeQuery();
+
+						if (!rs.next())
+						{
+							event.respond("That quote doesn't exist!");
+							Logger.botMsg(event.getUser().getNick(), "That quote doesn't exist!");
+						}
+						else
+						{
+							if (rs.getInt("approved") == 1)
+							{
+								int lines = 0;
+
+								event.respond(Colors.NORMAL + Colors.BOLD + "ID: " + Colors.NORMAL + rs.getString("id") + " - " + Colors.BOLD + "Title: " + Colors.NORMAL + rs.getString("title") + " - " + Colors.BOLD + "Submitter: " + Colors.NORMAL + rs.getString("submitter") + " - " + Colors.BOLD + "Date: " + Colors.NORMAL + Util.getTime(rs.getLong("time") * 1000));
+								Logger.botMsg(event.getUser().getNick(), Colors.NORMAL + Colors.BOLD + "ID: " + Colors.NORMAL + rs.getString("id") + " - " + Colors.BOLD + "Title: " + Colors.NORMAL + rs.getString("title") + " - " + Colors.BOLD + "Submitter: " + Colors.NORMAL + rs.getString("submitter") + " - " + Colors.BOLD + "Date: " + Colors.NORMAL + Util.getTime(rs.getLong("time") * 1000));
+
+								for (String s : rs.getString("quote").split("\n"))
+								{
+									if (lines < 10)
+									{
+										lines++;
+										event.respond(s);
+										Logger.botMsg(event.getUser().getNick(), s);
+									}
+									else
+									{
+										event.respond("The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/" + args[2] + ".txt");
+										Logger.botMsg(event.getUser().getNick(), "The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/" + args[2] + ".txt");
+										break;
+									}
+								}
+							}
+							else
+							{
+								event.respond("That quote hasn't been approved yet!");
+								Logger.botMsg(event.getUser().getNick(), "That quote hasn't been approved yet!");
+							}
+						}
+
+						rs.close();
+						pst.close();
+						Util.sqlCon.abort(null);
+					}
+					else
+					{
+						event.respond("Quote IDs need to be numerical!");
+						Logger.botMsg(event.getUser().getNick(), "Quote IDs need to be numerical!");
+					}
+				}
+
+				break;
+			case "add":
+				event.respond("You can submit new quotes here: http://geforcemods.net/quotes/submit.html");
+				Logger.botMsg(event.getUser().getNick(), "You can submit new quotes here: http://geforcemods.net/quotes/submit.html");
+
+				break;
+			default:
+				event.respond("The argument " + args[1] + " was not recognized!");
+				Logger.botMsg(event.getUser().getNick(), "The argument " + args[1] + " was not recognized!");
+
+				break;
+			}
 		}
 	}
 
