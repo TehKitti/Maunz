@@ -68,7 +68,7 @@ _*leave \<channel>_ - Makes Maunz leave a channel.
 
 #Dependencies
 
-Maunz depends on some java libraries to function, most of these are PircBotX dependencies but some are mine that I've added for some features too. These can be downloaded manually or automatically with Maven using Maunz's pom.xml. They are with their versions listed below.
+Maunz depends on some java libraries to function, some are PircBotX dependencies and some are mine that I've added for some features. These can be downloaded manually or automatically with Maven using Maunz's pom.xml. They are with their versions listed below.
 
 Chatter Bot API - 1.3.3
 
@@ -84,8 +84,14 @@ log4j - 1.2.17
 
 PircBotX - 2.1
 
-slf4j-api - 1.7.19
+slf4j-api - 1.7.21
 
 jsoup - 1.8.3
 
-Rome - 1.5.1
+rome-utils - 1.6.0
+
+rome - 1.6.0
+
+jdom - 2.0.6
+
+mysql-connector-java - 5.1.38

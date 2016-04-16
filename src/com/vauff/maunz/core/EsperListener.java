@@ -36,6 +36,7 @@ public class EsperListener extends ListenerAdapter
 		commands.add(new Leave());
 		commands.add(new Nick());
 		commands.add(new Ping());
+		commands.add(new Quote());
 		commands.add(new Reddit());
 		commands.add(new Reset());
 		commands.add(new Restart());

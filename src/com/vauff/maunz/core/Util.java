@@ -5,6 +5,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -18,6 +23,7 @@ import com.google.common.collect.ImmutableSortedSet;
 public class Util
 {
 	public static boolean isEnabled = true;
+	public static Connection sqlCon;
 	public static String mainChannel;
 	public static String freenodeChannel;
 
@@ -63,24 +69,18 @@ public class Util
 		return Arrays.asList(result);
 	}
 
-	public static String getTime(boolean suppliedTime, long time)
+	public static String getTime()
 	{
-		if (suppliedTime)
-		{
-			Date date = new Date(time);
-			SimpleDateFormat sdf = new SimpleDateFormat("EEEE MMMM d'" + getOrdinal(date.getDate()) + "', yyyy, h:mm a z");
+		return getTime(System.currentTimeMillis());
+	}
 
-			sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-			return sdf.format(date);
-		}
-		else
-		{
-			Date date = new Date(System.currentTimeMillis());
-			SimpleDateFormat sdf = new SimpleDateFormat("EEEE MMMM d'" + getOrdinal(date.getDate()) + "', yyyy, h:mm a z");
+	public static String getTime(long time)
+	{
+		Date date = new Date(time);
+		SimpleDateFormat sdf = new SimpleDateFormat("EEEE MMMM d'" + getOrdinal(date.getDate()) + "', yyyy, h:mm a z");
 
-			sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-			return sdf.format(date);
-		}
+		sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+		return sdf.format(date);
 	}
 
 	public static String getUptime()
@@ -193,6 +193,22 @@ public class Util
 			default:
 				return "th";
 			}
+		}
+	}
+
+	public static void sqlConnect() throws Exception
+	{
+		Statement st = null;
+
+		try
+		{
+			sqlCon = DriverManager.getConnection("jdbc:mysql://geforcemods.net:3306/ircquotes", "Vauff", Passwords.database);
+			st = sqlCon.createStatement();
+			ResultSet rs = st.executeQuery("SELECT VERSION()");
+		}
+		catch (SQLException e)
+		{
+			Logger.log.error(e.getMessage(), e);
 		}
 	}
 }

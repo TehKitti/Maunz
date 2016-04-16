@@ -76,7 +76,7 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 		{
 			long unparsedTime = ((JarURLConnection) ClassLoader.getSystemResource(Main.class.getName().replace('.', '/') + ".class").openConnection()).getJarFile().getEntry("META-INF/MANIFEST.MF").getTime();
 
-			return Util.getTime(true, unparsedTime);
+			return Util.getTime(unparsedTime);
 		}
 		catch (ClassCastException e)
 		{
