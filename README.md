@@ -28,6 +28,8 @@ _*nick \<network> \<nickname>_ - Changes Maunz's nickname on a specific network.
 
 *ping - Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server!
 
+*quote \<view/list/site/add> \<quoteid> [page] - Allows you to view IRC quotes.
+
 *reddit \<subreddit> - Links you to a subreddit that you provide.
 
 *reset - Resets the Cleverbot session in the channel sent in.

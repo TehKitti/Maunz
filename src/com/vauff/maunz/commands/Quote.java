@@ -122,6 +122,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 									}
 									else
 									{
+										//placeholder link
 										event.respondChannel("The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/" + args[2] + ".txt");
 										Logger.botMsg(event.getChannel().getName(), "The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/" + args[2] + ".txt");
 										break;
@@ -148,9 +149,15 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 				break;
 			case "add":
+				//placeholder link
 				event.respondChannel("You can submit new quotes here: http://geforcemods.net/quotes/submit.html");
 				Logger.botMsg(event.getChannel().getName(), "You can submit new quotes here: http://geforcemods.net/quotes/submit.html");
 
+				break;
+			case "site":
+				event.respondChannel("You can view the quotes site here: http://geforcemods.net/quotes/");
+				Logger.botMsg(event.getChannel().getName(), "You can view the quotes site here: http://geforcemods.net/quotes/");
+				
 				break;
 			default:
 				event.respondChannel("The argument " + args[1] + " was not recognized!");
@@ -268,6 +275,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 									}
 									else
 									{
+										//placeholder link
 										event.respond("The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/" + args[2] + ".txt");
 										Logger.botMsg(event.getUser().getNick(), "The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/" + args[2] + ".txt");
 										break;
@@ -294,9 +302,15 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 				break;
 			case "add":
+				//placeholder link
 				event.respond("You can submit new quotes here: http://geforcemods.net/quotes/submit.html");
 				Logger.botMsg(event.getUser().getNick(), "You can submit new quotes here: http://geforcemods.net/quotes/submit.html");
 
+				break;
+			case "site":
+				event.respond("You can view the quotes site here: http://geforcemods.net/quotes/");
+				Logger.botMsg(event.getUser().getNick(), "You can view the quotes site here: http://geforcemods.net/quotes/");
+				
 				break;
 			default:
 				event.respond("The argument " + args[1] + " was not recognized!");
