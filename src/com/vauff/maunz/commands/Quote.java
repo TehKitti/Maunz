@@ -122,9 +122,8 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 									}
 									else
 									{
-										//placeholder link
-										event.respondChannel("The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/" + args[2] + ".txt");
-										Logger.botMsg(event.getChannel().getName(), "The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/" + args[2] + ".txt");
+										event.respondChannel("The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
+										Logger.botMsg(event.getChannel().getName(), "The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
 										break;
 									}
 								}
@@ -149,9 +148,8 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 				break;
 			case "add":
-				//placeholder link
-				event.respondChannel("You can submit new quotes here: http://geforcemods.net/quotes/submit.html");
-				Logger.botMsg(event.getChannel().getName(), "You can submit new quotes here: http://geforcemods.net/quotes/submit.html");
+				event.respondChannel("You can submit new quotes here: http://geforcemods.net/quotes/addquote.php");
+				Logger.botMsg(event.getChannel().getName(), "You can submit new quotes here: http://geforcemods.net/quotes/addquote.php");
 
 				break;
 			case "site":
@@ -275,9 +273,8 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 									}
 									else
 									{
-										//placeholder link
-										event.respond("The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/" + args[2] + ".txt");
-										Logger.botMsg(event.getUser().getNick(), "The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/" + args[2] + ".txt");
+										event.respond("The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
+										Logger.botMsg(event.getUser().getNick(), "The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
 										break;
 									}
 								}
@@ -302,9 +299,8 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 				break;
 			case "add":
-				//placeholder link
-				event.respond("You can submit new quotes here: http://geforcemods.net/quotes/submit.html");
-				Logger.botMsg(event.getUser().getNick(), "You can submit new quotes here: http://geforcemods.net/quotes/submit.html");
+				event.respond("You can submit new quotes here: http://geforcemods.net/quotes/addquote.php");
+				Logger.botMsg(event.getUser().getNick(), "You can submit new quotes here: http://geforcemods.net/quotes/addquote.php");
 
 				break;
 			case "site":
