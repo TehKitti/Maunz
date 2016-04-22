@@ -158,8 +158,8 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 				
 				break;
 			default:
-				event.respondChannel("The argument " + args[1] + " was not recognized!");
-				Logger.botMsg(event.getChannel().getName(), "The argument " + args[1] + " was not recognized!");
+				event.respondChannel("The argument " + args[1] + " was not recognized! Please see *help quote for arguments that can be used");
+				Logger.botMsg(event.getChannel().getName(), "The argument " + args[1] + " was not recognized! Please see *help quote for arguments that can be used");
 
 				break;
 			}
@@ -309,8 +309,8 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 				
 				break;
 			default:
-				event.respond("The argument " + args[1] + " was not recognized!");
-				Logger.botMsg(event.getUser().getNick(), "The argument " + args[1] + " was not recognized!");
+				event.respond("The argument " + args[1] + " was not recognized! Please see *help quote for arguments that can be used");
+				Logger.botMsg(event.getUser().getNick(), "The argument " + args[1] + " was not recognized! Please see *help quote for arguments that can be used");
 
 				break;
 			}
