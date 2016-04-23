@@ -88,6 +88,8 @@ PircBotX - 2.1
 
 slf4j-api - 1.7.21
 
+slf4j-nop - 1.7.21
+
 jsoup - 1.9.1
 
 rome-utils - 1.6.0
