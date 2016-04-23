@@ -198,13 +198,9 @@ public class Util
 
 	public static void sqlConnect() throws Exception
 	{
-		Statement st = null;
-
 		try
 		{
-			sqlCon = DriverManager.getConnection("jdbc:mysql://geforcemods.net:3306/ircquotes", "Vauff", Passwords.database);
-			st = sqlCon.createStatement();
-			ResultSet rs = st.executeQuery("SELECT VERSION()");
+			sqlCon = DriverManager.getConnection("jdbc:mysql://geforcemods.net:3306/ircquotes?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", "Vauff", Passwords.database);
 		}
 		catch (SQLException e)
 		{

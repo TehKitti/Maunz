@@ -22,8 +22,8 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 		if (args.length == 1)
 		{
-			event.respondChannel("You need to provide an argument to this command!");
-			Logger.botMsg(event.getChannel().getName(), "You need to provide an argument to this command!");
+			event.respondChannel("You can view the quotes site here: http://geforcemods.net/quotes/");
+			Logger.botMsg(event.getChannel().getName(), "You can view the quotes site here: http://geforcemods.net/quotes/");
 		}
 		else
 		{
@@ -122,8 +122,8 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 									}
 									else
 									{
-										event.respondChannel("The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
-										Logger.botMsg(event.getChannel().getName(), "The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
+										event.respondChannel("The rest of this quote is too long for IRC. Please see the full quote at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
+										Logger.botMsg(event.getChannel().getName(), "The rest of this quote is too long for IRC. Please see the full quote at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
 										break;
 									}
 								}
@@ -152,11 +152,6 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 				Logger.botMsg(event.getChannel().getName(), "You can submit new quotes here: http://geforcemods.net/quotes/addquote.php");
 
 				break;
-			case "site":
-				event.respondChannel("You can view the quotes site here: http://geforcemods.net/quotes/");
-				Logger.botMsg(event.getChannel().getName(), "You can view the quotes site here: http://geforcemods.net/quotes/");
-				
-				break;
 			default:
 				event.respondChannel("The argument " + args[1] + " was not recognized! Please see *help quote for arguments that can be used");
 				Logger.botMsg(event.getChannel().getName(), "The argument " + args[1] + " was not recognized! Please see *help quote for arguments that can be used");
@@ -173,8 +168,8 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 		if (args.length == 1)
 		{
-			event.respond("You need to provide an argument to this command!");
-			Logger.botMsg(event.getUser().getNick(), "You need to provide an argument to this command!");
+			event.respond("You can view the quotes site here: http://geforcemods.net/quotes/");
+			Logger.botMsg(event.getUser().getNick(), "You can view the quotes site here: http://geforcemods.net/quotes/");
 		}
 		else
 		{
@@ -273,8 +268,8 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 									}
 									else
 									{
-										event.respond("The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
-										Logger.botMsg(event.getUser().getNick(), "The rest of this quote is too long for IRC. Please see the rest at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
+										event.respond("The rest of this quote is too long for IRC. Please see the full quote at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
+										Logger.botMsg(event.getUser().getNick(), "The rest of this quote is too long for IRC. Please see the full quote at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
 										break;
 									}
 								}
@@ -302,11 +297,6 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 				event.respond("You can submit new quotes here: http://geforcemods.net/quotes/addquote.php");
 				Logger.botMsg(event.getUser().getNick(), "You can submit new quotes here: http://geforcemods.net/quotes/addquote.php");
 
-				break;
-			case "site":
-				event.respond("You can view the quotes site here: http://geforcemods.net/quotes/");
-				Logger.botMsg(event.getUser().getNick(), "You can view the quotes site here: http://geforcemods.net/quotes/");
-				
 				break;
 			default:
 				event.respond("The argument " + args[1] + " was not recognized! Please see *help quote for arguments that can be used");

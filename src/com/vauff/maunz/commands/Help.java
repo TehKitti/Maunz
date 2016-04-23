@@ -88,7 +88,7 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 			return "Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server! Usage: *ping";
 		case "*quote":
 		case "quote":
-			return "Allows you to view IRC quotes. Usage: *quote <view/list/site/add> <quoteid> [page]";
+			return "Allows you to view IRC quotes. Usage: *quote <view/list/add> <quoteid> [page]";
 		case "*reddit":
 		case "reddit":
 			return "Links you to a subreddit that you provide. Usage: *reddit <subreddit>";

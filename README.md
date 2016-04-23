@@ -28,7 +28,7 @@ _*nick \<network> \<nickname>_ - Changes Maunz's nickname on a specific network.
 
 *ping - Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server!
 
-*quote \<view/list/site/add> \<quoteid> [page] - Allows you to view IRC quotes.
+*quote \<view/list/add> \<quoteid> [page] - Allows you to view IRC quotes.
 
 *reddit \<subreddit> - Links you to a subreddit that you provide.
 
@@ -78,7 +78,7 @@ Apache Commons Codec - 1.10
 
 Apache Commons Lang - 3.4
 
-Apache Commons IO - 2.4
+Apache Commons IO - 2.5
 
 Guava - 19.0
 
@@ -88,7 +88,7 @@ PircBotX - 2.1
 
 slf4j-api - 1.7.21
 
-jsoup - 1.8.3
+jsoup - 1.9.1
 
 rome-utils - 1.6.0
 
@@ -96,4 +96,4 @@ rome - 1.6.0
 
 jdom - 2.0.6
 
-mysql-connector-java - 5.1.38
+mysql-connector-java - 6.0.2
