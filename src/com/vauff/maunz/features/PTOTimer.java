@@ -12,10 +12,11 @@ public class PTOTimer
 	{
 		public void run()
 		{
-			if (!Main.esperBot.isConnected() || !Main.freenodeBot.isConnected())
+			try
 			{
-				try
+				if (!Main.esperBot.isConnected() || !Main.freenodeBot.isConnected())
 				{
+
 					final ArrayList<String> command = new ArrayList<String>();
 
 					command.add("java");
@@ -26,11 +27,12 @@ public class PTOTimer
 					Main.manager.stop("Restarting due to an automatically detected network disconnection");
 					System.exit(0);
 				}
-				catch (Exception e)
-				{
-					Logger.log.error(e);
-				}
 			}
+			catch (Exception e)
+			{
+				Logger.log.error(e);
+			}
+
 		}
 	};
 }

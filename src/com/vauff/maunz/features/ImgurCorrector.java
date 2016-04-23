@@ -10,44 +10,51 @@ public class ImgurCorrector extends ListenerAdapter
 {
 	public void onMessage(MessageEvent event) throws Exception
 	{
-		if (Util.isEnabled == true)
+		try
 		{
-			String[] args = event.getMessage().split(" ");
-
-			for (String arg : args)
+			if (Util.isEnabled == true)
 			{
-				if (arg.contains("www.") || arg.contains("http://") || arg.contains("https://"))
+				String[] args = event.getMessage().split(" ");
+
+				for (String arg : args)
 				{
-					if (arg.contains("imgur") && !arg.contains("i.imgur") && !arg.contains("/gallery/") && !arg.contains("/a/"))
+					if (arg.contains("www.") || arg.contains("http://") || arg.contains("https://"))
 					{
-						String constructedLink = "https://i.imgur.com/";
-
-						if (event.getChannel().getName().equals("#bl4ckscor3"))
+						if (arg.contains("imgur") && !arg.contains("i.imgur") && !arg.contains("/gallery/") && !arg.contains("/a/"))
 						{
-							Thread.sleep(4000);
-						}
+							String constructedLink = "https://i.imgur.com/";
 
-						if (arg.contains("www."))
-						{
-							if (!arg.contains("https://") && !arg.contains("http://"))
+							if (event.getChannel().getName().equals("#bl4ckscor3"))
 							{
-								constructedLink = constructedLink + arg.split("/")[1] + ".png";
+								Thread.sleep(4000);
+							}
+
+							if (arg.contains("www."))
+							{
+								if (!arg.contains("https://") && !arg.contains("http://"))
+								{
+									constructedLink = constructedLink + arg.split("/")[1] + ".png";
+								}
+								else
+								{
+									constructedLink = constructedLink + arg.split("/")[3] + ".png";
+								}
 							}
 							else
 							{
 								constructedLink = constructedLink + arg.split("/")[3] + ".png";
 							}
-						}
-						else
-						{
-							constructedLink = constructedLink + arg.split("/")[3] + ".png";
-						}
 
-						event.respondChannel("Direct link: " + constructedLink);
-						Logger.botMsg(event.getChannel().getName(), "Direct link: " + constructedLink);
+							event.respondChannel("Direct link: " + constructedLink);
+							Logger.botMsg(event.getChannel().getName(), "Direct link: " + constructedLink);
+						}
 					}
 				}
 			}
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
 		}
 	}
 }

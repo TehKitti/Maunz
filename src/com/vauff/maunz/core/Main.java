@@ -22,43 +22,51 @@ public class Main
 	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.16.1";
+	public static String version = "3.16.2";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
 	{
-		File log = new File("maunz.log");
-		File oldLog = new File("maunz-old.log");
-		File oldJar = new File("Maunz" + Util.getJarInt(true) + ".jar");
-
-		Thread.sleep(3000);
-		oldJar.delete();
-		oldLog.delete();
-		log.renameTo(oldLog);
-		Logger.log = LogManager.getLogger(Main.class);
-
-		if (args.length >= 1 && args[0].equals("-dev"))
+		try
 		{
-			Logger.log.info("Starting Maunz v" + version + " in dev mode");
-			Util.freenodeChannel = "#maunztesting";
-			Util.mainChannel = "#bl4ckb0tTest";
-			CsgoUpdate.listeningNick = "Vauff";
-			devMode = true;
-		}
-		else
-		{
-			Logger.log.info("Starting Maunz v" + version);
-			Util.freenodeChannel = "#steamdb-announce";
-			Util.mainChannel = "#bl4ckscor3";
-			CsgoUpdate.listeningNick = "SteamDB";
-			devMode = false;
-		}
+			File log = new File("maunz.log");
+			File oldLog = new File("maunz-old.log");
+			File oldJar = new File("Maunz" + Util.getJarInt(true) + ".jar");
 
-		createBot();
+			Thread.sleep(3000);
+			oldJar.delete();
+			oldLog.delete();
+			log.renameTo(oldLog);
+			Logger.log = LogManager.getLogger(Main.class);
+
+			if (args.length >= 1 && args[0].equals("-dev"))
+			{
+				Logger.log.info("Starting Maunz v" + version + " in dev mode");
+				Util.freenodeChannel = "#maunztesting";
+				Util.mainChannel = "#bl4ckb0tTest";
+				CsgoUpdate.listeningNick = "Vauff";
+				devMode = true;
+			}
+			else
+			{
+				Logger.log.info("Starting Maunz v" + version);
+				Util.freenodeChannel = "#steamdb-announce";
+				Util.mainChannel = "#bl4ckscor3";
+				CsgoUpdate.listeningNick = "SteamDB";
+				devMode = false;
+			}
+
+			createBot();
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
+		}
 	}
 
 	public static void createBot() throws Exception
 	{
+
 		Configuration esperConfig = new Configuration.Builder()
 				.setName("Maunz")
 				.setVersion(version)
@@ -99,4 +107,5 @@ public class Main
 		Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(SCSRSSTimer.timer, 60, 60, TimeUnit.SECONDS);
 		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(PTOTimer.timer, 60, 60, TimeUnit.SECONDS);
 	}
+
 }

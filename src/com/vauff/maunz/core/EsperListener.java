@@ -52,56 +52,84 @@ public class EsperListener extends ListenerAdapter
 
 	public void onMessage(MessageEvent event) throws Exception
 	{
-		String cmdName = event.getMessage().split(" ")[0];
-
-		for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
+		try
 		{
-			if (Util.isEnabled || cmd instanceof Enable || cmd instanceof Disable)
+			String cmdName = event.getMessage().split(" ")[0];
+
+			for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
 			{
-				for (String s : cmd.getAliases())
+				if (Util.isEnabled || cmd instanceof Enable || cmd instanceof Disable)
 				{
-					if (cmdName.equalsIgnoreCase(s))
+					for (String s : cmd.getAliases())
 					{
-						cmd.exeChan(event);
+						if (cmdName.equalsIgnoreCase(s))
+						{
+							cmd.exeChan(event);
+						}
 					}
 				}
 			}
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
 		}
 	}
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception
 	{
-		String cmdName = event.getMessage().split(" ")[0];
-
-		for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
+		try
 		{
-			if (Util.isEnabled || cmd instanceof Enable || cmd instanceof Disable)
+			String cmdName = event.getMessage().split(" ")[0];
+
+			for (ICommand<MessageEvent, PrivateMessageEvent> cmd : commands)
 			{
-				for (String s : cmd.getAliases())
+				if (Util.isEnabled || cmd instanceof Enable || cmd instanceof Disable)
 				{
-					if (cmdName.equalsIgnoreCase(s))
+					for (String s : cmd.getAliases())
 					{
-						cmd.exePrivate(event);
+						if (cmdName.equalsIgnoreCase(s))
+						{
+							cmd.exePrivate(event);
+						}
 					}
 				}
 			}
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
 		}
 	}
 
 	public void onConnect(ConnectEvent event) throws IOException
 	{
-		Main.esperBot = Main.manager.getBotById(0);
-		Main.freenodeBot = Main.manager.getBotById(1);
-		uptime.start();
-
-		for (String chan : Util.getFileContents())
+		try
 		{
-			Main.esperBot.sendIRC().joinChannel(chan);
+			Main.esperBot = Main.manager.getBotById(0);
+			Main.freenodeBot = Main.manager.getBotById(1);
+			uptime.start();
+
+			for (String chan : Util.getFileContents())
+			{
+				Main.esperBot.sendIRC().joinChannel(chan);
+			}
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
 		}
 	}
 
 	public void onNickAlreadyInUse(NickAlreadyInUseEvent event)
 	{
-		Nick.isNickUsed = true;
+		try
+		{
+			Nick.isNickUsed = true;
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
+		}
 	}
 }

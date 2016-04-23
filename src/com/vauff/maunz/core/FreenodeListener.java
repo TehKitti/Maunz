@@ -9,6 +9,13 @@ public class FreenodeListener extends ListenerAdapter
 {
 	public void onNickAlreadyInUse(NickAlreadyInUseEvent event)
 	{
-		Nick.isNickUsed = true;
+		try
+		{
+			Nick.isNickUsed = true;
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
+		}
 	}
 }

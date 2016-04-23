@@ -25,46 +25,60 @@ public class Logger extends ListenerAdapter
 		try
 		{
 			Thread.sleep(100);
-		}
-		catch (InterruptedException e)
-		{
-			log.error(e);
-		}
 
-		if (Util.isEnabled)
-		{
-			log.info(buffer + " | " + Main.esperBot.getNick() + " | " + Colors.removeFormatting(Colors.removeColors(msg)));
+			if (Util.isEnabled)
+			{
+				log.info(buffer + " | " + Main.esperBot.getNick() + " | " + Colors.removeFormatting(Colors.removeColors(msg)));
+			}
+			else
+			{
+				log.info("[DISABLED] " + buffer + " | " + Main.esperBot.getNick() + " | " + Colors.removeFormatting(Colors.removeColors(msg)));
+			}
 		}
-		else
+		catch (Exception e)
 		{
-			log.info("[DISABLED] " + buffer + " | " + Main.esperBot.getNick() + " | " + Colors.removeFormatting(Colors.removeColors(msg)));
+			Logger.log.error("", e);
 		}
 	}
 
 	public void onMessage(MessageEvent event)
 	{
-		if (!event.getUser().getNick().equals("SteamDB"))
+		try
 		{
-			if (Util.isEnabled)
+			if (!event.getUser().getNick().equals("SteamDB"))
 			{
-				log.info(event.getChannel().getName() + " | " + event.getUser().getNick() + " | " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+				if (Util.isEnabled)
+				{
+					log.info(event.getChannel().getName() + " | " + event.getUser().getNick() + " | " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+				}
+				else
+				{
+					log.info("[DISABLED] " + event.getChannel().getName() + " | " + event.getUser().getNick() + " | " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+				}
 			}
-			else
-			{
-				log.info("[DISABLED] " + event.getChannel().getName() + " | " + event.getUser().getNick() + " | " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
-			}
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
 		}
 	}
 
 	public void onPrivateMessage(PrivateMessageEvent event)
 	{
-		if (Util.isEnabled)
+		try
 		{
-			log.info(event.getUser().getNick() + " | " + event.getUser().getNick() + " | " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+			if (Util.isEnabled)
+			{
+				log.info(event.getUser().getNick() + " | " + event.getUser().getNick() + " | " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+			}
+			else
+			{
+				log.info("[DISABLED] " + event.getUser().getNick() + " | " + event.getUser().getNick() + " | " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+			}
 		}
-		else
+		catch (Exception e)
 		{
-			log.info("[DISABLED] " + event.getUser().getNick() + " | " + event.getUser().getNick() + " | " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+			Logger.log.error("", e);
 		}
 	}
 
@@ -81,89 +95,139 @@ public class Logger extends ListenerAdapter
 		{
 			// do nothing because im expecting this every startup
 		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
+		}
 	}
 
 	public void onQuit(QuitEvent event)
 	{
-		if (!event.getUser().getNick().equals(Main.esperBot.getNick()) && !event.getUser().getNick().equals(Main.freenodeBot.getNick()))
+		try
 		{
-			if (event.getReason().equals(""))
+			if (!event.getUser().getNick().equals(Main.esperBot.getNick()) && !event.getUser().getNick().equals(Main.freenodeBot.getNick()))
 			{
-				log.info(event.getUser().getNick() + " just quit " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+				if (event.getReason().equals(""))
+				{
+					log.info(event.getUser().getNick() + " just quit " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+				}
+				else
+				{
+					log.info(event.getUser().getNick() + " just quit " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
+				}
 			}
-			else
+			if (event.getUser().getNick().equals(Main.esperBot.getNick()) || event.getUser().getNick().equals(Main.freenodeBot.getNick()))
 			{
-				log.info(event.getUser().getNick() + " just quit " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
+				if (event.getReason().equals(""))
+				{
+					log.info("Quit " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+				}
+				else
+				{
+					log.info("Quit " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
+				}
 			}
 		}
-		if (event.getUser().getNick().equals(Main.esperBot.getNick()) || event.getUser().getNick().equals(Main.freenodeBot.getNick()))
+		catch (Exception e)
 		{
-			if (event.getReason().equals(""))
-			{
-				log.info("Quit " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
-			}
-			else
-			{
-				log.info("Quit " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
-			}
+			Logger.log.error("", e);
 		}
 	}
 
 	public void onPart(PartEvent event)
 	{
-		if (!event.getUser().getNick().equals(Main.esperBot.getNick()) && !event.getUser().getNick().equals(Main.freenodeBot.getNick()))
+		try
 		{
-			if (event.getReason().equals(""))
+			if (!event.getUser().getNick().equals(Main.esperBot.getNick()) && !event.getUser().getNick().equals(Main.freenodeBot.getNick()))
 			{
-				log.info(event.getUser().getNick() + " just left " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+				if (event.getReason().equals(""))
+				{
+					log.info(event.getUser().getNick() + " just left " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+				}
+				else
+				{
+					log.info(event.getUser().getNick() + " just left " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
+				}
 			}
-			else
+
+			if (event.getUser().getNick().equals(Main.esperBot.getNick()) || event.getUser().getNick().equals(Main.freenodeBot.getNick()))
 			{
-				log.info(event.getUser().getNick() + " just left " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
+				if (event.getReason().equals(""))
+				{
+					log.info("Left " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+				}
+				else
+				{
+					log.info("Left " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
+				}
 			}
 		}
-
-		if (event.getUser().getNick().equals(Main.esperBot.getNick()) || event.getUser().getNick().equals(Main.freenodeBot.getNick()))
+		catch (Exception e)
 		{
-			if (event.getReason().equals(""))
-			{
-				log.info("Left " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
-			}
-			else
-			{
-				log.info("Left " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
-			}
+			Logger.log.error("", e);
 		}
 	}
 
 	public void onJoin(JoinEvent event) throws InterruptedException
 	{
-		if (!event.getUser().getNick().equals(Main.esperBot.getNick()) && !event.getUser().getNick().equals(Main.freenodeBot.getNick()))
+		try
 		{
-			log.info(event.getUser().getNick() + " just joined " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
-		}
+			if (!event.getUser().getNick().equals(Main.esperBot.getNick()) && !event.getUser().getNick().equals(Main.freenodeBot.getNick()))
+			{
+				log.info(event.getUser().getNick() + " just joined " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+			}
 
-		if (event.getUser().getNick().equals(Main.esperBot.getNick()) || event.getUser().getNick().equals(Main.freenodeBot.getNick()))
+			if (event.getUser().getNick().equals(Main.esperBot.getNick()) || event.getUser().getNick().equals(Main.freenodeBot.getNick()))
+			{
+				log.info("Joined " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+			}
+		}
+		catch (Exception e)
 		{
-			log.info("Joined " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+			Logger.log.error("", e);
 		}
 	}
 
 	public void onNickChange(NickChangeEvent event)
 	{
-		log.info(event.getOldNick() + " just changed their nick to " + event.getNewNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+		try
+		{
+			log.info(event.getOldNick() + " just changed their nick to " + event.getNewNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
+		}
 	}
 
 	public void onAction(ActionEvent event)
 	{
-		log.info(event.getChannel().getName() + " | -*- " + event.getUser().getNick() + " " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+		try
+		{
+			log.info(event.getChannel().getName() + " | -*- " + event.getUser().getNick() + " " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
+		}
 	}
 
 	public void onNotice(NoticeEvent event)
 	{
-		if (!event.getUser().getNick().contains(".esper.net") && !event.getUser().getNick().contains(".freenode.net"))
+		try
 		{
-			log.info("[" + event.getUser().getNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + "] " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+			if (!event.getUser().getNick().contains(".esper.net") && !event.getUser().getNick().contains(".freenode.net"))
+			{
+				log.info("[" + event.getUser().getNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + "] " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+			}
+		}
+		catch (NullPointerException e)
+		{
+			// do nothing because im expecting this every startup
+		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
 		}
 	}
 
@@ -178,32 +242,43 @@ public class Logger extends ListenerAdapter
 		{
 			log.info(event.getChannel().getName() + " has mode " + event.getMode() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
 		}
+		catch (Exception e)
+		{
+			Logger.log.error("", e);
+		}
 	}
 
 	public void onKick(KickEvent event)
 	{
-		if (!event.getRecipient().getNick().equals(Main.esperBot.getNick()) && !event.getRecipient().getNick().equals(Main.freenodeBot.getNick()))
+		try
 		{
-			if (event.getReason().equals(""))
+			if (!event.getRecipient().getNick().equals(Main.esperBot.getNick()) && !event.getRecipient().getNick().equals(Main.freenodeBot.getNick()))
 			{
-				log.info(event.getRecipient().getNick() + " was kicked from " + event.getChannel().getName() + " by " + event.getUser().getNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+				if (event.getReason().equals(""))
+				{
+					log.info(event.getRecipient().getNick() + " was kicked from " + event.getChannel().getName() + " by " + event.getUser().getNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+				}
+				else
+				{
+					log.info(event.getRecipient().getNick() + " was kicked from " + event.getChannel().getName() + " by " + event.getUser().getNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
+				}
 			}
-			else
+
+			if (event.getRecipient().getNick().equals(Main.esperBot.getNick()) || event.getRecipient().getNick().equals(Main.freenodeBot.getNick()))
 			{
-				log.info(event.getRecipient().getNick() + " was kicked from " + event.getChannel().getName() + " by " + event.getUser().getNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
+				if (event.getReason().equals(""))
+				{
+					log.info("Kicked from " + event.getChannel().getName() + " by " + event.getUser().getNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+				}
+				else
+				{
+					log.info("Kicked from " + event.getChannel().getName() + " by " + event.getUser().getNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
+				}
 			}
 		}
-
-		if (event.getRecipient().getNick().equals(Main.esperBot.getNick()) || event.getRecipient().getNick().equals(Main.freenodeBot.getNick()))
+		catch (Exception e)
 		{
-			if (event.getReason().equals(""))
-			{
-				log.info("Kicked from " + event.getChannel().getName() + " by " + event.getUser().getNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
-			}
-			else
-			{
-				log.info("Kicked from " + event.getChannel().getName() + " by " + event.getUser().getNick() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]) + " with the reason \"" + Colors.removeFormatting(Colors.removeColors(event.getReason())) + "\"");
-			}
+			Logger.log.error("", e);
 		}
 	}
 }
