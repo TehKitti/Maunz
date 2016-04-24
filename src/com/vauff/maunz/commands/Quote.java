@@ -2,6 +2,7 @@ package com.vauff.maunz.commands;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.concurrent.Executor;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -75,7 +76,13 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 						Logger.botMsg(event.getChannel().getName(), "That page doesn't exist!");
 					}
 
-					Util.sqlCon.abort(null);
+					Util.sqlCon.abort(new Executor()
+					{
+						@Override
+						public void execute(Runnable command)
+						{
+						}
+					});
 				}
 				else
 				{
@@ -137,7 +144,13 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 						rs.close();
 						pst.close();
-						Util.sqlCon.abort(null);
+						Util.sqlCon.abort(new Executor()
+						{
+							@Override
+							public void execute(Runnable command)
+							{
+							}
+						});
 					}
 					else
 					{
@@ -221,7 +234,13 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 						Logger.botMsg(event.getUser().getNick(), "That page doesn't exist!");
 					}
 
-					Util.sqlCon.abort(null);
+					Util.sqlCon.abort(new Executor()
+					{
+						@Override
+						public void execute(Runnable command)
+						{
+						}
+					});
 				}
 				else
 				{
@@ -283,7 +302,13 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 						rs.close();
 						pst.close();
-						Util.sqlCon.abort(null);
+						Util.sqlCon.abort(new Executor()
+						{
+							@Override
+							public void execute(Runnable command)
+							{
+							}
+						});
 					}
 					else
 					{
