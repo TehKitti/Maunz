@@ -22,7 +22,7 @@ public class Main
 	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.16.3";
+	public static String version = "3.16.4";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
@@ -43,7 +43,7 @@ public class Main
 			{
 				Logger.log.info("Starting Maunz v" + version + " in dev mode");
 				Util.freenodeChannel = "#maunztesting";
-				Util.mainChannel = "#bl4ckb0tTest";
+				Util.mainChannel = "#maunztesting";
 				CsgoUpdate.listeningNick = "Vauff";
 				devMode = true;
 			}
@@ -51,7 +51,7 @@ public class Main
 			{
 				Logger.log.info("Starting Maunz v" + version);
 				Util.freenodeChannel = "#steamdb-announce";
-				Util.mainChannel = "#bl4ckscor3";
+				Util.mainChannel = "#mancave";
 				CsgoUpdate.listeningNick = "SteamDB";
 				devMode = false;
 			}
