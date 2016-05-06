@@ -13,7 +13,7 @@ public class Enable implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			if (!Util.isEnabled)
 			{
@@ -38,7 +38,7 @@ public class Enable implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			if (!Util.isEnabled)
 			{

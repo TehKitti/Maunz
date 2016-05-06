@@ -18,7 +18,7 @@ import org.pircbotx.hooks.events.ServerPingEvent;
 
 public class Logger extends ListenerAdapter
 {
-	public static org.apache.log4j.Logger log;
+	public static org.apache.logging.log4j.Logger log;
 
 	public static void botMsg(String buffer, String msg)
 	{

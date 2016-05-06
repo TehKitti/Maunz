@@ -6,6 +6,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Util;
 
 public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 {
@@ -14,7 +15,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			String[] args = event.getMessage().split(" ");
 
@@ -108,7 +109,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			String[] args = event.getMessage().split(" ");
 

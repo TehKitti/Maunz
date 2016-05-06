@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.LogManager;
+import org.apache.logging.log4j.LogManager;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.MultiBotManager;
@@ -22,7 +22,7 @@ public class Main
 	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.16.4";
+	public static String version = "3.17";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
@@ -43,7 +43,8 @@ public class Main
 			{
 				Logger.log.info("Starting Maunz v" + version + " in dev mode");
 				Util.freenodeChannel = "#maunztesting";
-				Util.mainChannel = "#maunztesting";
+				Util.mainChannel = "#bl4ckb0tTest";
+				Util.secondaryChannel = "#maunztesting";
 				CsgoUpdate.listeningNick = "Vauff";
 				devMode = true;
 			}
@@ -52,6 +53,7 @@ public class Main
 				Logger.log.info("Starting Maunz v" + version);
 				Util.freenodeChannel = "#steamdb-announce";
 				Util.mainChannel = "#mancave";
+				Util.secondaryChannel = "#extruders";
 				CsgoUpdate.listeningNick = "SteamDB";
 				devMode = false;
 			}

@@ -15,7 +15,7 @@ public class Restart implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			final ArrayList<String> command = new ArrayList<String>();
 
@@ -37,7 +37,7 @@ public class Restart implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			final ArrayList<String> command = new ArrayList<String>();
 

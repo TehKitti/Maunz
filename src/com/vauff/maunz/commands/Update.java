@@ -19,7 +19,7 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			event.respondChannel("I will run the auto update sequence!");
 			Logger.botMsg(event.getChannel().getName(), "I will run the auto update sequence!");
@@ -48,7 +48,7 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			event.respond("I will run the auto update sequence!");
 			Logger.botMsg(event.getUser().getNick(), "I will run the auto update sequence!");

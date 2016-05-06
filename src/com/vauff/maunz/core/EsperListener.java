@@ -112,7 +112,14 @@ public class EsperListener extends ListenerAdapter
 
 			for (String chan : Util.getFileContents())
 			{
-				Main.esperBot.sendIRC().joinChannel(chan);
+				if (chan.equals("#extruders"))
+				{
+					Main.esperBot.sendIRC().joinChannel(chan, Passwords.extruders);
+				}
+				else
+				{
+					Main.esperBot.sendIRC().joinChannel(chan);
+				}
 			}
 		}
 		catch (Exception e)

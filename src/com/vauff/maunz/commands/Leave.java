@@ -13,7 +13,7 @@ public class Leave implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			String[] args = event.getMessage().split(" ");
 
@@ -58,7 +58,7 @@ public class Leave implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			String[] args = event.getMessage().split(" ");
 

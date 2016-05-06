@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.TimeZone;
 
 import org.pircbotx.Channel;
+import org.pircbotx.User;
 
 import com.google.common.collect.ImmutableSortedSet;
 
@@ -23,6 +24,7 @@ public class Util
 	public static boolean isEnabled = true;
 	public static Connection sqlCon;
 	public static String mainChannel;
+	public static String secondaryChannel;
 	public static String freenodeChannel;
 
 	public static String getJarLocation()
@@ -203,6 +205,18 @@ public class Util
 		catch (SQLException e)
 		{
 			Logger.log.error(e.getMessage(), e);
+		}
+	}
+
+	public static boolean hasPermission(User user)
+	{
+		if (user.getNick().equalsIgnoreCase("Vauff") && user.getIdent().equalsIgnoreCase("~Vauff") && user.getHostname().equalsIgnoreCase("168.235.88.38"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

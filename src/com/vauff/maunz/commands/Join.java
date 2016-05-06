@@ -6,6 +6,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Passwords;
 import com.vauff.maunz.core.Util;
 
 public class Join implements ICommand<MessageEvent, PrivateMessageEvent>
@@ -13,7 +14,7 @@ public class Join implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			String[] args = event.getMessage().split(" ");
 
@@ -29,7 +30,15 @@ public class Join implements ICommand<MessageEvent, PrivateMessageEvent>
 
 					if (!Util.hasJoinedChannel(args[1]))
 					{
-						Main.esperBot.sendIRC().joinChannel(args[1]);
+						if (args[1].equals("#extruders"))
+						{
+							Main.esperBot.sendIRC().joinChannel(args[1], Passwords.extruders);
+						}
+						else
+						{
+							Main.esperBot.sendIRC().joinChannel(args[1]);
+						}
+
 						event.respondChannel("I will join " + args[1] + "!");
 						Logger.botMsg(event.getChannel().getName(), "I will join " + args[1] + "!");
 					}
@@ -58,7 +67,7 @@ public class Join implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		if (event.getUser().getNick().equals("Vauff") && event.getUser().isVerified())
+		if (Util.hasPermission(event.getUser()))
 		{
 			String[] args = event.getMessage().split(" ");
 
@@ -74,7 +83,15 @@ public class Join implements ICommand<MessageEvent, PrivateMessageEvent>
 
 					if (!Util.hasJoinedChannel(args[1]))
 					{
-						Main.esperBot.sendIRC().joinChannel(args[1]);
+						if (args[1].equals("#extruders"))
+						{
+							Main.esperBot.sendIRC().joinChannel(args[1], Passwords.extruders);
+						}
+						else
+						{
+							Main.esperBot.sendIRC().joinChannel(args[1]);
+						}
+						
 						event.respond("I will join " + args[1] + "!");
 						Logger.botMsg(event.getUser().getNick(), "I will join " + args[1] + "!");
 					}

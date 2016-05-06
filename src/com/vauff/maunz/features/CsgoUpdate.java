@@ -58,14 +58,14 @@ public class CsgoUpdate extends ListenerAdapter
 
 						if (Main.devMode)
 						{
-							msg = "V4uff, SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
+							msg = "blackscore, V4uff, SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
 						}
 						else
 						{
-							msg = "Vauff, SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
+							msg = "bl4ckscor3, Vauff, SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
 						}
 
-						Logger.log.info("Found a CS:GO 730 update that got pushed with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
+						Logger.log.info("Found a CS:GO 730 update that got pushed with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + " and " + Util.secondaryChannel + "...");
 						Logger.botMsg(Util.mainChannel, msg);
 						Main.esperBot.sendIRC().message(Util.mainChannel, msg);
 					}
@@ -74,17 +74,21 @@ public class CsgoUpdate extends ListenerAdapter
 					{
 						String msg = "SteamDB has spotted an update for CS:GO on the 730 branch, this means an update might be coming. https://steamdb.info/app/730/history/";
 
-						Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
+						Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + " and " + Util.secondaryChannel + "...");
 						Logger.botMsg(Util.mainChannel, msg);
 						Main.esperBot.sendIRC().message(Util.mainChannel, msg);
+						Logger.botMsg(Util.secondaryChannel, msg);
+						Main.esperBot.sendIRC().message(Util.secondaryChannel, msg);
 					}
 					else
 					{
 						String msg = "SteamDB has spotted a non-important update for CS:GO on the 730 branch, this most likely doesn't mean anything. https://steamdb.info/app/730/history/";
 
-						Logger.log.info("Found a non-important CS:GO 730 update with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
+						Logger.log.info("Found a non-important CS:GO 730 update with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + " and " + Util.secondaryChannel + "...");
 						Logger.botMsg(Util.mainChannel, msg);
 						Main.esperBot.sendIRC().message(Util.mainChannel, msg);
+						Logger.botMsg(Util.secondaryChannel, msg);
+						Main.esperBot.sendIRC().message(Util.secondaryChannel, msg);
 					}
 				}
 
@@ -92,9 +96,11 @@ public class CsgoUpdate extends ListenerAdapter
 				{
 					String msg = "SteamDB has spotted an update for CS:GO on the 741 branch, this means that an update is definitely coming! https://steamdb.info/app/741/history/";
 
-					Logger.log.info("Found a CS:GO 741 update with changelog number " + lastChangelistNumber + ", sending info to " + Util.mainChannel + "...");
+					Logger.log.info("Found a CS:GO 741 update with changelog number " + lastChangelistNumber + ", sending info to " + Util.mainChannel + " and " + Util.secondaryChannel + "...");
 					Logger.botMsg(Util.mainChannel, msg);
 					Main.esperBot.sendIRC().message(Util.mainChannel, msg);
+					Logger.botMsg(Util.secondaryChannel, msg);
+					Main.esperBot.sendIRC().message(Util.secondaryChannel, msg);
 				}
 			}
 		}

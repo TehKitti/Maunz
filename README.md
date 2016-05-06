@@ -82,7 +82,7 @@ Apache Commons IO - 2.5
 
 Guava - 19.0
 
-log4j - 1.2.17
+log4j-core - 2.5
 
 PircBotX - 2.1
 
