@@ -1,5 +1,7 @@
 package com.vauff.maunz.features;
 
+import java.util.Locale;
+
 import com.google.code.chatterbotapi.ChatterBot;
 import com.google.code.chatterbotapi.ChatterBotFactory;
 import com.google.code.chatterbotapi.ChatterBotSession;
@@ -14,7 +16,7 @@ public class CleverbotSession
 		ChatterBotFactory factory = new ChatterBotFactory();
 		ChatterBot bot = factory.create(ChatterBotType.CLEVERBOT);
 
-		session = bot.createSession();
+		session = bot.createSession(Locale.ENGLISH);
 	}
 
 	public ChatterBotSession getSession()

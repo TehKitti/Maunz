@@ -21,9 +21,6 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		event.respondChannel("This feature is temporarily disabled due to a broken API");
-
-		/*
 		try
 		{
 			String[] message = event.getMessage().split(" ");
@@ -89,14 +86,10 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 		{
 			Logger.log.error("", e);
 		}
-		*/
 	}
 
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		event.respond("This feature is temporarily disabled due to a broken API");
-		
-		/*
 		try
 		{
 			String[] message = event.getMessage().split(" ");
@@ -162,7 +155,6 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 		{
 			Logger.log.error("", e);
 		}
-		*/
 	}
 
 	@Override
