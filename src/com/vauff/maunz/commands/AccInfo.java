@@ -51,19 +51,10 @@ public class AccInfo implements ICommand<MessageEvent, PrivateMessageEvent>
 
 				else if (statusraw.contains(","))
 				{
-					BufferedReader uuidreader = new BufferedReader(new InputStreamReader(new URL("http://mcuuid.com/api/" + status[1]).openStream()));
+					BufferedReader uuidreader = new BufferedReader(new InputStreamReader(new URL("http://us.mc-api.net/v3/uuid/" + status[1] + "/csv").openStream()));
 					String uuidstatusraw = uuidreader.readLine();
-					String[] uuidstatusrawsplit = uuidstatusraw.split(":");
-					String uuidstatus;
-
-					if (uuidstatusraw.contains("legacy"))
-					{
-						uuidstatus = uuidstatusrawsplit[4].replace("\"", "").replace("}", "");
-					}
-					else
-					{
-						uuidstatus = uuidstatusrawsplit[3].replace("\"", "").replace("}", "");
-					}
+					String[] uuidstatusrawsplit = uuidstatusraw.split(",");
+					String uuidstatus = uuidstatusrawsplit[3];
 
 					event.respondChannel(Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");
 					Logger.botMsg(event.getChannel().getName(), Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");
@@ -126,19 +117,10 @@ public class AccInfo implements ICommand<MessageEvent, PrivateMessageEvent>
 
 				else if (statusraw.contains(","))
 				{
-					BufferedReader uuidreader = new BufferedReader(new InputStreamReader(new URL("http://mcuuid.com/api/" + status[1]).openStream()));
+					BufferedReader uuidreader = new BufferedReader(new InputStreamReader(new URL("http://us.mc-api.net/v3/uuid/" + status[1] + "/csv").openStream()));
 					String uuidstatusraw = uuidreader.readLine();
-					String[] uuidstatusrawsplit = uuidstatusraw.split(":");
-					String uuidstatus;
-
-					if (uuidstatusraw.contains("legacy"))
-					{
-						uuidstatus = uuidstatusrawsplit[4].replace("\"", "").replace("}", "");
-					}
-					else
-					{
-						uuidstatus = uuidstatusrawsplit[3].replace("\"", "").replace("}", "");
-					}
+					String[] uuidstatusrawsplit = uuidstatusraw.split(",");
+					String uuidstatus = uuidstatusrawsplit[3];
 
 					event.respond(Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");
 					Logger.botMsg(event.getUser().getNick(), Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");

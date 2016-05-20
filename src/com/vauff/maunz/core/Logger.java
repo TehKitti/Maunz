@@ -223,7 +223,7 @@ public class Logger extends ListenerAdapter
 		}
 		catch (NullPointerException e)
 		{
-			// do nothing because im expecting this every startup
+			// Do nothing because I'm expecting this every startup
 		}
 		catch (Exception e)
 		{
@@ -236,11 +236,22 @@ public class Logger extends ListenerAdapter
 		try
 		{
 			log.info(event.getUser().getNick() + " sets mode " + event.getMode() + " on " + event.getChannel().getName() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
-
 		}
 		catch (NullPointerException e)
 		{
-			log.info(event.getChannel().getName() + " has mode " + event.getMode() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+			if (Util.channelModeState.containsKey(event.getChannel().getName() + event.getBot().getServerInfo().getServerName()))
+			{
+				if (Util.channelModeState.get(event.getChannel().getName() + event.getBot().getServerInfo().getServerName()) == false)
+				{
+					log.info(event.getChannel().getName() + " has mode " + event.getMode() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+					Util.channelModeState.put(event.getChannel().getName() + event.getBot().getServerInfo().getServerName(), true);
+				}
+			}
+			else
+			{
+				log.info(event.getChannel().getName() + " has mode " + event.getMode() + " on " + StringUtils.capitalize(event.getBot().getServerInfo().getServerName().split("\\.")[1]));
+				Util.channelModeState.put(event.getChannel().getName() + event.getBot().getServerInfo().getServerName(), true);
+			}
 		}
 		catch (Exception e)
 		{

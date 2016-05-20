@@ -30,6 +30,8 @@ public class Join implements ICommand<MessageEvent, PrivateMessageEvent>
 
 					if (!Util.hasJoinedChannel(args[1]))
 					{
+						Util.channelModeState.put(args[1] + event.getBot().getServerInfo().getServerName(), false);
+						
 						if (args[1].equals("#extruders"))
 						{
 							Main.esperBot.sendIRC().joinChannel(args[1], Passwords.extruders);
@@ -83,6 +85,8 @@ public class Join implements ICommand<MessageEvent, PrivateMessageEvent>
 
 					if (!Util.hasJoinedChannel(args[1]))
 					{
+						Util.channelModeState.put(args[1], false);
+						
 						if (args[1].equals("#extruders"))
 						{
 							Main.esperBot.sendIRC().joinChannel(args[1], Passwords.extruders);

@@ -58,16 +58,18 @@ public class CsgoUpdate extends ListenerAdapter
 
 						if (Main.devMode)
 						{
-							msg = "blackscore, V4uff, SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
+							msg = "SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
 						}
 						else
 						{
-							msg = "bl4ckscor3, Vauff, SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
+							msg = "SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
 						}
 
 						Logger.log.info("Found a CS:GO 730 update that got pushed with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + " and " + Util.secondaryChannel + "...");
 						Logger.botMsg(Util.mainChannel, msg);
 						Main.esperBot.sendIRC().message(Util.mainChannel, msg);
+						Logger.botMsg(Util.secondaryChannel, msg);
+						Main.esperBot.sendIRC().message(Util.secondaryChannel, msg);
 					}
 
 					else if (html.contains("branches/dpr/buildid"))

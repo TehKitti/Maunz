@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -22,6 +23,7 @@ import com.google.common.collect.ImmutableSortedSet;
 public class Util
 {
 	public static boolean isEnabled = true;
+	public static HashMap<String, Boolean> channelModeState = new HashMap<String, Boolean>();
 	public static Connection sqlCon;
 	public static String mainChannel;
 	public static String secondaryChannel;

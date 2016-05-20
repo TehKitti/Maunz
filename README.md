@@ -82,6 +82,8 @@ Apache Commons IO - 2.5
 
 Guava - 19.0
 
+log4j-api - 2.5
+
 log4j-core - 2.5
 
 PircBotX - 2.1
