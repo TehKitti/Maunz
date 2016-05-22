@@ -72,32 +72,32 @@ _*leave \<channel>_ - Makes Maunz leave a channel.
 
 Maunz depends on some java libraries to function, some are PircBotX dependencies and some are mine that I've added for some features. These can be downloaded manually or automatically with Maven using Maunz's pom.xml. They are with their versions listed below.
 
-Chatter Bot API - 1.3.3
+[Chatter Bot API](https://github.com/pierredavidbelanger/chatter-bot-api) - 1.4.2
 
-Apache Commons Codec - 1.10
+[Apache Commons Codec](https://commons.apache.org/proper/commons-codec/) - 1.10
 
-Apache Commons Lang - 3.4
+[Apache Commons Lang](https://commons.apache.org/proper/commons-lang/) - 3.4
 
-Apache Commons IO - 2.5
+[Apache Commons IO](https://commons.apache.org/proper/commons-io/) - 2.5
 
-Guava - 19.0
+[Guava](https://github.com/google/guava) - 19.0
 
-log4j-api - 2.5
+[log4j-api](http://logging.apache.org/log4j/2.x/) - 2.5
 
-log4j-core - 2.5
+[log4j-core](http://logging.apache.org/log4j/2.x/) - 2.5
 
-PircBotX - 2.1
+[PircBotX](https://github.com/TheLQ/pircbotx) - 2.1
 
-slf4j-api - 1.7.21
+[slf4j-api](http://www.slf4j.org/) - 1.7.21
 
-slf4j-nop - 1.7.21
+[slf4j-nop](http://www.slf4j.org/) - 1.7.21
 
-jsoup - 1.9.1
+[jsoup](https://jsoup.org/) - 1.9.1
 
-rome-utils - 1.6.0
+[rome-utils](http://rometools.github.io/rome/) - 1.6.0
 
-rome - 1.6.0
+[rome](http://rometools.github.io/rome/) - 1.6.0
 
-jdom - 2.0.6
+[jdom](http://www.jdom.org/) - 2.0.6
 
-mysql-connector-java - 6.0.2
+[mysql-connector-java](https://dev.mysql.com/downloads/connector/j/) - 6.0.2
