@@ -31,9 +31,18 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 			{
 				session = new CleverbotSession();
 				sessions.put(event.getChannel().getName(), session);
-				event.respondChannel("New Cleverbot session started for " + event.getChannel().getName() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command. If this conversation gets long, please use #CleverMaunz if not already.");
-				Logger.botMsg(event.getChannel().getName(), "New Cleverbot session started for " + event.getChannel().getName() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command. If this conversation gets long, please use #CleverMaunz if not already.");
 
+				if (event.getChannel().getName().equals("#CleverMaunz"))
+				{
+					event.respondChannel("New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command.");
+					Logger.botMsg(event.getChannel().getName(), "New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command.");
+				}
+				else
+				{
+					event.respondChannel("New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command. If this conversation gets long, please use #CleverMaunz.");
+					Logger.botMsg(event.getChannel().getName(), "New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command. If this conversation gets long, please use #CleverMaunz.");
+
+				}
 				TimerTask timerTask = new TimerTask()
 				{
 

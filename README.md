@@ -82,9 +82,9 @@ Maunz depends on some java libraries to function, some are PircBotX dependencies
 
 [Guava](https://github.com/google/guava) - 19.0
 
-[log4j-api](http://logging.apache.org/log4j/2.x/) - 2.5
+[log4j-api](http://logging.apache.org/log4j/2.x/) - 2.6
 
-[log4j-core](http://logging.apache.org/log4j/2.x/) - 2.5
+[log4j-core](http://logging.apache.org/log4j/2.x/) - 2.6
 
 [PircBotX](https://github.com/TheLQ/pircbotx) - 2.1
 
@@ -92,7 +92,7 @@ Maunz depends on some java libraries to function, some are PircBotX dependencies
 
 [slf4j-nop](http://www.slf4j.org/) - 1.7.21
 
-[jsoup](https://jsoup.org/) - 1.9.1
+[jsoup](https://jsoup.org/) - 1.9.2
 
 [rome-utils](http://rometools.github.io/rome/) - 1.6.0
 
