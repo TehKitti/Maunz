@@ -18,56 +18,43 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		event.respondChannel(Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
-		Logger.botMsg(event.getChannel().getName(), Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
+		Util.msg(event, Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
 
 		if (Main.devMode)
 		{
-			event.respondChannel(Colors.DARK_GREEN + "Maunz is an IRC bot created by V4uff with help from blackscore");
-			Logger.botMsg(event.getChannel().getName(), Colors.DARK_GREEN + "Maunz is an IRC bot created by V4uff with help from blackscore");
+			Util.msg(event, Colors.DARK_GREEN + "Maunz is an IRC bot created by V4uff with help from blackscore");
 		}
 		else
 		{
-			event.respondChannel(Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
-			Logger.botMsg(event.getChannel().getName(), Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
+			Util.msg(event, Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
 		}
-		event.respondChannel(Colors.PURPLE + "Version: " + Colors.RED + Main.version);
-		Logger.botMsg(event.getChannel().getName(), Colors.PURPLE + "Version: " + Colors.RED + Main.version);
-		event.respondChannel(Colors.PURPLE + "Build Date: " + Colors.RED + getBuildDate());
-		Logger.botMsg(event.getChannel().getName(), Colors.PURPLE + "Build Date: " + Colors.RED + getBuildDate());
-		event.respondChannel(Colors.PURPLE + "Dev Mode: " + Colors.RED + StringUtils.capitalize(Boolean.toString(Main.devMode)));
-		Logger.botMsg(event.getChannel().getName(), Colors.PURPLE + "Dev Mode: " + Colors.RED + StringUtils.capitalize(Boolean.toString(Main.devMode)));
-		event.respondChannel(Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
-		Logger.botMsg(event.getChannel().getName(), Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
-		event.respondChannel(Colors.BROWN + "******************************");
-		Logger.botMsg(event.getChannel().getName(), Colors.BROWN + "******************************");
+
+		Util.msg(event, Colors.PURPLE + "Version: " + Colors.RED + Main.version);
+		Util.msg(event, Colors.PURPLE + "Build Date: " + Colors.RED + getBuildDate());
+		Util.msg(event, Colors.PURPLE + "Dev Mode: " + Colors.RED + StringUtils.capitalize(Boolean.toString(Main.devMode)));
+		Util.msg(event, Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
+		Util.msg(event, Colors.BROWN + "******************************");
 	}
 
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		event.respond(Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
-		Logger.botMsg(event.getUser().getNick(), Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
+		Util.msg(event, Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
+
 		if (Main.devMode)
 		{
-			event.respond(Colors.DARK_GREEN + "Maunz is an IRC bot created by V4uff with help from blackscore");
-			Logger.botMsg(event.getUser().getNick(), Colors.DARK_GREEN + "Maunz is an IRC bot created by V4uff with help from blackscore");
+			Util.msg(event, Colors.DARK_GREEN + "Maunz is an IRC bot created by V4uff with help from blackscore");
 		}
 		else
 		{
-			event.respond(Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
-			Logger.botMsg(event.getUser().getNick(), Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
+			Util.msg(event, Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
 		}
-		event.respond(Colors.PURPLE + "Version: " + Colors.RED + Main.version);
-		Logger.botMsg(event.getUser().getNick(), Colors.PURPLE + "Version: " + Colors.RED + Main.version);
-		event.respond(Colors.PURPLE + "Build Date: " + Colors.RED + getBuildDate());
-		Logger.botMsg(event.getUser().getNick(), Colors.PURPLE + "Build Date: " + Colors.RED + getBuildDate());
-		event.respond(Colors.PURPLE + "Dev Mode: " + Colors.RED + StringUtils.capitalize(Boolean.toString(Main.devMode)));
-		Logger.botMsg(event.getUser().getNick(), Colors.PURPLE + "Dev Mode: " + Colors.RED + StringUtils.capitalize(Boolean.toString(Main.devMode)));
-		event.respond(Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
-		Logger.botMsg(event.getUser().getNick(), Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
-		event.respond(Colors.BROWN + "******************************");
-		Logger.botMsg(event.getUser().getNick(), Colors.BROWN + "******************************");
+		
+		Util.msg(event, Colors.PURPLE + "Version: " + Colors.RED + Main.version);
+		Util.msg(event, Colors.PURPLE + "Build Date: " + Colors.RED + getBuildDate());
+		Util.msg(event, Colors.PURPLE + "Dev Mode: " + Colors.RED + StringUtils.capitalize(Boolean.toString(Main.devMode)));
+		Util.msg(event, Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
+		Util.msg(event, Colors.BROWN + "******************************");
 	}
 
 	private String getBuildDate()

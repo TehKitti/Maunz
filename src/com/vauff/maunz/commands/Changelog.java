@@ -8,8 +8,8 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
-import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Util;
 
 public class Changelog implements ICommand<MessageEvent, PrivateMessageEvent>
 {
@@ -54,17 +54,14 @@ public class Changelog implements ICommand<MessageEvent, PrivateMessageEvent>
 					continue;
 				}
 
-				event.respondChannel("- " + split[i].substring(0, split[i].length() - 2));
-				Logger.botMsg(event.getChannel().getName(), "- " + split[i].substring(0, split[i].length() - 2));
+				Util.msg(event, "- " + split[i].substring(0, split[i].length() - 2));
 			}
 
-			event.respondChannel("GitHub link: " + link);
-			Logger.botMsg(event.getChannel().getName(), "GitHub link: " + link);
+			Util.msg(event, "GitHub link: " + link);
 		}
 		catch (HttpStatusException e)
 		{
-			event.respondChannel("That version of Maunz doesn't exist!");
-			Logger.botMsg(event.getChannel().getName(), "That version of Maunz doesn't exist!");
+			Util.msg(event, "That version of Maunz doesn't exist!");
 		}
 	}
 
@@ -109,17 +106,14 @@ public class Changelog implements ICommand<MessageEvent, PrivateMessageEvent>
 					continue;
 				}
 
-				event.respond("- " + split[i].substring(0, split[i].length() - 2));
-				Logger.botMsg(event.getUser().getNick(), "- " + split[i].substring(0, split[i].length() - 2));
+				Util.msg(event, "- " + split[i].substring(0, split[i].length() - 2));
 			}
 
-			event.respond("GitHub link: " + link);
-			Logger.botMsg(event.getUser().getNick(), "GitHub link: " + link);
+			Util.msg(event, "GitHub link: " + link);
 		}
 		catch (HttpStatusException e)
 		{
-			event.respond("That version of Maunz doesn't exist!");
-			Logger.botMsg(event.getUser().getNick(), "That version of Maunz doesn't exist!");
+			Util.msg(event, "That version of Maunz doesn't exist!");
 		}
 	}
 

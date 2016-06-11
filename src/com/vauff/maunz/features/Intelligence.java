@@ -34,13 +34,11 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 
 				if (event.getChannel().getName().equals("#CleverMaunz"))
 				{
-					event.respondChannel("New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command.");
-					Logger.botMsg(event.getChannel().getName(), "New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command.");
+					Util.msg(event, "New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command.");
 				}
 				else
 				{
-					event.respondChannel("New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command. If this conversation gets long, please use #CleverMaunz.");
-					Logger.botMsg(event.getChannel().getName(), "New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command. If this conversation gets long, please use #CleverMaunz.");
+					Util.msg(event, "New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command. If this conversation gets long, please use #CleverMaunz.");
 
 				}
 				TimerTask timerTask = new TimerTask()
@@ -52,8 +50,7 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 						sessions.remove(event.getChannel().getName());
 						Intelligence.sessionTimers.get(event.getChannel().getName()).cancel();
 						Intelligence.sessionTimers.remove(event.getChannel().getName());
-						event.respondChannel("Session has been automatically ended after 15 minutes of inactivity!");
-						Logger.botMsg(event.getChannel().getName(), "Session has been automatically ended after 15 minutes of inactivity! A new one can be started by talking to me again.");
+						Util.msg(event, "Session has been automatically ended after 15 minutes of inactivity!");
 					}
 				};
 
@@ -73,8 +70,7 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 						sessions.remove(event.getChannel().getName());
 						Intelligence.sessionTimers.get(event.getChannel().getName()).cancel();
 						Intelligence.sessionTimers.remove(event.getChannel().getName());
-						event.respondChannel("Session has been automatically ended after 15 minutes of inactivity!");
-						Logger.botMsg(event.getChannel().getName(), "Session has been automatically ended after 15 minutes of inactivity! A new one can be started by talking to me again.");
+						Util.msg(event, "Session has been automatically ended after 15 minutes of inactivity!");
 
 					}
 				};
@@ -88,8 +84,7 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 			String response = chatSession.think(Util.addArgs(message, 1));
 
 			Logger.log.info("Sending \"" + response + "\" in response to " + event.getChannel().getName() + "'s message \"" + Util.addArgs(message, 1) + "\"!");
-			Logger.botMsg(event.getChannel().getName(), event.getChannel().getName() + ": " + response);
-			event.respond(response);
+			Util.msg(event, response);
 		}
 		catch (Exception e)
 		{
@@ -109,8 +104,7 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 			{
 				session = new CleverbotSession();
 				sessions.put(event.getUser().getNick(), session);
-				event.respond("New Cleverbot session started for " + event.getUser().getNick() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command.");
-				Logger.botMsg(event.getUser().getNick(), "New Cleverbot session started for " + event.getUser().getNick() + ". This session will automatically end after 15 minutes of inactivity. It can also be stopped manually by using the *reset command.");
+				Util.msg(event, "New Cleverbot session started. It will automatically end after 15 minutes of inactivity, or stop it manually by using the *reset command.");
 
 				TimerTask timerTask = new TimerTask()
 				{
@@ -121,8 +115,7 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 						sessions.remove(event.getUser().getNick());
 						Intelligence.sessionTimers.get(event.getUser().getNick()).cancel();
 						Intelligence.sessionTimers.remove(event.getUser().getNick());
-						event.respond("Session has been automatically ended after 15 minutes of inactivity!");
-						Logger.botMsg(event.getUser().getNick(), "Session has been automatically ended after 15 minutes of inactivity! A new one can be started by talking to me again.");
+						Util.msg(event, "Session has been automatically ended after 15 minutes of inactivity!");
 					}
 				};
 
@@ -142,8 +135,7 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 						sessions.remove(event.getUser().getNick());
 						Intelligence.sessionTimers.get(event.getUser().getNick()).cancel();
 						Intelligence.sessionTimers.remove(event.getUser().getNick());
-						event.respond("Session has been automatically ended after 15 minutes of inactivity!");
-						Logger.botMsg(event.getUser().getNick(), "Session has been automatically ended after 15 minutes of inactivity! A new one can be started by talking to me again.");
+						Util.msg(event, "Session has been automatically ended after 15 minutes of inactivity!");
 
 					}
 				};
@@ -157,8 +149,7 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 			String response = chatSession.think(Util.addArgs(message, 1));
 
 			Logger.log.info("Sending \"" + response + "\" in response to " + event.getUser().getNick() + "'s message \"" + Util.addArgs(message, 1) + "\"!");
-			Logger.botMsg(event.getUser().getNick(), event.getUser().getNick() + ": " + response);
-			event.respond(response);
+			Util.msg(event, response);
 		}
 		catch (Exception e)
 		{

@@ -22,7 +22,7 @@ public class Main
 	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.17.3";
+	public static String version = "3.17.4";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
@@ -44,7 +44,7 @@ public class Main
 				Logger.log.info("Starting Maunz v" + version + " in dev mode");
 				Util.freenodeChannel = "#maunztesting";
 				Util.mainChannel = "#bl4ckb0tTest";
-				Util.secondaryChannel = "#maunztesting";
+				Util.secondaryChannel = "#whatever";
 				CsgoUpdate.listeningNick = "Vauff";
 				devMode = true;
 			}
@@ -69,9 +69,37 @@ public class Main
 	public static void createBot() throws Exception
 	{
 
-		Configuration esperConfig = new Configuration.Builder().setName("Maunz").setVersion(version).setLogin("Maunz").setNickservPassword(Passwords.esperNickServ).setAutoNickChange(true).setCapEnabled(true).setMessageDelay(400).setRealName("Maunz, an IRC bot created by Vauff.").addServer("irc.esper.net").addListener(new Grammar()).addListener(new ImgurCorrector()).addListener(new EsperListener()).addListener(new Logger()).buildForServer("irc.esper.net");
+		Configuration esperConfig = new Configuration.Builder()
+				.setName("Maunz")
+				.setVersion(version)
+				.setLogin("Maunz")
+				.setNickservPassword(Passwords.esperNickServ)
+				.setAutoNickChange(true)
+				.setCapEnabled(true)
+				.setMessageDelay(400)
+				.setRealName("Maunz, an IRC bot created by Vauff.")
+				.addServer("irc.esper.net")
+				.addListener(new Grammar())
+				.addListener(new ImgurCorrector())
+				.addListener(new EsperListener())
+				.addListener(new Logger())
+				.buildForServer("irc.esper.net");
 
-		Configuration freenodeConfig = new Configuration.Builder().setName("Maunz").setVersion(version).setLogin("Maunz").setNickservPassword(Passwords.freenodeNickServ).setAutoNickChange(true).setCapEnabled(true).setMessageDelay(400).setRealName("Maunz, an IRC bot created by Vauff.").addServer("irc.freenode.net").addAutoJoinChannel(Util.freenodeChannel).addListener(new CsgoUpdate()).addListener(new FreenodeListener()).addListener(new Logger()).buildForServer("irc.freenode.net");
+		Configuration freenodeConfig = new Configuration.Builder()
+				.setName("Maunz")
+				.setVersion(version)
+				.setLogin("Maunz")
+				.setNickservPassword(Passwords.freenodeNickServ)
+				.setAutoNickChange(true)
+				.setCapEnabled(true)
+				.setMessageDelay(400)
+				.setRealName("Maunz, an IRC bot created by Vauff.")
+				.addServer("irc.freenode.net")
+				.addAutoJoinChannel(Util.freenodeChannel)
+				.addListener(new CsgoUpdate())
+				.addListener(new FreenodeListener())
+				.addListener(new Logger())
+				.buildForServer("irc.freenode.net");
 
 		manager = new MultiBotManager();
 		manager.addBot(esperConfig);

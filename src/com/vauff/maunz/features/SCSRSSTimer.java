@@ -46,8 +46,7 @@ public class SCSRSSTimer
 					String msg = (Colors.DARK_GREEN + "New SCS blog post: " + Colors.BLUE + latestPost.getTitle() + Colors.NORMAL + " " + getLink(latestPost));
 
 					Logger.log.info("Detected a new SCS blog post called \"" + latestPost.getTitle() + "\". Sending notification to " + Util.mainChannel);
-					Logger.botMsg(Util.mainChannel, msg);
-					Main.esperBot.sendIRC().message(Util.mainChannel, msg);
+					Util.msg(Util.mainChannel, msg);
 				}
 
 				lastTitle = latestPost.getTitle();

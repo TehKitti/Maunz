@@ -21,8 +21,7 @@ public class Stop implements ICommand<MessageEvent, PrivateMessageEvent>
 		}
 		else
 		{
-			event.respondChannel("You do not have permission to use that command");
-			Logger.botMsg(event.getChannel().getName(), "You do not have permission to use that command");
+			Util.msg(event, "You do not have permission to use that command");
 		}
 	}
 
@@ -37,8 +36,7 @@ public class Stop implements ICommand<MessageEvent, PrivateMessageEvent>
 		}
 		else
 		{
-			event.respond("You do not have permission to use that command");
-			Logger.botMsg(event.getUser().getNick(), "You do not have permission to use that command");
+			Util.msg(event, "You do not have permission to use that command");
 		}
 	}
 

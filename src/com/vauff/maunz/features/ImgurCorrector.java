@@ -45,8 +45,7 @@ public class ImgurCorrector extends ListenerAdapter
 								constructedLink = constructedLink + arg.split("/")[3] + ".png";
 							}
 
-							event.respondChannel("Direct link: " + constructedLink);
-							Logger.botMsg(event.getChannel().getName(), "Direct link: " + constructedLink);
+							Util.msg(event, "Direct link: " + constructedLink);
 						}
 					}
 				}

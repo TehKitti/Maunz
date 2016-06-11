@@ -47,28 +47,22 @@ public class CSGORSSTimer
 						String msg = (Colors.DARK_GREEN + "New CS:GO blog post: " + Colors.BLUE + latestPost.getTitle() + Colors.NORMAL + " " + latestPost.getLink()).replace("\n", "");
 
 						Logger.log.info("Detected a new CS:GO blog post called \"" + latestPost.getTitle() + "\". Sending notification to " + Util.mainChannel + " and " + Util.secondaryChannel);
-						Logger.botMsg(Util.mainChannel, msg);
-						Main.esperBot.sendIRC().message(Util.mainChannel, msg);
-						Logger.botMsg(Util.secondaryChannel, msg);
-						Main.esperBot.sendIRC().message(Util.secondaryChannel, msg);
+						Util.msg(Util.mainChannel, msg);
+						Util.msg(Util.secondaryChannel, msg);
 					}
 					else
 					{
 						String msg = (Colors.DARK_GREEN + "New CS:GO blog post: " + Colors.BLUE + latestPost.getTitle() + Colors.NORMAL + " " + latestPost.getLink()).replace("\n", "");
 
 						Logger.log.info("Detected a new CS:GO blog post called \"" + latestPost.getTitle() + "\". Sending notification to " + Util.mainChannel + " and " + Util.secondaryChannel);
-						Logger.botMsg(Util.mainChannel, msg);
-						Main.esperBot.sendIRC().message(Util.mainChannel, msg);
-						Logger.botMsg(Util.secondaryChannel, msg);
-						Main.esperBot.sendIRC().message(Util.secondaryChannel, msg);
+						Util.msg(Util.mainChannel, msg);
+						Util.msg(Util.secondaryChannel, msg);
 
 						String secondMsg = (Colors.DARK_GREEN + "New CS:GO blog post: " + Colors.BLUE + secondLatestPost.getTitle() + Colors.NORMAL + " " + secondLatestPost.getLink()).replace("\n", "");
 
 						Logger.log.info("Detected a new CS:GO blog post called \"" + secondLatestPost.getTitle() + "\". Sending notification to " + Util.mainChannel + " and " + Util.secondaryChannel);
-						Logger.botMsg(Util.mainChannel, secondMsg);
-						Main.esperBot.sendIRC().message(Util.mainChannel, secondMsg);
-						Logger.botMsg(Util.secondaryChannel, secondMsg);
-						Main.esperBot.sendIRC().message(Util.secondaryChannel, secondMsg);
+						Util.msg(Util.mainChannel, secondMsg);
+						Util.msg(Util.secondaryChannel, secondMsg);
 					}
 				}
 

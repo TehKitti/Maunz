@@ -4,7 +4,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
-import com.vauff.maunz.core.Logger;
+import com.vauff.maunz.core.Util;
 
 public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 {
@@ -16,13 +16,11 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 
 		if (args.length == 1)
 		{
-			event.respondChannel("Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
-			Logger.botMsg(event.getChannel().getName(), "Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
+			Util.msg(event, "Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
 		}
 		else
 		{
-			event.respondChannel(cmdHelp(args));
-			Logger.botMsg(event.getChannel().getName(), cmdHelp(args));
+			Util.msg(event, cmdHelp(args));
 		}
 	}
 
@@ -33,13 +31,11 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 
 		if (args.length == 1)
 		{
-			event.respond("Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
-			Logger.botMsg(event.getUser().getNick(), "Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
+			Util.msg(event, "Help documents are located at https://github.com/Vauff/Maunz/blob/master/README.md");
 		}
 		else
 		{
-			event.respond(cmdHelp(args));
-			Logger.botMsg(event.getUser().getNick(), cmdHelp(args));
+			Util.msg(event, cmdHelp(args));
 		}
 	}
 

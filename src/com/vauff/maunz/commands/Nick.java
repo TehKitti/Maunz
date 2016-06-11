@@ -4,7 +4,6 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
-import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
@@ -21,8 +20,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 
 			if (args.length == 1)
 			{
-				event.respondChannel("I need a network name and a nickname specified!");
-				Logger.botMsg(event.getChannel().getName(), "I need a network name and a nickname specified!");
+				Util.msg(event, "I need a network name and a nickname specified!");
 			}
 			else
 			{
@@ -30,8 +28,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 				{
 					if (args.length == 2)
 					{
-						event.respondChannel("I need a network name and a nickname specified!");
-						Logger.botMsg(event.getChannel().getName(), "I need a network name and a nickname specified!");
+						Util.msg(event, "I need a network name and a nickname specified!");
 					}
 					else
 					{
@@ -39,8 +36,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 						{
 							if (args[2].equals(Main.esperBot.getNick()))
 							{
-								event.respondChannel("That is the nickname that I am already using!");
-								Logger.botMsg(event.getChannel().getName(), "That is the nickname that I am already using!");
+								Util.msg(event, "That is the nickname that I am already using!");
 							}
 							else
 							{
@@ -52,13 +48,11 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 
 								if (isNickUsed)
 								{
-									event.respondChannel("That nickname is already in use!");
-									Logger.botMsg(event.getChannel().getName(), "That nickname is already in use!");
+									Util.msg(event, "That nickname is already in use!");
 								}
 								else
 								{
-									event.respondChannel("Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
-									Logger.botMsg(event.getChannel().getName(), "Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
+									Util.msg(event, "Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
 								}
 
 							}
@@ -67,8 +61,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 						{
 							if (args[2].equals(Main.freenodeBot.getNick()))
 							{
-								event.respondChannel("That is the nickname that I am already using!");
-								Logger.botMsg(event.getChannel().getName(), "That is the nickname that I am already using!");
+								Util.msg(event, "That is the nickname that I am already using!");
 							}
 							else
 							{
@@ -80,13 +73,11 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 
 								if (isNickUsed)
 								{
-									event.respondChannel("That nickname is already in use!");
-									Logger.botMsg(event.getChannel().getName(), "That nickname is already in use!");
+									Util.msg(event, "That nickname is already in use!");
 								}
 								else
 								{
-									event.respondChannel("Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
-									Logger.botMsg(event.getChannel().getName(), "Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
+									Util.msg(event, "Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
 								}
 							}
 						}
@@ -94,15 +85,13 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 				}
 				else
 				{
-					event.respondChannel("I'm not on the network " + args[1] + "!");
-					Logger.botMsg(event.getChannel().getName(), "I'm not on the network " + args[1] + "!");
+					Util.msg(event, "I'm not on the network " + args[1] + "!");
 				}
 			}
 		}
 		else
 		{
-			event.respondChannel("You do not have permission to use that command");
-			Logger.botMsg(event.getChannel().getName(), "You do not have permission to use that command");
+			Util.msg(event, "You do not have permission to use that command");
 		}
 	}
 
@@ -115,8 +104,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 
 			if (args.length == 1)
 			{
-				event.respond("I need a network name and a nickname specified!");
-				Logger.botMsg(event.getUser().getNick(), "I need a network name and a nickname specified!");
+				Util.msg(event, "I need a network name and a nickname specified!");
 			}
 			else
 			{
@@ -124,8 +112,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 				{
 					if (args.length == 2)
 					{
-						event.respond("I need a network name and a nickname specified!");
-						Logger.botMsg(event.getUser().getNick(), "I need a network name and a nickname specified!");
+						Util.msg(event, "I need a network name and a nickname specified!");
 					}
 					else
 					{
@@ -133,8 +120,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 						{
 							if (args[2].equals(Main.esperBot.getNick()))
 							{
-								event.respond("That is the nickname that I am already using!");
-								Logger.botMsg(event.getUser().getNick(), "That is the nickname that I am already using!");
+								Util.msg(event, "That is the nickname that I am already using!");
 							}
 							else
 							{
@@ -146,13 +132,11 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 
 								if (isNickUsed)
 								{
-									event.respond("That nickname is already in use!");
-									Logger.botMsg(event.getUser().getNick(), "That nickname is already in use!");
+									Util.msg(event, "That nickname is already in use!");
 								}
 								else
 								{
-									event.respond("Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
-									Logger.botMsg(event.getUser().getNick(), "Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
+									Util.msg(event, "Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
 								}
 							}
 						}
@@ -160,8 +144,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 						{
 							if (args[2].equals(Main.freenodeBot.getNick()))
 							{
-								event.respond("That is the nickname that I am already using!");
-								Logger.botMsg(event.getUser().getNick(), "That is the nickname that I am already using!");
+								Util.msg(event, "That is the nickname that I am already using!");
 							}
 							else
 							{
@@ -173,13 +156,11 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 
 								if (isNickUsed)
 								{
-									event.respond("That nickname is already in use!");
-									Logger.botMsg(event.getUser().getNick(), "That nickname is already in use!");
+									Util.msg(event, "That nickname is already in use!");
 								}
 								else
 								{
-									event.respond("Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
-									Logger.botMsg(event.getUser().getNick(), "Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
+									Util.msg(event, "Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
 								}
 							}
 						}
@@ -187,15 +168,13 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 				}
 				else
 				{
-					event.respond("I'm not on the network " + args[1] + "!");
-					Logger.botMsg(event.getUser().getNick(), "I'm not on the network " + args[1] + "!");
+					Util.msg(event, "I'm not on the network " + args[1] + "!");
 				}
 			}
 		}
 		else
 		{
-			event.respond("You do not have permission to use that command");
-			Logger.botMsg(event.getUser().getNick(), "You do not have permission to use that command");
+			Util.msg(event, "You do not have permission to use that command");
 		}
 	}
 

@@ -4,22 +4,20 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
-import com.vauff.maunz.core.Logger;
+import com.vauff.maunz.core.Util;
 
 public class Trello implements ICommand<MessageEvent, PrivateMessageEvent>
 {
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		event.respondChannel("My Trello board is located at https://trello.com/b/9W7PmTvX/maunz");
-		Logger.botMsg(event.getChannel().getName(), "My Trello board is located at https://trello.com/b/9W7PmTvX/maunz");
+		Util.msg(event, "My Trello board is located at https://trello.com/b/9W7PmTvX/maunz");
 	}
 
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		event.respond("My Trello board is located at https://trello.com/b/9W7PmTvX/maunz");
-		Logger.botMsg(event.getUser().getNick(), "My Trello board is located at https://trello.com/b/9W7PmTvX/maunz");
+		Util.msg(event, "My Trello board is located at https://trello.com/b/9W7PmTvX/maunz");
 	}
 
 	@Override

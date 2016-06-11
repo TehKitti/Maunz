@@ -17,6 +17,8 @@ import java.util.TimeZone;
 
 import org.pircbotx.Channel;
 import org.pircbotx.User;
+import org.pircbotx.hooks.events.MessageEvent;
+import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.google.common.collect.ImmutableSortedSet;
 
@@ -220,5 +222,29 @@ public class Util
 		{
 			return false;
 		}
+	}
+
+	public static void msg(MessageEvent event, String message)
+	{
+		event.respondChannel(message);
+		Logger.botMsg(event.getChannel().getName(), message);
+	}
+
+	public static void msg(boolean ping, MessageEvent event, String message)
+	{
+		event.respondChannel(event.getUser().getNick() + ": " + message);
+		Logger.botMsg(event.getChannel().getName(), event.getUser().getNick() + ": " + message);
+	}
+
+	public static void msg(PrivateMessageEvent event, String message)
+	{
+		event.respond(message);
+		Logger.botMsg(event.getUser().getNick(), message);
+	}
+
+	public static void msg(String target, String message)
+	{
+		Main.esperBot.sendIRC().message(target, message);
+		Logger.botMsg(target, message);
 	}
 }

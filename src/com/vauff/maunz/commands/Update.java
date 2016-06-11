@@ -21,8 +21,7 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 	{
 		if (Util.hasPermission(event.getUser()))
 		{
-			event.respondChannel("I will run the auto update sequence!");
-			Logger.botMsg(event.getChannel().getName(), "I will run the auto update sequence!");
+			Util.msg(event, "I will run the auto update sequence!");
 
 			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
 			FileOutputStream file = new FileOutputStream("Maunz" + Util.getJarInt(true) + ".jar");
@@ -40,8 +39,7 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 		}
 		else
 		{
-			event.respondChannel("You do not have permission to use that command");
-			Logger.botMsg(event.getChannel().getName(), "You do not have permission to use that command");
+			Util.msg(event, "You do not have permission to use that command");
 		}
 	}
 
@@ -50,8 +48,7 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 	{
 		if (Util.hasPermission(event.getUser()))
 		{
-			event.respond("I will run the auto update sequence!");
-			Logger.botMsg(event.getUser().getNick(), "I will run the auto update sequence!");
+			Util.msg(event, "I will run the auto update sequence!");
 
 			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
 			FileOutputStream file = new FileOutputStream("Maunz" + Util.getJarInt(true) + ".jar");
@@ -69,8 +66,7 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 		}
 		else
 		{
-			event.respond("You do not have permission to use that command");
-			Logger.botMsg(event.getUser().getNick(), "You do not have permission to use that command");
+			Util.msg(event, "You do not have permission to use that command");
 		}
 	}
 
