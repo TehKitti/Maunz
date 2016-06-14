@@ -16,6 +16,7 @@ import com.vauff.maunz.features.Grammar;
 import com.vauff.maunz.features.ImgurCorrector;
 import com.vauff.maunz.features.PTOTimer;
 import com.vauff.maunz.features.SCSRSSTimer;
+import com.vauff.maunz.features.TaskController;
 import com.vauff.maunz.features.CSGORSSTimer;
 
 public class Main
@@ -23,7 +24,7 @@ public class Main
 	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.18-dev";
+	public static String version = "3.18";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
@@ -86,6 +87,7 @@ public class Main
 				.addListener(new ImgurCorrector())
 				.addListener(new EsperListener())
 				.addListener(new Logger())
+				.addListener(new TaskController())
 				.buildForServer("irc.esper.net");
 
 		Configuration freenodeConfig = new Configuration.Builder()

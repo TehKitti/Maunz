@@ -168,7 +168,7 @@ public class Logger extends ListenerAdapter
 		}
 	}
 
-	public void onJoin(JoinEvent event) throws InterruptedException
+	public void onJoin(JoinEvent event)
 	{
 		try
 		{
