@@ -116,6 +116,10 @@ public class EsperListener extends ListenerAdapter
 				{
 					Main.esperBot.sendIRC().joinChannel(chan, Passwords.extruders);
 				}
+				else if (chan.equals("#TaskController") || chan.equals("#TaCoTest"))
+				{
+					Main.esperBot.sendIRC().joinChannel(chan, Passwords.taskController);
+				}
 				else
 				{
 					Main.esperBot.sendIRC().joinChannel(chan);

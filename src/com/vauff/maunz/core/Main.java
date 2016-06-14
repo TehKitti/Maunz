@@ -11,6 +11,7 @@ import org.pircbotx.MultiBotManager;
 import org.pircbotx.PircBotX;
 
 import com.vauff.maunz.features.CsgoUpdate;
+import com.vauff.maunz.features.GFLTimer;
 import com.vauff.maunz.features.Grammar;
 import com.vauff.maunz.features.ImgurCorrector;
 import com.vauff.maunz.features.PTOTimer;
@@ -22,7 +23,7 @@ public class Main
 	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.17.4";
+	public static String version = "3.18-dev";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception
@@ -45,6 +46,7 @@ public class Main
 				Util.freenodeChannel = "#maunztesting";
 				Util.mainChannel = "#bl4ckb0tTest";
 				Util.secondaryChannel = "#whatever";
+				Util.privateChannel = "#TaCoTest";
 				CsgoUpdate.listeningNick = "Vauff";
 				devMode = true;
 			}
@@ -54,6 +56,7 @@ public class Main
 				Util.freenodeChannel = "#steamdb-announce";
 				Util.mainChannel = "#mancave";
 				Util.secondaryChannel = "#extruders";
+				Util.privateChannel = "#TaskController";
 				CsgoUpdate.listeningNick = "SteamDB";
 				devMode = false;
 			}
@@ -105,8 +108,9 @@ public class Main
 		manager.addBot(esperConfig);
 		manager.addBot(freenodeConfig);
 		manager.start();
-		Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(CSGORSSTimer.timer, 60, 60, TimeUnit.SECONDS);
-		Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(SCSRSSTimer.timer, 60, 60, TimeUnit.SECONDS);
-		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(PTOTimer.timer, 60, 60, TimeUnit.SECONDS);
+		Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(GFLTimer.timer, 60, 60, TimeUnit.SECONDS);
+		Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(CSGORSSTimer.timer, 75, 60, TimeUnit.SECONDS);
+		Executors.newScheduledThreadPool(1).scheduleWithFixedDelay(SCSRSSTimer.timer, 90, 60, TimeUnit.SECONDS);
+		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(PTOTimer.timer, 105, 60, TimeUnit.SECONDS);
 	}
 }

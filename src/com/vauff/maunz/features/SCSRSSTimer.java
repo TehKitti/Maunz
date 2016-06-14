@@ -43,10 +43,8 @@ public class SCSRSSTimer
 
 				if (!latestPost.getTitle().equals(lastTitle) && !lastTitle.equals("") && !latestPost.getTitle().equals("") && Util.isEnabled)
 				{
-					String msg = (Colors.DARK_GREEN + "New SCS blog post: " + Colors.BLUE + latestPost.getTitle() + Colors.NORMAL + " " + getLink(latestPost));
-
 					Logger.log.info("Detected a new SCS blog post called \"" + latestPost.getTitle() + "\". Sending notification to " + Util.mainChannel);
-					Util.msg(Util.mainChannel, msg);
+					Util.msg(Util.mainChannel, Colors.DARK_GREEN + "New SCS blog post: " + Colors.BLUE + latestPost.getTitle() + Colors.NORMAL + " " + getLink(latestPost));
 				}
 
 				lastTitle = latestPost.getTitle();

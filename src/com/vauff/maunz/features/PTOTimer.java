@@ -16,7 +16,6 @@ public class PTOTimer
 			{
 				if (!Main.esperBot.isConnected() || !Main.freenodeBot.isConnected())
 				{
-
 					final ArrayList<String> command = new ArrayList<String>();
 
 					command.add("java");
@@ -32,7 +31,6 @@ public class PTOTimer
 			{
 				Logger.log.error(e);
 			}
-
 		}
 	};
 }

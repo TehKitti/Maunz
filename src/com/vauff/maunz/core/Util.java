@@ -29,6 +29,7 @@ public class Util
 	public static Connection sqlCon;
 	public static String mainChannel;
 	public static String secondaryChannel;
+	public static String privateChannel;
 	public static String freenodeChannel;
 
 	public static String getJarLocation()
