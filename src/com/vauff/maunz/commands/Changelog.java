@@ -4,6 +4,7 @@ import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import org.pircbotx.Colors;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
@@ -29,6 +30,7 @@ public class Changelog implements ICommand<MessageEvent, PrivateMessageEvent>
 			{
 				link = "https://github.com/Vauff/Maunz/releases/tag/v" + Main.version;
 				doc = Jsoup.connect(link).userAgent(" ").get();
+				Util.msg(event, Colors.BOLD + "-- Maunz v" + Main.version + " --");
 			}
 			else
 			{
@@ -36,11 +38,13 @@ public class Changelog implements ICommand<MessageEvent, PrivateMessageEvent>
 				{
 					link = "https://github.com/Vauff/Maunz/releases/tag/" + args[1];
 					doc = Jsoup.connect(link).userAgent(" ").get();
+					Util.msg(event, Colors.BOLD + "-- Maunz " + args[1] + " --");
 				}
 				else
 				{
 					link = "https://github.com/Vauff/Maunz/releases/tag/v" + args[1];
 					doc = Jsoup.connect(link).userAgent(" ").get();
+					Util.msg(event, Colors.BOLD + "-- Maunz v" + args[1] + " --");
 				}
 			}
 

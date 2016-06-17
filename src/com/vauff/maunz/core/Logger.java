@@ -204,7 +204,10 @@ public class Logger extends ListenerAdapter
 	{
 		try
 		{
-			log.info(event.getChannel().getName() + " | -*- " + event.getUser().getNick() + " " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+			if (!event.getUser().getNick().equals("SteamDB"))
+			{
+				log.info(event.getChannel().getName() + " | -*- " + event.getUser().getNick() + " " + Colors.removeFormatting(Colors.removeColors(event.getMessage())));
+			}
 		}
 		catch (Exception e)
 		{

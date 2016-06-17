@@ -23,14 +23,21 @@ public class TaskController extends ListenerAdapter
 			Logger.log.error("", e);
 		}
 	}
-	
+
 	public void onQuit(QuitEvent event)
 	{
 		try
 		{
 			if (event.getUser().getNick().startsWith("TaskController_"))
 			{
-				Util.msg(Util.privateChannel, "Vauff: " + event.getUser().getNick().split("_")[1] + " just logged off!");
+				if (event.getUser().getNick().equals("TaskController_alexm"))
+				{
+					Util.msg(Util.privateChannel, event.getUser().getNick().split("_")[1] + " just logged off!");
+				}
+				else
+				{
+					Util.msg(Util.privateChannel, "Vauff: " + event.getUser().getNick().split("_")[1] + " just logged off!");
+				}
 			}
 		}
 		catch (Exception e)
