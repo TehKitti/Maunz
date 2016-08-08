@@ -24,7 +24,7 @@ public class Main
 	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.18.1";
+	public static String version = "3.18.2";
 	public static boolean devMode;
 
 	public static void main(String args[]) throws Exception

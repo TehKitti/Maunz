@@ -84,7 +84,7 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 			String response = chatSession.think(Util.addArgs(message, 1));
 
 			Logger.log.info("Sending \"" + response + "\" in response to " + event.getChannel().getName() + "'s message \"" + Util.addArgs(message, 1) + "\"!");
-			Util.msg(event, response);
+			Util.msg(true, event, response);
 		}
 		catch (Exception e)
 		{
