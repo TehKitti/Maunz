@@ -58,15 +58,9 @@ public class AccInfo implements ICommand<MessageEvent, PrivateMessageEvent>
 
 					String uuidStatusRaw = stringBuffer.toString();
 					String[] uuidStatusRawSplit = uuidStatusRaw.split("\"");
-					String uuidstatus = uuidStatusRawSplit[11];
+					String uuidStatus = uuidStatusRawSplit[11];
 
-					Util.msg(event, Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");
-					Util.msg(event, Colors.PURPLE + "Account Status: " + Colors.RED + "Premium");
-					Util.msg(event, Colors.PURPLE + "Migrated: " + Colors.RED + StringUtils.capitalize(status[2]));
-					Util.msg(event, Colors.PURPLE + "UUID: " + Colors.RED + uuidstatus);
-					Util.msg(event, Colors.PURPLE + "Skin: " + "https://minotar.net/body/" + status[1] + "/500.png");
-					Util.msg(event, Colors.PURPLE + "Raw Skin: " + "https://minotar.net/skin/" + status[1]);
-					Util.msg(event, Colors.BROWN + "****************************************");
+					Util.msg(event, Colors.BOLD + "Username: " + Colors.NORMAL + status[1] + " | " + Colors.BOLD + "Account Status: " + Colors.NORMAL + "Premium" + " | " + Colors.BOLD + "Migrated: " + Colors.NORMAL + StringUtils.capitalize(status[2]) + " | " + Colors.BOLD + "UUID: " + Colors.NORMAL + uuidStatus + " | " + Colors.BOLD + "Skin: " + Colors.NORMAL + "https://minotar.net/body/" + status[1] + "/500.png" + " | " + Colors.BOLD + "Raw Skin: " + Colors.NORMAL + "https://minotar.net/skin/" + status[1]);
 				}
 			}
 		}
@@ -120,15 +114,9 @@ public class AccInfo implements ICommand<MessageEvent, PrivateMessageEvent>
 
 					String uuidStatusRaw = stringBuffer.toString();
 					String[] uuidStatusRawSplit = uuidStatusRaw.split("\"");
-					String uuidstatus = uuidStatusRawSplit[11];
+					String uuidStatus = uuidStatusRawSplit[11];
 
-					Util.msg(event, Colors.BROWN + "**********" + Colors.BLUE + "Account Info For " + status[1] + Colors.BROWN + "**********");
-					Util.msg(event, Colors.PURPLE + "Account Status: " + Colors.RED + "Premium");
-					Util.msg(event, Colors.PURPLE + "Migrated: " + Colors.RED + StringUtils.capitalize(status[2]));
-					Util.msg(event, Colors.PURPLE + "UUID: " + Colors.RED + uuidstatus);
-					Util.msg(event, Colors.PURPLE + "Skin: " + "https://minotar.net/body/" + status[1] + "/500.png");
-					Util.msg(event, Colors.PURPLE + "Raw Skin: " + "https://minotar.net/skin/" + status[1]);
-					Util.msg(event, Colors.BROWN + "****************************************");
+					Util.msg(event, Colors.BOLD + "Username: " + Colors.NORMAL + status[1] + " | " + Colors.BOLD + "Account Status: " + Colors.NORMAL + "Premium" + " | " + Colors.BOLD + "Migrated: " + Colors.NORMAL + StringUtils.capitalize(status[2]) + " | " + Colors.BOLD + "UUID: " + Colors.NORMAL + uuidStatus + " | " + Colors.BOLD + "Skin: " + Colors.NORMAL + "https://minotar.net/body/" + status[1] + "/500.png" + " | " + Colors.BOLD + "Raw Skin: " + Colors.NORMAL + "https://minotar.net/skin/" + status[1]);
 				}
 			}
 		}

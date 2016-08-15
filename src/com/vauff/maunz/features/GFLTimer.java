@@ -21,10 +21,10 @@ public class GFLTimer
 			{
 				Document doc = Jsoup.connect("https://stats.gflclan.com/hlstats.php?game=csgoze").timeout(10000).get();
 				String html = doc.select("td[class=game-table-cell]").text();
-				String[] mapSplit = html.split(" ");
+				String[] htmlSplit = html.split(" ");
 				String map = "";
 
-				for (String m : mapSplit)
+				for (String m : htmlSplit)
 				{
 					if (m.contains("_"))
 					{

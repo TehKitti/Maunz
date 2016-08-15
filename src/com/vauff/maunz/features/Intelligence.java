@@ -83,7 +83,6 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 			chatSession = session.getSession();
 			String response = chatSession.think(Util.addArgs(message, 1));
 
-			Logger.log.info("Sending \"" + response + "\" in response to " + event.getChannel().getName() + "'s message \"" + Util.addArgs(message, 1) + "\"!");
 			Util.msg(true, event, response);
 		}
 		catch (Exception e)
@@ -148,7 +147,6 @@ public class Intelligence implements ICommand<MessageEvent, PrivateMessageEvent>
 			chatSession = session.getSession();
 			String response = chatSession.think(Util.addArgs(message, 1));
 
-			Logger.log.info("Sending \"" + response + "\" in response to " + event.getUser().getNick() + "'s message \"" + Util.addArgs(message, 1) + "\"!");
 			Util.msg(event, response);
 		}
 		catch (Exception e)

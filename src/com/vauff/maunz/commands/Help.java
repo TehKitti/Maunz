@@ -49,6 +49,9 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 		case "*accinfo":
 		case "accinfo":
 			return "Gives you full information about any Minecraft account. Usage: *accinfo [username]";
+		case "*benchmark":
+		case "benchmark":
+			return "Provides complete benchmark information on a GPU or CPU powered by PassMark. Usage: *benchmark <gpu/cpu>";
 		case "*bulliedme":
 		case "bulliedme":
 			return "Did somebody bully you? This will send them a link to stop with their bullying ways. Usage: *bulliedme [channel] <username>";

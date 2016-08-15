@@ -10,6 +10,7 @@ import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.NickAlreadyInUseEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
+import org.pircbotx.hooks.events.QuitEvent;
 
 import com.vauff.maunz.commands.*;
 import com.vauff.maunz.core.ICommand;
@@ -24,6 +25,7 @@ public class EsperListener extends ListenerAdapter
 	{
 		commands.add(new About());
 		commands.add(new AccInfo());
+		commands.add(new Benchmark());
 		commands.add(new BulliedMe());
 		commands.add(new BullyMe());
 		commands.add(new Changelog());
@@ -131,12 +133,33 @@ public class EsperListener extends ListenerAdapter
 			Logger.log.error("", e);
 		}
 	}
+	
+	public void onQuit(QuitEvent event)
+	{
+		if (event.getReason().contains("GHOST command used by ") && event.getUser().getNick().equals(Main.esperBot.getNick()))
+		{
+			Util.isGhosted = true;
+			Logger.log.info("Maunz is stopping...");
+			Main.manager.stop("Stopping");
+			System.exit(0);
+		}
+	}
 
 	public void onNickAlreadyInUse(NickAlreadyInUseEvent event)
 	{
 		try
 		{
-			Nick.isNickUsed = true;
+			if (event.getUsedNick().equals("Maunz") && Main.devMode == false)
+			{
+				Thread.sleep(5000);
+				Main.esperBot.sendIRC().message("NickServ", "GHOST Maunz " + Passwords.esperNickServ);
+				Main.esperBot.sendIRC().changeNick("Maunz");
+				Main.esperBot.sendIRC().message("NickServ", "IDENTIFY " + Passwords.esperNickServ);
+			}
+			else
+			{
+				Nick.isNickUsed = true;
+			}
 		}
 		catch (Exception e)
 		{

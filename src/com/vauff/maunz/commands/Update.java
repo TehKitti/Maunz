@@ -34,7 +34,7 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 			file.close();
 			new ProcessBuilder(command).start();
 			Logger.log.info("Maunz is updating...");
-			Main.manager.stop("Updating and restarting");
+			Main.manager.stop("Updating");
 			System.exit(0);
 		}
 		else
@@ -61,7 +61,7 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 			file.close();
 			new ProcessBuilder(command).start();
 			Logger.log.info("Maunz is updating...");
-			Main.manager.stop("Updating and restarting");
+			Main.manager.stop("Updating");
 			System.exit(0);
 		}
 		else

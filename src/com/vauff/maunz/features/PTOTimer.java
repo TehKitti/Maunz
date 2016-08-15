@@ -14,7 +14,7 @@ public class PTOTimer
 		{
 			try
 			{
-				if (!Main.esperBot.isConnected() || !Main.freenodeBot.isConnected())
+				if ((!Main.esperBot.isConnected() || !Main.freenodeBot.isConnected()) && (Util.isGhosted == false))
 				{
 					final ArrayList<String> command = new ArrayList<String>();
 

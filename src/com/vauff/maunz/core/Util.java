@@ -25,6 +25,7 @@ import com.google.common.collect.ImmutableSortedSet;
 public class Util
 {
 	public static boolean isEnabled = true;
+	public static boolean isGhosted = false;
 	public static HashMap<String, Boolean> channelModeState = new HashMap<String, Boolean>();
 	public static Connection sqlCon;
 	public static String mainChannel;

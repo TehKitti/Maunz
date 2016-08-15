@@ -9,7 +9,6 @@ import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
 import com.vauff.maunz.core.Logger;
-import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
 public class CsgoUpdate extends ListenerAdapter
@@ -54,35 +53,33 @@ public class CsgoUpdate extends ListenerAdapter
 
 					if (html.contains("branches/public/buildid"))
 					{
-						String msg = "";
+						String msg = "SteamDB has spotted a public branch update for CS:GO on the 730 app, this means " + Colors.TEAL + "an update was pushed to the Steam client!" + Colors.NORMAL + " https://steamdb.info/app/730/history/";
 
-						if (Main.devMode)
-						{
-							msg = "SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
-						}
-						else
-						{
-							msg = "SteamDB has spotted an update for CS:GO on the 730 branch that was pushed to the Steam client! https://steamdb.info/app/730/history/";
-						}
-
-						Logger.log.info("Found a CS:GO 730 update that got pushed with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + " and " + Util.secondaryChannel + "...");
+						Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber);
 						Util.msg(Util.mainChannel, msg);
 						Util.msg(Util.secondaryChannel, msg);
 					}
-
 					else if (html.contains("branches/dpr/buildid"))
 					{
-						String msg = "SteamDB has spotted an update for CS:GO on the 730 branch, this means an update might be coming. https://steamdb.info/app/730/history/";
+						String msg = "SteamDB has spotted a DPR branch update for CS:GO on the 730 app, this means " + Colors.TEAL + "an update is probably coming." + Colors.NORMAL + " https://steamdb.info/app/730/history/";
 
-						Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + " and " + Util.secondaryChannel + "...");
+						Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber);
+						Util.msg(Util.mainChannel, msg);
+						Util.msg(Util.secondaryChannel, msg);
+					}
+					else if (html.replaceAll("\\d","").contains("branches/./buildid") || html.replaceAll("\\d","").contains("branches/../buildid") || html.replaceAll("\\d","").contains("branches/.../buildid"))
+					{
+						String msg = "SteamDB has spotted a version branch update for CS:GO on the 730 app, this means " + Colors.TEAL + "an update might be coming." + Colors.NORMAL + " https://steamdb.info/app/730/history/";
+
+						Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber);
 						Util.msg(Util.mainChannel, msg);
 						Util.msg(Util.secondaryChannel, msg);
 					}
 					else
 					{
-						String msg = "SteamDB has spotted a non-important update for CS:GO on the 730 branch, this most likely doesn't mean anything. https://steamdb.info/app/730/history/";
+						String msg = "SteamDB has spotted a non-important update for CS:GO on the 730 app, this " + Colors.TEAL + "most likely doesn't mean anything." + Colors.NORMAL + " https://steamdb.info/app/730/history/";
 
-						Logger.log.info("Found a non-important CS:GO 730 update with changelog number " + consistentLastChangelistNumber + ", sending info to " + Util.mainChannel + " and " + Util.secondaryChannel + "...");
+						Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber);
 						Util.msg(Util.mainChannel, msg);
 						Util.msg(Util.secondaryChannel, msg);
 					}
@@ -90,9 +87,8 @@ public class CsgoUpdate extends ListenerAdapter
 
 				if (Colors.removeColors(event.getMessage()).contains("App: 741 - SteamDB Unknown App 741 (Counter-Strike Global Offensive - Valve Dedicated Server) (needs token)"))
 				{
-					String msg = "SteamDB has spotted an update for CS:GO on the 741 branch, this means that an update is definitely coming! https://steamdb.info/app/741/history/";
+					String msg = "SteamDB has spotted an update for CS:GO on the 741 app, this means " + Colors.TEAL + "an update is definitely coming!" + Colors.NORMAL + " https://steamdb.info/app/741/history/";
 
-					Logger.log.info("Found a CS:GO 741 update with changelog number " + lastChangelistNumber + ", sending info to " + Util.mainChannel + " and " + Util.secondaryChannel + "...");
 					Util.msg(Util.mainChannel, msg);
 					Util.msg(Util.secondaryChannel, msg);
 				}

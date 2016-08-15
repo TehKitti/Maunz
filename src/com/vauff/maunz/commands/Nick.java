@@ -5,6 +5,7 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
 import com.vauff.maunz.core.Main;
+import com.vauff.maunz.core.Passwords;
 import com.vauff.maunz.core.Util;
 
 public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
@@ -53,6 +54,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 								else
 								{
 									Util.msg(event, "Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
+									Main.esperBot.sendIRC().message("NickServ", "IDENTIFY " + Passwords.esperNickServ);
 								}
 
 							}
@@ -78,6 +80,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 								else
 								{
 									Util.msg(event, "Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
+									Main.freenodeBot.sendIRC().message("NickServ", "IDENTIFY " + Passwords.freenodeNickServ);
 								}
 							}
 						}
@@ -137,6 +140,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 								else
 								{
 									Util.msg(event, "Changed nickname on Esper from " + oldNick + " to " + args[2] + "!");
+									Main.esperBot.sendIRC().message("NickServ", "IDENTIFY " + Passwords.esperNickServ);
 								}
 							}
 						}
@@ -161,6 +165,7 @@ public class Nick implements ICommand<MessageEvent, PrivateMessageEvent>
 								else
 								{
 									Util.msg(event, "Changed nickname on Freenode from " + oldNick + " to " + args[2] + "!");
+									Main.freenodeBot.sendIRC().message("NickServ", "IDENTIFY " + Passwords.freenodeNickServ);
 								}
 							}
 						}

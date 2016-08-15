@@ -18,43 +18,35 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		Util.msg(event, Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
+		String about;
 
 		if (Main.devMode)
 		{
-			Util.msg(event, Colors.DARK_GREEN + "Maunz is an IRC bot created by V4uff with help from blackscore");
+			about = "Maunz is an IRC bot created by V4uff with help from blackscore";
 		}
 		else
 		{
-			Util.msg(event, Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
+			about = "Maunz is an IRC bot created by Vauff with help from bl4ckscor3";
 		}
 
-		Util.msg(event, Colors.PURPLE + "Version: " + Colors.RED + Main.version);
-		Util.msg(event, Colors.PURPLE + "Build Date: " + Colors.RED + getBuildDate());
-		Util.msg(event, Colors.PURPLE + "Dev Mode: " + Colors.RED + StringUtils.capitalize(Boolean.toString(Main.devMode)));
-		Util.msg(event, Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
-		Util.msg(event, Colors.BROWN + "******************************");
+		Util.msg(event, Colors.BOLD + "About: " + Colors.NORMAL + about + " | " + Colors.BOLD + "Version: " + Colors.NORMAL + Main.version + " | " + Colors.BOLD + "Build Date: " + Colors.NORMAL + getBuildDate() + " | " + Colors.BOLD + "Dev Mode: " + Colors.NORMAL + StringUtils.capitalize(Boolean.toString(Main.devMode)) + " | " + Colors.BOLD + "Uptime: " + Colors.NORMAL + Util.getUptime());
 	}
 
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		Util.msg(event, Colors.BROWN + "**********" + Colors.BLUE + "About Maunz" + Colors.BROWN + "**********");
+		String about;
 
 		if (Main.devMode)
 		{
-			Util.msg(event, Colors.DARK_GREEN + "Maunz is an IRC bot created by V4uff with help from blackscore");
+			about = "Maunz is an IRC bot created by V4uff with help from blackscore";
 		}
 		else
 		{
-			Util.msg(event, Colors.DARK_GREEN + "Maunz is an IRC bot created by Vauff with help from bl4ckscor3");
+			about = "Maunz is an IRC bot created by Vauff with help from bl4ckscor3";
 		}
-		
-		Util.msg(event, Colors.PURPLE + "Version: " + Colors.RED + Main.version);
-		Util.msg(event, Colors.PURPLE + "Build Date: " + Colors.RED + getBuildDate());
-		Util.msg(event, Colors.PURPLE + "Dev Mode: " + Colors.RED + StringUtils.capitalize(Boolean.toString(Main.devMode)));
-		Util.msg(event, Colors.PURPLE + "Uptime: " + Colors.RED + Util.getUptime());
-		Util.msg(event, Colors.BROWN + "******************************");
+
+		Util.msg(event, Colors.BOLD + "About: " + Colors.NORMAL + about + " | " + Colors.BOLD + "Version: " + Colors.NORMAL + Main.version + " | " + Colors.BOLD + "Build Date: " + Colors.NORMAL + getBuildDate() + " | " + Colors.BOLD + "Dev Mode: " + Colors.NORMAL + StringUtils.capitalize(Boolean.toString(Main.devMode)) + " | " + Colors.BOLD + "Uptime: " + Colors.NORMAL + Util.getUptime());
 	}
 
 	private String getBuildDate()
