@@ -1,5 +1,8 @@
 package com.vauff.maunz.features;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -46,6 +49,44 @@ public class ImgurCorrector extends ListenerAdapter
 							}
 
 							Util.msg(event, "Direct link: " + constructedLink);
+						}
+						else if ((arg.contains("imgur") && !arg.contains("i.imgur")) && (arg.contains("/gallery/") || arg.contains("/a/")))
+						{
+							Document doc = Jsoup.connect(arg).userAgent(" ").get();
+							String html = doc.select("div[class=post-images]").html();
+							String[] htmlSplit = html.split(" ");
+							int images = 0;
+
+							for (String o : htmlSplit)
+							{
+								if (o.equals("class=\"post-image\">"))
+								{
+									images++;
+
+									if (images == 2)
+									{
+										break;
+									}
+								}
+							}
+
+							if (images == 1)
+							{
+								String linkHtml = doc.select("a[class=zoom]").html();
+								String link;
+
+								if (!linkHtml.equals(""))
+								{
+									link = "https://" + linkHtml.split("\"")[1].split("\\?")[0].replace("//", "");
+								}
+								else
+								{
+									linkHtml = doc.select("div[class=post-image]").html();
+									link = "https://" + linkHtml.split("\"")[1].split("\\?")[0].replace("//", "");
+								}
+
+								Util.msg(event, "Direct link: " + link);
+							}
 						}
 					}
 				}
