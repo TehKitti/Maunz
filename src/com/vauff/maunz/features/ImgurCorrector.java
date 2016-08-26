@@ -52,6 +52,11 @@ public class ImgurCorrector extends ListenerAdapter
 						}
 						else if ((arg.contains("imgur") && !arg.contains("i.imgur")) && (arg.contains("/gallery/") || arg.contains("/a/")))
 						{
+							if (event.getChannel().getName().equals("#bl4ckscor3"))
+							{
+								Thread.sleep(4000);
+							}
+
 							Document doc = Jsoup.connect(arg).userAgent(" ").get();
 							String html = doc.select("div[class=post-images]").html();
 							String[] htmlSplit = html.split(" ");

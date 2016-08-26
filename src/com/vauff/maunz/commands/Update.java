@@ -21,8 +21,6 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 	{
 		if (Util.hasPermission(event.getUser()))
 		{
-			Util.msg(event, "I will run the auto update sequence!");
-
 			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
 			FileOutputStream file = new FileOutputStream("Maunz" + Util.getJarInt(true) + ".jar");
 			final ArrayList<String> command = new ArrayList<String>();
@@ -48,8 +46,6 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 	{
 		if (Util.hasPermission(event.getUser()))
 		{
-			Util.msg(event, "I will run the auto update sequence!");
-
 			ReadableByteChannel url = Channels.newChannel(new URL("https://dl.dropboxusercontent.com/u/85708850/Maunz.jar").openStream());
 			FileOutputStream file = new FileOutputStream("Maunz" + Util.getJarInt(true) + ".jar");
 			final ArrayList<String> command = new ArrayList<String>();
