@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.vauff.maunz</groupId>
 	<artifactId>maunz</artifactId>
-	<version>3.19.2</version>
+	<version>3.19.3</version>
 	<name>Maunz</name>
 	<description>Maunz is an IRC bot created by Vauff with help from bl4ckscor3</description>
 	<build>

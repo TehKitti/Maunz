@@ -23,7 +23,7 @@ public class ImgurCorrector extends ListenerAdapter
 				{
 					if (arg.contains("www.") || arg.contains("http://") || arg.contains("https://"))
 					{
-						if (arg.contains("imgur") && !arg.contains("i.imgur") && !arg.contains("/gallery/") && !arg.contains("/a/"))
+						if (arg.contains("imgur.com") && !arg.contains("i.imgur.com") && !arg.contains("/gallery/") && !arg.contains("/a/"))
 						{
 							String constructedLink = "https://i.imgur.com/";
 
@@ -50,7 +50,7 @@ public class ImgurCorrector extends ListenerAdapter
 
 							Util.msg(event, "Direct link: " + constructedLink);
 						}
-						else if ((arg.contains("imgur") && !arg.contains("i.imgur")) && (arg.contains("/gallery/") || arg.contains("/a/")))
+						else if ((arg.contains("imgur.com") && !arg.contains("i.imgur.com")) && (arg.contains("/gallery/") || arg.contains("/a/")))
 						{
 							if (event.getChannel().getName().equals("#bl4ckscor3"))
 							{
