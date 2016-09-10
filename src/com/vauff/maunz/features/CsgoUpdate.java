@@ -75,6 +75,14 @@ public class CsgoUpdate extends ListenerAdapter
 						Util.msg(Util.mainChannel, msg);
 						Util.msg(Util.secondaryChannel, msg);
 					}
+					else if (html.replaceAll("\\d","").contains("branches/.rc/buildid") || html.replaceAll("\\d","").contains("branches/..rc/buildid") || html.replaceAll("\\d","").contains("branches/...rc/buildid"))
+					{
+						String msg = "SteamDB has spotted a beta branch update for CS:GO on the 730 app, this means " + Colors.TEAL + "a beta update was pushed to the Steam client!" + Colors.NORMAL + " https://steamdb.info/app/730/history/";
+
+						Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber);
+						Util.msg(Util.mainChannel, msg);
+						Util.msg(Util.secondaryChannel, msg);
+					}
 					else
 					{
 						String msg = "SteamDB has spotted a non-important update for CS:GO on the 730 app, this " + Colors.TEAL + "most likely doesn't mean anything." + Colors.NORMAL + " https://steamdb.info/app/730/history/";
