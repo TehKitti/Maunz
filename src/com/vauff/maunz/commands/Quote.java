@@ -22,7 +22,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 		if (args.length == 1)
 		{
-			Util.msg(event, "You can view the quotes site here: http://geforcemods.net/quotes/");
+			Util.msg(event, "You can view the quotes site here: https://vauff.me/quotes/");
 		}
 		else
 		{
@@ -119,7 +119,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 									}
 									else
 									{
-										Util.msg(event, "The rest of this quote is too long for IRC. Please see the full quote at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
+										Util.msg(event, "The rest of this quote is too long for IRC. Please see the full quote at https://vauff.me/quotes/viewquote.php?id=" + args[2]);
 										break;
 									}
 								}
@@ -148,7 +148,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 				break;
 			case "add":
-				Util.msg(event, "You can submit new quotes here: http://geforcemods.net/quotes/addquote.php");
+				Util.msg(event, "You can submit new quotes here: https://vauff.me/quotes/addquote.php");
 
 				break;
 			default:
@@ -166,7 +166,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 		if (args.length == 1)
 		{
-			Util.msg(event, "You can view the quotes site here: http://geforcemods.net/quotes/");
+			Util.msg(event, "You can view the quotes site here: https://vauff.me/quotes/");
 		}
 		else
 		{
@@ -263,7 +263,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 									}
 									else
 									{
-										Util.msg(event, "The rest of this quote is too long for IRC. Please see the full quote at http://geforcemods.net/quotes/viewquote.php?id=" + args[2]);
+										Util.msg(event, "The rest of this quote is too long for IRC. Please see the full quote at https://vauff.me/quotes/viewquote.php?id=" + args[2]);
 										break;
 									}
 								}
@@ -292,7 +292,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 
 				break;
 			case "add":
-				Util.msg(event, "You can submit new quotes here: http://geforcemods.net/quotes/addquote.php");
+				Util.msg(event, "You can submit new quotes here: https://vauff.me/quotes/addquote.php");
 
 				break;
 			default:

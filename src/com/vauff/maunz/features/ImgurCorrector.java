@@ -80,16 +80,12 @@ public class ImgurCorrector extends ListenerAdapter
 								String linkHtml = doc.select("a[class=zoom]").html();
 								String link;
 
-								if (!linkHtml.equals(""))
-								{
-									link = "https://" + linkHtml.split("\"")[1].split("\\?")[0].replace("//", "");
-								}
-								else
+								if (linkHtml.equals(""))
 								{
 									linkHtml = doc.select("div[class=post-image]").html();
-									link = "https://" + linkHtml.split("\"")[1].split("\\?")[0].replace("//", "");
 								}
 
+								link = "https://" + linkHtml.split("src=\"")[1].split("\"")[0].replace("//", "").replace("?1", "");
 								Util.msg(event, "Direct link: " + link);
 							}
 						}

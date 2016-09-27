@@ -12,7 +12,7 @@ public class FreenodeListener extends ListenerAdapter
 	{
 		try
 		{
-			if (event.getUsedNick().equals("Maunz") && Main.devMode == false)
+			if (event.getUsedNick().equals("Maunz") && Util.devMode == false)
 			{
 				Thread.sleep(5000);
 				Main.freenodeBot.sendIRC().message("NickServ", "GHOST Maunz " + Passwords.freenodeNickServ);

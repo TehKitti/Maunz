@@ -25,6 +25,8 @@ import com.google.common.collect.ImmutableSortedSet;
 public class Util
 {
 	public static boolean isEnabled = true;
+	public static boolean devMode;
+	public static boolean blogDebug = false;
 	public static boolean isGhosted = false;
 	public static HashMap<String, Boolean> channelModeState = new HashMap<String, Boolean>();
 	public static Connection sqlCon;
@@ -206,7 +208,7 @@ public class Util
 	{
 		try
 		{
-			sqlCon = DriverManager.getConnection("jdbc:mysql://geforcemods.net:3306/ircquotes?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", "Vauff", Passwords.database);
+			sqlCon = DriverManager.getConnection("jdbc:mysql://vauff.me:3306/ircquotes?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", "Vauff", Passwords.database);
 		}
 		catch (SQLException e)
 		{
@@ -216,7 +218,7 @@ public class Util
 
 	public static boolean hasPermission(User user)
 	{
-		if (user.getNick().equalsIgnoreCase("Vauff") && user.getIdent().equalsIgnoreCase("~Vauff") && user.getHostname().equalsIgnoreCase("168.235.88.38"))
+		if (user.getNick().equalsIgnoreCase("Vauff") && user.getIdent().equalsIgnoreCase("~Vauff") && (user.getHostname().equalsIgnoreCase("168.235.88.38") || user.getHostname().equalsIgnoreCase("vauff.me")))
 		{
 			return true;
 		}

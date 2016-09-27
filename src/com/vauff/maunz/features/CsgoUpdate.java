@@ -50,6 +50,7 @@ public class CsgoUpdate extends ListenerAdapter
 					}
 
 					String html = doc.select("div[data-changeid=\"" + consistentLastChangelistNumber + "\"]").text();
+					String htmlRaw = doc.select("div[data-changeid=\"" + consistentLastChangelistNumber + "\"]").html();
 
 					if (html.contains("branches/public/buildid"))
 					{
@@ -67,7 +68,7 @@ public class CsgoUpdate extends ListenerAdapter
 						Util.msg(Util.mainChannel, msg);
 						Util.msg(Util.secondaryChannel, msg);
 					}
-					else if (html.replaceAll("\\d","").contains("branches/./buildid") || html.replaceAll("\\d","").contains("branches/../buildid") || html.replaceAll("\\d","").contains("branches/.../buildid"))
+					else if (html.replaceAll("\\d", "").contains("branches/./buildid") || html.replaceAll("\\d", "").contains("branches/../buildid") || html.replaceAll("\\d", "").contains("branches/.../buildid"))
 					{
 						String msg = "SteamDB has spotted a version branch update for CS:GO on the 730 app, this means " + Colors.TEAL + "an update might be coming." + Colors.NORMAL + " https://steamdb.info/app/730/history/";
 
@@ -75,13 +76,24 @@ public class CsgoUpdate extends ListenerAdapter
 						Util.msg(Util.mainChannel, msg);
 						Util.msg(Util.secondaryChannel, msg);
 					}
-					else if (html.replaceAll("\\d","").contains("branches/.rc/buildid") || html.replaceAll("\\d","").contains("branches/..rc/buildid") || html.replaceAll("\\d","").contains("branches/...rc/buildid"))
+					else if (html.replaceAll("\\d", "").contains("branches/.rc/buildid") || html.replaceAll("\\d", "").contains("branches/..rc/buildid") || html.replaceAll("\\d", "").contains("branches/...rc/buildid"))
 					{
-						String msg = "SteamDB has spotted a beta branch update for CS:GO on the 730 app, this means " + Colors.TEAL + "a beta update was pushed to the Steam client!" + Colors.NORMAL + " https://steamdb.info/app/730/history/";
+						if (!htmlRaw.contains("octicon octicon-diff-removed"))
+						{
+							String msg = "SteamDB has spotted a beta branch update for CS:GO on the 730 app, this means " + Colors.TEAL + "a beta update was pushed to the Steam client!" + Colors.NORMAL + " https://steamdb.info/app/730/history/";
 
-						Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber);
-						Util.msg(Util.mainChannel, msg);
-						Util.msg(Util.secondaryChannel, msg);
+							Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber);
+							Util.msg(Util.mainChannel, msg);
+							Util.msg(Util.secondaryChannel, msg);
+						}
+						else
+						{
+							String msg = "SteamDB has spotted a version branch update for CS:GO on the 730 app, this means " + Colors.TEAL + "an update might be coming." + Colors.NORMAL + " https://steamdb.info/app/730/history/";
+
+							Logger.log.info("Found a CS:GO 730 update with changelog number " + consistentLastChangelistNumber);
+							Util.msg(Util.mainChannel, msg);
+							Util.msg(Util.secondaryChannel, msg);
+						}
 					}
 					else
 					{

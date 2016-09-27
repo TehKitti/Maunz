@@ -2,10 +2,10 @@ package com.vauff.maunz.features;
 
 import java.io.IOException;
 import java.net.URL;
+
 import org.pircbotx.Colors;
 
 import com.vauff.maunz.core.Logger;
-import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
 import com.rometools.rome.feed.synd.SyndEntry;
@@ -22,18 +22,28 @@ public class CSGORSSTimer
 	{
 		public void run()
 		{
+			if (Util.blogDebug)
+			{
+				Logger.log.debug("CS:GO timer initialized.");
+			}
+			
 			URL feedUrl = null;
 			SyndFeed feed = null;
 
 			try
 			{
-				if (Main.devMode)
+				if (Util.devMode)
 				{
-					feedUrl = new URL("http://geforcemods.net/test.xml");
+					feedUrl = new URL("https://vauff.me/test.xml");
 				}
 				else
 				{
 					feedUrl = new URL("http://blog.counter-strike.net/index.php/feed/");
+				}
+				
+				if (Util.blogDebug)
+				{
+					Logger.log.debug("CS:GO timer has read the feed.");
 				}
 
 				feed = new SyndFeedInput().build(new XmlReader(feedUrl));
@@ -60,6 +70,11 @@ public class CSGORSSTimer
 				}
 
 				lastTitle = latestPost.getTitle();
+				
+				if (Util.blogDebug)
+				{
+					Logger.log.debug("CS:GO timer has finished.");
+				}
 			}
 			catch (ParsingFeedException | IOException e)
 			{

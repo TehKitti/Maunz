@@ -7,7 +7,6 @@ import java.util.Calendar;
 import org.pircbotx.Colors;
 
 import com.vauff.maunz.core.Logger;
-import com.vauff.maunz.core.Main;
 import com.vauff.maunz.core.Util;
 
 import com.rometools.rome.feed.synd.SyndEntry;
@@ -24,18 +23,28 @@ public class SCSRSSTimer
 	{
 		public void run()
 		{
+			if (Util.blogDebug)
+			{
+				Logger.log.debug("SCS timer initialized.");
+			}
+			
 			URL feedUrl = null;
 			SyndFeed feed = null;
 
 			try
 			{
-				if (Main.devMode)
+				if (Util.devMode)
 				{
-					feedUrl = new URL("http://geforcemods.net/test.xml");
+					feedUrl = new URL("https://vauff.me/test.xml");
 				}
 				else
 				{
 					feedUrl = new URL("http://feeds.feedburner.com/ScsSoftwaresBlog?format=xml");
+				}
+				
+				if (Util.blogDebug)
+				{
+					Logger.log.debug("SCS timer has read the feed.");
 				}
 
 				feed = new SyndFeedInput().build(new XmlReader(feedUrl));
@@ -48,6 +57,11 @@ public class SCSRSSTimer
 				}
 
 				lastTitle = latestPost.getTitle();
+				
+				if (Util.blogDebug)
+				{
+					Logger.log.debug("SCS timer has finished.");
+				}
 			}
 			catch (ParsingFeedException | IOException e)
 			{

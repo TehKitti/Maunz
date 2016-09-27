@@ -20,7 +20,7 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 	{
 		String about;
 
-		if (Main.devMode)
+		if (Util.devMode)
 		{
 			about = "Maunz is an IRC bot created by V4uff with help from blackscore";
 		}
@@ -29,7 +29,7 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 			about = "Maunz is an IRC bot created by Vauff with help from bl4ckscor3";
 		}
 
-		Util.msg(event, Colors.BOLD + "About: " + Colors.NORMAL + about + " | " + Colors.BOLD + "Version: " + Colors.NORMAL + Main.version + " | " + Colors.BOLD + "Build Date: " + Colors.NORMAL + getBuildDate() + " | " + Colors.BOLD + "Dev Mode: " + Colors.NORMAL + StringUtils.capitalize(Boolean.toString(Main.devMode)) + " | " + Colors.BOLD + "Uptime: " + Colors.NORMAL + Util.getUptime());
+		Util.msg(event, Colors.BOLD + "About: " + Colors.NORMAL + about + " | " + Colors.BOLD + "Version: " + Colors.NORMAL + Main.version + " | " + Colors.BOLD + "Build Date: " + Colors.NORMAL + getBuildDate() + " | " + Colors.BOLD + "Dev Mode: " + Colors.NORMAL + StringUtils.capitalize(Boolean.toString(Util.devMode)) + " | " + Colors.BOLD + "Uptime: " + Colors.NORMAL + Util.getUptime());
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 	{
 		String about;
 
-		if (Main.devMode)
+		if (Util.devMode)
 		{
 			about = "Maunz is an IRC bot created by V4uff with help from blackscore";
 		}
@@ -46,7 +46,7 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 			about = "Maunz is an IRC bot created by Vauff with help from bl4ckscor3";
 		}
 
-		Util.msg(event, Colors.BOLD + "About: " + Colors.NORMAL + about + " | " + Colors.BOLD + "Version: " + Colors.NORMAL + Main.version + " | " + Colors.BOLD + "Build Date: " + Colors.NORMAL + getBuildDate() + " | " + Colors.BOLD + "Dev Mode: " + Colors.NORMAL + StringUtils.capitalize(Boolean.toString(Main.devMode)) + " | " + Colors.BOLD + "Uptime: " + Colors.NORMAL + Util.getUptime());
+		Util.msg(event, Colors.BOLD + "About: " + Colors.NORMAL + about + " | " + Colors.BOLD + "Version: " + Colors.NORMAL + Main.version + " | " + Colors.BOLD + "Build Date: " + Colors.NORMAL + getBuildDate() + " | " + Colors.BOLD + "Dev Mode: " + Colors.NORMAL + StringUtils.capitalize(Boolean.toString(Util.devMode)) + " | " + Colors.BOLD + "Uptime: " + Colors.NORMAL + Util.getUptime());
 	}
 
 	private String getBuildDate()

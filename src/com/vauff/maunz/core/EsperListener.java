@@ -26,6 +26,7 @@ public class EsperListener extends ListenerAdapter
 		commands.add(new About());
 		commands.add(new AccInfo());
 		commands.add(new Benchmark());
+		commands.add(new BlogDebug());
 		commands.add(new BulliedMe());
 		commands.add(new BullyMe());
 		commands.add(new Changelog());
@@ -149,7 +150,7 @@ public class EsperListener extends ListenerAdapter
 	{
 		try
 		{
-			if (event.getUsedNick().equals("Maunz") && Main.devMode == false)
+			if (event.getUsedNick().equals("Maunz") && Util.devMode == false)
 			{
 				Thread.sleep(5000);
 				Main.esperBot.sendIRC().message("NickServ", "GHOST Maunz " + Passwords.esperNickServ);

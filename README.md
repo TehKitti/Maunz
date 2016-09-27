@@ -12,7 +12,9 @@ __Channel and PM Syntax__
  
 *accinfo \<username> - Gives you full information about any Minecraft account.
 
-*benchmark \<gpu/cpu> - Provides complete benchmark information on a GPU or CPU powered by PassMark
+*benchmark \<gpu/cpu> - Provides complete benchmark information on a GPU or CPU powered by PassMark.
+
+_*blogdebug_ - Enables blog timer debug output in the log to try and track a bug.
 
 *changelog [version] - Tells you the changelog of the Maunz version you specify.
 

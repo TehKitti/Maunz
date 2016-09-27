@@ -52,6 +52,9 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 		case "*benchmark":
 		case "benchmark":
 			return "Provides complete benchmark information on a GPU or CPU powered by PassMark. Usage: *benchmark <gpu/cpu>";
+		case "*blogdebug":
+		case "blogdebug":
+			return "Enables blog timer debug output in the log to try and track a bug, only usable by Vauff. Usage: *blogdebug";
 		case "*bulliedme":
 		case "bulliedme":
 			return "Did somebody bully you? This will send them a link to stop with their bullying ways. Usage: *bulliedme [channel] <username>";
@@ -66,22 +69,22 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 			return "Lists the channels that Maunz is currently in. Usage: *chans";
 		case "*disable":
 		case "disable":
-			return "Disables Maunz, only useable by Vauff. Usage: *disable";
+			return "Disables Maunz, only usable by Vauff. Usage: *disable";
 		case "*enable":
 		case "enable":
-			return "Enables Maunz, only useable by Vauff. Usage: *enable";
+			return "Enables Maunz, only usable by Vauff. Usage: *enable";
 		case "*help":
 		case "help":
 			return "Links you to the README or gives command help if a command is given. Please note that command specific help defaults to channel syntax by default. Usage: *help [command]";
 		case "*join":
 		case "join":
-			return "Makes Maunz join a channel, only useable by Vauff. Usage: *join <channel>";
+			return "Makes Maunz join a channel, only usable by Vauff. Usage: *join <channel>";
 		case "*leave":
 		case "leave":
-			return "Makes Maunz leave a channel, only useable by Vauff. Usage: *leave [channel]";
+			return "Makes Maunz leave a channel, only usable by Vauff. Usage: *leave [channel]";
 		case "*nick":
 		case "nick":
-			return "Changes Maunz's nickname on a specific network, only useable by Vauff. Usage: *nick <network> <nickname>";
+			return "Changes Maunz's nickname on a specific network, only usable by Vauff. Usage: *nick <network> <nickname>";
 		case "*ping":
 		case "ping":
 			return "Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server! Usage: *ping";
@@ -96,7 +99,7 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 			return "Resets the Cleverbot session in the channel sent in. Usage: *reset";
 		case "*restart":
 		case "restart":
-			return "Restarts Maunz, only useable by Vauff. Usage: *restart";
+			return "Restarts Maunz, only usable by Vauff. Usage: *restart";
 		case "*say":
 		case "say":
 			return "Makes Maunz say whatever you want her to! Usage: *say [channel] <message>";
@@ -108,13 +111,13 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 			return "Links you to a Steam profile based on a Steam ID. Usage: *steam <steamid>";
 		case "*stop":
 		case "stop":
-			return "Stops Maunz, only useable by Vauff. Usage: *stop";
+			return "Stops Maunz, only usable by Vauff. Usage: *stop";
 		case "*trello":
 		case "trello":
 			return "Links you to the Trello board of Maunz. Feature requests and bug reports can be made here. Usage: *trello";
 		case "*update":
 		case "update":
-			return "This command automatically updates and restarts Maunz, only useable by Vauff. Usage: *update";
+			return "This command automatically updates and restarts Maunz, only usable by Vauff. Usage: *update";
 		case "*whosay":
 		case "whosay":
 			return "Tells you the last person who used the *say command. Usage: *whosay";

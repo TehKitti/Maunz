@@ -24,8 +24,7 @@ public class Main
 	public static MultiBotManager manager;
 	public static PircBotX esperBot;
 	public static PircBotX freenodeBot;
-	public static String version = "3.19.4";
-	public static boolean devMode;
+	public static String version = "3.19.5";
 
 	public static void main(String args[]) throws Exception
 	{
@@ -49,7 +48,7 @@ public class Main
 				Util.secondaryChannel = "#whatever";
 				Util.privateChannel = "#TaCoTest";
 				CsgoUpdate.listeningNick = "Vauff";
-				devMode = true;
+				Util.devMode = true;
 			}
 			else
 			{
@@ -59,7 +58,7 @@ public class Main
 				Util.secondaryChannel = "#extruders";
 				Util.privateChannel = "#TaskController";
 				CsgoUpdate.listeningNick = "SteamDB";
-				devMode = false;
+				Util.devMode = false;
 			}
 
 			createBot();
