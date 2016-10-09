@@ -22,6 +22,12 @@ public class Restart implements ICommand<MessageEvent, PrivateMessageEvent>
 			command.add("java");
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(false) + ".jar");
+
+			if (Util.devMode)
+			{
+				command.add("-dev");
+			}
+
 			Logger.log.info("Maunz is restarting...");
 			new ProcessBuilder(command).start();
 			Main.manager.stop("Restarting");
@@ -43,6 +49,12 @@ public class Restart implements ICommand<MessageEvent, PrivateMessageEvent>
 			command.add("java");
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(false) + ".jar");
+
+			if (Util.devMode)
+			{
+				command.add("-dev");
+			}
+
 			Logger.log.info("Maunz is restarting...");
 			new ProcessBuilder(command).start();
 			Main.manager.stop("Restarting");

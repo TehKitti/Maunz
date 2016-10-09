@@ -1,7 +1,9 @@
 package com.vauff.maunz.features;
 
+import java.io.File;
 import java.net.SocketTimeoutException;
 
+import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.pircbotx.Colors;
@@ -11,7 +13,7 @@ import com.vauff.maunz.core.Util;
 
 public class GFLTimer
 {
-	private static String lastMap = "";
+	private static File file = new File(Util.getJarLocation() + "lastmap.txt");
 
 	public static Runnable timer = new Runnable()
 	{
@@ -33,10 +35,18 @@ public class GFLTimer
 					}
 				}
 
-				if (!lastMap.equals(map) && !map.equals("") && Util.isEnabled)
+				if (!map.equals("") && !Util.getFileContents("lastmap.txt").equals(map) && Util.isEnabled)
 				{
 					Util.msg(Util.privateChannel, "GFL Zombie Escape is now playing: " + Colors.MAGENTA + Colors.BOLD + map);
-					lastMap = map;
+				}
+
+				if (map.equals(""))
+				{
+					FileUtils.writeStringToFile(file, " ", "UTF-8");
+				}
+				else
+				{
+					FileUtils.writeStringToFile(file, map, "UTF-8");
 				}
 			}
 			catch (SocketTimeoutException e)

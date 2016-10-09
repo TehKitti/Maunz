@@ -4,7 +4,6 @@ import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 import com.vauff.maunz.core.ICommand;
-import com.vauff.maunz.core.Logger;
 import com.vauff.maunz.core.Util;
 
 public class Say implements ICommand<MessageEvent, PrivateMessageEvent>
@@ -25,7 +24,6 @@ public class Say implements ICommand<MessageEvent, PrivateMessageEvent>
 				{
 					if (args.length != 2)
 					{
-						Logger.log.info(event.getUser().getNick() + " is sending " + Util.addArgs(args, 2) + " to " + args[1]);
 						Util.msg(args[1], Util.addArgs(args, 2));
 						whoSay = event.getUser().getNick();
 						whoSayTime = Util.getTime();
@@ -42,7 +40,6 @@ public class Say implements ICommand<MessageEvent, PrivateMessageEvent>
 			}
 			else
 			{
-				Logger.log.info(event.getUser().getNick() + " is sending " + Util.addArgs(args, 1) + " to " + event.getChannel().getName());
 				Util.msg(event, Util.addArgs(args, 1));
 				whoSay = event.getUser().getNick();
 				whoSayTime = Util.getTime();
@@ -69,7 +66,6 @@ public class Say implements ICommand<MessageEvent, PrivateMessageEvent>
 				}
 				else
 				{
-					Logger.log.info(event.getUser().getNick() + " is sending " + Util.addArgs(args, 2) + " to " + args[1]);
 					Util.msg(args[1], Util.addArgs(args, 2));
 					whoSay = event.getUser().getNick();
 					whoSayTime = Util.getTime();

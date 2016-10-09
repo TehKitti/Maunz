@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TimeZone;
 
+import org.apache.commons.io.FileUtils;
 import org.pircbotx.Channel;
 import org.pircbotx.User;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -55,7 +56,7 @@ public class Util
 		}
 		catch (URISyntaxException e)
 		{
-			e.printStackTrace();
+			Logger.log.error(e);
 
 			return null;
 		}
@@ -64,17 +65,34 @@ public class Util
 	public static List<String> getFileContents() throws IOException
 	{
 		File file = new File(getJarLocation() + "chans.txt");
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		String[] result = reader.readLine().split(",");
 
 		if (!file.exists())
 		{
 			file.createNewFile();
 		}
 
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		String[] result = reader.readLine().split(",");
 		reader.close();
 
 		return Arrays.asList(result);
+	}
+	
+	public static String getFileContents(String arg) throws IOException
+	{
+		File file = new File(getJarLocation() + arg);
+
+		if (!file.exists())
+		{
+			file.createNewFile();
+			FileUtils.writeStringToFile(file, " ", "UTF-8");
+		}
+
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		String result = reader.readLine();
+		reader.close();
+
+		return result;
 	}
 
 	public static String getTime()

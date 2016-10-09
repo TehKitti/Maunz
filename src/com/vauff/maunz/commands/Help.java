@@ -82,6 +82,9 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 		case "*leave":
 		case "leave":
 			return "Makes Maunz leave a channel, only usable by Vauff. Usage: *leave [channel]";
+		case "*map":
+		case "map":
+			return "Tells you which map GFL ZE is playing outside of the normal #TaskController channel. Usage: *map";
 		case "*nick":
 		case "nick":
 			return "Changes Maunz's nickname on a specific network, only usable by Vauff. Usage: *nick <network> <nickname>";

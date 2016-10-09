@@ -1,5 +1,8 @@
 package com.vauff.maunz.features;
 
+import java.net.ConnectException;
+import java.net.UnknownHostException;
+
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -32,6 +35,7 @@ public class CsgoUpdate extends ListenerAdapter
 					String consistentLastChangelistNumber = lastChangelistNumber;
 					Document doc = null;
 					boolean trystatus = true;
+					int attempts = 0;
 
 					Thread.sleep(10000);
 
@@ -39,13 +43,23 @@ public class CsgoUpdate extends ListenerAdapter
 					{
 						try
 						{
-							doc = Jsoup.connect("https://steamdb.info/app/730/history").userAgent(" ").get();
+							doc = Jsoup.connect("https://steamdbb.info/app/730/history").userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36").get();
 							trystatus = false;
 						}
-						catch (HttpStatusException e)
+						catch (HttpStatusException | ConnectException | UnknownHostException e)
 						{
-							Logger.log.error("Failed to connect to the CS:GO SteamDB history page, automatically retrying in 5 seconds");
-							Thread.sleep(5000);
+							if (attempts < 19)
+							{
+								Logger.log.error("Failed to connect to the CS:GO SteamDB history page, automatically retrying in 5 seconds");
+								attempts++;
+								Thread.sleep(5000);
+							}
+							else
+							{
+								Logger.log.error("Failed to connect to the CS:GO SteamDB history page 20 times, giving up");
+								trystatus = false;
+								return;
+							}
 						}
 					}
 

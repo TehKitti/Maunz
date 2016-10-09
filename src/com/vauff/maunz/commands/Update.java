@@ -28,6 +28,12 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 			command.add("java");
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(true) + ".jar");
+
+			if (Util.devMode)
+			{
+				command.add("-dev");
+			}
+
 			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
 			file.close();
 			new ProcessBuilder(command).start();
@@ -53,6 +59,12 @@ public class Update implements ICommand<MessageEvent, PrivateMessageEvent>
 			command.add("java");
 			command.add("-jar");
 			command.add("Maunz" + Util.getJarInt(true) + ".jar");
+
+			if (Util.devMode)
+			{
+				command.add("-dev");
+			}
+
 			file.getChannel().transferFrom(url, 0, Long.MAX_VALUE);
 			file.close();
 			new ProcessBuilder(command).start();

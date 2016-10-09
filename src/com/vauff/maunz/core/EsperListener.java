@@ -37,6 +37,7 @@ public class EsperListener extends ListenerAdapter
 		commands.add(new Intelligence());
 		commands.add(new Join());
 		commands.add(new Leave());
+		commands.add(new Map());
 		commands.add(new Nick());
 		commands.add(new Ping());
 		commands.add(new Quote());
@@ -50,7 +51,6 @@ public class EsperListener extends ListenerAdapter
 		commands.add(new Trello());
 		commands.add(new Update());
 		commands.add(new WhoSay());
-
 	}
 
 	public void onMessage(MessageEvent event) throws Exception
@@ -134,7 +134,7 @@ public class EsperListener extends ListenerAdapter
 			Logger.log.error("", e);
 		}
 	}
-	
+
 	public void onQuit(QuitEvent event)
 	{
 		if (event.getReason().contains("GHOST command used by ") && event.getUser().getNick().equals(Main.esperBot.getNick()))
