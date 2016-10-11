@@ -35,14 +35,14 @@ public class GFLTimer
 					}
 				}
 
-				if (!map.equals("") && !Util.getFileContents("lastmap.txt").equals(map) && Util.isEnabled)
+				if (!map.equals("") && !Util.getFileContents("lastmap.txt").equals(map) && !Util.getFileContents("lastmap.txt").equals(map + "_OLD-DATA") && Util.isEnabled)
 				{
 					Util.msg(Util.privateChannel, "GFL Zombie Escape is now playing: " + Colors.MAGENTA + Colors.BOLD + map);
 				}
 
 				if (map.equals(""))
 				{
-					FileUtils.writeStringToFile(file, " ", "UTF-8");
+					FileUtils.writeStringToFile(file, Util.getFileContents("lastmap.txt") + "_OLD-DATA", "UTF-8");
 				}
 				else
 				{

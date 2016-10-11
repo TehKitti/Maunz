@@ -12,7 +12,7 @@ public class Map implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exeChan(MessageEvent event) throws Exception
 	{
-		if (!Util.getFileContents("lastmap.txt").equals(" "))
+		if (!Util.getFileContents("lastmap.txt").endsWith("_OLD-DATA"))
 		{
 			Util.msg(event, "GFL Zombie Escape is currently playing: " + Colors.MAGENTA + Colors.BOLD + Util.getFileContents("lastmap.txt"));
 		}
@@ -25,7 +25,7 @@ public class Map implements ICommand<MessageEvent, PrivateMessageEvent>
 	@Override
 	public void exePrivate(PrivateMessageEvent event) throws Exception
 	{
-		if (!Util.getFileContents("lastmap.txt").equals(" "))
+		if (!Util.getFileContents("lastmap.txt").endsWith("_OLD-DATA"))
 		{
 			Util.msg(event, "GFL Zombie Escape is currently playing: " + Colors.MAGENTA + Colors.BOLD + Util.getFileContents("lastmap.txt"));
 		}
