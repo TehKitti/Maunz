@@ -54,7 +54,7 @@ public class Benchmark implements ICommand<MessageEvent, PrivateMessageEvent>
 				String name = benchDoc.select("span[class=cpuname]").text();
 				String score = benchDoc.select("span[style=font-family: Arial, Helvetica, sans-serif;font-size: 35px;	font-weight: bold; color: red;]").text();
 				String rank = fullDesc.split("Overall Rank:</span>&nbsp;&nbsp;")[1].split("<")[0];
-				String samples = benchDoc.select("td[style=text-align: center]").text().split("Samples: ")[1];
+				String samples = benchDoc.select("td[style=text-align: center]").text().split("Samples: ")[1].split("\\*")[0];
 				String ratio = fullDesc.split("Price:</span>&nbsp;&nbsp;")[1].split("&")[0];
 				String turboSpeed = "N/A";
 				String singleThread = "N/A";
@@ -171,7 +171,7 @@ public class Benchmark implements ICommand<MessageEvent, PrivateMessageEvent>
 				String name = benchDoc.select("span[class=cpuname]").text();
 				String score = benchDoc.select("span[style=font-family: Arial, Helvetica, sans-serif;font-size: 35px;	font-weight: bold; color: red;]").text();
 				String rank = fullDesc.split("Overall Rank:</span>&nbsp;&nbsp;")[1].split("<")[0];
-				String samples = benchDoc.select("td[style=text-align: center]").text().split("Samples: ")[1];
+				String samples = benchDoc.select("td[style=text-align: center]").text().split("Samples: ")[1].split("\\*")[0];
 				String ratio = fullDesc.split("Price:</span>&nbsp;&nbsp;")[1].split("&")[0];
 				String turboSpeed = "N/A";
 				String singleThread = "N/A";

@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import org.apache.commons.lang3.StringUtils;
+
 import org.pircbotx.Colors;
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
@@ -20,53 +21,54 @@ public class AccInfo implements ICommand<MessageEvent, PrivateMessageEvent>
 		try
 		{
 			String[] args = event.getMessage().split(" ");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new URL("http://axis.iaero.me/accinfo?username=" + args[1] + "&format=csv").openStream()));
-			String statusRaw = reader.readLine();
-			String[] status = statusRaw.split(",");
 
-			if (args[1].contains("#") || args[1].contains("&"))
+			if (args.length == 1)
 			{
-				Util.msg(event, "The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
+				Util.msg(event, "Provide a Minecraft username for me please!");
 			}
 			else
 			{
-				if (statusRaw.equalsIgnoreCase("unknown username"))
-				{
-					Util.msg(event, "The Minecraft account name " + args[1] + " is free and does not belong to any account!");
-				}
+				BufferedReader reader = new BufferedReader(new InputStreamReader(new URL("http://axis.iaero.me/accinfo?username=" + args[1] + "&format=csv").openStream()));
+				String statusRaw = reader.readLine();
+				String[] status = statusRaw.split(",");
 
-				else if (statusRaw.equalsIgnoreCase("Username must be 16 characters or less."))
-				{
-					Util.msg(event, "The Minecraft account name " + args[1] + " must be 16 characters or less.");
-				}
-
-				else if (statusRaw.equalsIgnoreCase("Username must be alphanumerical (or contain '_')."))
+				if (args[1].contains("#") || args[1].contains("&"))
 				{
 					Util.msg(event, "The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 				}
-
-				else if (statusRaw.contains(","))
+				else
 				{
-					BufferedReader uuidReader = new BufferedReader(new InputStreamReader(new URL("http://mcapi.ca/uuid/player/" + status[1]).openStream()));
-					StringBuffer stringBuffer = new StringBuffer("");
-					String line = null;
-					
-					while ((line = uuidReader.readLine()) != null) 
+					if (statusRaw.equalsIgnoreCase("unknown username"))
 					{
-					    stringBuffer.append(line);
+						Util.msg(event, "The Minecraft account name " + args[1] + " is free and does not belong to any account!");
 					}
 
-					String uuidStatusRaw = stringBuffer.toString();
-					String[] uuidStatusRawSplit = uuidStatusRaw.split("\"");
-					String uuidStatus = uuidStatusRawSplit[11];
+					else if (statusRaw.equalsIgnoreCase("Username must be 16 characters or less."))
+					{
+						Util.msg(event, "The Minecraft account name " + args[1] + " must be 16 characters or less.");
+					}
 
-					Util.msg(event, Colors.BOLD + "Username: " + Colors.NORMAL + status[1] + " | " + Colors.BOLD + "Account Status: " + Colors.NORMAL + "Premium" + " | " + Colors.BOLD + "Migrated: " + Colors.NORMAL + StringUtils.capitalize(status[2]) + " | " + Colors.BOLD + "UUID: " + Colors.NORMAL + uuidStatus + " | " + Colors.BOLD + "Skin: " + Colors.NORMAL + "https://minotar.net/body/" + status[1] + "/500.png" + " | " + Colors.BOLD + "Raw Skin: " + Colors.NORMAL + "https://minotar.net/skin/" + status[1]);
+					else if (statusRaw.equalsIgnoreCase("Username must be alphanumerical (or contain '_')."))
+					{
+						Util.msg(event, "The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
+					}
+
+					else if (statusRaw.contains(","))
+					{
+						String uuid = status[0];
+						
+						uuid = new StringBuilder(uuid).insert(uuid.length() - 24, "-").toString();
+						uuid = new StringBuilder(uuid).insert(uuid.length() - 20, "-").toString();
+						uuid = new StringBuilder(uuid).insert(uuid.length() - 16, "-").toString();
+						uuid = new StringBuilder(uuid).insert(uuid.length() - 12, "-").toString();
+						Util.msg(event, Colors.BOLD + "Username: " + Colors.NORMAL + status[1] + " | " + Colors.BOLD + "Account Status: " + Colors.NORMAL + "Premium" + " | " + Colors.BOLD + "Migrated: " + Colors.NORMAL + StringUtils.capitalize(status[2]) + " | " + Colors.BOLD + "UUID: " + Colors.NORMAL + uuid + " | " + Colors.BOLD + "Skin: " + Colors.NORMAL + "https://minotar.net/body/" + status[1] + "/500.png" + " | " + Colors.BOLD + "Raw Skin: " + Colors.NORMAL + "https://minotar.net/skin/" + status[1] + " | " + Colors.BOLD + "Powered by axis.iaero.me");
+					}
 				}
 			}
 		}
 		catch (ArrayIndexOutOfBoundsException e)
 		{
-			Util.msg(event, "Provide a username for me please!");
+			Util.msg(event, "An unknown error occured grabbing account information");
 		}
 	}
 
@@ -76,53 +78,54 @@ public class AccInfo implements ICommand<MessageEvent, PrivateMessageEvent>
 		try
 		{
 			String[] args = event.getMessage().split(" ");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new URL("http://axis.iaero.me/accinfo?username=" + args[1] + "&format=csv").openStream()));
-			String statusRaw = reader.readLine();
-			String[] status = statusRaw.split(",");
 
-			if (args[1].contains("#") || args[1].contains("&"))
+			if (args.length == 1)
 			{
-				Util.msg(event, "The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
+				Util.msg(event, "Provide a Minecraft username for me please!");
 			}
 			else
 			{
-				if (statusRaw.equalsIgnoreCase("unknown username"))
-				{
-					Util.msg(event, "The Minecraft account name " + args[1] + " is free and does not belong to any account!");
-				}
+				BufferedReader reader = new BufferedReader(new InputStreamReader(new URL("http://axis.iaero.me/accinfo?username=" + args[1] + "&format=csv").openStream()));
+				String statusRaw = reader.readLine();
+				String[] status = statusRaw.split(",");
 
-				else if (statusRaw.equalsIgnoreCase("Username must be 16 characters or less."))
-				{
-					Util.msg(event, "The Minecraft account name " + args[1] + " must be 16 characters or less.");
-				}
-
-				else if (statusRaw.equalsIgnoreCase("Username must be alphanumerical (or contain '_')."))
+				if (args[1].contains("#") || args[1].contains("&"))
 				{
 					Util.msg(event, "The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
 				}
-
-				else if (statusRaw.contains(","))
+				else
 				{
-					BufferedReader uuidReader = new BufferedReader(new InputStreamReader(new URL("http://mcapi.ca/uuid/player/" + status[1]).openStream()));
-					StringBuffer stringBuffer = new StringBuffer("");
-					String line = null;
-					
-					while ((line = uuidReader.readLine()) != null) 
+					if (statusRaw.equalsIgnoreCase("unknown username"))
 					{
-					    stringBuffer.append(line);
+						Util.msg(event, "The Minecraft account name " + args[1] + " is free and does not belong to any account!");
 					}
 
-					String uuidStatusRaw = stringBuffer.toString();
-					String[] uuidStatusRawSplit = uuidStatusRaw.split("\"");
-					String uuidStatus = uuidStatusRawSplit[11];
+					else if (statusRaw.equalsIgnoreCase("Username must be 16 characters or less."))
+					{
+						Util.msg(event, "The Minecraft account name " + args[1] + " must be 16 characters or less.");
+					}
 
-					Util.msg(event, Colors.BOLD + "Username: " + Colors.NORMAL + status[1] + " | " + Colors.BOLD + "Account Status: " + Colors.NORMAL + "Premium" + " | " + Colors.BOLD + "Migrated: " + Colors.NORMAL + StringUtils.capitalize(status[2]) + " | " + Colors.BOLD + "UUID: " + Colors.NORMAL + uuidStatus + " | " + Colors.BOLD + "Skin: " + Colors.NORMAL + "https://minotar.net/body/" + status[1] + "/500.png" + " | " + Colors.BOLD + "Raw Skin: " + Colors.NORMAL + "https://minotar.net/skin/" + status[1]);
+					else if (statusRaw.equalsIgnoreCase("Username must be alphanumerical (or contain '_')."))
+					{
+						Util.msg(event, "The Minecraft account name " + args[1] + " must be alphanumerical or contain an underscore.");
+					}
+
+					else if (statusRaw.contains(","))
+					{
+						String uuid = status[0];
+						
+						uuid = new StringBuilder(uuid).insert(uuid.length() - 24, "-").toString();
+						uuid = new StringBuilder(uuid).insert(uuid.length() - 20, "-").toString();
+						uuid = new StringBuilder(uuid).insert(uuid.length() - 16, "-").toString();
+						uuid = new StringBuilder(uuid).insert(uuid.length() - 12, "-").toString();
+						Util.msg(event, Colors.BOLD + "Username: " + Colors.NORMAL + status[1] + " | " + Colors.BOLD + "Account Status: " + Colors.NORMAL + "Premium" + " | " + Colors.BOLD + "Migrated: " + Colors.NORMAL + StringUtils.capitalize(status[2]) + " | " + Colors.BOLD + "UUID: " + Colors.NORMAL + uuid + " | " + Colors.BOLD + "Skin: " + Colors.NORMAL + "https://minotar.net/body/" + status[1] + "/500.png" + " | " + Colors.BOLD + "Raw Skin: " + Colors.NORMAL + "https://minotar.net/skin/" + status[1] + " | " + Colors.BOLD + "Powered by axis.iaero.me");
+					}
 				}
 			}
 		}
 		catch (ArrayIndexOutOfBoundsException e)
 		{
-			Util.msg(event, "Provide a username for me please!");
+			Util.msg(event, "An unknown error occured grabbing account information");
 		}
 	}
 

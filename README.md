@@ -2,7 +2,7 @@
 
 [![Version](https://badge.fury.io/gh/Vauff%2FMaunz.svg)](https://badge.fury.io/gh/Vauff%2FMaunz) [![Dependencies](https://www.versioneye.com/user/projects/580525054c7414002e7d4642/badge.svg)](https://www.versioneye.com/user/projects/580525054c7414002e7d4642)
 
-Maunz is an IRC bot created by me with some help from bl4ckscor3 in Java using PircBotX. She is currently on multiple channels on the EsperNet IRC network and one on Freenode. Maunz can take commands through both PM and channels she is in. If you want to help Maunz development feel free to suggest ideas on [Trello](https://trello.com/b/9W7PmTvX/maunz) in the features or if you find any, even bugs in the bugs list :(
+Maunz is an IRC bot created by Vauff in Java using PircBotX. She is currently on multiple channels on the EsperNet IRC network and one on Freenode. Maunz can take commands through both PM and channels she is in. If you want to help Maunz development feel free to suggest ideas on [Trello](https://trello.com/b/9W7PmTvX/maunz) in the features or if you find any, even bugs in the bugs list :(
 
 #Commands
 
@@ -34,6 +34,8 @@ _*join \<channel>_ - Makes Maunz join a channel.
 
 _*nick \<network> \<nickname>_ - Changes Maunz's nickname on a specific network.
 
+*notify \<list/confirm/mapname> - Lets you list, add or remove your ZE map notifications.
+
 *ping - Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server!
 
 *quote \<view/list/add> \<quoteid> [page] - Allows you to view IRC quotes.
@@ -60,8 +62,6 @@ __Channel Only Syntax__
 
 *bulliedme [channel] \<username> - Did somebody bully you? This will send them a link to stop with their bullying ways.
 
-*bullyme [channel] \<username> Do you want somebody to bully you? This will send them a link to start with their bullying ways.
-
 _*leave [channel]_ - Makes Maunz leave a channel.
 
 *say [channel] \<message> - Makes Maunz say whatever you want her to!
@@ -69,8 +69,6 @@ _*leave [channel]_ - Makes Maunz leave a channel.
 __PM Only Syntax__
 
 *bulliedme \<channel> \<username> - Did somebody bully you? This will send them a link to stop with their bullying ways.
-
-*bullyme \<channel> \<username> Do you want somebody to bully you? This will send them a link to start with their bullying ways.
 
 _*leave \<channel>_ - Makes Maunz leave a channel.
 
@@ -84,15 +82,15 @@ Maunz depends on some java libraries to function, some are PircBotX dependencies
 
 [Apache Commons Codec](https://commons.apache.org/proper/commons-codec/) - 1.10
 
-[Apache Commons Lang](https://commons.apache.org/proper/commons-lang/) - 3.4
+[Apache Commons Lang](https://commons.apache.org/proper/commons-lang/) - 3.5
 
 [Apache Commons IO](https://commons.apache.org/proper/commons-io/) - 2.5
 
-[Guava](https://github.com/google/guava) - 19.0
+[Guava](https://github.com/google/guava) - 20.0
 
-[log4j-api](http://logging.apache.org/log4j/2.x/) - 2.6.2
+[log4j-api](http://logging.apache.org/log4j/2.x/) - 2.7
 
-[log4j-core](http://logging.apache.org/log4j/2.x/) - 2.6.2
+[log4j-core](http://logging.apache.org/log4j/2.x/) - 2.7
 
 [PircBotX](https://github.com/TheLQ/pircbotx) - 2.1
 
@@ -100,7 +98,7 @@ Maunz depends on some java libraries to function, some are PircBotX dependencies
 
 [slf4j-nop](http://www.slf4j.org/) - 1.7.21
 
-[jsoup](https://jsoup.org/) - 1.9.2
+[jsoup](https://jsoup.org/) - 1.10.1
 
 [rome-utils](http://rometools.github.io/rome/) - 1.7.0
 
@@ -108,4 +106,4 @@ Maunz depends on some java libraries to function, some are PircBotX dependencies
 
 [jdom](http://www.jdom.org/) - 2.0.6
 
-[mysql-connector-java](https://dev.mysql.com/downloads/connector/j/) - 6.0.3
+[mysql-connector-java](https://dev.mysql.com/downloads/connector/j/) - 6.0.5

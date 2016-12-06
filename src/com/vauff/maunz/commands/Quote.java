@@ -29,7 +29,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 			switch (args[1].toLowerCase())
 			{
 			case "list":
-				if (args.length == 2 || NumberUtils.isNumber(args[2]))
+				if (args.length == 2 || NumberUtils.isCreatable(args[2]))
 				{
 					int page = 0;
 
@@ -92,7 +92,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 				}
 				else
 				{
-					if (NumberUtils.isNumber(args[2]))
+					if (NumberUtils.isCreatable(args[2]))
 					{
 						Util.sqlConnect();
 						PreparedStatement pst = Util.sqlCon.prepareStatement("SELECT * FROM quotes WHERE id='" + args[2] + "'");
@@ -173,7 +173,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 			switch (args[1].toLowerCase())
 			{
 			case "list":
-				if (args.length == 2 || NumberUtils.isNumber(args[2]))
+				if (args.length == 2 || NumberUtils.isCreatable(args[2]))
 				{
 					int page = 0;
 
@@ -236,7 +236,7 @@ public class Quote implements ICommand<MessageEvent, PrivateMessageEvent>
 				}
 				else
 				{
-					if (NumberUtils.isNumber(args[2]))
+					if (NumberUtils.isCreatable(args[2]))
 					{
 						Util.sqlConnect();
 						PreparedStatement pst = Util.sqlCon.prepareStatement("SELECT * FROM quotes WHERE id='" + args[2] + "'");

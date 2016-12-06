@@ -14,7 +14,7 @@ public class Map implements ICommand<MessageEvent, PrivateMessageEvent>
 	{
 		if (!Util.getFileContents("lastmap.txt").endsWith("_OLD-DATA"))
 		{
-			Util.msg(event, "GFL Zombie Escape is currently playing: " + Colors.MAGENTA + Colors.BOLD + Util.getFileContents("lastmap.txt"));
+			Util.msg(event, "GFL Zombie Escape is currently playing: " + Colors.BOLD + Util.getFileContents("lastmap.txt"));
 		}
 		else
 		{
@@ -27,7 +27,7 @@ public class Map implements ICommand<MessageEvent, PrivateMessageEvent>
 	{
 		if (!Util.getFileContents("lastmap.txt").endsWith("_OLD-DATA"))
 		{
-			Util.msg(event, "GFL Zombie Escape is currently playing: " + Colors.MAGENTA + Colors.BOLD + Util.getFileContents("lastmap.txt"));
+			Util.msg(event, "GFL Zombie Escape is currently playing: " + Colors.BOLD + Util.getFileContents("lastmap.txt"));
 		}
 		else
 		{

@@ -22,11 +22,11 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 
 		if (Util.devMode)
 		{
-			about = "Maunz is an IRC bot created by V4uff with help from blackscore";
+			about = "Maunz is an IRC bot created by V4uff";
 		}
 		else
 		{
-			about = "Maunz is an IRC bot created by Vauff with help from bl4ckscor3";
+			about = "Maunz is an IRC bot created by Vauff";
 		}
 
 		Util.msg(event, Colors.BOLD + "About: " + Colors.NORMAL + about + " | " + Colors.BOLD + "Version: " + Colors.NORMAL + Main.version + " | " + Colors.BOLD + "Build Date: " + Colors.NORMAL + getBuildDate() + " | " + Colors.BOLD + "Dev Mode: " + Colors.NORMAL + StringUtils.capitalize(Boolean.toString(Util.devMode)) + " | " + Colors.BOLD + "Uptime: " + Colors.NORMAL + Util.getUptime());
@@ -39,11 +39,11 @@ public class About implements ICommand<MessageEvent, PrivateMessageEvent>
 
 		if (Util.devMode)
 		{
-			about = "Maunz is an IRC bot created by V4uff with help from blackscore";
+			about = "Maunz is an IRC bot created by V4uff";
 		}
 		else
 		{
-			about = "Maunz is an IRC bot created by Vauff with help from bl4ckscor3";
+			about = "Maunz is an IRC bot created by Vauff";
 		}
 
 		Util.msg(event, Colors.BOLD + "About: " + Colors.NORMAL + about + " | " + Colors.BOLD + "Version: " + Colors.NORMAL + Main.version + " | " + Colors.BOLD + "Build Date: " + Colors.NORMAL + getBuildDate() + " | " + Colors.BOLD + "Dev Mode: " + Colors.NORMAL + StringUtils.capitalize(Boolean.toString(Util.devMode)) + " | " + Colors.BOLD + "Uptime: " + Colors.NORMAL + Util.getUptime());

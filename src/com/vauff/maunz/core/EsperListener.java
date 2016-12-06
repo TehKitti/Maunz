@@ -28,7 +28,6 @@ public class EsperListener extends ListenerAdapter
 		commands.add(new Benchmark());
 		commands.add(new BlogDebug());
 		commands.add(new BulliedMe());
-		commands.add(new BullyMe());
 		commands.add(new Changelog());
 		commands.add(new Chans());
 		commands.add(new Disable());
@@ -39,6 +38,7 @@ public class EsperListener extends ListenerAdapter
 		commands.add(new Leave());
 		commands.add(new Map());
 		commands.add(new Nick());
+		commands.add(new Notify());
 		commands.add(new Ping());
 		commands.add(new Quote());
 		commands.add(new Reddit());

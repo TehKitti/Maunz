@@ -13,9 +13,12 @@ public class TaskController extends ListenerAdapter
 	{
 		try
 		{
-			if (event.getUser().getNick().startsWith("TaskController_"))
+			if (Util.isEnabled == true)
 			{
-				Util.msg(Util.privateChannel, event.getUser().getNick().split("_")[1] + " just logged on!");
+				if (event.getUser().getNick().startsWith("TaskController_"))
+				{
+					Util.msg(Util.privateChannel, event.getUser().getNick().split("_")[1] + " just logged on!");
+				}
 			}
 		}
 		catch (Exception e)
@@ -28,15 +31,18 @@ public class TaskController extends ListenerAdapter
 	{
 		try
 		{
-			if (event.getUser().getNick().startsWith("TaskController_"))
+			if (Util.isEnabled == true)
 			{
-				if (event.getUser().getNick().equals("TaskController_alexm"))
+				if (event.getUser().getNick().startsWith("TaskController_"))
 				{
-					Util.msg(Util.privateChannel, event.getUser().getNick().split("_")[1] + " just logged off!");
-				}
-				else
-				{
-					Util.msg(Util.privateChannel, "Vauff: " + event.getUser().getNick().split("_")[1] + " just logged off!");
+					if (event.getUser().getNick().equals("TaskController_alexm"))
+					{
+						Util.msg(Util.privateChannel, event.getUser().getNick().split("_")[1] + " just logged off!");
+					}
+					else
+					{
+						Util.msg(Util.privateChannel, "Vauff: " + event.getUser().getNick().split("_")[1] + " just logged off!");
+					}
 				}
 			}
 		}

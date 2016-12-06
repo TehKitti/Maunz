@@ -58,9 +58,6 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 		case "*bulliedme":
 		case "bulliedme":
 			return "Did somebody bully you? This will send them a link to stop with their bullying ways. Usage: *bulliedme [channel] <username>";
-		case "*bullyme":
-		case "bullyme":
-			return "Do you want somebody to bully you? This will send them a link to start with their bullying ways. Usage: *bullyme [channel] <username>";
 		case "*changelog":
 		case "changelog":
 			return "Tells you the changelog of the Maunz version you specify. Usage: *changelog [version]";
@@ -88,6 +85,9 @@ public class Help implements ICommand<MessageEvent, PrivateMessageEvent>
 		case "*nick":
 		case "nick":
 			return "Changes Maunz's nickname on a specific network, only usable by Vauff. Usage: *nick <network> <nickname>";
+		case "*notify":
+		case "notify":
+			return "Lets you list, add or remove your ZE map notifications. Usage: *notify <list/confirm/mapname>";
 		case "*ping":
 		case "ping":
 			return "Makes Maunz respond to you with pong. Very useful for testing ping to the IRC server! Usage: *ping";
