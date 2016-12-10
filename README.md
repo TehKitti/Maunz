@@ -78,7 +78,7 @@ _*leave \<channel>_ - Makes Maunz leave a channel.
 
 Maunz depends on some java libraries to function, some are PircBotX dependencies and some are mine that I've added for some features. These can be downloaded manually or automatically with Maven using Maunz's pom.xml. They are with their versions listed below.
 
-[Chatter Bot API](https://github.com/pierredavidbelanger/chatter-bot-api) - 1.4.2
+[Chatter Bot API](https://github.com/pierredavidbelanger/chatter-bot-api) - 1.4.3
 
 [Apache Commons Codec](https://commons.apache.org/proper/commons-codec/) - 1.10
 
