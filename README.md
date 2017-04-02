@@ -1,10 +1,10 @@
-#Maunz
+# Maunz
 
 [![Version](https://badge.fury.io/gh/Vauff%2FMaunz.svg)](https://badge.fury.io/gh/Vauff%2FMaunz) [![Dependencies](https://www.versioneye.com/user/projects/580525054c7414002e7d4642/badge.svg)](https://www.versioneye.com/user/projects/580525054c7414002e7d4642)
 
 Maunz is an IRC bot created by Vauff in Java using PircBotX. She is currently on multiple channels on the EsperNet IRC network and one on Freenode. Maunz can take commands through both PM and channels she is in. If you want to help Maunz development feel free to suggest ideas on [Trello](https://trello.com/b/9W7PmTvX/maunz) in the features or if you find any, even bugs in the bugs list :(
 
-#Commands
+# Commands
 
 Italic ones cannot be done by everyone and are restricted to just me. [] indicates that the argument is optional, \<> indicates the argument is required.
 
@@ -74,7 +74,7 @@ _*leave \<channel>_ - Makes Maunz leave a channel.
 
 *say \<channel> \<message> - Makes Maunz say whatever you want her to!
 
-#Dependencies
+# Dependencies
 
 Maunz depends on some java libraries to function, some are PircBotX dependencies and some are mine that I've added for some features. These can be downloaded manually or automatically with Maven using Maunz's pom.xml. They are with their versions listed below.
 
