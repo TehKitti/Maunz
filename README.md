@@ -1,5 +1,7 @@
 # Maunz
 
+**IMPORTANT: Regular development has been stopped on Maunz, new features/improvements will be done on [Maunz-Discord](https://github.com/Vauff/Maunz-Discord) only, bug fix releases may be released as needed.**
+
 [![Version](https://badge.fury.io/gh/Vauff%2FMaunz.svg)](https://badge.fury.io/gh/Vauff%2FMaunz) [![Dependencies](https://www.versioneye.com/user/projects/580525054c7414002e7d4642/badge.svg)](https://www.versioneye.com/user/projects/580525054c7414002e7d4642)
 
 Maunz is an IRC bot created by Vauff in Java using PircBotX. She is currently on multiple channels on the EsperNet IRC network and one on Freenode. Maunz can take commands through both PM and channels she is in. If you want to help Maunz development feel free to suggest ideas on [Trello](https://trello.com/b/9W7PmTvX/maunz) in the features or if you find any, even bugs in the bugs list :(
