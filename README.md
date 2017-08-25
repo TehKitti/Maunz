@@ -1,6 +1,6 @@
-# Maunz
+# Maunz-IRC
 
-**IMPORTANT: Regular development has been stopped on Maunz, new features/improvements will be done on [Maunz-Discord](https://github.com/Vauff/Maunz-Discord) only, bug fix releases may be released as needed.**
+**IMPORTANT: Development has been stopped on Maunz-IRC, new features/improvements/bug fixes will be done on [Maunz-Discord](https://github.com/Vauff/Maunz-Discord) only.**
 
 [![Version](https://badge.fury.io/gh/Vauff%2FMaunz.svg)](https://badge.fury.io/gh/Vauff%2FMaunz) [![Dependencies](https://www.versioneye.com/user/projects/580525054c7414002e7d4642/badge.svg)](https://www.versioneye.com/user/projects/580525054c7414002e7d4642)
 
